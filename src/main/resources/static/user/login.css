@@ -1,0 +1,113 @@
+@import "../css/public/public.css";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main{
+    width: 600px;
+    margin: auto;
+    padding: 150px 0;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px;
+}
+
+/****************로그인 하는곳*******************/
+
+.login_span{
+    font-size: var(--font-size-regular);
+}
+
+b{
+    font-size: var(--font-size-regular);
+    color: var(--color-RockON-3);
+}
+
+h1{
+    font-size: var(--font-size-black);
+    margin: 20px 0;
+}
+
+.login_section{
+    display: flex;
+    flex-direction: column;
+}
+
+.id_label{
+    width: 100%;
+    margin-bottom: 5px;
+    border: none;
+}
+
+.id_label > input{
+    width: 100%;
+    padding: 5px;
+    border: 0.5px solid gray;
+    border-radius: 8px;
+}
+
+.pw_label{
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.pw_label > input{
+    width: 100%;
+    padding: 5px;
+    border: 0.5px solid gray;
+    border-radius: 8px;
+}
+
+.login_section > button{
+    padding: 5px;
+    margin-bottom: 15px;
+    background-color: var(--color-RockON-3);
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.login_section > button:hover{
+    opacity: 0.7;
+}
+
+/****************회원가입, 아이디, 비번찾는곳*******************/
+.login_search_section{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+.id_store_label{
+
+}
+
+.find_div{
+
+}
+
+.find_div > button{
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+/****************설명란*******************/
+.explanation_section{
+    display: block;
+}
+
+.explanation_section > h3{
+    font-size: var(--font-size-regular);
+    margin-bottom: 10px;
+}
+
+.explanation_section > span{
+    font-size: var(--font-size-thin);
+}
