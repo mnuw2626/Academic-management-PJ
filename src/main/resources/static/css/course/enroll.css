@@ -1,0 +1,144 @@
+main{
+    margin: 10px 10px;
+    width: 100%;
+    height: 100%;
+}
+.main-section{
+    min-width: 1000px;
+    padding: 1.5em;
+}
+/********* 테이블 관련 *********/
+table{
+    border: 1px #a39485 solid;
+    font-size: .9em;
+    box-shadow: 0 2px 5px rgba(0,0,0,.25);
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 5px;
+    overflow: hidden;
+    text-align: center;
+}
+thead{
+    font-weight: bold;
+    color: var(--color-RockON-1);
+    background: var(--color-Teal-and-Mint-1);
+}
+td, th{
+    padding: 1em .5em;
+    border: 1px solid rgba(0,0,0,.1);
+}
+td{
+    background: var(--color-Light-Grays-5-rgba);
+}
+/*******************************************************/
+
+/********* 개설과목 조회 *********/
+.div-course{
+    display: flex;
+    margin-bottom: 1.5em;
+    align-items: center;
+    border: 1.5px var(--color-Big-Machine-3) solid;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 10px 20px;
+}
+.div-course h5{
+    display: inline-block;
+    flex-basis: 200px;
+}
+.div-course > label{
+    flex: 1;
+    margin-right: 10px;
+}
+.div-course input{
+    width: 100%;
+    padding: 5px 10px;
+}
+#course-find-btn{
+    display: inline-block;
+    flex-basis: 150px;
+    padding: 4px 0;
+    text-align: center;
+    cursor: pointer;
+}
+
+/********* 개설 교과목 목록 *********/
+.div-class{
+    background: white;
+}
+.div-class h2{
+    margin-bottom: 10px;
+}
+#div-class-table{
+    margin-bottom: 10px;
+}
+#class-btn{
+    font-family: SemiBold;
+    background-color: var(--color-Teal-and-Mint-1);
+    color: var(--color-RockON-1);
+    border: none;
+    border-radius: 10px;
+    padding: 5px;
+    min-height: 100%;
+    min-width: 100%;
+    box-shadow: 2px 2px var(--color-Big-Machine-5);
+}
+#class-btn:hover{
+    background-color: var(--color-RockON-4);
+    color: var(--color-RockON-5);
+    cursor: pointer;
+}
+
+#class-sign{
+    margin: 1.5px auto;
+    padding: 5px;
+    color: white;
+    background-color: var(--color-RockON-4);
+    border-radius: 5px;
+}
+
+/********* 수강확정내역 *********/
+.div-list{
+    margin-top: 100px;
+    background-color: white;
+}
+.section-list-head{
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+    border: 1.5px var(--color-Big-Machine-3) solid;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 10px 20px;
+}
+.section-list-head h2{
+    display: inline-block;
+    flex-basis: 200px;
+}
+.section-list-head div{
+    padding: 5px 10px;
+    flex: 1;
+}
+#list-find-input{
+    flex-basis: 80px;
+    padding: 5px 10px;
+    margin-right: 10px;
+}
+#list-find-btn{
+    display: inline-block;
+    flex-basis: 150px;
+    padding: 4px 0;
+    text-align: center;
+    cursor: pointer;
+}
+.section-list{
+    background-color: aqua;
+}
+
+#list-sign{
+    margin: 1.5px auto;
+    padding: 5px;
+    color: chartreuse;
+    background-color: var(--color-Teal-and-Mint-5);
+    border-radius: 5px;
+}
