@@ -13,52 +13,97 @@
     </header>
     <main>
         <aside class="nav-bar">
-            <div>학사행정</div>
+            <div class="nav-div">학사행정</div>
             <div class="academic-nav">
-                <div>
-                    <span>학적</span>
-                    <ul>
-                        <li>학적정보관리</li>
-                        <li>학적변동관리</li>
-                    </ul>
-                </div>
-                <div>졸업</div>
-                <div></div>
+                <ul>
+                    <li>
+                        <a href="#">학적</a>
+                        <ul>
+                            <li><a href="#">개인정보</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">복학/휴학</a>
+                    </li>
+                    <li>
+                        <a href="#">계좌관리</a>
+                        <ul>
+                            <li><a href="#">학비관련(장학)</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">수강신청</a>
+                        <ul>
+                            <li><a href="#">수강 꾸러미</a></li>
+                            <li><a href="#">수강 신청 사이트</a></li>
+                        </ul>
+                    </li>
+                </ul>
             </div>
         </aside>
         <section class="main-section">
             <div class="individual-div">
                 <div class="individual-privacy">
-                    <span class="individual-name">이름</span> <br>
-                    <span class="individual-studentId">학번</span> <br>
-                    <span class="individual-department">자연과학대학 | 학과</span>
+                    <div class="individual-name">이름</div> <br>
+                    <div class="individual-studentId">학번</div> <br>
+                    <div class="individual-department">자연과학대학 | 학과</div>
                 </div>
-                <div class="individual-btn">
-                    <button>비밀번호 변경</button>
-                    <button>로그아웃</button>
+                <div class="individual-input">
+                    <input type="button" value="비밀번호 변경">
+                    <input type="button" value="로그아웃">
                 </div>
             </div>
             <div class="content-div">
-                <div>
-                    <button>업무공지</button>
-                    <button>학사공지</button>
-                </div>
-                <div>
-                    <ul>
-                        <li><a href="#">2024학년도 여름계절~</a></li>
-                        <li><a href="#">2024년 8월 졸업예정자~</a></li>
-                        <li><a href="#">2024년 8월(2023학년도 후기)~</a></li>
-                        <li><a href="#">2024학년도 2학기 수꾸~</a></li>
-                        <li><a href="#">2024학년도 2학기~</a></li>
-                        <li><a href="#">[창업휴학]~</a></li>
-                    </ul>
-                </div>
+                <div>학사공지</div>
+                <table class="business-notice">
+                    <thead>
+                        <tr>
+                            <th width="70">번호</th>
+                            <th width="500">제목</th>
+                            <th width="100">작성일</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td width="70">1</td>
+                            <td width="500">2024학년도 여름계절~</td>
+                            <td width="100">2024-07-11</td>
+                        </tr>
+                        <tr>
+                            <td width="70">2</td>
+                            <td width="500">2024년 8월 졸업예정자~</td>
+                            <td width="100">2024-07-11</td>
+                        </tr>
+                        <tr>
+                            <td width="70">3</td>
+                            <td width="500">2024년 8월(2023학년도 후기)~</td>
+                            <td width="100">2024-07-11</td>
+                        </tr>
+                        <tr>
+                            <td width="70">4</td>
+                            <td width="500">2024학년도 2학기 수꾸~</td>
+                            <td width="100">2024-07-11</td>
+                        </tr>
+                        <tr>
+                            <td width="70">5</td>
+                            <td width="500">2024학년도 2학기~</td>
+                            <td width="100">2024-07-11</td>
+                        </tr>
+                        <tr>
+                            <td width="70">6</td>
+                            <td width="500">[창업휴학]~</td>
+                            <td width="100">2024-07-11</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
             <div class="main-service">
+                <div class="service-div">주요 서비스</div>
                 <div>
-                    수강신청
+                    <a href="#"><i class="fa-regular fa-pen-to-square">수강신청</i></a>
                 </div>
                 <div>
+                    <i class="fa-regular fa-map"></i>
                     캠퍼스 맵
                 </div>
             </div>
@@ -66,8 +111,8 @@
         </section>
     </main>
 
-    <i class="fa-solid fa-minus"></i>
-    <i class="fa-solid fa-plus"></i>
-    <i class="fa-solid fa-chevron-down"></i>
+<!--    <i class="fa-solid fa-minus"></i>-->
+<!--    <i class="fa-solid fa-plus"></i>-->
+<!--    <i class="fa-solid fa-chevron-down"></i>-->
 </body>
 </html>
