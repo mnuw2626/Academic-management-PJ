@@ -81,7 +81,7 @@ h1{
 .login_search_section{
     display: flex;
     justify-content: space-between;
-    margin-bottom: 40px;
+    margin-bottom: 80px;
 }
 
 .id_store_label{
@@ -92,10 +92,8 @@ h1{
 
 }
 
-.find_div > button{
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
+.find_div > a{
+    color: rgba(0,0,0,0.6);
 }
 
 /****************설명란*******************/
