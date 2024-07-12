@@ -1,4 +1,4 @@
-@import "../css/public/public.css";
+@import "../public/public.css";
 
 *{
     margin: 0;
@@ -8,8 +8,11 @@
 
 main{
     width: 600px;
-    margin: auto;
-    padding: 150px 0;
+    margin: 70px auto;
+    padding: 100px 0;
+    border: 1px solid var(--color-Light-Grays-2-rgba);
+    border-radius: 8px;
+    box-shadow: 1px 2px 3px 1px var(--color-Light-Grays-2-rgba);
 }
 
 form{

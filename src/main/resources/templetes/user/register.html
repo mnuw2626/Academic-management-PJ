@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../static/css/user/register.css">
     <script src="https://kit.fontawesome.com/3c22aa6cdc.js" crossorigin="anonymous"></script>
     <title>register</title>
 </head>
@@ -9,35 +10,65 @@
     <main>
         <h1>회원가입</h1>
         <form action="">
-            <section class="id-section">
+            <section class="id-section form-section">
                 <label>
                     <i class="fa-solid fa-lock"></i>
                     <input type="text" id="id" placeholder="아이디 (6-12글자)">
                 </label>
-                <button id="id-duplication-btn">중복확인</button>
+                <button class="id-duplication-btn">중복확인</button>
             </section>
-            <div class="valid-check id">
+            <div class="valid-check-id">
                 아이디는 6-12 글자 내여야 합니다
             </div>
 
-            <section class="pw-section">
+            <section class="pw-section form-section">
                 <label>
                     <i class="fa-solid fa-key"></i>
                     <input type="password" id="pw" placeholder="비밀번호 (6-12글자, 영문자 및 숫자, 특수문자 포함)">
-                    <button class="pw-view-btn" type="button"><i class="fa-solid fa-eye"></i></button>
+                    <button class="pw-view-btn" type="button"></button>
                 </label>
             </section>
-            <div class="valid-check pw">
-                4-10글자, 영문자 및 숫자, 특수문자 포함
+            <div class="valid-check-pw form-section">
+                6-12글자, 영문자 및 숫자, 특수문자 포함
             </div>
 
-            <section class="pw-check-section">
+            <section class="pw-check-section form-section">
                 <label>
                     <i class="fa-solid fa-key"></i>
                     <input type="password" id="pw-ch" placeholder="비밀번호 재입력">
-                    <button class="pw-view-btn" type="button"><i class="fa-solid fa-eye"></i></button>
                 </label>
             </section>
+
+            <section class="num-section form-section">
+                <label>
+                    <span>학번</span>
+                    <input type="number" value="1234" readonly>
+                </label>
+            </section>
+
+            <section class="name-section form-section">
+                <label>
+                    <span>이름</span>
+                    <input type="text">
+                </label>
+            </section>
+
+            <section class="call-section form-section">
+                <label class="call-send-label">
+                    <span>휴대폰번호</span>
+                    <input type="text">
+                </label>
+                <button class="call-button">인증번호</button>
+                <label class="call-accept-label">
+                    <input type="text" placeholder="인증번호를 입력하세요">
+                </label>
+            </section>
+
+            <section class="register-section form-section">
+                <button type="button" id="register-btn">회원가입</button>
+                <button type="button" id="cancel-btn">취소</button>
+            </section>
+
 
         </form>
     </main>
