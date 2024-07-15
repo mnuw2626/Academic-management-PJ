@@ -64,8 +64,10 @@ td{
 
 /********* 개설 교과목 목록 *********/
 .div-class{
+    height: 500px;
     background: white;
     margin-bottom: 50px;
+    overflow: scroll;
 }
 .div-class h2{
     margin-bottom: 10px;
@@ -133,7 +135,8 @@ td{
     cursor: pointer;
 }
 .section-list{
-    background-color: aqua;
+    height: 500px;
+    overflow: scroll;
 }
 
 #list-sign{
