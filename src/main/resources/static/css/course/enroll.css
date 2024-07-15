@@ -65,6 +65,7 @@ td{
 /********* 개설 교과목 목록 *********/
 .div-class{
     background: white;
+    margin-bottom: 50px;
 }
 .div-class h2{
     margin-bottom: 10px;
@@ -99,7 +100,7 @@ td{
 
 /********* 수강확정내역 *********/
 .div-list{
-    margin-top: 100px;
+    margin-top: 50px;
     background-color: white;
 }
 .section-list-head{
