@@ -6,6 +6,10 @@
     box-sizing: border-box;
 }
 
+body{
+    /*background-color: var(--color-RockON-3);*/
+}
+
 main{
     width: 600px;
     margin: 70px auto;
@@ -13,6 +17,7 @@ main{
     border: 1px solid var(--color-Light-Grays-2-rgba);
     border-radius: 8px;
     box-shadow: 1px 2px 3px 1px var(--color-Light-Grays-2-rgba);
+    /*background-color: white;*/
 }
 
 form{
