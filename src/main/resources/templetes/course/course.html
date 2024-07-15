@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title> 학사관리 | 강의 조회</title>
+    <link rel="stylesheet" href="../../static/css/course/course.css">
+    <link rel="stylesheet" href="../../static/css/public/public.css">
+
+    <script src="https://kit.fontawesome.com/61293ff96f.js" crossorigin="anonymous"></script>
+
+
+</head>
+<body>
+    <main>
+        <section class="main-section">
+        <!--    개설과목 조회       -->
+            <div class="div-course">
+                <h5>개설 강의 조회</h5>
+                <label>
+                    <input type="text" placeholder="학부"/>
+                </label>
+                <label>
+                    <input type="text" placeholder="전공/교양"/>
+                </label>
+                <label>
+                    <input type="text" placeholder="학년"/>
+                </label>
+                <label>
+                    <input type="text" placeholder="교과목명"/>
+                </label>
+                <button id="course-find-btn">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span>조회</span>
+                </button>
+            </div>
+        <!--     개설 교과목 목록       -->
+            <div class="div-class">
+                <h2>개설 교과목 목록</h2>
+                <table id="div-class-table">
+                    <thead>
+                    <tr>
+                        <th>순번</th>
+                        <th>구분</th>
+                        <th>학년</th>
+                        <th>학점</th>
+                        <th>교과목코드</th>
+                        <th>교과목명</th>
+                        <th>담당교수</th>
+                        <th>강의시간</th>
+                        <th>강의실</th>
+                        <th>잔여</th>
+                        <th>재수강</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>교양</td>
+                            <td>1</td>
+                            <td>3</td>
+                            <td>12345</td>
+                            <td>글쓰기의 이해</td>
+                            <td>김길동</td>
+                            <td>9:00 ~ 11:00</td>
+                            <td>교육관 1실</td>
+                            <td> 12 / 100 </td>
+                            <td><span id="class-sign">신규</span></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
