@@ -22,9 +22,22 @@ h1{
     margin: 40px 0;
 }
 
+.modify-btn{
+    padding: 5px;
+    background-color: var(--color-RockON-3);
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.modify-btn:hover{
+    opacity: 0.7;
+}
+
 /***********테이블************/
 .main-info-section{
     width: 100%;
+    margin-bottom: 40px;
 }
 
 h2{
