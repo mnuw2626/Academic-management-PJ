@@ -1,31 +1,18 @@
 
 *{
-    --color-Teal-and-Mint-1 : rgba(199, 255, 237, 1);
-    --color-Teal-and-Mint-2 : rgba(216, 255, 219, 1);
-    --color-Teal-and-Mint-3 : rgba(0, 143, 140, 1);
-    --color-Teal-and-Mint-4 : rgba(1, 89, 88, 1);
-    --color-Teal-and-Mint-5 : rgba(2, 53, 53, 1);
+    /* Color Theme Swatches in RGBA */
+    .STADTWERKE-DÜSSELDORF-1-rgba { color: rgba(72, 114, 30, 1); }
+    .STADTWERKE-DÜSSELDORF-2-rgba { color: rgba(56, 89, 24, 1); }
+    .STADTWERKE-DÜSSELDORF-3-rgba { color: rgba(107, 165, 49, 1); }
+    .STADTWERKE-DÜSSELDORF-4-rgba { color: rgba(169, 216, 121, 1); }
+    .STADTWERKE-DÜSSELDORF-5-rgba { color: rgba(159, 216, 73, 1); }
 
     /* Color Theme Swatches in RGBA */
-    --color-RockON-1 : rgba(1, 2, 33, 1);
-    --color-RockON-2 : rgba(10, 114, 114, 1);
-    --color-RockON-3 : rgba(182, 191, 153, 1);
-    --color-RockON-4 : rgba(237, 169, 36, 1);
-    --color-RockON-5 : rgba(196, 50, 1, 1);
-
-    /* Color Theme Swatches in RGBA */
-    --color-Big-Machine-1: rgba(188, 41, 46, 1);
-    --color-Big-Machine-2: rgba(58, 56, 54, 1);
-    --color-Big-Machine-3: rgba(177, 189, 191, 1);
-    --color-Big-Machine-4: rgba(136, 155, 155, 1);
-    --color-Big-Machine-5: rgba(71, 104, 101, 1);
-
-    /* Color Theme Swatches in RGBA */
-    --color-Light-Grays-1-rgba : rgba(212, 214, 219, 1);
-    --color-Light-Grays-2-rgba : rgba(235, 237, 240, 1);
-    --color-Light-Grays-3-rgba : rgba(246, 246, 249, 1);
-    --color-Light-Grays-4-rgba : rgba(255, 255, 255, 1);
-    --color-Light-Grays-5-rgba : rgba(255, 255, 255, 1);
+    .Green-bokeh-textured-plain-background-1-rgba { color: rgba(128, 191, 150, 1); }
+    .Green-bokeh-textured-plain-background-2-rgba { color: rgba(184, 216, 186, 1); }
+    .Green-bokeh-textured-plain-background-3-rgba { color: rgba(225, 242, 213, 1); }
+    .Green-bokeh-textured-plain-background-4-rgba { color: rgba(163, 191, 135, 1); }
+    .Green-bokeh-textured-plain-background-5-rgba { color: rgba(242, 242, 242, 1); }
 
 
 
