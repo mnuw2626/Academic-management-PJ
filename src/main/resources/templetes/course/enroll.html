@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>학사관리 | 수강신청</title>
     <link rel="stylesheet" href="../../static/css/course/enroll.css">
-    <link rel="stylesheet" href="../../static/css/public/public.css">
 
     <script src="https://kit.fontawesome.com/61293ff96f.js" crossorigin="anonymous"></script>
 </head>
@@ -13,7 +12,7 @@
         <section class="main-section">
         <!--    개설과목 조회       -->
             <div class="div-course">
-                <h5>개설 강의 조회</h5>
+                <h2>개설 강의 조회</h2>
                 <label>
                     <input type="text" placeholder="교과목코드"/>
                 </label>
@@ -27,7 +26,6 @@
             </div>
         <!--     개설 교과목 목록       -->
             <div class="div-class">
-                <h2>개설 교과목 목록</h2>
                 <table id="div-class-table">
                     <thead>
                     <tr>
@@ -51,14 +49,28 @@
                             <td>교양</td>
                             <td>1</td>
                             <td>3</td>
-                            <td><button id="class-btn">수강</button></td>
+                            <td><button class="class-btn">수강</button></td>
                             <td>12345</td>
                             <td>글쓰기의 이해</td>
                             <td>김길동</td>
                             <td>9:00 ~ 11:00</td>
                             <td>교육관 1실</td>
                             <td> 12 / 100 </td>
-                            <td><span id="class-sign">신규</span></td>
+                            <td><span class="class-sign-new">신규</span></td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>전공</td>
+                            <td>1</td>
+                            <td>3</td>
+                            <td><button class="class-btn">수강</button></td>
+                            <td>12345</td>
+                            <td>컴퓨터 구조</td>
+                            <td>홍길동</td>
+                            <td>9:00 ~ 11:00</td>
+                            <td>교육관 1실</td>
+                            <td> 12 / 100 </td>
+                            <td><span class="class-sign-re">재수강</span></td>
                         </tr>
                     </tbody>
                 </table>
@@ -121,7 +133,20 @@
                                 <td>김길동</td>
                                 <td>9:00 ~ 11:00</td>
                                 <td>교육관 1실</td>
-                                <td><span id="list-sign">재수강</span></td>
+                                <td><span class="class-sign-re">재수강</span></td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>전공</td>
+                                <td>1</td>
+                                <td>3</td>
+                                <td>결과</td>
+                                <td>12345</td>
+                                <td>컴퓨터 구조</td>
+                                <td>김길동</td>
+                                <td>9:00 ~ 11:00</td>
+                                <td>교육관 1실</td>
+                                <td><span class="class-sign-new">신규</span></td>
                             </tr>
                         </tbody>
                     </table>

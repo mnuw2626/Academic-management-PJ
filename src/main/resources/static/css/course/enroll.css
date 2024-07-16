@@ -1,3 +1,5 @@
+@import "../public/public.css";
+
 main{
     margin: 10px 10px;
     width: 100%;
@@ -9,7 +11,7 @@ main{
 }
 /********* 테이블 관련 *********/
 table{
-    border: 1px #a39485 solid;
+    border: 1px var(--light-green-5) solid;
     font-size: .9em;
     box-shadow: 0 2px 5px rgba(0,0,0,.25);
     width: 100%;
@@ -20,31 +22,29 @@ table{
 }
 thead{
     font-weight: bold;
-    color: var(STADTWERKE-DÜSSELDORF-1-rgba);
-    background: var(--color-Teal-and-Mint-1);
+    color: var(--light-green-5);
+    background: var(--dark-green-2);
 }
 td, th{
     padding: 1em .5em;
     border: 1px solid rgba(0,0,0,.1);
-}
-td{
-    background: var(--color-Light-Grays-5-rgba);
 }
 /*******************************************************/
 
 /********* 개설과목 조회 *********/
 .div-course{
     display: flex;
-    margin-bottom: 1.5em;
+    margin-bottom: 30px;
     align-items: center;
-    border: 1.5px var(--color-Big-Machine-3) solid;
+    border: 1.5px var(--dark-green-2) solid;
     border-radius: 10px;
     overflow: hidden;
     padding: 10px 20px;
 }
-.div-course h5{
+.div-course h2{
     display: inline-block;
     flex-basis: 200px;
+    color: var(--dark-green-2);
 }
 .div-course > label{
     flex: 1;
@@ -60,43 +60,53 @@ td{
     padding: 4px 0;
     text-align: center;
     cursor: pointer;
+    border: 1.5px var(--dark-green-2) solid;
+    background-color: var(--light-green-2);
 }
-
+#course-find-btn:hover{
+    color: var(--light-green-5);
+    background-color: var(--dark-green-2);
+}
 /********* 개설 교과목 목록 *********/
 .div-class{
     height: 500px;
     background: white;
     margin-bottom: 50px;
-    overflow: scroll;
-}
-.div-class h2{
-    margin-bottom: 10px;
+    overflow: hidden scroll;
 }
 #div-class-table{
     margin-bottom: 10px;
 }
-#class-btn{
+.class-btn{
     font-family: SemiBold;
-    background-color: var(--color-Teal-and-Mint-1);
-    color: var(--color-RockON-1);
+    background-color: var(--light-green-1);
+    color: var(--light-green-5);
     border: none;
     border-radius: 10px;
     padding: 5px;
     min-height: 100%;
     min-width: 100%;
-    box-shadow: 2px 2px var(--color-Big-Machine-5);
+    box-shadow: 2px 2px var(--dark-green-2);
 }
 #class-btn:hover{
-    background-color: var(--color-RockON-4);
-    color: var(--color-RockON-5);
+    background-color: var(--dark-green-2);
+    color: var(--light-green-5);
     cursor: pointer;
 }
-
-#class-sign{
+/* 수강, 재수강 스타일 */
+.class-sign-new{
     margin: 1.5px auto;
     padding: 5px;
-    color: white;
-    background-color: var(--color-RockON-4);
+    font-family: Bold;
+    color: var(--dark-green-5);
+    border-radius: 5px;
+}
+
+.class-sign-re{
+    margin: 1.5px auto;
+    padding: 5px;
+    font-family: Bold;
+    color: var(--dark-green-2);
     border-radius: 5px;
 }
 
@@ -107,9 +117,9 @@ td{
 }
 .section-list-head{
     display: flex;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     align-items: center;
-    border: 1.5px var(--color-Big-Machine-3) solid;
+    border: 1.5px var(--dark-green-2) solid;
     border-radius: 10px;
     overflow: hidden;
     padding: 10px 20px;
@@ -117,6 +127,7 @@ td{
 .section-list-head h2{
     display: inline-block;
     flex-basis: 200px;
+    color: var(--dark-green-2);
 }
 .section-list-head div{
     padding: 5px 10px;
@@ -133,16 +144,15 @@ td{
     padding: 4px 0;
     text-align: center;
     cursor: pointer;
+    border: 1.5px var(--dark-green-2) solid;
+    background-color: var(--light-green-2);
+}
+#list-find-btn:hover{
+    color: var(--light-green-5);
+    background-color: var(--dark-green-2);
 }
 .section-list{
     height: 500px;
-    overflow: scroll;
+    overflow: hidden scroll;
 }
 
-#list-sign{
-    margin: 1.5px auto;
-    padding: 5px;
-    color: chartreuse;
-    background-color: var(--color-Teal-and-Mint-5);
-    border-radius: 5px;
-}
