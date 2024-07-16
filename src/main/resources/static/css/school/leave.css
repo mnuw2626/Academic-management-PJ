@@ -16,13 +16,13 @@ main{
 h1{
     font-size: var(--font-size-extrabold);
     margin-bottom: 40px;
-    border-bottom: 2px solid var(--color-RockON-3);
+    border-bottom: 2px solid var(--dark-green-2);
 }
 
 h3{
     font-size: var(--font-size-medium);
     margin-bottom: 20px;
-    border-bottom: 1px solid var(--color-RockON-3);
+    border-bottom: 1px solid var(--dark-green-2);
 }
 
 .leave-info-section{
@@ -33,7 +33,7 @@ h3{
 
 .leave-btn{
     padding: 5px;
-    background-color: var(--color-RockON-3);
+    background-color: var(--light-green-2);
     border-radius: 8px;
     border: none;
     cursor: pointer;
