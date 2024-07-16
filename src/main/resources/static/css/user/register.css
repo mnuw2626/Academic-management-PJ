@@ -10,9 +10,9 @@ main{
     width: 600px;
     margin: 70px auto;
     padding: 20px 20px;
-    border: 1px solid var(--color-Light-Grays-2-rgba);
+    border: 1px solid lightgray;
     border-radius: 8px;
-    box-shadow: 1px 2px 3px 1px var(--color-Light-Grays-2-rgba);
+    box-shadow: 1px 2px 3px 1px lightgray;
 }
 
 h1{
@@ -73,7 +73,7 @@ form{
     font-size: var(--font-size-thin);
     font-weight: var(--font-size-light);
     cursor: pointer;
-    background-color: var(--color-RockON-3);
+    background-color: var(--light-green-2);
 }
 
 .valid-check-id{
@@ -171,7 +171,7 @@ form{
 
 .call-button{
     background-color: white;
-    border: 2px solid var(--color-RockON-3);
+    border: 2px solid var(--dark-green-2);
     border-radius: 6px;
     margin-bottom: 10px;
     padding: 10px 0;
@@ -206,7 +206,7 @@ form{
 }
 
 .register-section > #register-btn{
-    background-color: var(--color-RockON-3);
+    background-color: var(--light-green-2);
     border: none;
     border-radius: 6px;
     margin-right: 30px;
@@ -216,7 +216,7 @@ form{
 
 .register-section > #cancel-btn{
     background-color: white;
-    border: 2px solid var(--color-RockON-3);
+    border: 2px solid var(--dark-green-2);
     border-radius: 6px;
     padding: 10px 15px;
     font-size: var(--font-size-regular);

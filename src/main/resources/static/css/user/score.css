@@ -16,7 +16,7 @@ main{
 h1{
     font-size: var(--font-size-extrabold);
     margin-bottom: 40px;
-    border-bottom: 2px solid var(--color-RockON-3);
+    border-bottom: 2px solid var(--dark-green-2);
 }
 
 .score-section{
