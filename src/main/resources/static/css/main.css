@@ -16,7 +16,7 @@ main{
     width: 100%;
     height: 100%;
     padding: 50px 0;
-    background-color: var(--color-Teal-and-Mint-2);
+    background-color: var(--light-green-3);
 }
 
 /**********************************/
@@ -27,14 +27,14 @@ main{
     width: 300px;
     align-self: start;
     border: 1px solid black;
-    background-color: var(--color-Teal-and-Mint-1);
+    background-color: var(--light-green-1);
 }
 :root {
     --side-bar-width: 100%;
     --side-bar-height: 100%;
 }
 .nav-div{
-    background-color: var(--color-Teal-and-Mint-4);
+    background-color: var(--dark-green-2);
     color: white;
     padding: 50px 10px;
     text-align: center;
@@ -64,7 +64,7 @@ main{
     position: relative;
 }
 .academic-nav ul > li:hover > a{
-    background-color: var(--color-Teal-and-Mint-1);
+    background-color: var(--light-green-2);
     border: 1px solid black;
 }
 
@@ -114,13 +114,13 @@ main{
 }
 .individual-input > input{
     border-radius: 10px;
-    background-color: var(--color-Teal-and-Mint-1);
+    background-color: var(--light-green-2);
     padding: 20px 30px;
     border: 1px solid black;
 }
 .individual-input > input:hover{
     color: white;
-    background-color: var(--color-Teal-and-Mint-4);
+    background-color: var(--dark-green-3);
 }
 
 /*******************************/
@@ -152,7 +152,7 @@ td{
     margin-top: 20px;
     width: 800px;
     height: 200px;
-    background-color: peru;
+    background-color: var(--dark-green-4);
 }
 .service-div{
     padding: 20px 20px;
@@ -167,9 +167,12 @@ td{
     padding: 40px;
     margin-right: 10px;
     color: white;
-    background-color: darkorange;
+    background-color: var(--dark-green-3);
     border: 1px solid black;
     border-radius: 50%;
+}
+.enrolment > a:hover{
+    background-color: var(--dark-green-1);
 }
 .enrolment > a > i{
     font-size: var(--font-size-bold);
@@ -188,9 +191,12 @@ td{
     padding: 40px;
     margin-right: 10px;
     color: white;
-    background-color: darkorange;
+    background-color: var(--dark-green-3);
     border: 1px solid black;
     border-radius: 50%;
+}
+.campus-map > a:hover{
+    background-color: var(--dark-green-1);
 }
 .campus-map > a > i{
     font-size: var(--font-size-bold);
