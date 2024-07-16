@@ -1,0 +1,58 @@
+@import "../public/public.css";
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+    margin: 70px auto;
+}
+
+h1{
+    font-size: var(--font-size-extrabold);
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--color-RockON-3);
+}
+
+h3{
+    font-size: var(--font-size-medium);
+    margin-bottom: 20px;
+    border-bottom: 1px solid var(--color-RockON-3);
+}
+
+.return-info-section{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+}
+
+.return-btn{
+    padding: 5px;
+    background-color: var(--color-RockON-3);
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.return-btn:hover{
+    opacity: 0.7;
+}
+
+/************테이블 관련**************/
+
+table{
+    border: 1px solid #a39485;
+    font-size: var(--font-size-medium);
+    box-shadow: 0 2px 5px rgba(0,0,0,.25);
+    width: 100%;
+    margin-bottom: 10px;
+    border-collapse: collapse;
+    border-radius: 5px;
+    overflow: hidden;
+    text-align: center;
+}
