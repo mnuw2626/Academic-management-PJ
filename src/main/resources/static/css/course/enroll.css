@@ -20,7 +20,7 @@ table{
 }
 thead{
     font-weight: bold;
-    color: var(--color-RockON-1);
+    color: var(STADTWERKE-DÜSSELDORF-1-rgba);
     background: var(--color-Teal-and-Mint-1);
 }
 td, th{
