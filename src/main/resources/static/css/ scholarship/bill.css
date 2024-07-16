@@ -1,0 +1,56 @@
+@import "../public/public.css";
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    margin: 70px auto;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,.25);
+}
+
+h1{
+    font-size: var(--font-size-extrabold);
+    text-align: center;
+    margin: 30px 0;
+}
+
+h2{
+    font-size: var(--font-size-bold);
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+b{
+    font-size: var(--font-size-bold);
+    color: var(--dark-green-2);
+}
+
+form{
+    display: flex;
+    justify-content: center;
+    padding: 20px 0;
+}
+
+/************테이블 관련**************/
+
+table{
+    font-size: var(--font-size-medium);
+    width: 100%;
+    margin: 0 20px;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+}
+
+td, th{
+    padding: 1em .5em;
+    border: 2px solid lightgray;
+}
