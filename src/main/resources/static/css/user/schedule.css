@@ -8,18 +8,37 @@ main{
     width: 100vw;
     height: 100vh;
 }
-.main-section{
+/***** 학년, 학기 선택, 조회 *****/
+.schedule-section{
     min-width: 1000px;
 }
-/********* 테이블 관련 *********/
-.section-schedule{
+
+.schedule-section > div{
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 10px 20px;
+}
+.schedule-section select{
+    width: 100px;
+    padding: 5px 10px;
+    margin-left: 10px;
+}
+.schedule-section button{
+    flex-basis: 100px;
+    margin-left: 15px;
+    height: 35px;
+}
+
+/********* 시간표 *********/
+.section-table{
     flex: 1;
 }
 .div-schedule{
     height: 100%;
 }
 table{
-    border: 1px var(--light-green-5) solid;
+    /*border: 1px var(--light-green-2) solid;*/
     font-size: var(--font-size-thin);
     box-shadow: 0 2px 5px rgba(0,0,0,.25);
     width: 1500px;
@@ -36,7 +55,7 @@ thead{
     background: var(--dark-green-2);
 }
 thead th{
-    padding: 10px 0;
+    padding: 20px 0;
 }
 
 td, th{
@@ -49,22 +68,4 @@ tbody th{
 }
 .col_title{
     width: 10%;
-}
-
-/*******************************************************/
-.main-section > div{
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-    padding: 10px 20px;
-}
-.main-section select{
-    width: 100px;
-    padding: 5px 10px;
-    margin-left: 10px;
-}
-.main-section button{
-    flex-basis: 100px;
-    margin-left: 15px;
-    height: 35px;
 }
