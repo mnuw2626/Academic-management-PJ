@@ -34,6 +34,9 @@ td{
     display: table-cell;
     vertical-align: inherit;
 }
+.january{
+    border-top: 1px solid black;
+}
 .month{
     width: 300px;
     border-bottom: 1px solid black;
