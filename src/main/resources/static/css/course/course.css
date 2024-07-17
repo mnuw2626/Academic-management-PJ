@@ -7,12 +7,12 @@ main{
 }
 .main-section{
     min-width: 1000px;
-    padding: 1.5em;
+    padding: 20px;
 }
 /********* 테이블 관련 *********/
 table{
     border: 1px var(--light-green-5) solid;
-    font-size: .9em;
+    font-size: var(--font-size-thin);
     box-shadow: 0 2px 5px rgba(0,0,0,.25);
     width: 100%;
     border-collapse: collapse;
