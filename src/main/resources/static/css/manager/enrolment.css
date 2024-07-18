@@ -1,0 +1,30 @@
+@import "../public/public.css";
+.enrolment-main{
+    margin: 10px 10px;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+.enrolment-div{
+    width: 800px;
+    margin: 50px auto;
+}
+h2{
+    font-size: var(--font-size-black);
+    padding-bottom: 30px;
+    border-bottom: 10px var(--dark-green-2) solid;
+    margin-bottom: 20px;
+}
+.enrolment-btn{
+    width: 100px;
+    padding: 4px 0;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--light-green-2);
+}
+.enrolment-btn:hover{
+        color: var(--light-green-5);
+        background-color: var(--dark-green-2);
+}
