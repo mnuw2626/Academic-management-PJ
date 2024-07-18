@@ -1,9 +1,10 @@
 @import "../public/public.css";
 
-main{
+.course-main{
     margin: 10px 10px;
     width: 100%;
     height: 100%;
+    background-color: white;
 }
 .course-section{
     min-width: 1000px;
@@ -40,6 +41,7 @@ td, th{
     border-radius: 10px;
     overflow: hidden;
     padding: 10px 20px;
+    background-color: var(--light-green-5);
 }
 .div-course h2{
     display: inline-block;
