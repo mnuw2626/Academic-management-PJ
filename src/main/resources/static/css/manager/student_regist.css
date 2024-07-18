@@ -1,0 +1,55 @@
+@import "../public/public.css";
+
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.student-regist-section{
+    display: flex;
+    flex-direction: column;
+    width: 1000px;
+    margin: 70px auto;
+}
+
+h1{
+    font-size: var(--font-size-bold);
+    border-bottom: 2px solid var(--dark-green-2);
+    margin-bottom: 40px;
+}
+
+.student-regist-div{
+    display: flex;
+    flex-direction: column;
+}
+
+label{
+    border-top: 1px solid lightgray;
+    padding: 7px 14px;
+}
+
+label > input{
+    border: 1px solid lightgray;
+    outline: none;
+}
+
+.number-label{
+    border-bottom: 1px solid lightgray;
+    margin-bottom: 40px;
+}
+
+.student-regist-btn{
+    width: 10%;
+    background-color: var(--light-green-2);
+    font-size: var(--font-size-regular);
+    border: none;
+    border-radius: 6px;
+    padding: 10px 15px;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.student-regist-btn:hover{
+    opacity: 0.7;
+}
