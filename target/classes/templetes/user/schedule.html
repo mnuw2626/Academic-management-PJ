@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>학사관리 | 수업</title>
+    <link rel="stylesheet" href="../../static/css/user/schedule.css">
+
+    <script src="https://kit.fontawesome.com/61293ff96f.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <main>
+        <!-- 학년, 학기 선택, 조회 -->
+        <section class="schedule-section">
+            <div>
+                <select name="grade">
+                    <option value="grade1">
+                        1학년
+                    </option>
+                    <option value="grade2">
+                        2학년
+                    </option>
+                    <option value="grade3">
+                        3학년
+                    </option>
+                    <option value="grade4">
+                        4학년
+                    </option>
+                </select>
+                <select name="semester">
+                    <option value="semester1">
+                        1학기
+                    </option>
+                    <option value="semester2">
+                        2학기
+                    </option>
+                    <option value="semester3">
+                        3학기
+                    </option>
+                    <option value="semester4">
+                        4학기
+                    </option>
+                </select>
+                <button id="course-find-btn">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span>조회</span>
+                </button>
+            </div>
+        </section>
+        <!-- 시간표 -->
+        <section class="section-table">
+            <div class="div-schedule">
+                <table class="schedule-table">
+                    <colgroup>
+                        <col class="col_title">
+                        <col class="col_mon">
+                        <col class="col_tue">
+                        <col class="col_wed">
+                        <col class="col_thu">
+                        <col class="col_fri">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th>시간/요일</th>
+                            <th>월</th>
+                            <th>화</th>
+                            <th>수</th>
+                            <th>목</th>
+                            <th>금</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th rowspan="2">9시</th>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <th rowspan="2">10시</th>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <th rowspan="2">11시</th>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <th rowspan="2">12시</th>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <th rowspan="2">13시</th>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <th rowspan="2">14시</th>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <th rowspan="2">15시</th>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <th rowspan="2">16시</th>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <th rowspan="2">17시</th>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <th rowspan="2">18시</th>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+</body>
+</html>

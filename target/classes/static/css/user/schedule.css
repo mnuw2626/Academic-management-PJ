@@ -1,0 +1,71 @@
+@import "../public/public.css";
+
+main{
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    padding: 10px 10px;
+    width: 100vw;
+    height: 100vh;
+}
+/***** 학년, 학기 선택, 조회 *****/
+.schedule-section{
+    min-width: 1000px;
+}
+
+.schedule-section > div{
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 10px 20px;
+}
+.schedule-section select{
+    width: 100px;
+    padding: 5px 10px;
+    margin-left: 10px;
+}
+.schedule-section button{
+    flex-basis: 100px;
+    margin-left: 15px;
+    height: 35px;
+}
+
+/********* 시간표 *********/
+.section-table{
+    flex: 1;
+}
+.div-schedule{
+    height: 100%;
+}
+table{
+    /*border: 1px var(--light-green-2) solid;*/
+    font-size: var(--font-size-thin);
+    box-shadow: 0 2px 5px rgba(0,0,0,.25);
+    width: 1500px;
+    border-collapse: collapse;
+    border-radius: 5px;
+    overflow: hidden;
+    text-align: center;
+    margin: 0 auto;
+    height: 100%;
+}
+thead{
+    font-weight: bold;
+    color: var(--light-green-5);
+    background: var(--dark-green-2);
+}
+thead th{
+    padding: 20px 0;
+}
+
+td, th{
+    box-sizing: border-box;
+    border: 1px solid rgba(0,0,0,.1);
+}
+tbody th{
+    color: var(--dark-green-2);
+    background-color: var(--light-green-5);
+}
+.col_title{
+    width: 10%;
+}
