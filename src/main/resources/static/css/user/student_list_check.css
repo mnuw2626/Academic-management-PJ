@@ -4,7 +4,7 @@
 }
 
 main{
-    width: 900px;
+    width: 1200px;
 }
 
 .student_list_title{
@@ -45,16 +45,17 @@ main{
 
 /*******************************************************/
 .list_table_section{
-    width: 540px;
+    /*width: 540px;*/
     margin-top: 50px;
 }
-.list_table_section div{
+.list_table_section > h2{
     margin-bottom: 10px;
     font-size: var(--font-size-semibold);
     font-family: Medium;
 }
 
 .list_table_section table{
+    width: 100%;
     text-align: center;
     border: 1px solid black;
     border-collapse: collapse;
@@ -63,3 +64,23 @@ main{
     border: 1px solid black;
     padding: 6px;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
