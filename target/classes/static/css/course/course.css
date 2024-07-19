@@ -11,7 +11,7 @@
     padding: 20px;
 }
 /********* 테이블 관련 *********/
-table{
+#course-table{
     border: 1px var(--light-green-5) solid;
     font-size: var(--font-size-thin);
     box-shadow: 0 2px 5px rgba(0,0,0,.25);
@@ -21,12 +21,12 @@ table{
     overflow: hidden;
     text-align: center;
 }
-thead{
+#course-table thead{
     font-weight: bold;
     color: var(--light-green-5);
     background: var(--dark-green-2);
 }
-td, th{
+#course-table td, th{
     padding: 1em .5em;
     border: 1px solid rgba(0,0,0,.1);
 }
@@ -81,7 +81,7 @@ td, th{
     margin-bottom: 50px;
     /*overflow: hidden scroll;*/
 }
-#div-class-table{
+#course-table{
     margin-bottom: 10px;
 }
 .class-btn{
