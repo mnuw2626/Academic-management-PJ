@@ -1,15 +1,11 @@
+@import "public/main-navbar.css";
+@import "public/header.css";
+
 *{
     margin: 0 auto;
     box-sizing: border-box;
 }
-header{
-    height: 100px;
-    border-bottom: 1px solid black;
-}
-header > div{
-    padding: 30px 0 0 50px;
-    font-size: var(--font-size-bold);
-}
+
 main{
     display: flex;
     position: relative;
@@ -18,67 +14,6 @@ main{
     padding: 50px 0;
     background-color: var(--light-green-3);
 }
-
-/**********************************/
-.nav-bar{
-    position: sticky;
-    top: 0;
-    /*margin: 0 20px 0 80px;*/
-    width: 300px;
-    align-self: start;
-    border: 1px solid black;
-    background-color: var(--light-green-1);
-}
-:root {
-    --side-bar-width: 100%;
-    --side-bar-height: 100%;
-}
-.nav-div{
-    background-color: var(--dark-green-2);
-    color: white;
-    padding: 50px 10px;
-    text-align: center;
-    font-family: Black;
-    font-size: var(--font-size-extrabold);
-}
-.academic-nav{
-    background-color: white;
-}
-.academic-nav > ul, li{
-    list-style: none;
-}
-.academic-nav > a{
-    text-decoration: none;
-}
-
-.academic-nav > ul ul{
-    display: none;
-}
-.academic-nav ul > li > a{
-    display: block;
-    padding: 20px 0 20px 50px;
-    border-bottom: 1px solid black;
-}
-
-.academic-nav > ul > li{
-    position: relative;
-}
-.academic-nav ul > li:hover > a{
-    background-color: var(--light-green-2);
-    border: 1px solid black;
-}
-
-
-.academic-nav > ul > li:hover > ul{
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 100%;
-    width: 100%;
-    background-color: white;
-    border: 1px solid black;
-}
-/**********************************/
 
 .main-section {
     width: calc(100% - 500px);
@@ -110,6 +45,7 @@ main{
     background-color: var(--light-green-2);
     padding: 20px 30px;
     border: 1px solid black;
+    cursor: pointer;
 }
 .individual-input > input:hover{
     color: white;

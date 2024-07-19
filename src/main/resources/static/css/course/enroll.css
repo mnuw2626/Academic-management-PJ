@@ -88,7 +88,7 @@ td, th{
     min-width: 100%;
     box-shadow: 2px 2px var(--dark-green-2);
 }
-#class-btn:hover{
+.class-btn:hover{
     background-color: var(--dark-green-2);
     color: var(--light-green-5);
     cursor: pointer;
