@@ -15,11 +15,6 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(registry -> {
-            registry.requestMatchers("/main", "/user/login").permitAll()
-                    .anyRequest().authenticated();
-//            registry.anyRequest().permitAll();
-        });
 
         http.formLogin(config -> {
             config.loginPage("/user/login") //내가 쓰는 로그인 페이지 GETMAPPING경로
@@ -39,6 +34,11 @@ public class SecurityConfig {
                     .permitAll();
         });
 
+        http.authorizeHttpRequests(registry -> {
+            registry.requestMatchers("/main", "user/register").permitAll()
+                    .anyRequest().authenticated();
+//            registry.anyRequest().permitAll();
+        });
         return http.build();
     }
 
