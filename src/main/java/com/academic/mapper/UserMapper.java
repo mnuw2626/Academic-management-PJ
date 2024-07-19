@@ -5,5 +5,5 @@ import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface UserMapper {
-    UserDTO select_userInfo(String userDTO);
+    UserDTO select_userInfo(UserDTO userDTO);
 }
