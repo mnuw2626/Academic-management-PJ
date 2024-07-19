@@ -18,7 +18,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         //여긴 비밀번호없다. username으로 db에서 해당 id의 유저를 찾음
-        System.out.println("로그인 시도하는 유저명..: " + username);
+        System.out.println("로그인 할려하는 유저명: " + username);
         // usermapper 같은 Mapper를 써서 userDTO를 찾는다
         UserDTO findUser = userMapper.select_userInfo(username);
         // 유저가 없다면
