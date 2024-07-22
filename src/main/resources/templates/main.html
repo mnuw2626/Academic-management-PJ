@@ -9,7 +9,6 @@
     <title>Title</title>
     <link rel="stylesheet" href="../static/css/public/public.css" th:href="@{/css/public/public.css}">
     <link rel="stylesheet" href="../static/css/main.css" th:href="@{/css/main.css}">
-   
 
     <script src="https://kit.fontawesome.com/61293ff96f.js" crossorigin="anonymous"></script>
 </head>
@@ -67,8 +66,8 @@
         <section class="main-section">
             <div class="individual-div">
                 <div class="individual-privacy">
-                    <div class="individual-name">이름</div> <br>
-                    <div class="individual-studentId">학번</div> <br>
+                    <div class="individual-name" th:text="${#authentication.principal.id}">이름</div> <br>
+                    <div class="individual-studentId" >학번</div> <br>
                     <div class="individual-department">자연과학대학 | 물리학과</div>
                 </div>
                 <div class="individual-input">
