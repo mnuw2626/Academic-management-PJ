@@ -28,6 +28,7 @@ public class SecurityConfig {
 
         });
 
+//        로그아웃 기능
         http.logout(config -> {
             config.logoutUrl("/user/logout")
                     .logoutSuccessUrl("/user/login")

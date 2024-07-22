@@ -33,6 +33,7 @@ public class UserController {
         return "redirect:/user/login";
     }
 
+//    로그아웃 기능을 a테크로 getmapping으로 구현
     @GetMapping("/logout")
     public String get_logout(){
         System.out.println("로그아웃 시도");
