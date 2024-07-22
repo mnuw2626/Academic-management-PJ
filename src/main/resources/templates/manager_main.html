@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="../static/css/public/public.css">
+    <link rel="stylesheet" href="../static/css/public/public.css" th:href="@{/css/public/public.css}">
+    <link rel="stylesheet" href="../static/css/manager_main.css" th:href="@{/css/manager_main.css}">
     <script src="https://kit.fontawesome.com/61293ff96f.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../static/css/manager_main.css">
 </head>
 <body>
     <header>
@@ -26,7 +26,6 @@
                         <a href="#">등록</a>
                         <ul class="sub-category">
                             <li><a href="#">학생 등록</a></li>
-                            <li><a href="#">직원 등록</a></li>
                             <li><a href="#">등록금 고지서 발송</a></li>
                         </ul>
                     </li>
