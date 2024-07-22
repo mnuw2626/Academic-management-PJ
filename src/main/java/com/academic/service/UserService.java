@@ -13,10 +13,11 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public void user_register(UserDTO userDTO){
+    public boolean user_register(UserDTO userDTO){
         userDTO.setPassword(
                 passwordEncoder.encode(userDTO.getPassword())
         );
         userMapper.insert_user(userDTO);
+        return true;
     }
 }
