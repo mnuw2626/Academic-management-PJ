@@ -32,4 +32,10 @@ public class UserController {
         userService.user_register(userDTO);
         return "redirect:/user/login";
     }
+
+    @GetMapping("/logout")
+    public String get_logout(){
+        System.out.println("로그아웃 시도");
+        return "redirect:/user/login";
+    }
 }
