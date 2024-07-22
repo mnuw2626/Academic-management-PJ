@@ -17,6 +17,9 @@ public class UserController {
     @GetMapping("/login")
     public void get_login() {
     }
+    @PostMapping("/login")
+    public void post_login() {
+    }
 
     // 회원가입 창으로 이동
     @GetMapping("/register")
