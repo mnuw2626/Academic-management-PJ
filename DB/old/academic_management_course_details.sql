@@ -1,8 +1,10 @@
--- MySQL dump 10.13  Distrib 8.0.38, for macos14 (arm64)
+CREATE DATABASE  IF NOT EXISTS `academic_management` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `academic_management`;
+-- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
--- Host: localhost    Database: academic_management
+-- Host: 172.16.0.104    Database: academic_management
 -- ------------------------------------------------------
--- Server version	8.4.1
+-- Server version	8.2.0
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,31 +18,27 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `student`
+-- Table structure for table `course_details`
 --
 
-DROP TABLE IF EXISTS `student`;
+DROP TABLE IF EXISTS `course_details`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `student` (
-  `std_no` int NOT NULL DEFAULT '2024000001',
-  `name` varchar(45) DEFAULT NULL,
-  `id` varchar(20) DEFAULT NULL,
-  `college_id` int DEFAULT NULL,
-  `dept_id` int DEFAULT NULL,
-  `grade` int DEFAULT NULL,
-  `semester` int DEFAULT NULL,
-  PRIMARY KEY (`std_no`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='학생 정보 테이블';
+CREATE TABLE `course_details` (
+  `std_no` int NOT NULL,
+  `code` int NOT NULL,
+  `grade` varchar(2) DEFAULT NULL,
+  PRIMARY KEY (`std_no`,`code`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='수강 신청 내역 테이블';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `student`
+-- Dumping data for table `course_details`
 --
 
-LOCK TABLES `student` WRITE;
-/*!40000 ALTER TABLE `student` DISABLE KEYS */;
-/*!40000 ALTER TABLE `student` ENABLE KEYS */;
+LOCK TABLES `course_details` WRITE;
+/*!40000 ALTER TABLE `course_details` DISABLE KEYS */;
+/*!40000 ALTER TABLE `course_details` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -52,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-22 20:47:05
+-- Dump completed on 2024-07-19 20:48:03
