@@ -19,9 +19,10 @@ public class ManagerController {
     }
 
     @PostMapping("/add_std")
-    public void post_add_std(StdDTO stdDTO){
+    public String post_add_std(StdDTO stdDTO){
         System.out.println("학생등록시도");
         managerService.manager_add_std(stdDTO);
         System.out.println("학생등록성공");
+        return "redirect:/manager/add_std";
     }
 }
