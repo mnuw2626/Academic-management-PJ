@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../../static/css/manager/student_regist.css">
 </head>
 <body>
-    <form action="">
+    <form action="/manage/add_std" method="post">
         <section class="student-regist-section">
             <h1>학생 등록</h1>
             <div class="student-regist-div">
@@ -29,6 +29,10 @@
                 <label>
                     <span>학년</span>
                     <input type="number" name="grade">
+                </label>
+                <label>
+                    <span>학기</span>
+                    <input type="number" name="semester">
                 </label>
             </div>
             <button class="student-regist-btn">등록하기</button>
