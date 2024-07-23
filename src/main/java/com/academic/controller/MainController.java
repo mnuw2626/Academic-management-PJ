@@ -8,4 +8,6 @@ public class MainController {
     @GetMapping("/main")
     public void get_main() {
     }
+    @GetMapping("/manager_main")
+    public void get_manager_main(){}
 }

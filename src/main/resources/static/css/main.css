@@ -53,6 +53,18 @@ main{
     color: white;
     background-color: var(--dark-green-3);
 }
+/* 로그아웃 버튼(a테크로 구현함)*/
+.individual-input a{
+    border-radius: 10px;
+    background-color: var(--light-green-2);
+    padding: 20px 30px;
+    border: 1px solid black;
+    cursor: pointer;
+}
+.individual-input a:hover{
+    color: white;
+    background-color: var(--dark-green-3);
+}
 
 /*******************************/
 .content-div{
@@ -71,10 +83,10 @@ main{
     font-family: Bold;
     font-size: var(--font-size-black);
 }
-th{
+.business-notice th{
     padding: 10px 0;
 }
-td{
+.business-notice td{
     padding: 12px 0 12px;
 }
 

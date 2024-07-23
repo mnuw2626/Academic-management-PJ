@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en"
+<html lang="ko"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layout/main-layout}"
 >
 <head>
     <meta charset="UTF-8">
@@ -12,10 +13,9 @@
     <script src="https://kit.fontawesome.com/61293ff96f.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    <header>
-        <div>대학교 차세대 통합정보 시스템</div>
-    </header>
+
     <main>
+        <section layout:fragment="main-section" class="main-section">
         <aside class="nav-bar">
             <h1>학사행정</h1>
             <nav class="academic-nav">
@@ -61,7 +61,6 @@
             </nav>
         </aside>
 
-
         <section class="main-section">
             <div class="individual-div">
                 <div class="individual-privacy">
@@ -71,7 +70,7 @@
                 </div>
                 <div class="individual-input">
                     <input type="button" value="비밀번호 변경">
-                    <input type="button" value="로그아웃">
+                    <a th:href="@{/user/logout}">로그아웃</a>
                 </div>
             </div>
             <div class="content-div">
