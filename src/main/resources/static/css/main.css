@@ -42,6 +42,7 @@ main{
 }
 .individual-input{
     margin: 30px;
+    flex: 1;
 }
 .individual-input > input{
     border-radius: 10px;
@@ -54,8 +55,10 @@ main{
     background-color: var(--dark-green-3);
 }
 /* 로그아웃 버튼(form로 구현함)*/
+.individual-input form{
+    display: inline-flex;
+}
 .individual-input form > button{
-
     border-radius: 10px;
     background-color: var(--light-green-2);
     padding: 20px 30px;
