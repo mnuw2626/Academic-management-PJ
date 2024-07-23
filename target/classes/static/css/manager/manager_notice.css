@@ -17,7 +17,7 @@ main{
 
 .notice-search{
     display: inline-block;
-    margin: 40px 0 0 446px;
+    margin: 40px 0 0 394px;
 }
 .notice-search > select{
     margin-right: 10px;
@@ -28,6 +28,18 @@ main{
     border: 1px solid black;
     border-radius: 7px;
     outline: none;
+}
+.write-btn{
+    background-color: var(--light-green-2);
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 5px;
+    margin-right: 5px;
+}
+.write-btn:hover{
+    color: white;
+    cursor: pointer;
+    background-color: var(--dark-green-3);
 }
 .search-btn{
     background-color: var(--light-green-2);
