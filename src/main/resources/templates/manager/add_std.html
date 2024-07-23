@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layout/manager-main-layout}"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>student_regist</title>
+    <link rel="stylesheet" href="../../static/css/manager/add_std.css" th:href="@{/css/manager/add_std.css}">
+</head>
+<body>
+    <form th:action="@{/manager/add_std}" method="POST" layout:fragment="main-section" class="student-regist-section">
+            <h1 class="add_std_h1">학생 등록</h1>
+            <div class="student-regist-div">
+                <label class="add_std_label">
+                    <span>학번</span>
+                    <input type="text" name="std_no" class="std_no">
+                </label>
+                <label class="add_std_label">
+                    <span>이름</span>
+                    <input type="text" name="name" class="name">
+                </label>
+                <label class="add_std_label">
+                    <span>단과대학</span>
+                    <input type="text" name="college_id" class="college_id">
+                </label>
+                <label class="add_std_label">
+                    <span>학과</span>
+                    <input type="text" name="dept_id" class="dept_id">
+                </label>
+                <label class="add_std_label">
+                    <span>학년</span>
+                    <input type="number" name="grade" class="grade">
+                </label>
+                <label class="semester-label add_std_label">
+                    <span>학기</span>
+                    <input type="number" name="semester" class="semester">
+                </label>
+            </div>
+            <button type="submit" class="student-regist-btn">등록하기</button>
+        </form>
+</body>
+</html>

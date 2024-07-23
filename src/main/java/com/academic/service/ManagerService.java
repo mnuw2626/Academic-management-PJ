@@ -12,7 +12,8 @@ public class ManagerService {
     @Autowired
     ManagerMapper managerMapper;
 
-    public void manager_add_std(StdDTO stdDTO) {
+    public boolean manager_add_std(StdDTO stdDTO) {
         managerMapper.insert_std(stdDTO);
+        return true;
     }
 }

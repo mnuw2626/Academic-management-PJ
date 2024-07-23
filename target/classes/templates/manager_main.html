@@ -1,59 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layout/manager-main-layout}"
+>
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="../static/css/public/public.css" th:href="@{/css/public/public.css}">
     <link rel="stylesheet" href="../static/css/manager_main.css" th:href="@{/css/manager_main.css}">
+<!--    <link rel="stylesheet" href="../static/css/manager/add_std.css" th:href="@{/css/manager/add_std.css}">-->
     <script src="https://kit.fontawesome.com/61293ff96f.js" crossorigin="anonymous"></script>
-
+    <script src="../static/js/manager/add_std.js" th:src="@{/js/manager/add_std.js}" defer></script>
+    <script src="../static/js/manager_main.js" th:src="@{/js/manager_main.js}" defer></script>
 </head>
 <body>
-    <header>
-        <div>대학교 차세대 통합정보 시스템</div>
-    </header>
     <main>
-        <aside class="nav-bar">
-            <h1>학사행정</h1>
-            <div class="academic-nav">
-                <ul class="main-category">
-                    <li>
-                        <a href="#">학적</a>
-                        <ul class="sub-category">
-                            <li><a href="#">학생 명단 조회</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">등록</a>
-                        <ul class="sub-category">
-                            <li><a href="/manage/add_std">학생 등록</a></li>
-                            <li><a href="#">직원 등록</a></li>
-                            <li><a href="#">등록금 고지서 발송</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">복학/휴학</a>
-                        <ul class="sub-category">
-                            <li><a href="#">휴학처리</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">수강신청</a>
-                        <ul class="sub-category">
-                            <li><a href="#">수강 신청 기간 설정</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">학사정보</a>
-                        <ul class="sub-category">
-                            <li><a href="#">공지사항</a></li>
-                            <li><a href="#">학사일정</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </aside>
-        <section class="main-section">
+        <section layout:fragment="main-section" class="main-section">
             <div class="individual-div">
                 <div class="individual-privacy">
                     <div class="individual-name">이름</div> <br>
