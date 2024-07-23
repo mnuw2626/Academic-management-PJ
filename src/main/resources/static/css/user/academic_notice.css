@@ -17,13 +17,17 @@ main{
 
 .notice-search{
     display: inline-block;
-    margin: 40px 0 0 462px;
+    margin: 40px 0 0 446px;
 }
 .notice-search > select{
     margin-right: 10px;
 }
 .search-input{
     margin-right: 10px;
+    padding: 5px 10px;
+    border: 1px solid black;
+    border-radius: 7px;
+    outline: none;
 }
 .search-btn{
     background-color: var(--light-green-2);
@@ -32,6 +36,8 @@ main{
     padding: 5px;
 }
 .search-btn:hover{
+    color: white;
+    cursor: pointer;
     background-color: var(--dark-green-3);
 }
 
@@ -53,4 +59,22 @@ th{
 td, th{
     border-bottom: 1px solid black;
     padding: 10px;
+}
+
+/*************************************/
+.board-page{
+    text-align: center;
+    font-size: 0;
+    margin-top: 30px;
+}
+
+.board-page a{
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    vertical-align: center;
+}
+.board-page a:hover{
+    cursor: pointer;
+    color: var(--dark-green-3);
 }
