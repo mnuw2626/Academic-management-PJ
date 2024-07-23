@@ -1,0 +1,73 @@
+@import "../public/public.css";
+*{
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+main{
+    margin-top: 50px;
+    width: 1000px;
+}
+/*************************************/
+.notice-title{
+    font-family: SemiBold;
+    font-size: 55px;
+    border-bottom: 1px solid var(--dark-green-2);
+    padding: 25px 0 20px 30px;
+}
+
+.notice-search{
+    display: inline-block;
+    margin: 40px 0 0 411px;
+}
+.notice-search > select{
+    margin-right: 10px;
+}
+.search-input{
+    margin-right: 10px;
+}
+.write-btn{
+    background-color: var(--light-green-2);
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 5px;
+    margin-right: 5px;
+}
+.write-btn:hover{
+    color: white;
+    cursor: pointer;
+    background-color: var(--dark-green-3);
+}
+.search-btn{
+    background-color: var(--light-green-2);
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 5px;
+}
+.search-btn:hover{
+    color: white;
+    cursor: pointer;
+    background-color: var(--dark-green-3);
+}
+
+/*************************************/
+.notice-table{
+    width: 950px;
+    text-align: center;
+    padding: 20px 0 20px 0;
+}
+
+table{
+    width: 100%;
+    border-top: 1px solid black;
+    border-collapse: collapse;
+}
+td:hover{
+    cursor: pointer;
+}
+th{
+    background-color: var(--light-green-3);
+}
+td, th{
+    border-bottom: 1px solid black;
+    padding: 10px;
+}
