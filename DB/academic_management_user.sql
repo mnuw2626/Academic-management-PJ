@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.38, for macos14 (arm64)
+-- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
--- Host: localhost    Database: academic_management
+-- Host: 172.16.0.104    Database: academic_management
 -- ------------------------------------------------------
--- Server version	8.4.1
+-- Server version	8.2.0
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -25,7 +25,7 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` varchar(20) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `tel` varchar(11) DEFAULT NULL,
+  `tel` varchar(13) DEFAULT NULL,
   `no` int DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='사용자(ID, PW, 관리자/학생 구분)';
@@ -37,6 +37,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES ('aaa','$2a$10$.L.BvcKSYT3mEIaDj409teXETZswZyxlR0sHsnGCUc5F57vaL9dr6','010-1234-5678',2024000001),('test','$2a$10$.L.BvcKSYT3mEIaDj409teXETZswZyxlR0sHsnGCUc5F57vaL9dr6','010-4567-1234',1111);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-22 20:47:05
+-- Dump completed on 2024-07-23 19:35:07

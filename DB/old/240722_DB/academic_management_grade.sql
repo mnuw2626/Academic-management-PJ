@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.38, for macos14 (arm64)
 --
--- Host: 172.16.0.104    Database: academic_management
+-- Host: localhost    Database: academic_management
 -- ------------------------------------------------------
--- Server version	8.2.0
+-- Server version	8.4.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,27 +16,27 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `room`
+-- Table structure for table `grade`
 --
 
-DROP TABLE IF EXISTS `room`;
+DROP TABLE IF EXISTS `grade`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `room` (
-  `room_no` varchar(20) NOT NULL,
-  `college_id` int DEFAULT NULL,
-  PRIMARY KEY (`room_no`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='강의실 정보 테이블';
+CREATE TABLE `grade` (
+  `grade` varchar(2) NOT NULL,
+  `grade_value` float DEFAULT NULL,
+  PRIMARY KEY (`grade`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='등급(A+,A,...)관련 점수환산 테이블';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `room`
+-- Dumping data for table `grade`
 --
 
-LOCK TABLES `room` WRITE;
-/*!40000 ALTER TABLE `room` DISABLE KEYS */;
-INSERT INTO `room` VALUES ('101',1),('102',1),('103',1),('201',2),('202',2),('203',2),('301',3),('302',3),('303',3);
-/*!40000 ALTER TABLE `room` ENABLE KEYS */;
+LOCK TABLES `grade` WRITE;
+/*!40000 ALTER TABLE `grade` DISABLE KEYS */;
+INSERT INTO `grade` VALUES ('A-',NULL),('A+',NULL),('A0',NULL),('B-',NULL),('B+',NULL),('B0',NULL),('C-',NULL),('C+',NULL),('C0',NULL),('D-',NULL),('D+',NULL),('D0',NULL),('F',NULL);
+/*!40000 ALTER TABLE `grade` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -48,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-23 19:35:07
+-- Dump completed on 2024-07-22 20:47:05

@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.38, for macos14 (arm64)
+-- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
--- Host: localhost    Database: academic_management
+-- Host: 172.16.0.104    Database: academic_management
 -- ------------------------------------------------------
--- Server version	8.4.1
+-- Server version	8.2.0
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -23,12 +23,11 @@ DROP TABLE IF EXISTS `notice`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `notice` (
-  `no` int NOT NULL AUTO_INCREMENT,
+  `no` int NOT NULL DEFAULT '1',
   `title` varchar(45) DEFAULT NULL,
   `content` text,
   `created_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   `views` int DEFAULT NULL,
-  `type` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`no`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='공지사항 테이블';
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -51,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-22 20:47:05
+-- Dump completed on 2024-07-23 19:35:07
