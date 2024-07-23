@@ -23,16 +23,17 @@ public class SecurityConfig {
             .usernameParameter("id") //로그인에서 아이디 input의 name값
 //            .passwordParameter("password") //비밀번호 input의 name값
 //            .defaultSuccessUrl("/main") //로그인 성공시 이동할 getmapping경로
-            .successHandler(new LoginSuccessHandler())
+            .successHandler(new LoginSuccessHandler()) //로그인 성공 시 로그인 성공 핸들러를 통해 main으로 이동할것인지 manager_main으로 이동할것인지 결정
             .permitAll();
 
         });
 
+//        로그아웃 기능
         http.logout(config -> {
-            config.logoutUrl("/logout")
-                    .logoutSuccessUrl("/main")
+            config.logoutUrl("/user/logout")
+                    .logoutSuccessUrl("/user/login")
                     .clearAuthentication(true)
-                    .invalidateHttpSession(true)
+                    .invalidateHttpSession(true) //세션 삭제 -> 현재 세션 삭제 안되는듯. 문의필요
                     .permitAll();
         });
 

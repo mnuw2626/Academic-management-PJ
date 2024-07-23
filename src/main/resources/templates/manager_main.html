@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="../static/css/public/public.css" th:href="@{/css/public/public.css}">
     <link rel="stylesheet" href="../static/css/manager_main.css" th:href="@{/css/manager_main.css}">
     <script src="https://kit.fontawesome.com/61293ff96f.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../static/css/manager_main.css">
+
 </head>
 <body>
     <header>
@@ -26,8 +26,8 @@
                     <li>
                         <a href="#">등록</a>
                         <ul class="sub-category">
-                            <li><a href="/manage/add_std">학생 등록</a></li>
-                            <li><a href="#">직원 등록</a></li>
+                            <li><a href="/user/add_std">학생 등록</a></li>
+                            <li><a href="#">성적 등록</a></li>
                             <li><a href="#">등록금 고지서 발송</a></li>
                         </ul>
                     </li>
@@ -60,7 +60,7 @@
                 </div>
                 <div class="individual-input">
                     <input type="button" value="비밀번호 변경">
-                    <input type="button" value="로그아웃">
+                    <a th:href="@{/user/logout}">로그아웃</a>
                 </div>
             </div>
             <div class="content-div">
