@@ -60,18 +60,18 @@ main{
     padding: 20px 0 20px 0;
 }
 
-table{
+.notice-table table{
     width: 100%;
     border-top: 1px solid black;
     border-collapse: collapse;
 }
-td:hover{
+.notice-table td:hover{
     cursor: pointer;
 }
-th{
+.notice-table th{
     background-color: var(--light-green-3);
 }
-td, th{
+.notice-table td, th{
     border-bottom: 1px solid black;
     padding: 10px;
 }
