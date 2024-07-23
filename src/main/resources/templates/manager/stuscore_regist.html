@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>학사관리 | 학생 성적 등록</title>
+
+    <link rel="stylesheet" href="../../static/css/manager/stuscore_regist.css">
+</head>
+<body>
+    <main>
+        <section class="stuscore-main">
+           <table class="student-table stuscore-table">
+               <thead>
+                    <tr>
+                        <th>학번</th>
+                        <th>이름</th>
+                    </tr>
+               </thead>
+               <tbody>
+                    <tr>
+                        <td>2024000001</td>
+                        <td>김길동</td>
+                    </tr>
+               </tbody>
+           </table>
+            <form action="" method="post">
+                <table class="score-table stuscore-table">
+                    <thead>
+                    <tr>
+                        <th>과목코드</th>
+                        <th>과목이름</th>
+                        <th>성적(등급)</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1001</td>
+                            <td>데이터통신</td>
+                            <td>
+                                <label>
+                                <select name="score">
+                                    <option value="scoreA1">
+                                        A+
+                                    </option>
+                                    <option value="scoreA2">
+                                        A
+                                    </option>
+                                    <option value="scoreA3">
+                                        A-
+                                    </option>
+                                    <option value="scoreB1">
+                                        B+
+                                    </option>
+                                    <option value="scoreB2">
+                                        B
+                                    </option>
+                                    <option value="scoreB3">
+                                        B-
+                                    </option>
+                                    <option value="scoreC1">
+                                        C+
+                                    </option>
+                                    <option value="scoreC2">
+                                        C
+                                    </option>
+                                    <option value="scoreC3">
+                                        C-
+                                    </option>
+                                    <option value="scoreD1">
+                                        D+
+                                    </option>
+                                    <option value="scoreD2">
+                                        D
+                                    </option>
+                                    <option value="scoreD3">
+                                        D-
+                                    </option>
+                                </select>
+                                </label>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="submit" id="score-register-btn">등록</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
