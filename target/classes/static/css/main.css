@@ -42,6 +42,7 @@ main{
 }
 .individual-input{
     margin: 30px;
+    width: 100%;
 }
 .individual-input > input{
     border-radius: 10px;
@@ -53,15 +54,16 @@ main{
     color: white;
     background-color: var(--dark-green-3);
 }
-/* 로그아웃 버튼(a테크로 구현함)*/
-.individual-input a{
+/* 로그아웃 버튼(form로 구현함)*/
+.individual-input form > button{
+
     border-radius: 10px;
     background-color: var(--light-green-2);
     padding: 20px 30px;
     border: 1px solid black;
     cursor: pointer;
 }
-.individual-input a:hover{
+.individual-input form > button:hover{
     color: white;
     background-color: var(--dark-green-3);
 }
@@ -83,10 +85,10 @@ main{
     font-family: Bold;
     font-size: var(--font-size-black);
 }
-th{
+.business-notice th{
     padding: 10px 0;
 }
-td{
+.business-notice td{
     padding: 12px 0 12px;
 }
 

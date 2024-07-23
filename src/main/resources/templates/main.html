@@ -73,7 +73,10 @@
                 </div>
                 <div class="individual-input">
                     <input type="button" value="비밀번호 변경">
-                    <a th:href="@{/user/logout}">로그아웃</a>
+                    <!--       로그아웃 post요청으로 변경(form으로 변경)             -->
+                    <form th:action="@{/user/logout}" method="post">
+                        <button>로그아웃</button>
+                    </form>
                 </div>
             </div>
             <div class="content-div">
