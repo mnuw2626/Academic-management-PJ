@@ -6,6 +6,12 @@
     height: 300px;
     background-color: white;
 }
+
+.stuscore-title-div{
+    margin: 30px 0;
+}
+
+/* 테이블 관련 */
 .student-table{
     margin: 30px 0;
     border: 1px var(--dark-green-2) solid;
@@ -35,6 +41,8 @@
     padding: 1em .5em;
     border: 1px solid rgba(0,0,0,.1);
 }
+/********************************************/
+
 #score-register-btn{
     flex-basis: 150px;
     padding: 4px 0;
