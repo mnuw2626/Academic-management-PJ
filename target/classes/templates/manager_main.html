@@ -17,47 +17,6 @@
 </head>
 <body>
     <main>
-
-        <aside class="nav-bar">
-            <h1>학사행정</h1>
-            <div class="academic-nav">
-                <ul class="main-category">
-                    <li>
-                        <a href="#">학적</a>
-                        <ul class="sub-category">
-                            <li><a href="#">학생 명단 조회</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">등록</a>
-                        <ul class="sub-category">
-                            <li><a href="/user/add_std">학생 등록</a></li>
-                            <li><a th:href="@{/manager/stuscore_regist}">성적 등록</a></li>
-                            <li><a href="#">등록금 고지서 발송</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">복학/휴학</a>
-                        <ul class="sub-category">
-                            <li><a href="#">휴학처리</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">수강신청</a>
-                        <ul class="sub-category">
-                            <li><a href="#">수강 신청 기간 설정</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">학사정보</a>
-                        <ul class="sub-category">
-                            <li><a href="#">공지사항</a></li>
-                            <li><a href="#">학사일정</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
-        </aside>
         <section layout:fragment="main-section" class="main-section">
             <div class="individual-div">
                 <div class="individual-privacy">
@@ -72,51 +31,49 @@
                 </div>
             </div>
             <div class="content-div">
-                <div>학사공지</div>
-                <table class="business-notice">
-                    <thead>
-                    <tr>
-                        <th width="70">번호</th>
-                        <th width="500">제목</th>
-                        <th width="100">작성일</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td width="70">1</td>
-                        <td width="500"><a href="#">2024학년도 여름계절~</a></td>
-                        <td width="100">2024-07-11</td>
-                    </tr>
-                    <tr>
-                        <td width="70">2</td>
-                        <td width="500"><a href="#">2024년 8월 졸업예정자~</a></td>
-                        <td width="100">2024-07-11</td>
-                    </tr>
-                    <tr>
-                        <td width="70">3</td>
-                        <td width="500"><a href="#">2024년 8월(2023학년도 후기)~</a></td>
-                        <td width="100">2024-07-11</td>
-                    </tr>
-                    <tr>
-                        <td width="70">4</td>
-                        <td width="500"><a href="#">2024학년도 2학기 수꾸~</a></td>
-                        <td width="100">2024-07-11</td>
-                    </tr>
-                    <tr>
-                        <td width="70">5</td>
-                        <td width="500"><a href="#">2024학년도 2학기~</a></td>
-                        <td width="100">2024-07-11</td>
-                    </tr>
-                    <tr>
-                        <td width="70">6</td>
-                        <td width="500"><a href="#">[창업휴학]~</a></td>
-                        <td width="100">2024-07-11</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-
-
+            <div>학사공지</div>
+            <table class="business-notice">
+                <thead>
+                <tr>
+                    <th width="70">번호</th>
+                    <th width="500">제목</th>
+                    <th width="100">작성일</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td width="70">1</td>
+                    <td width="500"><a href="#">2024학년도 여름계절~</a></td>
+                    <td width="100">2024-07-11</td>
+                </tr>
+                <tr>
+                    <td width="70">2</td>
+                    <td width="500"><a href="#">2024년 8월 졸업예정자~</a></td>
+                    <td width="100">2024-07-11</td>
+                </tr>
+                <tr>
+                    <td width="70">3</td>
+                    <td width="500"><a href="#">2024년 8월(2023학년도 후기)~</a></td>
+                    <td width="100">2024-07-11</td>
+                </tr>
+                <tr>
+                    <td width="70">4</td>
+                    <td width="500"><a href="#">2024학년도 2학기 수꾸~</a></td>
+                    <td width="100">2024-07-11</td>
+                </tr>
+                <tr>
+                    <td width="70">5</td>
+                    <td width="500"><a href="#">2024학년도 2학기~</a></td>
+                    <td width="100">2024-07-11</td>
+                </tr>
+                <tr>
+                    <td width="70">6</td>
+                    <td width="500"><a href="#">[창업휴학]~</a></td>
+                    <td width="100">2024-07-11</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
         </section>
     </main>
 

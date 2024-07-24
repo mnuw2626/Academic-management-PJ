@@ -1,13 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layout/manager-main-layout}"
+>
 <head>
     <meta charset="UTF-8">
     <title>학사관리 | 학생 성적 등록</title>
-    <link rel="stylesheet" href="../../static/css/manager/stuscore_regist.css" th:>
+    <link rel="stylesheet" href="../../static/css/manager/stuscore_regist.css" th:href="@{/css/manager/stuscore_regist.css}">
 </head>
 <body>
-    <main>
-        <section class="stuscore-main">
+    <section class="stuscore-main" layout:fragment="main-section">
             <div class="student-info-title">
                 <section class="student-info-section">
                     <!--    학번에 맞춰서 이름 DB에서 불러오기 - 학생 정보 테이블      -->
@@ -65,112 +69,113 @@
             </div>
             <form class="stuscore-info-form" action="" method="post">
             <!--     학번에 맞춰서 수강된 과목들 DB에서 불러오기 - 성적 등록 테이블    -->
-                <table class="stuscore-table">
-                    <thead>
-                    <tr>
-                        <th>과목코드</th>
-                        <th>과목이름</th>
-                        <th>성적(등급)</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>1001</td>
-                        <td>데이터통신</td>
-                        <td>
-                            <label>
-                                <select name="score">
-                                    <option value="scoreA1">
-                                        A+
-                                    </option>
-                                    <option value="scoreA2">
-                                        A
-                                    </option>
-                                    <option value="scoreA3">
-                                        A-
-                                    </option>
-                                    <option value="scoreB1">
-                                        B+
-                                    </option>
-                                    <option value="scoreB2">
-                                        B
-                                    </option>
-                                    <option value="scoreB3">
-                                        B-
-                                    </option>
-                                    <option value="scoreC1">
-                                        C+
-                                    </option>
-                                    <option value="scoreC2">
-                                        C
-                                    </option>
-                                    <option value="scoreC3">
-                                        C-
-                                    </option>
-                                    <option value="scoreD1">
-                                        D+
-                                    </option>
-                                    <option value="scoreD2">
-                                        D
-                                    </option>
-                                    <option value="scoreD3">
-                                        D-
-                                    </option>
-                                </select>
-                            </label>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1001</td>
-                        <td>데이터통신</td>
-                        <td>
-                            <label>
-                                <select name="score">
-                                    <option value="scoreA1">
-                                        A+
-                                    </option>
-                                    <option value="scoreA2">
-                                        A
-                                    </option>
-                                    <option value="scoreA3">
-                                        A-
-                                    </option>
-                                    <option value="scoreB1">
-                                        B+
-                                    </option>
-                                    <option value="scoreB2">
-                                        B
-                                    </option>
-                                    <option value="scoreB3">
-                                        B-
-                                    </option>
-                                    <option value="scoreC1">
-                                        C+
-                                    </option>
-                                    <option value="scoreC2">
-                                        C
-                                    </option>
-                                    <option value="scoreC3">
-                                        C-
-                                    </option>
-                                    <option value="scoreD1">
-                                        D+
-                                    </option>
-                                    <option value="scoreD2">
-                                        D
-                                    </option>
-                                    <option value="scoreD3">
-                                        D-
-                                    </option>
-                                </select>
-                            </label>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+                <div class="stuscore-div-table">
+                    <table class="stuscore-table">
+                        <thead>
+                            <tr>
+                                <th>과목코드</th>
+                                <th>과목이름</th>
+                                <th>성적(등급)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1001</td>
+                                <td>데이터통신</td>
+                                <td>
+                                    <label>
+                                        <select name="grade">
+                                            <option value="A+">
+                                                A+
+                                            </option>
+                                            <option>
+                                                A0
+                                            </option>
+                                            <option value="A-">
+                                                A-
+                                            </option>
+                                            <option value="B+">
+                                                B+
+                                            </option>
+                                            <option>
+                                                B0
+                                            </option>
+                                            <option>
+                                                B-
+                                            </option>
+                                            <option>
+                                                C+
+                                            </option>
+                                            <option value="scoreC2">
+                                                C
+                                            </option>
+                                            <option value="scoreC3">
+                                                C-
+                                            </option>
+                                            <option value="scoreD1">
+                                                D+
+                                            </option>
+                                            <option value="scoreD2">
+                                                D
+                                            </option>
+                                            <option value="scoreD3">
+                                                D-
+                                            </option>
+                                        </select>
+                                    </label>
+                                </td>
+                            </tr>
+                            <tr>
+                            <td>1001</td>
+                            <td>데이터통신</td>
+                            <td>
+                                <label>
+                                    <select name="score">
+                                        <option value="scoreA1">
+                                            A+
+                                        </option>
+                                        <option value="scoreA2">
+                                            A
+                                        </option>
+                                        <option value="scoreA3">
+                                            A-
+                                        </option>
+                                        <option value="scoreB1">
+                                            B+
+                                        </option>
+                                        <option value="scoreB2">
+                                            B
+                                        </option>
+                                        <option value="scoreB3">
+                                            B-
+                                        </option>
+                                        <option value="scoreC1">
+                                            C+
+                                        </option>
+                                        <option value="scoreC2">
+                                            C
+                                        </option>
+                                        <option value="scoreC3">
+                                            C-
+                                        </option>
+                                        <option value="scoreD1">
+                                            D+
+                                        </option>
+                                        <option value="scoreD2">
+                                            D
+                                        </option>
+                                        <option value="scoreD3">
+                                            D-
+                                        </option>
+                                    </select>
+                                </label>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
                 <button id="score-register-btn">등록</button>
             </form>
         </section>
-    </main>
 </body>
 </html>

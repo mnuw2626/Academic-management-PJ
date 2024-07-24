@@ -27,6 +27,11 @@ public class ManagerController {
     }
     @GetMapping("/stuscore_regist")
     public void get_stuscore_regist(){
+    }
+
+    @GetMapping("/enrolment")
+    public void get_enrolment(){
 
     }
+
 }

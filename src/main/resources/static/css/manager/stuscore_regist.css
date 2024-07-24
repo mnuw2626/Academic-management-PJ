@@ -3,25 +3,38 @@
 .stuscore-main{
     margin: 0 auto;
     width: 1000px;
-    height: 800px;
+    height: 600px;
     background-color: white;
 }
 
-/* 학번, 이름 학년, 학기 선택 */
+/* 학생 정보 검색 */
 .student-info-title{
-    margin-top: 20px;
+    margin: 20px 20px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
-.student-info-name{
-    margin: 0 50px;
-}
-.student-grade-semester-section label{
-    margin: 0 10px;
+.student-info-grade{
+    margin-right: 10px;
 }
 
-/* 테이블 관련 - 공통 */
+.student-info-no{
+    margin: 10px 0;
+    display: inline-block;
+}
+
+/* form 설정 */
+.stuscore-info-form{
+    text-align: right;
+    margin: 0 20px;
+    height: 100%;
+}
+.stuscore-div-table{
+    padding: 5px 5px;
+    height: 450px;
+    overflow-y: auto;
+}
+/* 테이블 관련 -form안 의 테이블  */
 .stuscore-table{
     margin-top: 20px;
     width: 100%;
@@ -30,7 +43,6 @@
     border-collapse: collapse;
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0,0,0,.25);
-    overflow: scroll;
     text-align: center;
 }
 .stuscore-table thead{
@@ -43,9 +55,6 @@
     border: 1px solid rgba(0,0,0,.1);
 }
 
-.stuscore-info-form{
-    text-align: right;
-}
 /* form 버튼 */
 #score-register-btn{
     width: 300px;

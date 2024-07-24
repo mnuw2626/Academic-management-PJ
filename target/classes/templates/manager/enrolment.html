@@ -1,22 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layout/manager-main-layout}"
+>
 <head>
     <meta charset="UTF-8">
     <title>관리자 | 수강신청</title>
-    <link rel="stylesheet" href="../../static/css/manager/enrolment.css">
+    <link rel="stylesheet" href="../../static/css/manager/enrolment.css" th:href="@{/css/manager/enrolment.css}">
 
 </head>
 <body>
-    <main>
-        <section class="enrolment-main">
-            <div class="enrolment-div">
-                <h2>수강 신청 기간 설정</h2>
-                <label>
-                    <input type="date"> ~ <input type="date">
-                </label>
-                <button id="enrolment-btn">설정</button>
-            </div>
-        </section>
-    </main>
+    <section class="enrolment-main" layout:fragment="main-section">
+        <div class="enrolment-div">
+            <h2>수강 신청 기간 설정</h2>
+            <label>
+                <input type="date"> ~ <input type="date">
+            </label>
+            <button id="enrolment-btn">설정</button>
+        </div>
+    </section>
 </body>
 </html>

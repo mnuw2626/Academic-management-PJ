@@ -1,9 +1,9 @@
 @import "../public/public.css";
 
 .course-main{
-    margin: 10px 10px;
-    width: 100%;
-    height: 100%;
+    margin: 0 auto;
+    width: 1500px;
+    height: 800px;
     background-color: white;
 }
 .course-section{
@@ -18,7 +18,6 @@
     width: 100%;
     border-collapse: collapse;
     border-radius: 5px;
-    overflow: hidden;
     text-align: center;
 }
 #course-table thead{
@@ -39,7 +38,6 @@
     align-items: center;
     border: 1.5px var(--dark-green-2) solid;
     border-radius: 10px;
-    overflow: hidden;
     padding: 10px 20px;
     background-color: var(--light-green-5);
 }
@@ -76,10 +74,10 @@
 }
 /********* 개설 교과목 목록 *********/
 .div-class{
-    min-height: 500px;
+    max-height: 740px;
     background: white;
     margin-bottom: 50px;
-    /*overflow: hidden scroll;*/
+    overflow: auto;
 }
 #course-table{
     margin-bottom: 10px;
