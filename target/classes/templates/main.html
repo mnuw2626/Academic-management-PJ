@@ -1,137 +1,135 @@
 <!DOCTYPE html>
-<html lang="en"
+<html lang="ko"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layout/main-layout}"
 >
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="../static/css/public/public.css" th:href="@{/css/public/public.css}">
     <link rel="stylesheet" href="../static/css/main.css" th:href="@{/css/main.css}">
-
     <script src="https://kit.fontawesome.com/61293ff96f.js" crossorigin="anonymous"></script>
-
 </head>
 <body>
-    <header>
-        <div>대학교 차세대 통합정보 시스템</div>
-    </header>
 
     <main>
-        <aside class="nav-bar">
-            <h1>학사행정</h1>
-            <nav class="academic-nav">
-                <ul class="main-category">
-                    <li>
-                        <a href="#">학적</a>
-                        <ul class="sub-category">
-                            <li><a href="#">기본정보</a></li>
-                            <li><a href="#">성적</a></li>
-                            <li><a href="#">수업</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">등록</a>
-                        <ul class="sub-category">
-                            <li><a href="#">등록금 납부/조회</a></li>
-                            <li><a href="#">등록금 납부 확인서</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">복학/휴학</a>
-                        <ul class="sub-category">
-                            <li><a href="#">휴학 신청</a></li>
-                            <li><a href="#">복학 신청</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">수강신청</a>
-                        <ul class="sub-category">
-                            <li><a href="#">강의 계획서</a></li>
-                            <li><a href="#">수강 꾸러미</a></li>
-                            <li><a href="#">수강 신청</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">학사정보</a>
-                        <ul class="sub-category">
-                            <li><a href="#">공지사항</a></li>
-                            <li><a href="#">학사일정</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-        </aside>
+        <section layout:fragment="main-section" class="main-section">
+            <aside class="nav-bar">
+                <h1>학사행정</h1>
+                <nav class="academic-nav">
+                    <ul class="main-category">
+                        <li>
+                            <a href="#">학적</a>
+                            <ul class="sub-category">
+                                <li><a href="#">기본정보</a></li>
+                                <li><a href="#">성적</a></li>
+                                <li><a href="#">수업</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">등록</a>
+                            <ul class="sub-category">
+                                <li><a href="#">등록금 납부/조회</a></li>
+                                <li><a href="#">등록금 납부 확인서</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">복학/휴학</a>
+                            <ul class="sub-category">
+                                <li><a href="#">휴학 신청</a></li>
+                                <li><a href="#">복학 신청</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">수강신청</a>
+                            <ul class="sub-category">
+                                <li><a href="#">강의 계획서</a></li>
+                                <li><a href="#">수강 꾸러미</a></li>
+                                <li><a href="#">수강 신청</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">학사정보</a>
+                            <ul class="sub-category">
+                                <li><a href="#">공지사항</a></li>
+                                <li><a href="#">학사일정</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
 
-        <section class="main-section">
-            <div class="individual-div">
-                <div class="individual-privacy">
-                    <div class="individual-name" th:text="${#authentication.principal.id}">이름</div> <br>
-                    <div class="individual-studentId" >학번</div> <br>
-                    <div class="individual-department">자연과학대학 | 물리학과</div>
+            <section class="main-section">
+                <div class="individual-div">
+                    <div class="individual-privacy">
+                        <div class="individual-name" th:text="${#authentication.principal.id}">이름</div> <br>
+                        <div class="individual-studentId" >학번</div> <br>
+                        <div class="individual-department">자연과학대학 | 물리학과</div>
+                    </div>
+                    <div class="individual-input">
+                        <input type="button" value="비밀번호 변경">
+                        <!--       로그아웃 post요청으로 변경(form으로 변경)             -->
+                        <form th:action="@{/user/logout}" method="post">
+                            <button>로그아웃</button>
+                        </form>
+                    </div>
                 </div>
-                <div class="individual-input">
-                    <input type="button" value="비밀번호 변경">
-                    <!--       로그아웃 post요청으로 변경(form으로 변경)             -->
-                    <form th:action="@{/user/logout}" method="post">
-                        <button>로그아웃</button>
-                    </form>
+                <div class="content-div">
+                    <div>학사공지</div>
+                    <table class="business-notice">
+                        <thead>
+                            <tr>
+                                <th width="70">번호</th>
+                                <th width="500">제목</th>
+                                <th width="100">작성일</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td width="70">1</td>
+                                <td width="500"><a href="#">2024학년도 여름계절~</a></td>
+                                <td width="100">2024-07-11</td>
+                            </tr>
+                            <tr>
+                                <td width="70">2</td>
+                                <td width="500"><a href="#">2024년 8월 졸업예정자~</a></td>
+                                <td width="100">2024-07-11</td>
+                            </tr>
+                            <tr>
+                                <td width="70">3</td>
+                                <td width="500"><a href="#">2024년 8월(2023학년도 후기)~</a></td>
+                                <td width="100">2024-07-11</td>
+                            </tr>
+                            <tr>
+                                <td width="70">4</td>
+                                <td width="500"><a href="#">2024학년도 2학기 수꾸~</a></td>
+                                <td width="100">2024-07-11</td>
+                            </tr>
+                            <tr>
+                                <td width="70">5</td>
+                                <td width="500"><a href="#">2024학년도 2학기~</a></td>
+                                <td width="100">2024-07-11</td>
+                            </tr>
+                            <tr>
+                                <td width="70">6</td>
+                                <td width="500"><a href="#">[창업휴학]~</a></td>
+                                <td width="100">2024-07-11</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-            </div>
-            <div class="content-div">
-                <div>학사공지</div>
-                <table class="business-notice">
-                    <thead>
-                        <tr>
-                            <th width="70">번호</th>
-                            <th width="500">제목</th>
-                            <th width="100">작성일</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td width="70">1</td>
-                            <td width="500"><a href="#">2024학년도 여름계절~</a></td>
-                            <td width="100">2024-07-11</td>
-                        </tr>
-                        <tr>
-                            <td width="70">2</td>
-                            <td width="500"><a href="#">2024년 8월 졸업예정자~</a></td>
-                            <td width="100">2024-07-11</td>
-                        </tr>
-                        <tr>
-                            <td width="70">3</td>
-                            <td width="500"><a href="#">2024년 8월(2023학년도 후기)~</a></td>
-                            <td width="100">2024-07-11</td>
-                        </tr>
-                        <tr>
-                            <td width="70">4</td>
-                            <td width="500"><a href="#">2024학년도 2학기 수꾸~</a></td>
-                            <td width="100">2024-07-11</td>
-                        </tr>
-                        <tr>
-                            <td width="70">5</td>
-                            <td width="500"><a href="#">2024학년도 2학기~</a></td>
-                            <td width="100">2024-07-11</td>
-                        </tr>
-                        <tr>
-                            <td width="70">6</td>
-                            <td width="500"><a href="#">[창업휴학]~</a></td>
-                            <td width="100">2024-07-11</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="main-service">
-                <div class="service-div">주요 서비스</div>
-                    <div class="enrolment">
-                    <a href="#"><i class="fa-regular fa-pen-to-square"></i></a><span>수강신청</span>
+                <div class="main-service">
+                    <div class="service-div">주요 서비스</div>
+                        <div class="enrolment">
+                        <a href="#"><i class="fa-regular fa-pen-to-square"></i></a><span>수강신청</span>
+                    </div>
+                    <div class="campus-map">
+                        <a href="#"><i class="fa-regular fa-map"></i></a><span>캠퍼스 맵</span>
+                    </div>
                 </div>
-                <div class="campus-map">
-                    <a href="#"><i class="fa-regular fa-map"></i></a><span>캠퍼스 맵</span>
-                </div>
-            </div>
+            </section>
         </section>
     </main>
 

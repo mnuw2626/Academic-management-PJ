@@ -1,17 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layout/manager-main-layout}"
+>
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="../static/css/public/public.css" th:href="@{/css/public/public.css}">
     <link rel="stylesheet" href="../static/css/manager_main.css" th:href="@{/css/manager_main.css}">
+<!--    <link rel="stylesheet" href="../static/css/manager/add_std.css" th:href="@{/css/manager/add_std.css}">-->
     <script src="https://kit.fontawesome.com/61293ff96f.js" crossorigin="anonymous"></script>
-
+    <script src="../static/js/manager/add_std.js" th:src="@{/js/manager/add_std.js}" defer></script>
+    <script src="../static/js/manager_main.js" th:src="@{/js/manager_main.js}" defer></script>
 </head>
 <body>
-    <header>
-        <div>대학교 차세대 통합정보 시스템</div>
-    </header>
     <main>
         <aside class="nav-bar">
             <h1>학사행정</h1>
@@ -54,6 +58,7 @@
             </div>
         </aside>
         <section class="main-section">
+        <section layout:fragment="main-section" class="main-section">
             <div class="individual-div">
                 <div class="individual-privacy">
                     <div class="individual-name">이름</div> <br>

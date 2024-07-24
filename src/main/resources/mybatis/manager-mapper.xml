@@ -1,0 +1,9 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.academic.mapper.ManagerMapper">
+    <insert id="insert_std">
+        insert into `student` (`std_no`, `name`, `college_id`, `dept_id`, `grade`, `semester`)
+        values(#{std_no}, #{name}, #{college_id}, #{dept_id}, #{grade}, #{semester})
+    </insert>
+</mapper>

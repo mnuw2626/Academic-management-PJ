@@ -1,19 +1,15 @@
 @import "../public/public.css";
 
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
 .student-regist-section{
     display: flex;
     flex-direction: column;
     width: 1000px;
     margin: 70px auto;
+    padding: 20px;
+    background-color: white;
 }
 
-h1{
+.add_std_h1{
     font-size: var(--font-size-bold);
     border-bottom: 2px solid var(--dark-green-2);
     margin-bottom: 40px;
@@ -24,17 +20,17 @@ h1{
     flex-direction: column;
 }
 
-label{
+.add_std_label{
     border-top: 1px solid lightgray;
     padding: 7px 14px;
 }
 
-label > input{
+.add_std_label > input{
     border: 1px solid lightgray;
     outline: none;
 }
 
-.number-label{
+.semester-label{
     border-bottom: 1px solid lightgray;
     margin-bottom: 40px;
 }
