@@ -2,34 +2,35 @@
 
 .stuscore-main{
     margin: 0 auto;
-    width: 500px;
-    height: 300px;
+    width: 1000px;
+    height: 800px;
     background-color: white;
 }
 
-.stuscore-title-div{
-    margin: 30px 0;
+/* 학번, 이름 학년, 학기 선택 */
+.student-info-title{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.student-info-name{
+    margin: 0 50px;
+}
+.student-grade-semester-section label{
+    margin: 0 10px;
 }
 
-/* 테이블 관련 */
-.student-table{
-    margin: 30px 0;
-    border: 1px var(--dark-green-2) solid;
-    font-size: var(--font-size-thin);
-    box-shadow: 0 2px 5px rgba(0,0,0,.25);
+/* 테이블 관련 - 공통 */
+.stuscore-table{
+    margin-top: 20px;
     width: 100%;
-    border-collapse: collapse;
-    border-radius: 5px;
-    text-align: center;
-}
-.score-table{
+    font-size: var(--font-size-thin);
     border: 1px var(--light-green-5) solid;
-    font-size: var(--font-size-thin);
-    box-shadow: 0 2px 5px rgba(0,0,0,.25);
-    width: 100%;
     border-collapse: collapse;
     border-radius: 5px;
-    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,.25);
+    overflow: scroll;
     text-align: center;
 }
 .stuscore-table thead{
@@ -38,16 +39,25 @@
     background: var(--dark-green-2);
 }
 .stuscore-table td, th{
-    padding: 1em .5em;
+    padding: 10px 5px;
     border: 1px solid rgba(0,0,0,.1);
 }
-/********************************************/
 
+.stuscore-info-form{
+    text-align: right;
+}
+/* form 버튼 */
 #score-register-btn{
-    flex-basis: 150px;
+    width: 300px;
+    height: 50px;
+    margin-top: 20px;
     padding: 4px 0;
     text-align: center;
     cursor: pointer;
-    border: 1.5px var(--dark-green-2) solid;
+    border: none;
+    border-radius: 10px;
     background-color: var(--light-green-2);
+    box-shadow: 0 2px 5px rgba(0,0,0,.25);
+    font-size: var(--font-size-bold);
+    font-family: Bold;
 }

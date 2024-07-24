@@ -3,74 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <title>학사관리 | 학생 성적 등록</title>
-
-    <link rel="stylesheet" href="../../static/css/manager/stuscore_regist.css">
+    <link rel="stylesheet" href="../../static/css/manager/stuscore_regist.css" th:>
 </head>
 <body>
     <main>
         <section class="stuscore-main">
-            <div class="stuscore-title-div">
-                <!-- 학년 -->
-                <label>
-                    <select name="stu-grade">
-                        <option value="1">
-                            1학년
-                        </option>
-                        <option value="2">
-                            2학년
-                        </option>
-                        <option value="3">
-                            3학년
-                        </option>
-                        <option value="4">
-                            4학년
-                        </option>
-                    </select>
-                </label>
-                <!-- 학기 -->
-                <label>
-                    <select name="stu-semester">
-                        <option value="1">
-                            1학기
-                        </option>
-                        <option value="2">
-                            2학기
-                        </option>
-                    </select>
-                </label>
+            <div class="student-info-title">
+                <section class="student-info-section">
+                    <!--    학번에 맞춰서 이름 DB에서 불러오기 - 학생 정보 테이블      -->
+                    <span class="student-info-no">
+                        학번 :
+                        <label>
+                            <!-- 학번 DB에서 불러와서 이름까지 보이게 -->
+                            <select name="stdNo">
+                                <option value="2024000001">
+                                    2024000001
+                                </option>
+                                <option value="2024000002">
+                                    2024000002
+                                </option>
+                                <option value="2024000003">
+                                    2024000003
+                                </option>
+                            </select>
+                        </label>
+                    </span>
+                    <span class="student-info-name">
+                        이름 : <span>김길동</span>
+                    </span>
+                </section>
+                <section class="student-grade-semester-section">
+                    <!-- 학년 -->
+                    <label>
+                        <select name="stu-grade">
+                            <option value="1">
+                                1학년
+                            </option>
+                            <option value="2">
+                                2학년
+                            </option>
+                            <option value="3">
+                                3학년
+                            </option>
+                            <option value="4">
+                                4학년
+                            </option>
+                        </select>
+                    </label>
+                    <!-- 학기 -->
+                    <label>
+                        <select name="stu-semester">
+                            <option value="1">
+                                1학기
+                            </option>
+                            <option value="2">
+                                2학기
+                            </option>
+                        </select>
+                    </label>
+                </section>
             </div>
-           <table class="student-table stuscore-table">
-               <thead>
-                    <tr>
-                        <th>학번</th>
-                        <th>이름</th>
-                    </tr>
-               </thead>
-               <tbody>
-                    <tr>
-                        <td>
-                            <label>
-                                <!-- 학번 DB에서 불러와서 이름까지 보이게 -->
-                                <select name="student">
-                                    <option value="student1">
-                                        2024000001
-                                    </option>
-                                    <option value="student2">
-                                        2024000002
-                                    </option>
-                                    <option value="student3">
-                                        2024000003
-                                    </option>
-                                </select>
-                            </label>
-                        </td>
-                        <td>김길동</td>
-                    </tr>
-               </tbody>
-           </table>
-            <form action="" method="post">
-            <!--     학번에 맞춰서 DB에서 불러오기      -->
-                <table class="score-table stuscore-table">
+            <form class="stuscore-info-form" action="" method="post">
+            <!--     학번에 맞춰서 수강된 과목들 DB에서 불러오기 - 성적 등록 테이블    -->
+                <table class="stuscore-table">
                     <thead>
                     <tr>
                         <th>과목코드</th>
@@ -79,12 +74,12 @@
                     </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1001</td>
-                            <td>데이터통신</td>
-                            <td>
-                                <label>
-                                    <select name="score">
+                    <tr>
+                        <td>1001</td>
+                        <td>데이터통신</td>
+                        <td>
+                            <label>
+                                <select name="score">
                                     <option value="scoreA1">
                                         A+
                                     </option>
@@ -122,12 +117,58 @@
                                         D-
                                     </option>
                                 </select>
-                                </label>
-                            </td>
-                        </tr>
+                            </label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>1001</td>
+                        <td>데이터통신</td>
+                        <td>
+                            <label>
+                                <select name="score">
+                                    <option value="scoreA1">
+                                        A+
+                                    </option>
+                                    <option value="scoreA2">
+                                        A
+                                    </option>
+                                    <option value="scoreA3">
+                                        A-
+                                    </option>
+                                    <option value="scoreB1">
+                                        B+
+                                    </option>
+                                    <option value="scoreB2">
+                                        B
+                                    </option>
+                                    <option value="scoreB3">
+                                        B-
+                                    </option>
+                                    <option value="scoreC1">
+                                        C+
+                                    </option>
+                                    <option value="scoreC2">
+                                        C
+                                    </option>
+                                    <option value="scoreC3">
+                                        C-
+                                    </option>
+                                    <option value="scoreD1">
+                                        D+
+                                    </option>
+                                    <option value="scoreD2">
+                                        D
+                                    </option>
+                                    <option value="scoreD3">
+                                        D-
+                                    </option>
+                                </select>
+                            </label>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
-                <button type="submit" id="score-register-btn">등록</button>
+                <button id="score-register-btn">등록</button>
             </form>
         </section>
     </main>

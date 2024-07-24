@@ -14,4 +14,8 @@ public class ManagerController {
         System.out.println("학생등록시도");
 
     }
+    @GetMapping("/stuscore_regist")
+    public void get_stuscore_regist(){
+
+    }
 }
