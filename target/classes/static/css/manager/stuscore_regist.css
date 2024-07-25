@@ -7,20 +7,31 @@
     background-color: white;
 }
 
-/* 학번, 이름 학년, 학기 선택 */
+/* 학생 정보 검색 */
 .student-info-title{
     margin: 20px 20px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
-.student-info-name{
-    margin: 0 50px;
-}
-.student-grade-semester-section label{
-    margin: 0 10px;
+.student-info-grade{
+    margin-right: 10px;
 }
 
+/* 학번 */
+.student-info-no{
+    margin-left: 10px;
+}
+.student-info-no > input{
+    width: 150px;
+}
+/* 이름 */
+.student-info-name{
+    margin-left: 10px;
+}
+.student-info-name > input{
+    width: 100px;
+}
 /* form 설정 */
 .stuscore-info-form{
     text-align: right;

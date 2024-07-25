@@ -14,58 +14,75 @@
     <section class="stuscore-main" layout:fragment="main-section">
             <div class="student-info-title">
                 <section class="student-info-section">
-                    <!--    학번에 맞춰서 이름 DB에서 불러오기 - 학생 정보 테이블      -->
-                    <span class="student-info-no">
-                        학번 :
+                    <!--   학생 정보 테이블      -->
+                    <span class="student-info-grade">
+                        <!-- 학년 -->
                         <label>
-                            <!-- 학번 DB에서 불러와서 이름까지 보이게 -->
-                            <select name="stdNo">
-                                <option value="2024000001">
-                                    2024000001
+                            <select name="grade">
+                                <option value="1">
+                                    1학년
                                 </option>
-                                <option value="2024000002">
-                                    2024000002
+                                <option value="2">
+                                    2학년
                                 </option>
-                                <option value="2024000003">
-                                    2024000003
+                                <option value="3">
+                                    3학년
+                                </option>
+                                <option value="4">
+                                    4학년
                                 </option>
                             </select>
                         </label>
                     </span>
+                    <span class="student-info-semester">
+                        <!-- 학기 -->
+                        <label>
+                            <select name="semester">
+                                <option value="1">
+                                    1학기
+                                </option>
+                                <option value="2">
+                                    2학기
+                                </option>
+                            </select>
+                        </label>
+                    </span>
+                    <span class="student-info-college">
+                        단과대학:
+                        <label>
+                            <!-- 단과대학 선택하게 -->
+                            <select name="collegeId">
+                                <option value="1">
+                                    공과대학
+                                </option>
+                                <option value="2">
+                                    인문대학
+                                </option>
+                                <option value="3">
+                                    사회과학대학
+                                </option>
+                            </select>
+                        </label>
+                    </span>
+                    <span class="student-info-department">
+                        학과:
+                        <label>
+                            <!-- 학과 DB로 불러옴 -->
+                            <select name="id">
+                                <option value="100">
+                                    컴퓨터공학과
+                                </option>
+                            </select>
+                        </label>
+                    </span>
+                    <span class="student-info-no">
+                        학번 : <input type="text" />
+                    </span>
                     <span class="student-info-name">
-                        이름 : <span>김길동</span>
+                        이름 : <input type="text" />
                     </span>
                 </section>
-                <section class="student-grade-semester-section">
-                    <!-- 학년 -->
-                    <label>
-                        <select name="stu-grade">
-                            <option value="1">
-                                1학년
-                            </option>
-                            <option value="2">
-                                2학년
-                            </option>
-                            <option value="3">
-                                3학년
-                            </option>
-                            <option value="4">
-                                4학년
-                            </option>
-                        </select>
-                    </label>
-                    <!-- 학기 -->
-                    <label>
-                        <select name="stu-semester">
-                            <option value="1">
-                                1학기
-                            </option>
-                            <option value="2">
-                                2학기
-                            </option>
-                        </select>
-                    </label>
-                </section>
+                <button>조회</button>
             </div>
             <form class="stuscore-info-form" action="" method="post">
             <!--     학번에 맞춰서 수강된 과목들 DB에서 불러오기 - 성적 등록 테이블    -->
@@ -85,16 +102,16 @@
                                 <td>
                                     <label>
                                         <select name="grade">
-                                            <option value="A+">
+                                            <option>
                                                 A+
                                             </option>
                                             <option>
                                                 A0
                                             </option>
-                                            <option value="A-">
+                                            <option>
                                                 A-
                                             </option>
-                                            <option value="B+">
+                                            <option>
                                                 B+
                                             </option>
                                             <option>
@@ -106,19 +123,19 @@
                                             <option>
                                                 C+
                                             </option>
-                                            <option value="scoreC2">
-                                                C
+                                            <option>
+                                                C0
                                             </option>
-                                            <option value="scoreC3">
+                                            <option>
                                                 C-
                                             </option>
-                                            <option value="scoreD1">
+                                            <option>
                                                 D+
                                             </option>
-                                            <option value="scoreD2">
-                                                D
+                                            <option>
+                                                D0
                                             </option>
-                                            <option value="scoreD3">
+                                            <option>
                                                 D-
                                             </option>
                                         </select>

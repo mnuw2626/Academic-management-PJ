@@ -18,11 +18,20 @@
     margin-right: 10px;
 }
 
+/* 학번 */
 .student-info-no{
-    margin: 10px 0;
-    display: inline-block;
+    margin-left: 10px;
 }
-
+.student-info-no > input{
+    width: 150px;
+}
+/* 이름 */
+.student-info-name{
+    margin-left: 10px;
+}
+.student-info-name > input{
+    width: 100px;
+}
 /* form 설정 */
 .stuscore-info-form{
     text-align: right;
