@@ -8,6 +8,6 @@
 
     <insert id="insert_std">
         insert into `student` (`std_no`, `name`, `college_id`, `dept_id`, `grade`, `semester`)
-        values(#{std_no}, #{name}, #{college_id}, #{dept_id}, #{grade}, #{semester})
+        values(#{stdNo}, #{name}, #{collegeId}, #{deptId}, #{grade}, #{semester})
     </insert>
 </mapper>

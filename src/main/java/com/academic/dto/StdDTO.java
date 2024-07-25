@@ -9,10 +9,10 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class StdDTO {
-    private int std_no;
+    private int stdNo;
     private String name;
-    private int college_id;
-    private int dept_id;
+    private int collegeId;
+    private int deptId;
     private int grade;
     private int semester;
 }
