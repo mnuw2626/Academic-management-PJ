@@ -1,14 +1,16 @@
 @import "../public/public.css";
 
 .course-main{
-    margin: 0 auto;
-    width: 1500px;
-    height: 800px;
+    margin: 0 10px;
+    padding: 10px 10px;
+    width: 1100px;
+    height: 600px;
     background-color: white;
 }
 .course-section{
     min-width: 1000px;
     padding: 20px;
+    height: 100%;
 }
 /********* 테이블 관련 *********/
 #course-table{
@@ -43,7 +45,7 @@
 }
 .div-course h2{
     display: inline-block;
-    flex-basis: 200px;
+    flex-basis: 120px;
     color: var(--dark-green-2);
 }
 .div-course > label{
@@ -74,7 +76,7 @@
 }
 /********* 개설 교과목 목록 *********/
 .div-class{
-    max-height: 740px;
+    height: 80%;
     background: white;
     margin-bottom: 50px;
     overflow: auto;

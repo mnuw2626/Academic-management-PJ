@@ -18,47 +18,14 @@
     <section class="list_search_section">
         <label class="list_search_input">
             <span>단과대학</span>
-            <select name="collegeId">
-                <option value="1">
-                    공과대학
-                </option>
-                <option value="2">
-                    인문대학
-                </option>
-                <option value="3">
-                    사회과학대학
-                </option>
-                <option value="4">
-                    생활과학대학
-                </option>
-                <option value="5">
-                    자연대학
-                </option>
-                <option value="6">
-                    농업대학
-                </option>
+            <select id="collegeId" class="college_id">
+                <option th:value="${college.id}" th:each="college : ${colleges}" th:text="${college.name}" >
             </select>
         </label>
         <label class="list_search_input">
             <span>학과</span>
-            <select name="deptId" class="dept_id">
-                <option value="100">
-                    컴퓨터공학과
-                </option>
-                <option value="101">
-                    기계공학과
-                </option>
-                <option value="102">
-                    전자공학과
-                </option>
-                <option value="201">
-                    경영학과
-                </option>
-                <option value="202">
-                    물리학과
-                </option>
-                <option value="203">
-                    식품영양학과
+            <select id="deptId" class="dept_id">
+                <option th:value="${depart.id}" th:each="depart : ${departments}" th:text="${depart.name}">
                 </option>
             </select>
         </label>

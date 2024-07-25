@@ -57,7 +57,7 @@
                             <!-- 단과대학 선택하게 -->
                             <select id="collegeId">
                                 <option th:value="${college.id}" th:each="college : ${colleges}" th:text="${college.name}" >
-                                    공과대학
+<!--                                    공과대학-->
                                 </option>
 <!--                                <option value="2">-->
 <!--                                    인문대학-->
@@ -73,8 +73,8 @@
                         <label>
                             <!-- 학과 DB로 불러옴 -->
                             <select id="deptId">
-                                <option value="100">
-                                    컴퓨터공학과
+                                <option th:value="${depart.id}" th:each="depart : ${departments}" th:text="${depart.name}">
+<!--                                    컴퓨터공학과-->
                                 </option>
                             </select>
                         </label>

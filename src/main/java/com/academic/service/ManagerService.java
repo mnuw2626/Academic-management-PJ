@@ -1,5 +1,7 @@
 package com.academic.service;
 
+import com.academic.dto.CollegeDTO;
+import com.academic.dto.DepartmentDTO;
 import com.academic.dto.StdDTO;
 import com.academic.mapper.ManagerMapper;
 import com.fasterxml.jackson.databind.BeanProperty;
@@ -16,13 +18,23 @@ public class ManagerService {
     ManagerMapper managerMapper;
 
     public boolean manager_add_std(StdDTO stdDTO) {
+
         managerMapper.insert_std(stdDTO);
         return true;
     }
 
-    public List<StdDTO> manager_std_list_check(StdDTO stdDTO){
+    public List<StdDTO> manager_std_list_check(StdDTO stdDTO) {
         return managerMapper.select_std(stdDTO);
     }
 
 
+    //    단과대학 정보 조회 - 단과대학 DB에서 가져옴
+    public List<CollegeDTO> get_colleges() {
+        return managerMapper.select_colleges();
+    }
+
+    //    단과대학에 따른 학과 조회
+    public List<DepartmentDTO> get_departments(Integer collegeId) {
+        return managerMapper.select_dept(collegeId);
+    }
 }

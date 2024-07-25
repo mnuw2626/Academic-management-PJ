@@ -19,14 +19,12 @@
 /*******************************************************/
 .list_search_section{
     display: flex;
-
     width: 100%;
     height: 40px;
     margin: 50px 0;
     padding: 7px 15px;
     background-color: var(--light-green-3);
 }
-
 .list_search_input{
     width: 17%;
 }
