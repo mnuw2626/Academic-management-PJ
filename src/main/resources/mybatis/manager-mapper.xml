@@ -2,9 +2,13 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.academic.mapper.ManagerMapper">
+    <select id="select_std" resultType="com.academic.dto.StdDTO">
+        SELECT `std_no`, `name`, `college_id`, `dept_id`, `grade`, `semester` FROM `student`
+    </select>
+
     <insert id="insert_std">
         insert into `student` (`std_no`, `name`, `college_id`, `dept_id`, `grade`, `semester`)
-        values(#{std_no}, #{name}, #{college_id}, #{dept_id}, #{grade}, #{semester})
+        values(#{stdNo}, #{name}, #{collegeId}, #{deptId}, #{grade}, #{semester})
     </insert>
 
     <select id="select_colleges" resultType="com.academic.dto.CollegeDTO">
