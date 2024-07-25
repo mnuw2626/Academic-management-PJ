@@ -25,4 +25,13 @@ public class ManagerController {
         System.out.println("학생등록성공");
         return "redirect:/manager/add_std";
     }
+    @GetMapping("/stuscore_regist")
+    public void get_stuscore_regist(){
+    }
+
+    @GetMapping("/enrolment")
+    public void get_enrolment(){
+
+    }
+
 }

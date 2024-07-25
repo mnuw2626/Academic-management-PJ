@@ -2,28 +2,56 @@
 
 .stuscore-main{
     margin: 0 auto;
-    width: 500px;
-    height: 300px;
+    width: 1000px;
+    height: 600px;
     background-color: white;
 }
-.student-table{
-    margin: 30px 0;
-    border: 1px var(--dark-green-2) solid;
-    font-size: var(--font-size-thin);
-    box-shadow: 0 2px 5px rgba(0,0,0,.25);
-    width: 100%;
-    border-collapse: collapse;
-    border-radius: 5px;
-    text-align: center;
+
+/* 학생 정보 검색 */
+.student-info-title{
+    margin: 20px 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
-.score-table{
-    border: 1px var(--light-green-5) solid;
-    font-size: var(--font-size-thin);
-    box-shadow: 0 2px 5px rgba(0,0,0,.25);
+.student-info-grade{
+    margin-right: 10px;
+}
+
+/* 학번 */
+.student-info-no{
+    margin-left: 10px;
+}
+.student-info-no > input{
+    width: 150px;
+}
+/* 이름 */
+.student-info-name{
+    margin-left: 10px;
+}
+.student-info-name > input{
+    width: 100px;
+}
+/* form 설정 */
+.stuscore-info-form{
+    text-align: right;
+    margin: 0 20px;
+    height: 100%;
+}
+.stuscore-div-table{
+    padding: 5px 5px;
+    height: 450px;
+    overflow-y: auto;
+}
+/* 테이블 관련 -form안 의 테이블  */
+.stuscore-table{
+    margin-top: 20px;
     width: 100%;
+    font-size: var(--font-size-thin);
+    border: 1px var(--light-green-5) solid;
     border-collapse: collapse;
     border-radius: 5px;
-    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,.25);
     text-align: center;
 }
 .stuscore-table thead{
@@ -32,14 +60,22 @@
     background: var(--dark-green-2);
 }
 .stuscore-table td, th{
-    padding: 1em .5em;
+    padding: 10px 5px;
     border: 1px solid rgba(0,0,0,.1);
 }
+
+/* form 버튼 */
 #score-register-btn{
-    flex-basis: 150px;
+    width: 300px;
+    height: 50px;
+    margin-top: 20px;
     padding: 4px 0;
     text-align: center;
     cursor: pointer;
-    border: 1.5px var(--dark-green-2) solid;
+    border: none;
+    border-radius: 10px;
     background-color: var(--light-green-2);
+    box-shadow: 0 2px 5px rgba(0,0,0,.25);
+    font-size: var(--font-size-bold);
+    font-family: Bold;
 }

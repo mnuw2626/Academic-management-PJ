@@ -16,4 +16,6 @@ public class ManagerService {
         managerMapper.insert_std(stdDTO);
         return true;
     }
+
+
 }
