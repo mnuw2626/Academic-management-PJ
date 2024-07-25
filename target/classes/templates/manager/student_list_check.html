@@ -1,13 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layout/manager-main-layout}"
+>
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
     <script src="https://kit.fontawesome.com/61293ff96f.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../../static/css/manager/student_list_check.css">
+    <link rel="stylesheet" href="/css/manager/student_list_check.css">
+    <script src="../../static/js/manager/student_list_check.js" th:src="@{/js/manager/student_list_check.js}" defer></script>
 </head>
 <body>
-<main>
+<section class="std_list_main_section" layout:fragment="main-section">
     <div class="student_list_title">학생 명단 조회</div>
     <section class="list_search_section">
         <label class="list_search_input">
@@ -19,7 +25,7 @@
             <input type="text">
         </label>
         <label class="list_search_btn">
-            <button >
+            <button class="check_btn">
                 <span>조회</span>
                 <i class="fa-solid fa-magnifying-glass"></i>
             </button>
@@ -30,33 +36,11 @@
     </section>
     <section class="list_table_section">
         <h2>학생 목록</h2>
-        <table>
-            <tr>
-                <th width="100px">학번</th>
-                <th width="70px">이름</th>
-                <th width="130px">전화번호</th>
-                <th width="100px">단과대학</th>
-                <th width="140px">학과</th>
-                <th width="50px">학년</th>
-            </tr>
-            <tr>
-                <td width="100px">2024000001</td>
-                <td width="70px">박시우</td>
-                <td width="130px">010-6542-4655</td>
-                <td width="100px">자연과학대학</td>
-                <td width="140px">물리학과</td>
-                <td width="50px">1</td>
-            </tr>
-            <tr>
-                <td width="100px">2024000001</td>
-                <td width="70px">박시우</td>
-                <td width="130px">010-6542-4655</td>
-                <td width="100px">자연과학대학</td>
-                <td width="140px">물리학과</td>
-                <td width="50px">1</td>
-            </tr>
-        </table>
+        <div class="std_list_div">
+
+        </div>
+
     </section>
-</main>
+</section>
 </body>
 </html>

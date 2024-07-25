@@ -3,7 +3,7 @@
     margin: 0 auto;
 }
 
-main{
+.std_list_main_section{
     width: 900px;
 }
 
@@ -11,7 +11,7 @@ main{
     font-size: 55px;
     margin-top: 30px;
     padding-bottom: 10px;
-    font-family: Bold;
+    font-family: bold;
     border-bottom: 1px solid black;
 }
 

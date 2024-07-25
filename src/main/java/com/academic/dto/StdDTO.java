@@ -2,16 +2,17 @@ package com.academic.dto;
 
 import lombok.*;
 
+@Getter
 @Setter
 @Builder
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
 public class StdDTO {
-    private String std_no;
+    private int std_no;
     private String name;
-    private String college_id;
-    private String dept_id;
-    private String grade;
-    private String semester;
+    private int college_id;
+    private int dept_id;
+    private int grade;
+    private int semester;
 }
