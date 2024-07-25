@@ -83,10 +83,10 @@ main{
     font-family: Bold;
     font-size: var(--font-size-black);
 }
-th{
+.business-notice th{
     padding: 10px 0;
 }
-td{
+.business-notice td{
     padding: 12px 0 12px;
 }
 
