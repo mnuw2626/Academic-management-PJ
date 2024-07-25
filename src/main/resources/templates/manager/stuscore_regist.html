@@ -9,6 +9,10 @@
     <meta charset="UTF-8">
     <title>학사관리 | 학생 성적 등록</title>
     <link rel="stylesheet" href="../../static/css/manager/stuscore_regist.css" th:href="@{/css/manager/stuscore_regist.css}">
+
+    <script src="https://kit.fontawesome.com/61293ff96f.js" crossorigin="anonymous"></script>
+    <script src="../../static/js/manager/stuscore_regist.js" th:src="@{/js/manager/stuscore_regist.js}" defer></script>
+
 </head>
 <body>
     <section class="stuscore-main" layout:fragment="main-section">
@@ -51,16 +55,16 @@
                         단과대학:
                         <label>
                             <!-- 단과대학 선택하게 -->
-                            <select name="collegeId">
-                                <option value="1">
+                            <select id="collegeId">
+                                <option th:value="${college.id}" th:each="college : ${colleges}" th:text="${college.name}" >
                                     공과대학
                                 </option>
-                                <option value="2">
-                                    인문대학
-                                </option>
-                                <option value="3">
-                                    사회과학대학
-                                </option>
+<!--                                <option value="2">-->
+<!--                                    인문대학-->
+<!--                                </option>-->
+<!--                                <option value="3">-->
+<!--                                    사회과학대학-->
+<!--                                </option>-->
                             </select>
                         </label>
                     </span>
@@ -68,7 +72,7 @@
                         학과:
                         <label>
                             <!-- 학과 DB로 불러옴 -->
-                            <select name="id">
+                            <select id="deptId">
                                 <option value="100">
                                     컴퓨터공학과
                                 </option>
@@ -82,7 +86,10 @@
                         이름 : <input type="text" />
                     </span>
                 </section>
-                <button>조회</button>
+                <button id="std-find-btn">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span>조회</span>
+                </button>
             </div>
             <form class="stuscore-info-form" action="" method="post">
             <!--     학번에 맞춰서 수강된 과목들 DB에서 불러오기 - 성적 등록 테이블    -->
@@ -101,6 +108,7 @@
                                 <td>데이터통신</td>
                                 <td>
                                     <label>
+                                        <!--  grade DB와 매칭 -->
                                         <select name="grade">
                                             <option>
                                                 A+
@@ -142,52 +150,6 @@
                                     </label>
                                 </td>
                             </tr>
-                            <tr>
-                            <td>1001</td>
-                            <td>데이터통신</td>
-                            <td>
-                                <label>
-                                    <select name="score">
-                                        <option value="scoreA1">
-                                            A+
-                                        </option>
-                                        <option value="scoreA2">
-                                            A
-                                        </option>
-                                        <option value="scoreA3">
-                                            A-
-                                        </option>
-                                        <option value="scoreB1">
-                                            B+
-                                        </option>
-                                        <option value="scoreB2">
-                                            B
-                                        </option>
-                                        <option value="scoreB3">
-                                            B-
-                                        </option>
-                                        <option value="scoreC1">
-                                            C+
-                                        </option>
-                                        <option value="scoreC2">
-                                            C
-                                        </option>
-                                        <option value="scoreC3">
-                                            C-
-                                        </option>
-                                        <option value="scoreD1">
-                                            D+
-                                        </option>
-                                        <option value="scoreD2">
-                                            D
-                                        </option>
-                                        <option value="scoreD3">
-                                            D-
-                                        </option>
-                                    </select>
-                                </label>
-                            </td>
-                        </tr>
                         </tbody>
                     </table>
                 </div>
