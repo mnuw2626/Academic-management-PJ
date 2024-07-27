@@ -56,21 +56,6 @@ public class ManagerController {
         get_db_college_depart_info(model);
     }
 
-    // 학생 명단 조회 기능
-//    @GetMapping("/student_list")
-//    public ResponseEntity<List<StdDTO>> get_student_list(
-//            @RequestParam(required = false) Integer collegeId,
-//            @RequestParam(required = false) Integer deptId,
-//            @RequestParam(required = false) Integer grade,
-//            @RequestParam(required = false) String name,
-//            @RequestParam(required = false) String stdNo,
-//            @AuthenticationPrincipal StdDTO stdDTO
-//    ) {
-//        System.out.println("학생명단조회시작");
-//        List<StdDTO> stdDTOS = managerService.manager_std_list_check(stdDTO, collegeId, deptId, grade, name, stdNo);
-//        return ResponseEntity.ok(stdDTOS);
-//    }
-
 
    /******************** 성적 등록  *******************/
     // 성적 등록 페이지 이동
