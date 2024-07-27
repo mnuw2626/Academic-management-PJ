@@ -33,4 +33,10 @@ public class UserController {
         return "redirect:/user/login";
     }
 
+    /***************학생 정보*******************/
+
+    @GetMapping("/info_management")
+    public void get_info(){
+    }
+
 }

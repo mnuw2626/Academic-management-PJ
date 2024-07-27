@@ -15,23 +15,26 @@
 <body>
 <section class="std_list_main_section" layout:fragment="main-section">
     <h1 class="student_list_title">학생 명단 조회</h1>
-    <section class="list_search_section">
+    <form class="list_search_section">
         <label class="list_search_input">
             <span>단과대학</span>
-            <select id="collegeId" class="college_id">
+            <select id="collegeId" name="collegeId">
+                <option value="" selected disabled hidden>선택</option>
                 <option th:value="${college.id}" th:each="college : ${colleges}" th:text="${college.name}" >
             </select>
         </label>
         <label class="list_search_input">
             <span>학과</span>
-            <select id="deptId" class="dept_id">
+            <select id="deptId" name="deptId">
+                <option value="" selected disabled hidden>선택</option>
                 <option th:value="${depart.id}" th:each="depart : ${departments}" th:text="${depart.name}">
                 </option>
             </select>
         </label>
         <label class="list_search_input">
             <span>학년</span>
-            <select name="grade" class="grade">
+            <select name="grade">
+                <option value="" selected disabled hidden>선택</option>
                 <option value="1">
                     1학년
                 </option>
@@ -46,13 +49,25 @@
                 </option>
             </select>
         </label>
+        <label>
+            <span>학기</span>
+            <select name="semester">
+                <option value="" selected disabled hidden>선택</option>
+                <option value="1">
+                    1학기
+                </option>
+                <option value="2">
+                    2학기
+                </option>
+            </select>
+        </label>
         <label class="list_search_input">
             <span>이름</span>
-            <input type="text" name="name" class="name">
+            <input type="text" name="name">
         </label>
         <label class="list_search_input">
             <span>학번</span>
-            <input type="text" name="stdNo" class="std_no">
+            <input type="text" name="stdNo">
         </label>
         <label class="list_search_btn">
             <button class="check_btn">
@@ -63,10 +78,30 @@
         <label class="list_search_btn">
             <button>새학기 적용</button>
         </label>
-    </section>
+    </form>
     <section class="list_table_section">
         <h2 class="list_h2">학생 목록</h2>
             <table class="std_list_table">
+                <thead>
+                    <tr>
+                        <td>단과대학</td>
+                        <td>학과</td>
+                        <td>학년</td>
+                        <td>학기</td>
+                        <td>이름</td>
+                        <td>학번</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="stdObj: ${stds}">
+                        <td width="130px">[[${stdObj.collegeId}]]</td>
+                        <td width="100px">[[${stdObj.deptId}]]</td>
+                        <td width="140px">[[${stdObj.grade}]]</td>
+                        <td width="50px">[[${stdObj.semester}]]</td>
+                        <td width="70px">[[${stdObj.name}]]</td>
+                        <td width="100px">[[${stdObj.stdNo}]]</td>
+                    </tr>
+                </tbody>
             </table>
     </section>
 </section>

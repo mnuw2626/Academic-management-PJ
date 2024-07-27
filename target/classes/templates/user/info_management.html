@@ -1,12 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layout/main-layout}"
+>
 <head>
     <meta charset="UTF-8">
     <title>info_management</title>
     <link rel="stylesheet" href="../../static/css/user/info_management.css" th:href="@{/css/user/info_management.css}">
 </head>
 <body>
-    <main>
+    <section class="info-main-section" layout:fragment="main-section">
         <h1>학적기본사항관리</h1>
         <section class="class-num-section">
             <table border="1">
@@ -39,7 +44,7 @@
                     </tr>
                     <tr>
                         <th class="info-menu-th">아이디</th>
-                        <th>wnstlr1234</th>
+                        <th th:text="${#authentication.principal.id}"></th>
                     </tr>
                     <tr>
                         <th class="info-menu-th">이메일</th>
@@ -58,6 +63,6 @@
         </section>
 
         <button class="modify-btn">수정하기</button>
-    </main>
+    </section>
 </body>
 </html>
