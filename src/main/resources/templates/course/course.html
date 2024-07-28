@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="../../static/css/course/course.css" th:href="@{/css/course/course.css}">
 
     <script src="https://kit.fontawesome.com/61293ff96f.js" crossorigin="anonymous"></script>
+    <script src="../../static/js/course/course.js" th:src="@{/js/course/course.js}" defer></script>
 
 </head>
 <body>
@@ -85,84 +86,65 @@
                             <th>강의계획서</th>
                         </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>교양</td>
-                                <td>1</td>
-                                <td>3</td>
-                                <td>12345</td>
-                                <td>글쓰기의 이해</td>
-                                <td>김길동</td>
-                                <td>9:00 ~ 11:00</td>
-                                <td>교육관 1실</td>
-                                <td> 12 / 100 </td>
-                                <td><span class="class-sign-new">신규</span></td>
-                                <td>
-                                    <!--  강의 계획서 조회  -->
-                                    <button class="lecture-find-btn">
-                                        <i class="fa-solid fa-magnifying-glass"></i>
-                                        <span>조회</span>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>교양</td>
-                                <td>1</td>
-                                <td>3</td>
-                                <td>12345</td>
-                                <td>글쓰기의 이해</td>
-                                <td>김길동</td>
-                                <td>9:00 ~ 11:00</td>
-                                <td>교육관 1실</td>
-                                <td> 12 / 100 </td>
-                                <td><span class="class-sign-re">재수강</span></td>
-                                <td>
-                                    <button class="lecture-find-btn">
-                                        <i class="fa-solid fa-magnifying-glass"></i>
-                                        <span>조회</span>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>교양</td>
-                                <td>1</td>
-                                <td>3</td>
-                                <td>12345</td>
-                                <td>글쓰기의 이해</td>
-                                <td>김길동</td>
-                                <td>9:00 ~ 11:00</td>
-                                <td>교육관 1실</td>
-                                <td> 12 / 100 </td>
-                                <td><span class="class-sign-re">재수강</span></td>
-                                <td>
-                                    <button class="lecture-find-btn">
-                                        <i class="fa-solid fa-magnifying-glass"></i>
-                                        <span>조회</span>
-                                    </button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>교양</td>
-                                <td>1</td>
-                                <td>3</td>
-                                <td>12345</td>
-                                <td>글쓰기의 이해</td>
-                                <td>김길동</td>
-                                <td>9:00 ~ 11:00</td>
-                                <td>교육관 1실</td>
-                                <td> 12 / 100 </td>
-                                <td><span class="class-sign-re">재수강</span></td>
-                                <td>
-                                    <button class="lecture-find-btn">
-                                        <i class="fa-solid fa-magnifying-glass"></i>
-                                        <span>조회</span>
-                                    </button>
-                                </td>
-                            </tr>
+                        <tbody id="course-table-tbody">
+<!--                            <tr>-->
+<!--                                <td>1</td>-->
+<!--                                <td>교양</td>-->
+<!--                                <td>1학년</td>-->
+<!--                                <td>3학점</td>-->
+<!--                                <td>과목코드</td>-->
+<!--                                <td>글쓰기의 이해</td>-->
+<!--                                <td>김길동</td>-->
+<!--                                <td>9:00 ~ 11:00</td>-->
+<!--                                <td>교육관 1실</td>-->
+<!--                                <td> 12 / 100 </td>-->
+<!--                                <td><span class="class-sign-re">재수강</span></td>-->
+<!--                                <td>-->
+<!--                                    <button class="lecture-find-btn">-->
+<!--                                        <i class="fa-solid fa-magnifying-glass"></i>-->
+<!--                                        <span>조회</span>-->
+<!--                                    </button>-->
+<!--                                </td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                                <td>1</td>-->
+<!--                                <td>교양</td>-->
+<!--                                <td>1</td>-->
+<!--                                <td>3</td>-->
+<!--                                <td>12345</td>-->
+<!--                                <td>글쓰기의 이해</td>-->
+<!--                                <td>김길동</td>-->
+<!--                                <td>9:00 ~ 11:00</td>-->
+<!--                                <td>교육관 1실</td>-->
+<!--                                <td> 12 / 100 </td>-->
+<!--                                <td><span class="class-sign-new">신규</span></td>-->
+<!--                                <td>-->
+<!--                                    &lt;!&ndash;  강의 계획서 조회  &ndash;&gt;-->
+<!--                                    <button class="lecture-find-btn">-->
+<!--                                        <i class="fa-solid fa-magnifying-glass"></i>-->
+<!--                                        <span>조회</span>-->
+<!--                                    </button>-->
+<!--                                </td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                                <td>1</td>-->
+<!--                                <td>교양</td>-->
+<!--                                <td>1</td>-->
+<!--                                <td>3</td>-->
+<!--                                <td>12345</td>-->
+<!--                                <td>글쓰기의 이해</td>-->
+<!--                                <td>김길동</td>-->
+<!--                                <td>9:00 ~ 11:00</td>-->
+<!--                                <td>교육관 1실</td>-->
+<!--                                <td> 12 / 100 </td>-->
+<!--                                <td><span class="class-sign-re">재수강</span></td>-->
+<!--                                <td>-->
+<!--                                    <button class="lecture-find-btn">-->
+<!--                                        <i class="fa-solid fa-magnifying-glass"></i>-->
+<!--                                        <span>조회</span>-->
+<!--                                    </button>-->
+<!--                                </td>-->
+<!--                            </tr>-->
                         </tbody>
                     </table>
                 </div>
