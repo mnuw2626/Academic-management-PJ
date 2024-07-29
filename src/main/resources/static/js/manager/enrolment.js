@@ -8,32 +8,34 @@ enrolmentBtn.onclick = () =>{
     const startDate = startDateInput.value;
     const endDate = endDateInput.value;
 
-    fetch(`/check/enrolment?startDate=${startDate}&endDate=${endDate}`)
-        .then(response => response.json())
-        .then(date => {
-            console.log(date)
+    console.log(formTag)
 
-           //결과 화면 구현
-            if(date){
-                formTag.innerHTML = '';
+    //토큰 가져옴
+    const csrfToken = document.querySelector("meta[name=_csrf]").getAttribute('content');
 
-                formTag.insertAdjacentHTML(`beforeend`, `
-                     <label class="enrolment-input-data">
-                        <input type="date" id="start-date" name="startDate" required>
-                        ~
-                        <input type="date" id="end-date" name="endDate" required>
-                    </label>
-                    <button class="enrolment-btn" id="enrolment-btn">설정</button>
-                `);
-            }
-            else {
-                formTag.innerHTML = '';
-                formTag.insertAdjacentHTML(`beforeend`, `
-                     <h2>수강신청기간입니다.</h2>
-                     <button class="enrolment-btn">종료</button>
-                `);
-            }
+    // POST request 생성
+    fetch(`/check/enrolment`,{
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+            "X-CSRF-TOKEN": csrfToken
+        },
+        body: new URLSearchParams({
+            'startDate': startDate,
+            'endDate': endDate
         })
+    })
+    .then(response => response.json())
+    .then(date => {
+        console.log(date)
+       //결과 화면 구현
+        if(date) {
+            enrolmentBtn.textContent = '종료'; //임시로 버튼 글씨만 바꾸게, insertAdjacentHTML 사용시 오류남 문의필요
+        }
+        else {
+                enrolmentBtn.textContent = '설정';
+        }
+    }).catch(error => console.error('Error:', error));
 }
 
 /*

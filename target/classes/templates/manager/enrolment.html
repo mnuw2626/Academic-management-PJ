@@ -7,6 +7,7 @@
 >
 <head>
     <meta charset="UTF-8">
+    <meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}">
     <title>관리자 | 수강신청</title>
     <link rel="stylesheet" href="../../static/css/manager/enrolment.css" th:href="@{/css/manager/enrolment.css}">
     <script src="../../static/js/manager/enrolment.js" th:src="@{/js/manager/enrolment.js}" defer></script>
@@ -21,7 +22,7 @@
                 ~
                 <input type="date" id="end-date" name="endDate" required>
             </label>
-            <button class="enrolment-btn" id="enrolment-btn">설정</button>
+            <button class="enrolment-btn" id="enrolment-btn" type="button">설정</button>
         </form>
     </section>
 </body>
