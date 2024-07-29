@@ -1,12 +1,17 @@
 package com.academic.controller;
 
+import com.academic.dto.StdDTO;
 import com.academic.dto.UserDTO;
 import com.academic.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/user")
@@ -36,7 +41,19 @@ public class UserController {
     /***************학생 정보*******************/
 
     @GetMapping("/info_management")
-    public void get_info(){
+    public String get_info(
+            @AuthenticationPrincipal UserDTO userDTO,
+            Model model
+    ) {
+        StdDTO userInfo = userService.select_user_info_service(userDTO.getId());
+        if (userInfo != null) {
+            System.out.println("User Info: " + userInfo);
+            model.addAttribute("userInfo", userInfo);
+        } else {
+            System.out.println("User Info is null");
+        }
+        return "user/info_management";
     }
+
 
 }

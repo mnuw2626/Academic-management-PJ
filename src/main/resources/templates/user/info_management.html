@@ -17,7 +17,7 @@
             <table border="1">
                 <tr>
                     <th class="info-menu-th">학번</th>
-                    <th class="info-menu-th">2021123456</th>
+                    <td th:text="${userInfo.no}"></td>
                 </tr>
             </table>
         </section>
@@ -28,39 +28,39 @@
                 <tbody>
                     <tr>
                         <th class="info-menu-th">이름</th>
-                        <th>양준식</th>
+                        <td th:text="${userInfo.name}">양준식</td>
                     </tr>
-                    <tr>
+                    <tr >
                         <th class="info-menu-th">단과대학</th>
-                        <th>공대</th>
+                        <td th:text="${userInfo.collegeId}">공대</td>
                     </tr>
-                    <tr>
+                    <tr >
                         <th class="info-menu-th">학과</th>
-                        <th>컴퓨터공학과</th>
+                        <td th:text="${userInfo.deptId}">컴퓨터공학과</td>
                     </tr>
-                    <tr>
+                    <tr >
                         <th class="info-menu-th">학년</th>
-                        <th>4</th>
+                        <td th:text="${userInfo.grade}">4</td>
+                    </tr>
+                    <tr >
+                        <th class="info-menu-th">학기</th>
+                        <td th:text="${userInfo.semester}"></td>
                     </tr>
                     <tr>
                         <th class="info-menu-th">아이디</th>
-                        <th th:text="${#authentication.principal.id}"></th>
+                        <td th:text="${userInfo.id}">wnstlr@naver.com</td>
                     </tr>
                     <tr>
-                        <th class="info-menu-th">이메일</th>
-                        <th>wnstlr@naver.com</th>
+                        <th class="info-menu-th">비밀번호</th>
+                        <td th:text="${userInfo.password}">01026478541</td>
                     </tr>
                     <tr>
-                        <th class="info-menu-th">전화번호</th>
-                        <th>01026478541</th>
-                    </tr>
-                    <tr>
-                        <th class="info-menu-th">담당교수</th>
-                        <th>문창성</th>
+                        <th th class="info-menu-th">전화번호</th>
+                        <td th:text="${userInfo.tel}">01026786242</td>
                     </tr>
                 </tbody>
-            </table>
-        </section>
+        </table>
+    </section>
 
         <button class="modify-btn">수정하기</button>
     </section>
