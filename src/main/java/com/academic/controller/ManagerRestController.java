@@ -15,6 +15,7 @@ public class ManagerRestController {
     @Autowired
     ManagerService managerService;
 
+    // 단과대학 조회
     @GetMapping("/colleges")
     public List<CollegeDTO> get_find_college(){
         return managerService.get_colleges();
