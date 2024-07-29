@@ -33,12 +33,11 @@ public class CustomUserDetailsService implements UserDetailsService{
         }
         switch (findUser.getNo()){
             case 1111:
-                findUser.setAuthorities(List.of(new SimpleGrantedAuthority("ROLE_MANAGER")));
+                findUser.setAuthorities(List.of(new SimpleGrantedAuthority("MANAGER")));
+                break;
             default:
-                findUser.setAuthorities(List.of(new SimpleGrantedAuthority("ROLE_STUDENT")));
-
+                findUser.setAuthorities(List.of(new SimpleGrantedAuthority("STUDENT")));
         }
-
         // 유저 있으면 성공
         return findUser;
     }
