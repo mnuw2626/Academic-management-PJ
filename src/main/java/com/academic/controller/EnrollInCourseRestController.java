@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
-@RestController
+@RestController("/course")
 public class EnrollInCourseRestController {
     @Autowired
     EnrollInCourseService enrollInCourseService;
 
     // 전체 강의 조회
-    @GetMapping("/course/lectures")
+    @GetMapping("/lectures")
     public List<LectureDTO> get_lectures() {
         return enrollInCourseService.get_all_lectures();
     }

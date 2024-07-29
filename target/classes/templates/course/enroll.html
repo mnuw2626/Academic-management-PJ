@@ -1,11 +1,17 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layout/main-layout}"
+>
 <head>
     <meta charset="UTF-8">
     <title>학사관리 | 수강신청</title>
-    <link rel="stylesheet" href="../../static/css/course/enroll.css">
+    <link rel="stylesheet" href="../../static/css/course/enroll.css" th:href="@{/css/course/enroll.css}">
 
     <script src="https://kit.fontawesome.com/61293ff96f.js" crossorigin="anonymous"></script>
+    <script src="../../static/js/course/enroll.js" th:src="@{/js/course/enroll.js}" defer></script>
 </head>
 <body>
     <main>
@@ -46,7 +52,7 @@
                                 <th>재수강</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="course-table-tbody">
                             <tr>
                                 <td>1</td>
                                 <td>교양</td>

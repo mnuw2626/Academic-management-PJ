@@ -18,6 +18,5 @@ public class EnrollInCourseController {
     // 강의 계획서 페이지
     @GetMapping("/course")
     public void get_course() {
-
     }
 }

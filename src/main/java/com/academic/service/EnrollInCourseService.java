@@ -18,4 +18,9 @@ public class EnrollInCourseService {
     public List<LectureDTO> get_all_lectures() {
         return enrollInCourseMapper.select_all_lectures();
     }
+
+    //수강신청기간인지 비교
+    public void compare_enrollDate(){
+
+    }
 }
