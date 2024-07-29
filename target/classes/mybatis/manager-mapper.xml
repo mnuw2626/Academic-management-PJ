@@ -21,11 +21,8 @@
                 AND name = #{name}
             </if>
             <if test="stdNo != null and stdNo != ''">
-                AND stdNo = #{stdNo}
+                AND std_no = #{stdNo}
             </if>
-
-
-
         </where>
     </select>
 

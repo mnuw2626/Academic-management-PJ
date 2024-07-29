@@ -30,7 +30,7 @@ public class MainController {
     @GetMapping("/course/enroll")
     public void get_enroll(
     ){
-//        enrollInCourseService.compare_enrollDate();
+        enrollInCourseService.compare_enrollDate();
     }
 
 }

@@ -16,27 +16,27 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `grade`
+-- Table structure for table `room`
 --
 
-DROP TABLE IF EXISTS `grade`;
+DROP TABLE IF EXISTS `room`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `grade` (
-  `grade` varchar(2) NOT NULL,
-  `grade_value` float DEFAULT NULL,
-  PRIMARY KEY (`grade`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='등급(A+,A,...)관련 점수환산 테이블';
+CREATE TABLE `room` (
+  `room_no` varchar(20) NOT NULL,
+  `college_id` int DEFAULT NULL,
+  PRIMARY KEY (`room_no`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='강의실 정보 테이블';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `grade`
+-- Dumping data for table `room`
 --
 
-LOCK TABLES `grade` WRITE;
-/*!40000 ALTER TABLE `grade` DISABLE KEYS */;
-INSERT INTO `grade` VALUES ('A-',3.7),('A+',4.3),('A0',4),('B-',2.7),('B+',3.3),('B0',3),('C-',1.7),('C+',2.3),('C0',2),('D-',0.7),('D+',1.3),('D0',1),('F',0);
-/*!40000 ALTER TABLE `grade` ENABLE KEYS */;
+LOCK TABLES `room` WRITE;
+/*!40000 ALTER TABLE `room` DISABLE KEYS */;
+INSERT INTO `room` VALUES ('101',1),('102',1),('103',1),('201',2),('202',2),('203',2),('301',3),('302',3),('303',3);
+/*!40000 ALTER TABLE `room` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -48,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-29 21:24:51
+-- Dump completed on 2024-07-23 19:35:07

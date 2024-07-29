@@ -4,7 +4,7 @@ const couresTableBobyTag = document.getElementById('course-table-tbody');
 console.log(viewBtn);
 
 viewBtn.onclick = () => {
-    fetch(`lectures`)
+    fetch(`/course/lectures`)
         .then(response => response.json())
         .then(value => {
             couresTableBobyTag.innerHTML = '';

@@ -24,7 +24,7 @@ DROP TABLE IF EXISTS `tuition`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tuition` (
   `std_no` int NOT NULL,
-  `semester` int DEFAULT NULL,
+  `amount` int DEFAULT NULL,
   `status` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`std_no`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci COMMENT='등록금 입금 여부 테이블';
@@ -48,4 +48,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-07-23 19:35:07
+-- Dump completed on 2024-07-29 21:24:53

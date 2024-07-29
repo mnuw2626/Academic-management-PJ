@@ -2,9 +2,10 @@ const viewBtn = document.getElementById('course-find-btn');
 const couresTableBobyTag = document.getElementById('course-table-tbody');
 
 viewBtn.onclick = () => {
-    fetch(`lectures`)
+    fetch(`/course/lectures`)
         .then(response => response.json())
         .then(value => {
+            console.log(value);
             couresTableBobyTag.innerHTML = '';
             for (const lecture of value){
                 couresTableBobyTag.insertAdjacentHTML(`beforeend`,
@@ -13,6 +14,7 @@ viewBtn.onclick = () => {
                             <td>${lecture.type}</td>
                             <td>${lecture.grade}</td>
                             <td>${lecture.credit}</td>
+                            <td><button class="class-btn">수강</button></td>
                             <td>${lecture.code}</td>
                             <td>${lecture.name}</td>
                             <td>${lecture.professor}</td>

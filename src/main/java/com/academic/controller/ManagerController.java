@@ -66,11 +66,11 @@ public class ManagerController {
         get_db_college_depart_info(model);
     }
 
-    // 수강 기간 설정
+    // 수강 기간 설정페이지 이동
     @GetMapping("/enrolment")
     public void get_enrolment(){
-
     }
+
 
     /*  단과대학과 해당된 단과대학의 학과를 DB에서 조회하는 함수  */
     private void get_db_college_depart_info(Model model){
