@@ -14,12 +14,14 @@
 </head>
 <body>
     <section class="enrolment-main" layout:fragment="main-section">
-        <form class="enrolment-form" th:action="@{/manager/enrolment}" method="post">
+        <form class="enrolment-form" method="post">
             <h2>수강 신청 기간 설정</h2>
             <label class="enrolment-input-data">
-                <input type="date" name="start-date"> ~ <input type="date" name="end-date">
+                <input type="date" id="start-date" name="startDate" required>
+                ~
+                <input type="date" id="end-date" name="endDate" required>
             </label>
-            <button id="enrolment-btn">설정</button>
+            <button class="enrolment-btn" id="enrolment-btn">설정</button>
         </form>
     </section>
 </body>

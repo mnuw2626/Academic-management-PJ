@@ -8,8 +8,6 @@ import com.academic.service.ManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 import java.util.List;
 
@@ -19,7 +17,6 @@ import java.util.List;
 public class ManagerController {
     @Autowired
     ManagerService managerService;
-
 
     @GetMapping("/add_std")
     public void get_add_std(
@@ -66,11 +63,6 @@ public class ManagerController {
         get_db_college_depart_info(model);
     }
 
-    // 수강 기간 설정페이지 이동
-    @GetMapping("/enrolment")
-    public void get_enrolment(){
-    }
-
 
     /*  단과대학과 해당된 단과대학의 학과를 DB에서 조회하는 함수  */
     private void get_db_college_depart_info(Model model){
@@ -84,5 +76,10 @@ public class ManagerController {
         List<DepartmentDTO> departments = managerService.get_departments(college1_id);
         model.addAttribute("departments", departments);
     }
+
+
+    // 수강 신청 페이지 이동
+    @GetMapping("/enrolment")
+    public void get_enrolment(){}
 
 }
