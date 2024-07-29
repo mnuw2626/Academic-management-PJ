@@ -1,11 +1,31 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
-        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.academic.mapper.UserMapper">
+    <resultMap id="user_with_students_map" type="com.academic.dto.StdDTO" autoMapping="true">
+        <id property="id" column="id" />
+        <result property="password" column="password" />
+        <result property="tel" column="tel" />
+        <result property="no" column="no" />
+        <result property="stdNo" column="std_no" />
+        <result property="name" column="name" />
+        <result property="collegeId" column="college_id" />
+        <result property="deptId" column="dept_id" />
+        <result property="grade" column="grade" />
+        <result property="semester" column="semester" />
+    </resultMap>
 
     <select id="select_userInfo" resultType="com.academic.dto.UserDTO">
         SELECT * FROM `user`
         Where id = #{id}
+    </select>
+
+    <select id="select_all_userInfo" parameterType="String" resultMap="user_with_students_map">
+        SELECT U.*, S.*
+        FROM `student` AS S
+                 INNER JOIN `user` AS U
+                            ON U.no= S.std_no
+        WHERE U.id = #{id}
     </select>
 
     <insert id="insert_user">

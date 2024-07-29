@@ -18,13 +18,19 @@ public class ManagerService {
     ManagerMapper managerMapper;
 
     public boolean manager_add_std(StdDTO stdDTO) {
-
         managerMapper.insert_std(stdDTO);
         return true;
     }
 
-    public List<StdDTO> manager_std_list_check(StdDTO stdDTO) {
-        return managerMapper.select_std(stdDTO);
+    public List<StdDTO> manager_std_list_check(
+            Integer collegeId,
+            Integer deptId,
+            Integer grade,
+            Integer semester,
+            String name,
+            String stdNo
+    ) {
+        return managerMapper.select_std(collegeId, deptId, grade, semester, name, stdNo);
     }
 
 

@@ -4,11 +4,8 @@ import lombok.*;
 
 @Getter
 @Setter
-@Builder
 @ToString
-@NoArgsConstructor
-@AllArgsConstructor
-public class StdDTO {
+public class StdDTO extends UserDTO{
     private int stdNo;
     private String name;
     private int collegeId;

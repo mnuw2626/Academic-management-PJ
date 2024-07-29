@@ -7,12 +7,10 @@ import com.academic.dto.StdDTO;
 import com.academic.service.ManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.web.bind.annotation.ResponseBody;
+
 import java.util.List;
 
 
@@ -43,19 +41,19 @@ public class ManagerController {
     //학생 명단 조회 페이지 이동
     @GetMapping("/student_list_check")
     public void student_list_check(
+            @RequestParam(required = false) Integer collegeId,
+            @RequestParam(required = false) Integer deptId,
+            @RequestParam(required = false) Integer grade,
+            @RequestParam(required = false) Integer semester,
+            @RequestParam(required = false) String name,
+            @RequestParam(required = false) String stdNo,
             Model model
     ){
-        get_db_college_depart_info(model);
-    }
-
-    // 학생 명단 조회 기능
-    @GetMapping("/student_list")
-    public ResponseEntity<List<StdDTO>> get_student_list(
-            @AuthenticationPrincipal StdDTO stdDTO
-    ) {
         System.out.println("학생명단조회시작");
-        List<StdDTO> stdDTOS = managerService.manager_std_list_check(stdDTO);
-        return ResponseEntity.ok(stdDTOS);
+        List<StdDTO> stds = managerService.manager_std_list_check(collegeId, deptId, grade, semester ,name, stdNo);
+        model.addAttribute("stds", stds);
+        //단과대 조회
+        get_db_college_depart_info(model);
     }
 
 
@@ -86,4 +84,5 @@ public class ManagerController {
         List<DepartmentDTO> departments = managerService.get_departments(college1_id);
         model.addAttribute("departments", departments);
     }
+
 }
