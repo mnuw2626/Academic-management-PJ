@@ -85,4 +85,7 @@ public class ManagerController {
         model.addAttribute("departments", departments);
     }
 
+    /******************** 등록금 발송  *******************/
+    
+
 }
