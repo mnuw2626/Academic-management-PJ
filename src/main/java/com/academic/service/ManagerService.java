@@ -3,6 +3,7 @@ package com.academic.service;
 import com.academic.dto.CollegeDTO;
 import com.academic.dto.DepartmentDTO;
 import com.academic.dto.StdDTO;
+import com.academic.dto.TuitionDTO;
 import com.academic.mapper.ManagerMapper;
 import com.fasterxml.jackson.databind.BeanProperty;
 import lombok.extern.log4j.Log4j2;
@@ -22,6 +23,7 @@ public class ManagerService {
         return true;
     }
 
+    //학생 개개인 명단 조회
     public List<StdDTO> manager_std_list_check(
             Integer collegeId,
             Integer deptId,
@@ -42,5 +44,17 @@ public class ManagerService {
     //    단과대학에 따른 학과 조회
     public List<DepartmentDTO> get_departments(Integer collegeId) {
         return managerMapper.select_dept(collegeId);
+    }
+
+    // 단과대별 등록금 가져오기
+    public List<TuitionDTO> get_tuitions() {
+        return managerMapper.select_std_scholarship();
+    }
+
+    // 등록금 내역 발송
+    public void send_scholarship(
+            List<TuitionDTO> tuitionDTOS
+    ){
+        managerMapper.insert_scholarship(tuitionDTOS);
     }
 }

@@ -1,12 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layout/main-layout}"
+>
 <head>
     <meta charset="UTF-8">
     <title>bill</title>
-    <link rel="stylesheet" href="../../static/css/ scholarship/bill.css">
+    <link rel="stylesheet" href="../../static/css/ scholarship/bill.css" th:href="@{/css/ scholarship/bill.css}">
 </head>
 <body>
-    <section class="bill-main-section">
+    <section class="bill-main-section" layout:fragment="main-section">
         <h1>등록금 납부 고지서</h1>
 
         <section class="bill-section">

@@ -2,6 +2,7 @@ package com.academic.controller;
 
 import com.academic.dto.CollegeDTO;
 import com.academic.dto.DepartmentDTO;
+import com.academic.dto.TuitionDTO;
 import org.springframework.ui.Model;
 import com.academic.dto.StdDTO;
 import com.academic.service.ManagerService;
@@ -86,6 +87,11 @@ public class ManagerController {
     }
 
     /******************** 등록금 발송  *******************/
-    
+    //등록금 발송 페이지 이동
+    @GetMapping("/send")
+    public void send(){
+        List<TuitionDTO> tuitionDTOS = managerService.get_tuitions();
+        managerService.send_scholarship(tuitionDTOS);
+    }
 
 }

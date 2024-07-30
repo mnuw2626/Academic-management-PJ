@@ -40,4 +40,25 @@
         WHERE college_id = #{collegeId}
         ORDER BY `name`
     </select>
+
+<!--    장학금 관련 -->
+
+    <select id="select_std_scholarship" resultType="com.academic.dto.TuitionDTO">
+        SELECT S.std_no, C.amount
+        FROM `student` AS S
+                 INNER JOIN `college_tuit` AS C
+                 ON S.college_id = C.college_id
+    </select>
+
+    <insert id="insert_scholarship">
+        INSERT INTO `tuition` (`std_no`, `status`, `amount`)
+        VALUES
+        <foreach collection="tuitionDTOS" item="item" separator=",">
+            (#{item.stdNo}, #{item.status}, #{item.amount})
+        </foreach>
+        ON DUPLICATE KEY UPDATE
+        `status` = VALUES(`status`),
+        `amount` = VALUES(`amount`)
+    </insert>
+
 </mapper>
