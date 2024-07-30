@@ -13,59 +13,59 @@
     <script src="https://kit.fontawesome.com/61293ff96f.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
     <main>
         <section layout:fragment="main-section" class="main-section">
-        <aside class="nav-bar">
-            <h1>학사행정</h1>
-            <nav class="academic-nav">
-                <ul class="main-category">
-                    <li>
-                        <a href="#">학적</a>
-                        <ul class="sub-category">
-                            <li><a href="#">기본정보</a></li>
-                            <li><a href="#">성적</a></li>
-                            <li><a href="#">수업</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">등록</a>
-                        <ul class="sub-category">
-                            <li><a href="#">등록금 납부/조회</a></li>
-                            <li><a href="#">등록금 납부 확인서</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">복학/휴학</a>
-                        <ul class="sub-category">
-                            <li><a href="#">휴학 신청</a></li>
-                            <li><a href="#">복학 신청</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">수강신청</a>
-                        <ul class="sub-category">
-                            <li><a href="#">강의 계획서</a></li>
-                            <li><a href="#">수강 꾸러미</a></li>
-                            <li><a href="#">수강 신청</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">학사정보</a>
-                        <ul class="sub-category">
-                            <li><a href="#">공지사항</a></li>
-                            <li><a href="#">학사일정</a></li>
-                        </ul>
-                    </li>
-                </ul>
-            </nav>
-        </aside>
+            <aside class="nav-bar">
+                <h1>학사행정</h1>
+                <nav class="academic-nav">
+                    <ul class="main-category">
+                        <li>
+                            <a href="#">학적</a>
+                            <ul class="sub-category">
+                                <li><a href="#">기본정보</a></li>
+                                <li><a href="#">성적</a></li>
+                                <li><a href="#">수업</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">등록</a>
+                            <ul class="sub-category">
+                                <li><a href="#">등록금 납부/조회</a></li>
+                                <li><a href="#">등록금 납부 확인서</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">복학/휴학</a>
+                            <ul class="sub-category">
+                                <li><a href="#">휴학 신청</a></li>
+                                <li><a href="#">복학 신청</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">수강신청</a>
+                            <ul class="sub-category">
+                                <li><a href="#">강의 계획서</a></li>
+                                <li><a href="#">수강 꾸러미</a></li>
+                                <li><a href="#">수강 신청</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">학사정보</a>
+                            <ul class="sub-category">
+                                <li><a href="#">공지사항</a></li>
+                                <li><a href="#">학사일정</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+        </section>
 
         <section class="main-section">
             <div class="individual-div">
                 <div class="individual-privacy">
                     <div class="individual-name" th:text="${#authentication.principal.id}">이름</div> <br>
-                    <div class="individual-studentId" >학번</div> <br>
+                    <div class="individual-studentId">학번</div> <br>
                     <div class="individual-department">자연과학대학 | 물리학과</div>
                 </div>
                 <div class="individual-input">
@@ -120,7 +120,7 @@
             <div class="main-service">
                 <div class="service-div">주요 서비스</div>
                     <div class="enrolment">
-                    <a href="#"><i class="fa-regular fa-pen-to-square"></i></a><span>수강신청</span>
+                    <a href="/course/enroll"><i class="fa-regular fa-pen-to-square"></i></a><span>수강신청</span>
                 </div>
                 <div class="campus-map">
                     <a href="#"><i class="fa-regular fa-map"></i></a><span>캠퍼스 맵</span>
@@ -128,9 +128,5 @@
             </div>
         </section>
     </main>
-
-<!--    <i class="fa-solid fa-minus"></i>-->
-<!--    <i class="fa-solid fa-plus"></i>-->
-<!--    <i class="fa-solid fa-chevron-down"></i>-->
 </body>
 </html>
