@@ -12,4 +12,5 @@ public class StdDTO extends UserDTO{
     private int deptId;
     private int grade;
     private int semester;
+    private TuitionDTO tuitionDTO;
 }

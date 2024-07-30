@@ -1,6 +1,7 @@
 package com.academic.service;
 
 import com.academic.dto.StdDTO;
+import com.academic.dto.TuitionDTO;
 import com.academic.dto.UserDTO;
 import com.academic.mapper.UserMapper;
 import lombok.extern.log4j.Log4j2;
@@ -30,4 +31,15 @@ public class UserService {
     public StdDTO select_user_info_service(String id){
         return userMapper.select_all_userInfo(id); // 단일 사용자 반환;
     }
+
+    /**************등록금 정보 가져오기***************/
+    public StdDTO select_user_scholarship(Integer no){
+        return userMapper.select_scholarship(no);
+    }
+
+    /**************등록금 납부***************/
+    public void update_scholarship(Integer no){
+        userMapper.update_std_scholarship(no);
+    }
+
 }
