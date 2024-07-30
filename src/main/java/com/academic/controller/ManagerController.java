@@ -27,12 +27,12 @@ public class ManagerController {
     @GetMapping("/add_std")
     public void get_add_std(
             Model model
-    ){
+    ) {
         get_db_college_depart_info(model);
     }
 
     @PostMapping("/add_std")
-    public String post_add_std(StdDTO stdDTO){
+    public String post_add_std(StdDTO stdDTO) {
         System.out.println("학생등록시도");
 //        System.out.println("학생 정보 : " + stdDTO);
         managerService.manager_add_std(stdDTO);
@@ -51,27 +51,27 @@ public class ManagerController {
             @RequestParam(required = false) String name,
             @RequestParam(required = false) String stdNo,
             Model model
-    ){
+    ) {
         System.out.println("학생명단조회시작");
-        List<StdDTO> stds = managerService.manager_std_list_check(collegeId, deptId, grade, semester ,name, stdNo);
+        List<StdDTO> stds = managerService.manager_std_list_check(collegeId, deptId, grade, semester, name, stdNo);
         model.addAttribute("stds", stds);
         //단과대 조회
         get_db_college_depart_info(model);
     }
 
 
-   /******************** 성적 등록  *******************/
+    /******************** 성적 등록  *******************/
     // 성적 등록 페이지 이동
     @GetMapping("/stuscore_regist")
     public void get_stuscore_regist(
-                Model model
-    ){
+            Model model
+    ) {
         get_db_college_depart_info(model);
     }
 
 
     /*  단과대학과 해당된 단과대학의 학과를 DB에서 조회하는 함수  */
-    private void get_db_college_depart_info(Model model){
+    private void get_db_college_depart_info(Model model) {
         // 페이지 접속 시 단과대학을 DB에서 조회
         List<CollegeDTO> colleges = managerService.get_colleges();
         model.addAttribute("colleges", colleges);
@@ -83,37 +83,22 @@ public class ManagerController {
         model.addAttribute("departments", departments);
     }
 
+    // 수강신청기간 설정 페이지
     @GetMapping("/enrolment")
     public void get_enrollment() {
+        enrollInCourseService.set_enrollDate(null, null);//예전에 설정된 시작,종료 날짜 초기화
         System.out.println("수강신청페이지");
     }
 
+    // 수강 신청 기간일 때 페이지(수강신청기간 설정 페이지에서 설정 버튼을 누르면 아래 GetMapping 실행 )
     @GetMapping("/enrolmentStatus")
-    public void enrolmentStatus() {
+    public void enrolmentStatus(
+            Model model
+    ) {
+        EnrollmentDateDTO peroid = enrollInCourseService.get_current_period();
+        System.out.println(peroid);
+        model.addAttribute("peroid", peroid);
         System.out.println("수강신청중");
     }
 
-    // 수강 기간 설정
-    @GetMapping("/set-period")
-    public String setPeriodPage(Model model) {
-        System.out.println("수강신청레스트컨트롤러동작");
-        EnrollmentDateDTO period = enrollInCourseService.get_current_period();
-        model.addAttribute("period", period);
-        return "redirect:/manager/enrolment";
-    }
-
-    @PostMapping("/set-period")
-    public String post_set_enrolmentDate(
-            @RequestParam("startDate") LocalDate startDate,
-            @RequestParam("endDate") LocalDate endDate
-    ){
-        System.out.println("시작 날짜 : " + startDate + ", 종료 날짜 :" + endDate);
-        enrollInCourseService.set_enrollDate(startDate, endDate);
-        return "redirect:/manager/enrolmentStatus";
-    }
-
-    @PostMapping("/end-period")
-    public String endPeriod() {
-        return "redirect:/manager/enrolment";
-    }
 }

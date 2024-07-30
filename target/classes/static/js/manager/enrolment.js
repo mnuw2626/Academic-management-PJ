@@ -1,3 +1,5 @@
+const startDateInput = document.getElementById('start-date');
+const endDateInput = document.getElementById('end-date');
 
 // 수강 신청 날짜를 오늘 날짜보다 이후로
 const nowDate = new Date();

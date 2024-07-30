@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.time.LocalDate;
 
@@ -28,15 +29,15 @@ public class MainController {
     public void get_course(){}
 
     @GetMapping("/course/enroll")
-    public String get_enroll(
-            Model model
-    ){
+    public String get_enroll(){
         LocalDate today = LocalDate.now();
-        if (enrollInCourseService.compare_enrollDate_now(today)) {
+        boolean result = enrollInCourseService.compare_enrollDate_now(today);
+        if(result){
             return "course/enroll";
-        } else {
-            model.addAttribute("message", "수강신청기간이 아닙니다."); // 알림창뜨게 문의
-            return "main";
+        }
+        else
+        {
+            return "redirect:/main";
         }
     }
 
