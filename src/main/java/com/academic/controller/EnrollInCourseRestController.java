@@ -24,6 +24,7 @@ public class EnrollInCourseRestController {
         return enrollInCourseService.get_all_lectures();
     }
 
+    //수강신청기간 비교(현재 날짜가 설정된 시작, 종료 날짜 사이이면 true, 아니면 false 반환 )
     @GetMapping("/course/is/enroll")
     public Boolean get_enroll(){
         LocalDate today = LocalDate.now();
