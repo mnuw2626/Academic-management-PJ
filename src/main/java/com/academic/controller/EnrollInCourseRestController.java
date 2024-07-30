@@ -1,14 +1,13 @@
 package com.academic.controller;
 
 
-import com.academic.dto.EnrollmentDateDTO;
+import com.academic.dto.CollegeDTO;
+import com.academic.dto.DepartmentDTO;
 import com.academic.dto.LectureDTO;
 import com.academic.service.EnrollInCourseService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 
 import java.time.LocalDate;
 import java.util.List;
@@ -29,6 +28,20 @@ public class EnrollInCourseRestController {
     public Boolean get_enroll(){
         LocalDate today = LocalDate.now();
         return enrollInCourseService.compare_enrollDate_now(today);
+    }
+
+    // 단과대학 조회
+    @GetMapping("/colleges")
+    public List<CollegeDTO> get_find_college(){
+        return enrollInCourseService.get_colleges();
+    }
+
+    // 단과대학에 해당하는 학과 정보 조회
+    @GetMapping("/college/{collegeId}/depart")
+    public List<DepartmentDTO> get_find_department(
+            @PathVariable Integer collegeId
+    ){
+        return enrollInCourseService.get_departments(collegeId);
     }
 
 }

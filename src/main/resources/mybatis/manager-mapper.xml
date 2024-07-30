@@ -30,14 +30,4 @@
         insert into `student` (`std_no`, `name`, `college_id`, `dept_id`, `grade`, `semester`)
         values(#{stdNo}, #{name}, #{collegeId}, #{deptId}, #{grade}, #{semester})
     </insert>
-
-    <select id="select_colleges" resultType="com.academic.dto.CollegeDTO">
-        SELECT * FROM `college`
-    </select>
-
-    <select id="select_dept" resultType="com.academic.dto.DepartmentDTO">
-        SELECT * FROM `department`
-        WHERE college_id = #{collegeId}
-        ORDER BY `name`
-    </select>
 </mapper>
