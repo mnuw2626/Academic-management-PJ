@@ -2,16 +2,14 @@ package com.academic.dto;
 
 import lombok.*;
 
+@Getter
 @Setter
-@Builder
 @ToString
-@NoArgsConstructor
-@AllArgsConstructor
-public class StdDTO {
-    private String std_no;
+public class StdDTO extends UserDTO{
+    private int stdNo;
     private String name;
-    private String college_id;
-    private String dept_id;
-    private String grade;
-    private String semester;
+    private int collegeId;
+    private int deptId;
+    private int grade;
+    private int semester;
 }

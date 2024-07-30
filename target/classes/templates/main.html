@@ -15,53 +15,6 @@
 <body>
     <main>
         <section layout:fragment="main-section" class="main-section">
-            <aside class="nav-bar">
-                <h1>학사행정</h1>
-                <nav class="academic-nav">
-                    <ul class="main-category">
-                        <li>
-                            <a href="#">학적</a>
-                            <ul class="sub-category">
-                                <li><a href="#">기본정보</a></li>
-                                <li><a href="#">성적</a></li>
-                                <li><a href="#">수업</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">등록</a>
-                            <ul class="sub-category">
-                                <li><a href="#">등록금 납부/조회</a></li>
-                                <li><a href="#">등록금 납부 확인서</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">복학/휴학</a>
-                            <ul class="sub-category">
-                                <li><a href="#">휴학 신청</a></li>
-                                <li><a href="#">복학 신청</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">수강신청</a>
-                            <ul class="sub-category">
-                                <li><a href="#">강의 계획서</a></li>
-                                <li><a href="#">수강 꾸러미</a></li>
-                                <li><a href="#">수강 신청</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="#">학사정보</a>
-                            <ul class="sub-category">
-                                <li><a href="#">공지사항</a></li>
-                                <li><a href="#">학사일정</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </nav>
-            </aside>
-        </section>
-
-        <section class="main-section">
             <div class="individual-div">
                 <div class="individual-privacy">
                     <div class="individual-name" th:text="${#authentication.principal.id}">이름</div> <br>
@@ -70,7 +23,10 @@
                 </div>
                 <div class="individual-input">
                     <input type="button" value="비밀번호 변경">
-                    <a th:href="@{/user/logout}">로그아웃</a>
+                    <!--       로그아웃 post요청으로 변경(form으로 변경)             -->
+                    <form th:action="@{/user/logout}" method="post">
+                        <button>로그아웃</button>
+                    </form>
                 </div>
             </div>
             <div class="content-div">
@@ -128,5 +84,9 @@
             </div>
         </section>
     </main>
+
+<!--    <i class="fa-solid fa-minus"></i>-->
+<!--    <i class="fa-solid fa-plus"></i>-->
+<!--    <i class="fa-solid fa-chevron-down"></i>-->
 </body>
 </html>

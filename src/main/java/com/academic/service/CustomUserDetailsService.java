@@ -4,10 +4,13 @@ import com.academic.dto.UserDTO;
 import com.academic.mapper.UserMapper;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 // Login창에서 로그인 버튼 누르면 여기로 자동으로 온다
 //loadUserByUsername이 자동실행됨
@@ -28,6 +31,14 @@ public class CustomUserDetailsService implements UserDetailsService{
         if (findUser == null){
             throw new UsernameNotFoundException("user not found");
         }
+        switch (findUser.getNo()){
+            case 1111:
+                findUser.setAuthorities(List.of(new SimpleGrantedAuthority("MANAGER")));
+                break;
+            default:
+                findUser.setAuthorities(List.of(new SimpleGrantedAuthority("STUDENT")));
+        }
+
         // 유저 있으면 성공
         return findUser;
     }

@@ -1,11 +1,16 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+>
 <head>
     <meta charset="UTF-8">
     <title>학사관리 | 수강신청</title>
-    <link rel="stylesheet" href="../../static/css/course/enroll.css">
+    <link rel="stylesheet" href="../../static/css/course/enroll.css" th:href="@{/css/course/enroll.css}">
 
     <script src="https://kit.fontawesome.com/61293ff96f.js" crossorigin="anonymous"></script>
+    <script src="../../static/js/course/enroll.js" th:src="@{/js/course/enroll.js}" defer></script>
 </head>
 <body>
     <main>
@@ -46,37 +51,37 @@
                                 <th>재수강</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr>
-                                <td>1</td>
-                                <td>교양</td>
-                                <td>1</td>
-                                <td>3</td>
-                                <td><button class="class-btn">수강</button></td>
-                                <td>12345</td>
-                                <td>글쓰기의 이해</td>
-                                <td>김길동</td>
-                                <td>9:00 ~ 11:00</td>
-                                <td>월</td>
-                                <td>교육관 1실</td>
-                                <td> 12 / 100 </td>
-                                <td><span class="class-sign-new">신규</span></td>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>전공</td>
-                                <td>1</td>
-                                <td>3</td>
-                                <td><button class="class-btn">수강</button></td>
-                                <td>12345</td>
-                                <td>컴퓨터 구조</td>
-                                <td>홍길동</td>
-                                <td>9:00 ~ 11:00</td>
-                                <td>화</td>
-                                <td>교육관 1실</td>
-                                <td> 12 / 100 </td>
-                                <td><span class="class-sign-re">재수강</span></td>
-                            </tr>
+                        <tbody id="course-table-tbody">
+<!--                            <tr>-->
+<!--                                <td>1</td>-->
+<!--                                <td>교양</td>-->
+<!--                                <td>1</td>-->
+<!--                                <td>3</td>-->
+<!--                                <td><button class="class-btn">수강</button></td>-->
+<!--                                <td>12345</td>-->
+<!--                                <td>글쓰기의 이해</td>-->
+<!--                                <td>김길동</td>-->
+<!--                                <td>9:00 ~ 11:00</td>-->
+<!--                                <td>월</td>-->
+<!--                                <td>교육관 1실</td>-->
+<!--                                <td> 12 / 100 </td>-->
+<!--                                <td><span class="class-sign-new">신규</span></td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                                <td>1</td>-->
+<!--                                <td>전공</td>-->
+<!--                                <td>1</td>-->
+<!--                                <td>3</td>-->
+<!--                                <td><button class="class-btn">수강</button></td>-->
+<!--                                <td>12345</td>-->
+<!--                                <td>컴퓨터 구조</td>-->
+<!--                                <td>홍길동</td>-->
+<!--                                <td>9:00 ~ 11:00</td>-->
+<!--                                <td>화</td>-->
+<!--                                <td>교육관 1실</td>-->
+<!--                                <td> 12 / 100 </td>-->
+<!--                                <td><span class="class-sign-re">재수강</span></td>-->
+<!--                            </tr>-->
                         </tbody>
                     </table>
                 </div>

@@ -1,12 +1,12 @@
 @import "../public/public.css";
 
 .enrolment-main{
-    margin: 10px 10px;
-    width: 100%;
+    margin: 0 auto;
+    width: 900px;
     height: 100%;
     background-color: white;
 }
-.enrolment-div{
+.enrolment-form{
     width: 800px;
     margin: 50px auto;
 }

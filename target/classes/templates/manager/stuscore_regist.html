@@ -1,89 +1,160 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layout/manager-main-layout}"
+>
 <head>
     <meta charset="UTF-8">
     <title>학사관리 | 학생 성적 등록</title>
+    <link rel="stylesheet" href="../../static/css/manager/stuscore_regist.css" th:href="@{/css/manager/stuscore_regist.css}">
 
-    <link rel="stylesheet" href="../../static/css/manager/stuscore_regist.css">
+    <script src="https://kit.fontawesome.com/61293ff96f.js" crossorigin="anonymous"></script>
+    <script src="../../static/js/manager/stuscore_regist.js" th:src="@{/js/manager/stuscore_regist.js}" defer></script>
+
 </head>
 <body>
-    <main>
-        <section class="stuscore-main">
-           <table class="student-table stuscore-table">
-               <thead>
-                    <tr>
-                        <th>학번</th>
-                        <th>이름</th>
-                    </tr>
-               </thead>
-               <tbody>
-                    <tr>
-                        <td>2024000001</td>
-                        <td>김길동</td>
-                    </tr>
-               </tbody>
-           </table>
-            <form action="" method="post">
-                <table class="score-table stuscore-table">
-                    <thead>
-                    <tr>
-                        <th>과목코드</th>
-                        <th>과목이름</th>
-                        <th>성적(등급)</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1001</td>
-                            <td>데이터통신</td>
-                            <td>
-                                <label>
-                                <select name="score">
-                                    <option value="scoreA1">
-                                        A+
-                                    </option>
-                                    <option value="scoreA2">
-                                        A
-                                    </option>
-                                    <option value="scoreA3">
-                                        A-
-                                    </option>
-                                    <option value="scoreB1">
-                                        B+
-                                    </option>
-                                    <option value="scoreB2">
-                                        B
-                                    </option>
-                                    <option value="scoreB3">
-                                        B-
-                                    </option>
-                                    <option value="scoreC1">
-                                        C+
-                                    </option>
-                                    <option value="scoreC2">
-                                        C
-                                    </option>
-                                    <option value="scoreC3">
-                                        C-
-                                    </option>
-                                    <option value="scoreD1">
-                                        D+
-                                    </option>
-                                    <option value="scoreD2">
-                                        D
-                                    </option>
-                                    <option value="scoreD3">
-                                        D-
-                                    </option>
-                                </select>
-                                </label>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-                <button type="submit" id="score-register-btn">등록</button>
+    <section class="stuscore-main" layout:fragment="main-section">
+            <div class="student-info-title">
+                <section class="student-info-section">
+                    <!--   학생 정보 테이블      -->
+                    <span class="student-info-grade">
+                        <!-- 학년 -->
+                        <label>
+                            <select name="grade">
+                                <option value="1">
+                                    1학년
+                                </option>
+                                <option value="2">
+                                    2학년
+                                </option>
+                                <option value="3">
+                                    3학년
+                                </option>
+                                <option value="4">
+                                    4학년
+                                </option>
+                            </select>
+                        </label>
+                    </span>
+                    <span class="student-info-semester">
+                        <!-- 학기 -->
+                        <label>
+                            <select name="semester">
+                                <option value="1">
+                                    1학기
+                                </option>
+                                <option value="2">
+                                    2학기
+                                </option>
+                            </select>
+                        </label>
+                    </span>
+                    <span class="student-info-college">
+                        단과대학:
+                        <label>
+                            <!-- 단과대학 선택하게 -->
+                            <select id="collegeId">
+                                <option th:value="${college.id}" th:each="college : ${colleges}" th:text="${college.name}" >
+<!--                                    공과대학-->
+                                </option>
+<!--                                <option value="2">-->
+<!--                                    인문대학-->
+<!--                                </option>-->
+<!--                                <option value="3">-->
+<!--                                    사회과학대학-->
+<!--                                </option>-->
+                            </select>
+                        </label>
+                    </span>
+                    <span class="student-info-department">
+                        학과:
+                        <label>
+                            <!-- 학과 DB로 불러옴 -->
+                            <select id="deptId">
+                                <option th:value="${depart.id}" th:each="depart : ${departments}" th:text="${depart.name}">
+<!--                                    컴퓨터공학과-->
+                                </option>
+                            </select>
+                        </label>
+                    </span>
+                    <span class="student-info-no">
+                        학번 : <input type="text" />
+                    </span>
+                    <span class="student-info-name">
+                        이름 : <input type="text" />
+                    </span>
+                </section>
+                <button id="std-find-btn">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <span>조회</span>
+                </button>
+            </div>
+            <form class="stuscore-info-form" action="" method="post">
+            <!--     단과대학, 학과, 학번, 이름에 맞춰서 수강된 과목들 DB에서 불러오기 - 성적 등록 테이블    -->
+                <div class="stuscore-div-table">
+                    <table class="stuscore-table">
+                        <thead>
+                            <tr>
+                                <th>과목코드</th>
+                                <th>과목이름</th>
+                                <th>성적(등급)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1001</td>
+                                <td>데이터통신</td>
+                                <td>
+                                    <label>
+                                        <!--  grade DB와 매칭 -->
+                                        <select name="grade">
+                                            <option>
+                                                A+
+                                            </option>
+                                            <option>
+                                                A0
+                                            </option>
+                                            <option>
+                                                A-
+                                            </option>
+                                            <option>
+                                                B+
+                                            </option>
+                                            <option>
+                                                B0
+                                            </option>
+                                            <option>
+                                                B-
+                                            </option>
+                                            <option>
+                                                C+
+                                            </option>
+                                            <option>
+                                                C0
+                                            </option>
+                                            <option>
+                                                C-
+                                            </option>
+                                            <option>
+                                                D+
+                                            </option>
+                                            <option>
+                                                D0
+                                            </option>
+                                            <option>
+                                                D-
+                                            </option>
+                                        </select>
+                                    </label>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <button id="score-register-btn">등록</button>
             </form>
         </section>
-    </main>
 </body>
 </html>
