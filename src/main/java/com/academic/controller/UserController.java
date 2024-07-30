@@ -39,4 +39,10 @@ public class UserController {
         System.out.println("로그아웃 시도");
         return "redirect:/user/login";
     }
+
+    @GetMapping("/academic-calendar")
+    public void get_academic_calendar(){}
+
+    @GetMapping("/academic_notice")
+    public void get_academic_notice(){}
 }

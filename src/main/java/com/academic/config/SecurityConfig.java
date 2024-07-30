@@ -19,10 +19,10 @@ public class SecurityConfig {
 
         http.formLogin(config -> {
             config.loginPage("/user/login") //내가 쓰는 로그인 페이지 GETMAPPING경로
-//            .loginProcessingUrl("/user/login") //로그인을 시도하는 POST Mapping 경로
+            .loginProcessingUrl("/user/login") //로그인을 시도하는 POST Mapping 경로
             .usernameParameter("id") //로그인에서 아이디 input의 name값
-//            .passwordParameter("password") //비밀번호 input의 name값
-//            .defaultSuccessUrl("/main") //로그인 성공시 이동할 getmapping경로
+            .passwordParameter("password") //비밀번호 input의 name값
+            .defaultSuccessUrl("/main") //로그인 성공시 이동할 getmapping경로
             .successHandler(new LoginSuccessHandler()) //로그인 성공 시 로그인 성공 핸들러를 통해 main으로 이동할것인지 manager_main으로 이동할것인지 결정
             .permitAll();
 

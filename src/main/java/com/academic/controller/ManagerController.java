@@ -25,4 +25,12 @@ public class ManagerController {
         System.out.println("학생등록성공");
         return "redirect:/manager/add_std";
     }
+
+    @GetMapping("/notice")
+    public String get_notice(){
+        return "manager/manager_notice";
+    }
+
+    @GetMapping("/notice_write")
+    public void notice_write(){}
 }
