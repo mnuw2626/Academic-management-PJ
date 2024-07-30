@@ -2,6 +2,8 @@ package com.academic.controller;
 
 import com.academic.dto.CollegeDTO;
 import com.academic.dto.DepartmentDTO;
+import com.academic.dto.EnrollmentDateDTO;
+import com.academic.service.EnrollInCourseService;
 import org.springframework.ui.Model;
 import com.academic.dto.StdDTO;
 import com.academic.service.ManagerService;
@@ -9,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -17,6 +20,9 @@ import java.util.List;
 public class ManagerController {
     @Autowired
     ManagerService managerService;
+
+    @Autowired
+    EnrollInCourseService enrollInCourseService;
 
     @GetMapping("/add_std")
     public void get_add_std(
@@ -77,9 +83,37 @@ public class ManagerController {
         model.addAttribute("departments", departments);
     }
 
-
-    // 수강 신청 페이지 이동
     @GetMapping("/enrolment")
-    public void get_enrolment(){}
+    public void get_enrollment() {
+        System.out.println("수강신청페이지");
+    }
 
+    @GetMapping("/enrolmentStatus")
+    public void enrolmentStatus() {
+        System.out.println("수강신청중");
+    }
+
+    // 수강 기간 설정
+    @GetMapping("/set-period")
+    public String setPeriodPage(Model model) {
+        System.out.println("수강신청레스트컨트롤러동작");
+        EnrollmentDateDTO period = enrollInCourseService.get_current_period();
+        model.addAttribute("period", period);
+        return "redirect:/manager/enrolment";
+    }
+
+    @PostMapping("/set-period")
+    public String post_set_enrolmentDate(
+            @RequestParam("startDate") LocalDate startDate,
+            @RequestParam("endDate") LocalDate endDate
+    ){
+        System.out.println("시작 날짜 : " + startDate + ", 종료 날짜 :" + endDate);
+        enrollInCourseService.set_enrollDate(startDate, endDate);
+        return "redirect:/manager/enrolmentStatus";
+    }
+
+    @PostMapping("/end-period")
+    public String endPeriod() {
+        return "redirect:/manager/enrolment";
+    }
 }
