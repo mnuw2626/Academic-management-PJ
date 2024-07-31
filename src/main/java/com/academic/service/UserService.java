@@ -37,6 +37,17 @@ public class UserService {
         return userMapper.select_scholarship(no);
     }
 
+    public boolean std_status(Integer no){
+        StdDTO student = userMapper.select_scholarship(no);
+        int scholarship_ok = student.getTuitionDTO().getStatus();
+        if (scholarship_ok == 0)
+        {
+            return false;
+        }else {
+            return true;
+        }
+    }
+
     /**************등록금 납부***************/
     public void update_scholarship(Integer no){
         userMapper.update_std_scholarship(no);

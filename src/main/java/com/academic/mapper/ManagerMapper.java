@@ -23,6 +23,8 @@ public interface ManagerMapper {
             @Param("stdNo") String stdNo
     );
 
+    List<StdDTO> select_all_std_tuition();
+
     List<CollegeDTO> select_colleges();
 
     List<DepartmentDTO> select_dept(Integer collegeId);

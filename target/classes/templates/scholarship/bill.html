@@ -12,12 +12,17 @@
 </head>
 <body>
     <form th:action="@{/scholarship/bill}" class="bill-main-section" layout:fragment="main-section" method="post">
-        <h1>등록금 납부 고지서</h1>
+        <!-- CSRF 토큰을 숨겨진 필드로 추가 -->
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
+        <h1>등록금 납부 고지서</h1>
         <section class="bill-section">
             <h2>등록금 납부고지서</h2>
             <h3>2023년 <b>1학기</b></h3>
-            <section class="bill-section-cont">
+            <section class="bill-section-cont" th:if="${message != null}">
+                <p th:text="${message}"></p>
+            </section>
+            <section class="bill-section-cont" th:if="${message == null}">
                 <table>
                     <tr>
                         <td>단과대학</td>
@@ -54,7 +59,6 @@
                 </table>
                 <button class="bill-btn">납부하기</button>
             </section>
-
         </section>
     </form>
 </body>

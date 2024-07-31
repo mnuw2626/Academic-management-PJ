@@ -94,4 +94,13 @@ public class ManagerController {
         managerService.send_scholarship(tuitionDTOS);
     }
 
+    /******************** 등록금 제출 내역 조회  *******************/
+    @GetMapping("/bill_check")
+    public void get_bill_check(
+            Model model
+    ){
+        List<StdDTO> tuitionDTOS = managerService.get_all_std_tuitions();
+        model.addAttribute("stdTuitions", tuitionDTOS);
+    }
+
 }

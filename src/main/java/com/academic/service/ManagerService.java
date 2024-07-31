@@ -57,4 +57,9 @@ public class ManagerService {
     ){
         managerMapper.insert_scholarship(tuitionDTOS);
     }
+
+    // 모든 학생 등록금 제출 내역 조회
+    public List<StdDTO> get_all_std_tuitions(){
+        return managerMapper.select_all_std_tuition();
+    }
 }
