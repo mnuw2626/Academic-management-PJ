@@ -3,8 +3,9 @@ const couresTableBobyTag = document.getElementById('course-table-tbody');
 
 console.log(viewBtn);
 
+//조회버튼 클릭 시 전체 조회
 viewBtn.onclick = () => {
-    fetch(`lectures`)
+    fetch(`/course/lectures`)
         .then(response => response.json())
         .then(value => {
             couresTableBobyTag.innerHTML = '';

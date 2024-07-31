@@ -5,6 +5,11 @@
 
     <select id="select_all_lectures" resultType="com.academic.dto.LectureDTO">
         SELECT * FROM `lecture`
+        <where>
+            <if test="code != null and code != ''">
+                and
+            </if>
+        </where>
     </select>
 
 </mapper>

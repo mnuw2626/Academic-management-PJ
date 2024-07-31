@@ -6,17 +6,17 @@
     height: 100%;
     background-color: white;
 }
-.enrolment-div{
+.enrolment-form{
     width: 800px;
     margin: 50px auto;
 }
-h2{
+.enrolment-form h2{
     font-size: var(--font-size-black);
     padding-bottom: 30px;
     border-bottom: 10px var(--dark-green-2) solid;
     margin-bottom: 20px;
 }
-#enrolment-btn{
+.enrolment-btn{
     width: 100px;
     padding: 4px 0;
     text-align: center;

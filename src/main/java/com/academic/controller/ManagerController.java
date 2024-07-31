@@ -2,6 +2,8 @@ package com.academic.controller;
 
 import com.academic.dto.CollegeDTO;
 import com.academic.dto.DepartmentDTO;
+import com.academic.dto.EnrollmentDateDTO;
+import com.academic.service.EnrollInCourseService;
 import com.academic.dto.TuitionDTO;
 import org.springframework.ui.Model;
 import com.academic.dto.StdDTO;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
+import java.time.LocalDate;
 import java.util.List;
 
 
@@ -20,6 +23,9 @@ import java.util.List;
 public class ManagerController {
     @Autowired
     private ManagerService managerService;
+
+    @Autowired
+    private EnrollInCourseService enrollInCourseService;
 
     @GetMapping("/add_std")
     public void get_add_std(
@@ -85,6 +91,23 @@ public class ManagerController {
         model.addAttribute("departments", departments);
     }
 
+    // 수강신청기간 설정 페이지
+    @GetMapping("/enrolment")
+    public void get_enrollment() {
+        enrollInCourseService.set_enrollDate(null, null);//예전에 설정된 시작,종료 날짜 초기화
+        System.out.println("수강신청페이지");
+    }
+
+    // 수강 신청 기간일 때 페이지(수강신청기간 설정 페이지에서 설정 버튼을 누르면 아래 GetMapping 실행 )
+    @GetMapping("/enrolmentStatus")
+    public void enrolmentStatus(
+            Model model
+    ) {
+        EnrollmentDateDTO peroid = enrollInCourseService.get_current_period();
+        System.out.println(peroid);
+        model.addAttribute("peroid", peroid);
+        System.out.println("수강신청중");
+    }
     /******************** 등록금 발송  *******************/
     //등록금 발송 페이지 이동
     @GetMapping("/send")

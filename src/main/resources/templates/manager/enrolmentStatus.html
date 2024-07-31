@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layout/manager-main-layout}"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>수강신청 기간 상태</title>
+    <link rel="stylesheet" href="../../static/css/manager/enrolment.css" th:href="@{/css/manager/enrolment.css}">
+</head>
+<body>
+    <section class="enrolment-main" layout:fragment="main-section">
+        <form class="enrolment-form" action="/manager/end-period" method="post">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+            <h2>수강 신청 중</h2>
+            <span th:text="${peroid.startDate}"></span> ~ <span th:text="${peroid.endDate}"></span>
+            <button class="enrolment-btn">종료</button>
+        </form>
+    </section>
+</body>
+</html>

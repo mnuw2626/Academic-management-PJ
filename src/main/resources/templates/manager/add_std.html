@@ -34,6 +34,7 @@
                 <label class="add_std_label">
                     <span>학과</span>
                     <select id="deptId" name="deptId">
+                        <option value="" selected disabled hidden>선택</option>
                         <option th:value="${depart.id}" th:each="depart : ${departments}" th:text="${depart.name}">
                             <!--                                    컴퓨터공학과-->
                         </option>

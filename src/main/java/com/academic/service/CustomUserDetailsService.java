@@ -38,6 +38,7 @@ public class CustomUserDetailsService implements UserDetailsService{
             default:
                 findUser.setAuthorities(List.of(new SimpleGrantedAuthority("STUDENT")));
         }
+
         // 유저 있으면 성공
         return findUser;
     }
