@@ -16,6 +16,8 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 
 @Controller
@@ -72,12 +74,6 @@ public class ManagerController {
         get_db_college_depart_info(model);
     }
 
-    // 수강 기간 설정
-    @GetMapping("/enrolment")
-    public void get_enrolment(){
-
-    }
-
     /*  단과대학과 해당된 단과대학의 학과를 DB에서 조회하는 함수  */
     private void get_db_college_depart_info(Model model){
         // 페이지 접속 시 단과대학을 DB에서 조회
@@ -89,6 +85,16 @@ public class ManagerController {
         Integer college1_id = colleges.get(0).getId();
         List<DepartmentDTO> departments = managerService.get_departments(college1_id);
         model.addAttribute("departments", departments);
+
+        // Create maps for college and department names
+        Map<Integer, String> collegeMap = colleges.stream()
+                .collect(Collectors.toMap(CollegeDTO::getId, CollegeDTO::getName));
+        Map<Integer, String> departmentMap = departments.stream()
+                .collect(Collectors.toMap(DepartmentDTO::getId, DepartmentDTO::getName));
+
+        // Add maps to the model
+        model.addAttribute("collegeMap", collegeMap);
+        model.addAttribute("departmentMap", departmentMap);
     }
 
     // 수강신청기간 설정 페이지

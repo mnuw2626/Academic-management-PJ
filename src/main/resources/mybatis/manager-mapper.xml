@@ -46,6 +46,8 @@
         SELECT * FROM `college`
     </select>
 
+    
+
     <select id="select_dept" resultType="com.academic.dto.DepartmentDTO">
         SELECT * FROM `department`
         WHERE college_id = #{collegeId}
