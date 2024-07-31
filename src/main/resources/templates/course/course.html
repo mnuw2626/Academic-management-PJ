@@ -27,6 +27,7 @@
                         </label>
                         <label>
                             <select name="type">
+                                <option value="" selected disabled hidden>선택</option>
                                 <option>
                                     전공
                                 </option>
@@ -81,8 +82,8 @@
                         </tr>
                         </thead>
                         <tbody id="course-table-tbody">
-                            <tr th:each="lecture:${lectures}">
-                                <td>[[${lecture.no}]]</td>
+                            <tr th:each="lecture, stat:${lectures}">
+                                <td>[[${stat.count}]]</td>
                                 <td>[[${lecture.type}]]</td>
                                 <td>[[${lecture.grade}]]</td>
                                 <td>[[${lecture.credit}]]</td>
@@ -94,7 +95,7 @@
                                 <td> 12 / [[${lecture.capacity}]] </td>
                                 <td><span class="class-sign-re">재수강</span></td>
                                 <td>
-                                    <button class="lecture-find-btn">
+                                    <button class="lecture-find-btn" th:onclick="|modal_report_view(${lecture.code})|">
                                         <i class="fa-solid fa-magnifying-glass"></i>
                                         <span>조회</span>
                                     </button>
@@ -143,8 +144,12 @@
                     </table>
                 </div>
             </section>
-            <section id="output-message" class="output-message">
-                <!-- 버튼 클릭 시 텍스트가 여기에 표시됩니다 -->
+            <section id="user-info-modal" class="user-info-modal">
+                <div>
+                    <!-- 버튼 클릭 시 텍스트가 여기에 표시 -->
+                    <span>dlatldfjslfjskfjlsjf</span>
+                    <button type="button">닫기</button>
+                </div>
             </section>
         </section>
 </body>

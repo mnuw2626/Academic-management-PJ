@@ -37,7 +37,9 @@ viewBtn.onclick = () => {
 }
  */
 
-const viewReportBtns = document.getElementsByClassName('lecture-find-btn');
-const messageDiv = document.getElementById('output-message');
-console.log(viewReportBtns);
+const modalView = document.getElementById('user-info-modal');
 
+
+function modal_report_view(code){
+    //버튼 클릭 후 패치로 code 응용하여 강의의 강의계획서 불어와야함
+}

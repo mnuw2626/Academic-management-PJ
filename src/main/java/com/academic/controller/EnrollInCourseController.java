@@ -51,7 +51,7 @@ public class EnrollInCourseController {
         model.addAttribute("depart", department);
 
         System.out.println("강의 조희");
-        List<LectureDTO> lectures = enrollInCourseService.get_all_lectures(type, grade, semester, name);
+        List<LectureDTO> lectures = enrollInCourseService.get_all_lecture(type, grade, semester, name);
         model.addAttribute("lectures", lectures);
     }
 
@@ -74,4 +74,6 @@ public class EnrollInCourseController {
     public String endPeriod() {
         return "redirect:/manager/enrolment";
     }
+
+
 }

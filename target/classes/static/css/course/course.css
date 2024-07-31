@@ -130,14 +130,37 @@
     font-family: Bold;
 }
 
-/* 강의 계획서 조회 버튼 누를 시 */
-.output-message {
-    display: none; /* Initially hidden */
-    margin-top: 20px;
-    padding: 10px;
-    background-color: var(--light-green-2);
-    border: 1px solid var(--dark-green-2);
+/* 강의 계획서 조회 버튼 누를 시 나올 모달창 */
+.user-info-modal{
+    display: none;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.4);
+    z-index: 99;
+}
+.user-info-modal[active]{
+    display: block;
+}
+.user-info-modal > div{
+    width: 300px;
+    margin: 250px auto;
+    padding: 10px 20px;
     border-radius: 5px;
-    color: var(--dark-green-2);
-    font-size: 18px;
+    background-color: white;
+}
+.user-info-modal span{
+    font-size: var(--font-size-regular);
+    margin: 10px 0;
+}
+.user-info-modal button{
+    width: 100%;
+    padding: 10px 0;
+    font-size: var(--font-size-regular);
+    font-family: Bold;
+    margin: 5px 0;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
 }
