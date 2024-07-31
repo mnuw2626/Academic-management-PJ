@@ -42,8 +42,16 @@ public class EnrollInCourseRestController {
 
     // 전체 강의 조회
     @GetMapping("/course/lectures")
-    public List<LectureDTO> get_code_lecture() {
-        return enrollInCourseService.get_all_lectures();
+    public List<LectureDTO> get_code_lecture(
+            @RequestParam(required = false) Integer code
+    ) {
+        if (code != null) { //코드 입력 시
+            return enrollInCourseService.get_code_lecture(code);
+        }
+        else { //코드 미 입력시
+            return enrollInCourseService.get_all_lectures();
+        }
     }
+
 
 }

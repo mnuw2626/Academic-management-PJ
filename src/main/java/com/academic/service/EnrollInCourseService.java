@@ -53,7 +53,7 @@ public class EnrollInCourseService {
     }
 
     // 과목 코드로 강의 검색
-    public LectureDTO get_code_lecture(Integer code) {
+    public List<LectureDTO> get_code_lecture(Integer code) {
         return enrollInCourseMapper.select_code_lecture(code);
     }
 

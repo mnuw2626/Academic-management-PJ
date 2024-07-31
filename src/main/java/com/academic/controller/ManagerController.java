@@ -86,7 +86,6 @@ public class ManagerController {
     // 수강신청기간 설정 페이지
     @GetMapping("/enrolment")
     public void get_enrollment() {
-        enrollInCourseService.set_enrollDate(null, null);//예전에 설정된 시작,종료 날짜 초기화
         System.out.println("수강신청페이지");
     }
 

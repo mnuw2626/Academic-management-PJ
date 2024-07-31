@@ -17,7 +17,7 @@ public interface EnrollInCourseMapper {
     List<LectureDTO> select_all_lecture(String type, Integer grade, String name);
 
     // 과목코드로 강의 조회
-    LectureDTO select_code_lecture(Integer code);
+    List<LectureDTO> select_code_lecture(Integer code);
 
     // 단과대학 조회
     List<CollegeDTO> select_colleges();

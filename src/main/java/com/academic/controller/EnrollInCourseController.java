@@ -71,6 +71,7 @@ public class EnrollInCourseController {
     // GetMapping은 ManagerController에 구현함
     @PostMapping("/manager/end-period")
     public String endPeriod() {
+        enrollInCourseService.set_enrollDate(null, null);//설정된 시작,종료 날짜 초기화
         return "redirect:/manager/enrolment";
     }
 
