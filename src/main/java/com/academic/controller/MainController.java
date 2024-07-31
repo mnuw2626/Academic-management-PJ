@@ -24,10 +24,8 @@ public class MainController {
     @GetMapping("/user/schedule")
     public void get_user_schedule(){}
 
-    //전체 수업 조회
-    @GetMapping("/course/course")
-    public void get_course(){}
 
+    // 수강기간일 시 수강신청페이지로 이동
     @GetMapping("/course/enroll")
     public String get_enroll(){
         LocalDate today = LocalDate.now();

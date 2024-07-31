@@ -3,13 +3,43 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.academic.mapper.EnrollInCourseMapper">
 
+    <!--  전체 강의 조회  -->
     <select id="select_all_lectures" resultType="com.academic.dto.LectureDTO">
         SELECT * FROM `lecture`
+    </select>
+
+    <!--  강의 조회  -->
+    <select id="select_all_lecture" resultType="com.academic.dto.LectureDTO">
+        SELECT * FROM `lecture`
         <where>
-            <if test="code != null and code != ''">
-                and
+            <if test="type != null and type != ''">
+                type = #{type}
+            </if>
+            <if test="grade != null and grade != ''">
+                AND grade = #{grade}
+            </if>
+            <if test="name != null and name != ''">
+                AND name LIKE CONCAT('%', #{name}, '%')
             </if>
         </where>
+    </select>
+
+    <!--  단과대학 조회  -->
+    <select id="select_colleges" resultType="com.academic.dto.CollegeDTO">
+        SELECT * FROM `college`
+    </select>
+
+    <!-- 단과대학 id에 해당하는 학과 조회   -->
+    <select id="select_dept" resultType="com.academic.dto.DepartmentDTO">
+        SELECT * FROM `department`
+        WHERE college_id = #{collegeId}
+        ORDER BY `name`
+    </select>
+
+    <!-- deptID에 해당하는 학과 조회   -->
+    <select id="select_department" resultType="com.academic.dto.DepartmentDTO">
+        SELECT * FROM `department`
+        WHERE id = #{deptID}
     </select>
 
 </mapper>

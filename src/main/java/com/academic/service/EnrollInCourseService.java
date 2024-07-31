@@ -1,6 +1,8 @@
 package com.academic.service;
 
 
+import com.academic.dto.CollegeDTO;
+import com.academic.dto.DepartmentDTO;
 import com.academic.dto.EnrollmentDateDTO;
 import com.academic.dto.LectureDTO;
 import com.academic.mapper.EnrollInCourseMapper;
@@ -8,9 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.Period;
 import java.util.List;
 
 @Service
@@ -21,11 +20,6 @@ public class EnrollInCourseService {
 
     // 날짜를 담을 객체 생성
     private EnrollmentDateDTO currentPeriod = new EnrollmentDateDTO();
-
-    // 전체 강의 조회
-    public List<LectureDTO> get_all_lectures() {
-        return enrollInCourseMapper.select_all_lectures();
-    }
 
     // 날짜 설정하는 기능
     public void set_enrollDate(LocalDate startDate, LocalDate endDate) {
@@ -44,5 +38,31 @@ public class EnrollInCourseService {
     // 날짜 가져오는 함수(생성된 객체 반환)
     public EnrollmentDateDTO get_current_period() {
         return currentPeriod;
+    }
+
+
+    // 전체 강의 조회
+    public List<LectureDTO> get_all_lectures() {
+        return enrollInCourseMapper.select_all_lectures();
+    }
+
+    //    단과대학 정보 조회 - 단과대학 DB에서 가져옴
+    public List<CollegeDTO> get_colleges() {
+        return enrollInCourseMapper.select_colleges();
+    }
+
+    //    단과대학에 따른 학과 조회
+    public List<DepartmentDTO> get_departments(Integer collegeId) {
+        return enrollInCourseMapper.select_dept(collegeId);
+    }
+
+    public List<LectureDTO> get_all_lecture(String type, Integer grade, Integer semester, String name)
+    {
+        return enrollInCourseMapper.select_all_lecture(type, grade, semester, name);
+    }
+
+    // 학과 id로 학과 조회
+    public DepartmentDTO get_department(Integer deptId) {
+        return enrollInCourseMapper.select_department(deptId);
     }
 }

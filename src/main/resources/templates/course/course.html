@@ -20,52 +20,47 @@
                 <!--    개설과목 조회       -->
                 <div class="div-course">
                     <h2>개설 강의 조회</h2>
-                    <label>
-                        <input type="text" placeholder="학과"/>
-                    </label>
-                    <label>
-                        <select name="major_select">
-                            <option value="major">
-                                전공
-                            </option>
-                            <option value="general">
-                                교양
-                            </option>
-                        </select>
-                    </label>
-                    <label>
-                        <select name="grade">
-                            <option value="1">
-                                1학년
-                            </option>
-                            <option value="2">
-                                2학년
-                            </option>
-                            <option value="3">
-                                3학년
-                            </option>
-                            <option value="4">
-                                4학년
-                            </option>
-                        </select>
-                    </label>
-                    <label>
-                        <select name="semester">
-                            <option value="1">
-                                1학기
-                            </option>
-                            <option value="2">
-                                2학기
-                            </option>
-                        </select>
-                    </label>
-                    <label>
-                        <input type="text" placeholder="교과목명"/>
-                    </label>
-                    <button id="course-find-btn">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                        <span>조회</span>
-                    </button>
+                    <form class="div-course-form">
+                        <label class="div-form-spanlabel">
+                            <!-- DB에서 해당 학생의 학과를 불러옴 -->
+                            <span th:text="${depart.name}"></span>
+                        </label>
+                        <label>
+                            <select name="type">
+                                <option value="" selected disabled hidden>선택</option>
+                                <option>
+                                    전공
+                                </option>
+                                <option>
+                                    교양
+                                </option>
+                            </select>
+                        </label>
+                        <label>
+                            <select name="grade">
+                                <option value="" selected disabled hidden>선택</option>
+                                <option value="1">
+                                    1학년
+                                </option>
+                                <option value="2">
+                                    2학년
+                                </option>
+                                <option value="3">
+                                    3학년
+                                </option>
+                                <option value="4">
+                                    4학년
+                                </option>
+                            </select>
+                        </label>
+                        <label class="div-form-inputlabel">
+                            <input type="text" name="name" placeholder="교과목명"/>
+                        </label>
+                        <button id="course-find-btn">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <span>조회</span>
+                        </button>
+                    </form>
                 </div>
                 <!--     개설 교과목 목록       -->
                 <div class="div-class">
@@ -87,25 +82,25 @@
                         </tr>
                         </thead>
                         <tbody id="course-table-tbody">
-<!--                            <tr>-->
-<!--                                <td>1</td>-->
-<!--                                <td>교양</td>-->
-<!--                                <td>1학년</td>-->
-<!--                                <td>3학점</td>-->
-<!--                                <td>과목코드</td>-->
-<!--                                <td>글쓰기의 이해</td>-->
-<!--                                <td>김길동</td>-->
-<!--                                <td>9:00 ~ 11:00</td>-->
-<!--                                <td>교육관 1실</td>-->
-<!--                                <td> 12 / 100 </td>-->
-<!--                                <td><span class="class-sign-re">재수강</span></td>-->
-<!--                                <td>-->
-<!--                                    <button class="lecture-find-btn">-->
-<!--                                        <i class="fa-solid fa-magnifying-glass"></i>-->
-<!--                                        <span>조회</span>-->
-<!--                                    </button>-->
-<!--                                </td>-->
-<!--                            </tr>-->
+                            <tr th:each="lecture, stat:${lectures}">
+                                <td>[[${stat.count}]]</td>
+                                <td>[[${lecture.type}]]</td>
+                                <td>[[${lecture.grade}]]</td>
+                                <td>[[${lecture.credit}]]</td>
+                                <td>[[${lecture.code}]]</td>
+                                <td>[[${lecture.name}]]</td>
+                                <td>[[${lecture.professor}]]</td>
+                                <td>[[${lecture.starTime}]] ~ [[${lecture.endTime}]] ([[${lecture.week}]])</td>
+                                <td>[[${lecture.room}]]</td>
+                                <td> 12 / [[${lecture.capacity}]] </td>
+                                <td><span class="class-sign-re">재수강</span></td>
+                                <td>
+                                    <button class="lecture-find-btn" th:onclick="|modal_report_view(${lecture.code})|">
+                                        <i class="fa-solid fa-magnifying-glass"></i>
+                                        <span>조회</span>
+                                    </button>
+                                </td>
+                            </tr>
 <!--                            <tr>-->
 <!--                                <td>1</td>-->
 <!--                                <td>교양</td>-->
@@ -147,6 +142,13 @@
 <!--                            </tr>-->
                         </tbody>
                     </table>
+                </div>
+            </section>
+            <section id="user-info-modal" class="user-info-modal">
+                <div>
+                    <!-- 버튼 클릭 시 텍스트가 여기에 표시 -->
+                    <span>dlatldfjslfjskfjlsjf</span>
+                    <button type="button">닫기</button>
                 </div>
             </section>
         </section>

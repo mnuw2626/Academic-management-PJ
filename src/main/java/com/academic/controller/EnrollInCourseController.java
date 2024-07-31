@@ -1,13 +1,20 @@
 package com.academic.controller;
 
+import com.academic.dto.*;
 import com.academic.service.EnrollInCourseService;
+import com.academic.service.UserService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Controller
@@ -15,9 +22,37 @@ public class EnrollInCourseController {
     @Autowired
     EnrollInCourseService enrollInCourseService;
 
+    @Autowired
+    UserService userService;
+
     // 강의 계획서 페이지
-    @GetMapping("/enroll/course")
-    public void get_course() {
+    @GetMapping("/course/course")
+    public void get_course(
+            @AuthenticationPrincipal UserDTO userDTO,
+            @RequestParam(required = false) String type,
+            @RequestParam(required = false) Integer grade,
+            @RequestParam(required = false) Integer semester,
+            @RequestParam(required = false) String name,
+            Model model
+    ) {
+        // 로그인된 사용자의 학생 정보를 조회
+        StdDTO student = userService.select_user_info_service(userDTO.getId());
+        System.out.println(student);
+        if (student == null) {
+            // 오류 처리: 학생 정보가 없음
+            return;
+        }
+
+        // 로그인된 학생의 학과 id를 가져옴
+        int deptId = student.getDeptId();
+
+        //가져온 학과 id로 학과 정보를 조회
+        DepartmentDTO department = enrollInCourseService.get_department(deptId);
+        model.addAttribute("depart", department);
+
+        System.out.println("강의 조희");
+        List<LectureDTO> lectures = enrollInCourseService.get_all_lecture(type, grade, semester, name);
+        model.addAttribute("lectures", lectures);
     }
 
     // 수강 기간 설정
@@ -39,4 +74,6 @@ public class EnrollInCourseController {
     public String endPeriod() {
         return "redirect:/manager/enrolment";
     }
+
+
 }

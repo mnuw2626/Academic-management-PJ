@@ -77,13 +77,13 @@ public class ManagerController {
     /*  단과대학과 해당된 단과대학의 학과를 DB에서 조회하는 함수  */
     private void get_db_college_depart_info(Model model){
         // 페이지 접속 시 단과대학을 DB에서 조회
-        List<CollegeDTO> colleges = managerService.get_colleges();
+        List<CollegeDTO> colleges = enrollInCourseService.get_colleges();
         model.addAttribute("colleges", colleges);
 
         // 처음으로 페이지 들어갔을 시 첫번째 단과대학의 학과를 조회
         // -> 그 후 단과대학 선택 시 그에 따른 학과 조회는 ManagerRestController 참고
         Integer college1_id = colleges.get(0).getId();
-        List<DepartmentDTO> departments = managerService.get_departments(college1_id);
+        List<DepartmentDTO> departments = enrollInCourseService.get_departments(college1_id);
         model.addAttribute("departments", departments);
 
         // Create maps for college and department names

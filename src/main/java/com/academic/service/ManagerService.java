@@ -35,7 +35,6 @@ public class ManagerService {
         return managerMapper.select_std(collegeId, deptId, grade, semester, name, stdNo);
     }
 
-
     //    단과대학 정보 조회 - 단과대학 DB에서 가져옴
     public List<CollegeDTO> get_colleges() {
         return managerMapper.select_colleges();
@@ -62,4 +61,5 @@ public class ManagerService {
     public List<StdDTO> get_all_std_tuitions(){
         return managerMapper.select_all_std_tuition();
     }
+
 }

@@ -15,17 +15,4 @@ public class ManagerRestController {
     @Autowired
     ManagerService managerService;
 
-    // 단과대학 조회
-    @GetMapping("/colleges")
-    public List<CollegeDTO> get_find_college(){
-        return managerService.get_colleges();
-    }
-
-    // 단과대학에 해당하는 학과 정보 조회
-    @GetMapping("/college/{collegeId}/depart")
-    public List<DepartmentDTO> get_find_department(
-            @PathVariable Integer collegeId
-    ){
-        return managerService.get_departments(collegeId);
-    }
 }

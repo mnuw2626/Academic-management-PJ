@@ -1,3 +1,4 @@
+/*
 const viewBtn = document.getElementById('course-find-btn');
 const couresTableBobyTag = document.getElementById('course-table-tbody');
 
@@ -12,7 +13,7 @@ viewBtn.onclick = () => {
             for (const lecture of value){
                 couresTableBobyTag.insertAdjacentHTML(`beforeend`,
                     `<tr>
-                             <td>${lecture.no}</td>
+                            <td>${lecture.no}</td>
                             <td>${lecture.type}</td>
                             <td>${lecture.grade}</td>
                             <td>${lecture.credit}</td>
@@ -33,4 +34,12 @@ viewBtn.onclick = () => {
                 );
             }
         });
+}
+ */
+
+const modalView = document.getElementById('user-info-modal');
+
+
+function modal_report_view(code){
+    //버튼 클릭 후 패치로 code 응용하여 강의의 강의계획서 불어와야함
 }
