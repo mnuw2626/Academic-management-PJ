@@ -8,7 +8,7 @@
         SELECT * FROM `lecture`
     </select>
 
-    <!--  강의 조회  -->
+    <!-- 타입, 학년, 과목명으로 강의 조회  -->
     <select id="select_all_lecture" resultType="com.academic.dto.LectureDTO">
         SELECT * FROM `lecture`
         <where>
@@ -20,6 +20,16 @@
             </if>
             <if test="name != null and name != ''">
                 AND name LIKE CONCAT('%', #{name}, '%')
+            </if>
+        </where>
+    </select>
+
+    <!--  과목 코드로 강의 조회  -->
+    <select id="select_code_lecture" resultType="com.academic.dto.LectureDTO">
+        SELECT * FROM `lecture`
+        <where>
+            <if test="code != null and code != ''">
+                code = #{code}
             </if>
         </where>
     </select>

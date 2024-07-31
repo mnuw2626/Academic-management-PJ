@@ -31,7 +31,6 @@ public class EnrollInCourseController {
             @AuthenticationPrincipal UserDTO userDTO,
             @RequestParam(required = false) String type,
             @RequestParam(required = false) Integer grade,
-            @RequestParam(required = false) Integer semester,
             @RequestParam(required = false) String name,
             Model model
     ) {
@@ -51,7 +50,7 @@ public class EnrollInCourseController {
         model.addAttribute("depart", department);
 
         System.out.println("강의 조희");
-        List<LectureDTO> lectures = enrollInCourseService.get_all_lecture(type, grade, semester, name);
+        List<LectureDTO> lectures = enrollInCourseService.get_all_lecture(type, grade, name);
         model.addAttribute("lectures", lectures);
     }
 

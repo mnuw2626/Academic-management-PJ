@@ -40,5 +40,10 @@ public class EnrollInCourseRestController {
         return enrollInCourseService.get_departments(collegeId);
     }
 
+    // 전체 강의 조회
+    @GetMapping("/course/lectures")
+    public List<LectureDTO> get_code_lecture() {
+        return enrollInCourseService.get_all_lectures();
+    }
 
 }

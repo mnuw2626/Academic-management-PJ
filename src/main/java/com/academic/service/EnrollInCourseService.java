@@ -46,6 +46,17 @@ public class EnrollInCourseService {
         return enrollInCourseMapper.select_all_lectures();
     }
 
+    // 과목명, 학년, 타입(전공/교양)으로 강의 조회
+    public List<LectureDTO> get_all_lecture(String type, Integer grade, String name)
+    {
+        return enrollInCourseMapper.select_all_lecture(type, grade, name);
+    }
+
+    // 과목 코드로 강의 검색
+    public LectureDTO get_code_lecture(Integer code) {
+        return enrollInCourseMapper.select_code_lecture(code);
+    }
+
     //    단과대학 정보 조회 - 단과대학 DB에서 가져옴
     public List<CollegeDTO> get_colleges() {
         return enrollInCourseMapper.select_colleges();
@@ -56,13 +67,10 @@ public class EnrollInCourseService {
         return enrollInCourseMapper.select_dept(collegeId);
     }
 
-    public List<LectureDTO> get_all_lecture(String type, Integer grade, Integer semester, String name)
-    {
-        return enrollInCourseMapper.select_all_lecture(type, grade, semester, name);
-    }
-
     // 학과 id로 학과 조회
     public DepartmentDTO get_department(Integer deptId) {
         return enrollInCourseMapper.select_department(deptId);
     }
+
+
 }
