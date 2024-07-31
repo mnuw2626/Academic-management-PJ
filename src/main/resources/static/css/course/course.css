@@ -21,6 +21,7 @@
     border-collapse: collapse;
     border-radius: 5px;
     text-align: center;
+    margin-bottom: 10px;
 }
 #course-table thead{
     font-weight: bold;
@@ -28,6 +29,7 @@
     background: var(--dark-green-2);
 }
 #course-table td, th{
+    font-size: var(--font-size-thin);
     padding: 1em .5em;
     border: 1px solid rgba(0,0,0,.1);
 }
@@ -48,15 +50,29 @@
     flex-basis: 120px;
     color: var(--dark-green-2);
 }
-.div-course > label{
+.div-course-form{
+    display: flex;
+    flex: 1;
+}
+.div-course-form label{
+    display: flex; /* Flex 레이아웃을 적용 */
+    align-items: center; /* 수직 중앙 정렬 */
     flex: 1;
     margin-right: 10px;
 }
-.div-course input{
+.div-form-spanlabel span{
     width: 100%;
+    text-align: center; /* 텍스트 중앙 정렬 */
+    font-size: var(--font-size-medium);
+    font-family: Bold;
+    padding: 0 5px;
+}
+
+.div-form-inputlabel input{
+    width: 200px;
     padding: 5px 10px;
 }
-.div-course select{
+.div-course-form select{
     width: 100%;
     padding: 5px 10px;
 }
@@ -81,25 +97,7 @@
     margin-bottom: 50px;
     overflow: auto;
 }
-#course-table{
-    margin-bottom: 10px;
-}
-.class-btn{
-    font-family: SemiBold;
-    background-color: var(--light-green-1);
-    color: var(--light-green-5);
-    border: none;
-    border-radius: 10px;
-    padding: 5px;
-    min-height: 100%;
-    min-width: 100%;
-    box-shadow: 2px 2px var(--dark-green-2);
-}
-#class-btn:hover{
-    background-color: var(--dark-green-2);
-    color: var(--light-green-5);
-    cursor: pointer;
-}
+
 /* 수강, 재수강 스타일 */
 .class-sign-new{
     margin: 1.5px auto;
@@ -107,6 +105,7 @@
     font-family: Bold;
     color: var(--dark-green-5);
     border-radius: 5px;
+    font-size: var(--font-size-thin);
 }
 
 .class-sign-re{
@@ -115,6 +114,7 @@
     font-family: Bold;
     color: var(--dark-green-2);
     border-radius: 5px;
+    font-size: var(--font-size-thin);
 }
 /* 강의 계획서 조회 버튼*/
 .lecture-find-btn{
@@ -128,4 +128,16 @@
     box-shadow: 0 2px 5px rgba(0,0,0,.25);
     font-size: var(--font-size-bold);
     font-family: Bold;
+}
+
+/* 강의 계획서 조회 버튼 누를 시 */
+.output-message {
+    display: none; /* Initially hidden */
+    margin-top: 20px;
+    padding: 10px;
+    background-color: var(--light-green-2);
+    border: 1px solid var(--dark-green-2);
+    border-radius: 5px;
+    color: var(--dark-green-2);
+    font-size: 18px;
 }

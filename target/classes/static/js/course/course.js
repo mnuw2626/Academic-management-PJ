@@ -1,3 +1,4 @@
+/*
 const viewBtn = document.getElementById('course-find-btn');
 const couresTableBobyTag = document.getElementById('course-table-tbody');
 
@@ -12,7 +13,7 @@ viewBtn.onclick = () => {
             for (const lecture of value){
                 couresTableBobyTag.insertAdjacentHTML(`beforeend`,
                     `<tr>
-                             <td>${lecture.no}</td>
+                            <td>${lecture.no}</td>
                             <td>${lecture.type}</td>
                             <td>${lecture.grade}</td>
                             <td>${lecture.credit}</td>
@@ -34,3 +35,18 @@ viewBtn.onclick = () => {
             }
         });
 }
+ */
+
+const viewReportBtns = document.getElementsByClassName('lecture-find-btn');
+const messageDiv = document.getElementById('output-message');
+console.log(viewReportBtns);
+
+viewReportBtns.forEach(function (button) {
+    button.addEventListener('click', function () {
+        var messageSection = document.getElementById('output-message');
+        var message = button.getAttribute('data-message');
+
+        messageSection.textContent = message;
+        messageSection.style.display = 'block';
+    });
+});

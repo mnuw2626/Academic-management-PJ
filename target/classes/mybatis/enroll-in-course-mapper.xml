@@ -6,6 +6,17 @@
     <!--  강의 조회  -->
     <select id="select_all_lectures" resultType="com.academic.dto.LectureDTO">
         SELECT * FROM `lecture`
+        <where>
+            <if test="type != null and type != ''">
+                type = #{type}
+            </if>
+            <if test="grade != null and grade != ''">
+                AND grade = #{grade}
+            </if>
+            <if test="name != null and name != ''">
+                AND name LIKE CONCAT('%', #{name}, '%')
+            </if>
+        </where>
     </select>
 
     <!--  단과대학 조회  -->
@@ -18,6 +29,12 @@
         SELECT * FROM `department`
         WHERE college_id = #{collegeId}
         ORDER BY `name`
+    </select>
+
+    <!-- deptID에 해당하는 학과 조회   -->
+    <select id="select_department" resultType="com.academic.dto.DepartmentDTO">
+        SELECT * FROM `department`
+        WHERE id = #{deptID}
     </select>
 
 </mapper>
