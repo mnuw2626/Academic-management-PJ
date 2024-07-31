@@ -19,8 +19,7 @@ import java.util.List;
 @RequestMapping("/manager")
 public class ManagerController {
     @Autowired
-    ManagerService managerService;
-
+    private ManagerService managerService;
 
     @GetMapping("/add_std")
     public void get_add_std(
