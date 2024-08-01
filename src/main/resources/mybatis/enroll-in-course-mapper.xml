@@ -2,6 +2,14 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.academic.mapper.EnrollInCourseMapper">
+    <resultMap id="enroll_std_lecture" type="com.academic.dto.StdEnrollCourseDTO" autoMapping="true">
+        <result property="stdNo" column="std_no"/>
+        <result property="stdName" column="std_name"/>
+        <result property="year" column="year"/>
+        <result property="grade" column="grade"/>
+        <result property="lectureName" column="lecture_name"/>
+    </resultMap>
+
 
     <!--  핵생의 학번, 과목코드를 course_details에 삽입 -->
     <insert id="insert_course_details">
@@ -12,6 +20,26 @@
     <!--  전체 강의 조회  -->
     <select id="select_all_lectures" resultType="com.academic.dto.LectureDTO">
         SELECT * FROM `lecture`
+    </select>
+
+    <!--  수강된 강의들 조회(학번, 과목명으로 검색)  -->
+    <select id="select_enroll_in_course" resultMap="enroll_std_lecture">
+        SELECT s.std_no, s.name AS std_name, s.grade AS year, s.semester AS semester, ct.grade, l.code, l.name AS lecture_name, l.type,
+        l.professor, l.week, l.star_time, l.end_time, l.room, l.capacity, l.num_of_student AS num_of_student,
+            CASE WHEN LEAST(l.num_of_student, l.capacity) = l.num_of_student THEN 1 ELSE 0 END AS status
+        FROM `student` AS s
+            JOIN `course_details` AS ct
+        ON s.std_no = ct.std_no
+            JOIN `lecture` AS l
+        ON ct.code = l.code
+        <where>
+            <if test="stdNo != null and stdNo != ''">
+                s.std_no = #{stdNo}
+            </if>
+            <if test="name != null and name != ''">
+                AND lecture_name LIKE CONCAT('%', #{name}, '%')
+            </if>
+        </where>
     </select>
 
     <!-- 타입, 학년, 과목명으로 강의 조회  -->

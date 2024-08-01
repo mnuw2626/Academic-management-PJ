@@ -1,10 +1,7 @@
 package com.academic.service;
 
 
-import com.academic.dto.CollegeDTO;
-import com.academic.dto.DepartmentDTO;
-import com.academic.dto.EnrollmentDateDTO;
-import com.academic.dto.LectureDTO;
+import com.academic.dto.*;
 import com.academic.mapper.EnrollInCourseMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -78,4 +75,7 @@ public class EnrollInCourseService {
         return true;
     }
 
+    public List<StdEnrollCourseDTO> get_std_course_details(Integer stdNo, String name){
+        return enrollInCourseMapper.select_enroll_in_course(stdNo, name);
+    }
 }

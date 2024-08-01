@@ -5,6 +5,7 @@ import com.academic.dto.*;
 import com.academic.service.EnrollInCourseService;
 import com.academic.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -42,19 +43,8 @@ public class EnrollInCourseRestController {
         return enrollInCourseService.get_departments(collegeId);
     }
 
-    // 전체 강의 조회
-    @GetMapping("/course/lectures")
-    public List<LectureDTO> get_code_lecture(
-            @RequestParam(required = false) Integer code
-    ) {
-        if (code != null) { //코드 입력 시
-            return enrollInCourseService.get_code_lecture(code);
-        }
-        else { //코드 미 입력시
-            return enrollInCourseService.get_all_lectures();
-        }
-    }
 
+    // 수강 신청 버튼 클릭 시
     @PostMapping("/enroll/regist/{code}")
     public void post_course_details(
             @AuthenticationPrincipal UserDTO userDTO,
@@ -75,6 +65,15 @@ public class EnrollInCourseRestController {
             System.out.println("등록실패");
         }
         System.out.println("수강 신청 내역 등록 성공");
+    }
+
+    // 과목코드로 과목명 조회하기 위함
+    @GetMapping("/course/lecture")
+    public ResponseEntity<List<LectureDTO>> get_code_name_lecture(
+            @RequestParam(required = false) Integer code
+    ) {
+        List<LectureDTO> lectures = enrollInCourseService.get_code_lecture(code);
+        return ResponseEntity.ok(lectures);
     }
 
 }

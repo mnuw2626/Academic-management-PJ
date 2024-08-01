@@ -29,19 +29,4 @@ public class MainController {
     public void get_user_schedule(){}
 
 
-    // 수강기간일 시 수강신청페이지로 이동
-    @GetMapping("/course/enroll")
-    public String get_enroll(){
-        // 수강 신청 기간 비교
-        LocalDate today = LocalDate.now();
-        boolean result = enrollInCourseService.compare_enrollDate_now(today);
-        if(result){
-            return "course/enroll"; //신청기간이면
-        }
-        else
-        {
-            return "redirect:/main";//신청기간이 아니면 메인으로
-        }
-    }
-
 }

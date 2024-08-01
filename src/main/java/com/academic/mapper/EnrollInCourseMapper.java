@@ -1,8 +1,6 @@
 package com.academic.mapper;
 
-import com.academic.dto.CollegeDTO;
-import com.academic.dto.DepartmentDTO;
-import com.academic.dto.LectureDTO;
+import com.academic.dto.*;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -30,4 +28,7 @@ public interface EnrollInCourseMapper {
 
 
     void insert_course_details(Integer stdNo, Integer code);
+
+    List<StdEnrollCourseDTO> select_enroll_in_course(Integer stdNo, String name);
+
 }
