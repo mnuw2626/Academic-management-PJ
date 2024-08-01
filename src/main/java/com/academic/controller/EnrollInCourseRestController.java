@@ -1,12 +1,11 @@
 package com.academic.controller;
 
 
-import com.academic.dto.CollegeDTO;
-import com.academic.dto.DepartmentDTO;
-import com.academic.dto.LectureDTO;
-import com.academic.dto.StdDTO;
+import com.academic.dto.*;
 import com.academic.service.EnrollInCourseService;
+import com.academic.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +17,9 @@ import java.util.List;
 public class EnrollInCourseRestController {
     @Autowired
     EnrollInCourseService enrollInCourseService;
+
+    @Autowired
+    UserService userService;
 
     //수강신청기간 비교(현재 날짜가 설정된 시작, 종료 날짜 사이이면 true, 아니면 false 반환 )
     @GetMapping("/course/is/enroll")
@@ -53,5 +55,26 @@ public class EnrollInCourseRestController {
         }
     }
 
+    @PostMapping("/enroll/regist/{code}")
+    public void post_course_details(
+            @AuthenticationPrincipal UserDTO userDTO,
+            @PathVariable("code") Integer code
+    ){
+        System.out.println(code);
+        // 로그인된 사용자의 학생 정보를 조회
+        StdDTO student = userService.select_user_info_service(userDTO.getId());
+//        System.out.println(student);
+        if (student == null) {
+            // 오류 처리: 학생 정보가 없음
+            return;
+        }
+        // 로그인된 학생의 학번을 가져옴
+        int stdNo = student.getStdNo();
+        boolean result = enrollInCourseService.set_course_details(stdNo, code);
+        if(!result){
+            System.out.println("등록실패");
+        }
+        System.out.println("수강 신청 내역 등록 성공");
+    }
 
 }

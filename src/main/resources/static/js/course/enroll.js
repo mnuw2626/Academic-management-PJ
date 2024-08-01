@@ -1,3 +1,6 @@
+// CSRF 토큰을 meta 태그에서 가져오기
+const csrfToken = document.querySelector('meta[name="_csrf"]').getAttribute('content');
+
 // DOMContentLoaded 이벤트: document.addEventListener('DOMContentLoaded', ...)를 사용하여 HTML이 완전히 로드된 후에 자바스크립트 코드가 실행되도록 보장
 // input 이벤트리스너를 처리하기 위한 안전 장치임
 document.addEventListener('DOMContentLoaded', () => {
@@ -29,7 +32,9 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <td>${lecture.type}</td>
                                 <td>${lecture.grade}</td>
                                 <td>${lecture.credit}</td>
-                                <td><button class="class-btn">수강</button></td>
+                                <td>
+                                    <button class="class-btn" onclick="class_registration(${lecture.code}, this)">수강</button>
+                                </td>
                                 <td>${lecture.code}</td>
                                 <td>${lecture.name}</td>
                                 <td>${lecture.professor}</td>
@@ -37,7 +42,9 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <td>${lecture.week}</td>
                                 <td>${lecture.room}</td>
                                 <td>${lecture.capacity} / ${lecture.capacity} </td>
-                                <td><span class="class-sign-re">재수강</span></td>
+                                <td>
+                                    <span class="class-sign-re">재수강</span>
+                                </td>
                               </tr>`
                     );
                 }
@@ -67,3 +74,42 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     })
 })
+
+const modalView = document.getElementById('user-info-modal');
+const  closeButton = document.getElementById('modal-close-btn');
+
+// 수강 신청 버튼을 누를 시
+function class_registration(code, btn){
+    // 모달창 활성화
+    modalView.style.display = 'block';
+    console.log(code);
+
+    fetch(`/enroll/regist/${code}`, {
+        method: "POST",
+        headers:
+        {
+            'Content-Type': 'application/json',
+            'X-Csrf-Token': csrfToken
+        }
+    })
+    .then(response => {
+        if (response.ok && response.status === 201){ //성공시
+            console.log("성공");
+        }
+    })
+    .then(data => {
+        // 클릭한 버튼 비활성화
+        btn.disabled = true;
+        btn.textContent = "수강됨";  // 버튼 텍스트 변경
+        btn.style.backgroundColor = '#d3d3d3';  // 회색 배경색
+        btn.style.cursor = 'not-allowed';       // 기본 포인터로 변경
+        btn.style.border = '1px solid #ccc';    // 회색 테두리
+        btn.style.color = '#777';               // 회색 텍스트
+    });
+}
+
+// 모달창의 확인 버튼 클릭 시 모달창 비활성화
+closeButton.onclick = () => {
+    modalView.style.display = 'none';
+}
+

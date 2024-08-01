@@ -100,6 +100,7 @@
 }
 
 /* 수강, 재수강 스타일 */
+/* 클래스 이름이 class-sign-new 일때 적용*/
 .class-sign-new{
     margin: 1.5px auto;
     padding: 5px;
@@ -109,6 +110,7 @@
     font-size: var(--font-size-thin);
 }
 
+/* 클래스 이름이 class-sign-re 일때 적용*/
 .class-sign-re{
     margin: 1.5px auto;
     padding: 5px;

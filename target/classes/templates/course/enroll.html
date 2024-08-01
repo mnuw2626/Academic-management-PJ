@@ -6,6 +6,7 @@
 >
 <head>
     <meta charset="UTF-8">
+    <meta th:name="${_csrf.parameterName}" th:content="${_csrf.token}">
     <title>학사관리 | 수강신청</title>
     <link rel="stylesheet" href="../../static/css/course/enroll.css" th:href="@{/css/course/enroll.css}">
 
@@ -66,21 +67,6 @@
 <!--                                <td>교육관 1실</td>-->
 <!--                                <td> 12 / 100 </td>-->
 <!--                                <td><span class="class-sign-new">신규</span></td>-->
-<!--                            </tr>-->
-<!--                            <tr>-->
-<!--                                <td>1</td>-->
-<!--                                <td>전공</td>-->
-<!--                                <td>1</td>-->
-<!--                                <td>3</td>-->
-<!--                                <td><button class="class-btn">수강</button></td>-->
-<!--                                <td>12345</td>-->
-<!--                                <td>컴퓨터 구조</td>-->
-<!--                                <td>홍길동</td>-->
-<!--                                <td>9:00 ~ 11:00</td>-->
-<!--                                <td>화</td>-->
-<!--                                <td>교육관 1실</td>-->
-<!--                                <td> 12 / 100 </td>-->
-<!--                                <td><span class="class-sign-re">재수강</span></td>-->
 <!--                            </tr>-->
                         </tbody>
                     </table>
@@ -166,6 +152,14 @@
                     </section>
                 </div>
             </section>
+        </section>
+
+        <!-- 수강 신청 버튼 클릭 시 나오는 안내창 -->
+        <section id="user-info-modal" class="user-info-modal">
+            <div>
+                <span>수강 신청 되었습니다.</span>
+                <button type="button" id="modal-close-btn">확인</button>
+            </div>
         </section>
     </main>
 </body>

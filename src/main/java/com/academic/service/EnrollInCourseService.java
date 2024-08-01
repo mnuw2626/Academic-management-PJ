@@ -72,5 +72,10 @@ public class EnrollInCourseService {
         return enrollInCourseMapper.select_department(deptId);
     }
 
+    //학번과 과목코드를 수강내역테이블(course_details)에 삽입
+    public Boolean set_course_details(Integer stdNo, Integer code){
+        enrollInCourseMapper.insert_course_details(stdNo, code);
+        return true;
+    }
 
 }

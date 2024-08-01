@@ -39,6 +39,8 @@ viewBtn.onclick = () => {
 
 const modalView = document.getElementById('user-info-modal');
 const  closeButton = document.getElementById('modal-close-btn');
+const classSign = document.getElementsByClassName('class-sign');
+
 
 //강의계획서 조회버튼 클릭 시
 function modal_report_view(code){
@@ -64,7 +66,8 @@ function modal_report_view(code){
         });
 }
 
-// 닫기 버튼 클릭 시 모달창 비활성화
+// 모달창의 닫기 버튼 클릭 시 모달창 비활성화
 closeButton.onclick = () => {
     modalView.style.display = 'none';
 }
+

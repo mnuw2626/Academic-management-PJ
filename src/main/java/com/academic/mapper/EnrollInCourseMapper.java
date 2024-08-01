@@ -29,4 +29,5 @@ public interface EnrollInCourseMapper {
     DepartmentDTO select_department(Integer deptID);
 
 
+    void insert_course_details(Integer stdNo, Integer code);
 }

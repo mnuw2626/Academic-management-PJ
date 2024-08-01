@@ -3,6 +3,12 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.academic.mapper.EnrollInCourseMapper">
 
+    <!--  핵생의 학번, 과목코드를 course_details에 삽입 -->
+    <insert id="insert_course_details">
+        insert into `course_details` (std_no, code)
+        values (#{stdNo}, #{code});
+    </insert>
+
     <!--  전체 강의 조회  -->
     <select id="select_all_lectures" resultType="com.academic.dto.LectureDTO">
         SELECT * FROM `lecture`
