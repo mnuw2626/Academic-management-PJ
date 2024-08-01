@@ -40,7 +40,6 @@ public class ScholarshipController {
     public String post_bill(@AuthenticationPrincipal UserDTO userDTO) {
         System.out.println("POST /bill called for user: " + userDTO.getNo());
         userService.update_scholarship(userDTO.getNo());
-        StdDTO stdDTO = userService.select_user_scholarship(userDTO.getNo());
         return "redirect:/scholarship/bill";
     }
 }

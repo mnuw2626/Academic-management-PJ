@@ -86,15 +86,19 @@ public class ManagerController {
         List<DepartmentDTO> departments = enrollInCourseService.get_departments(college1_id);
         model.addAttribute("departments", departments);
 
+        //모든 단과대학 조회
+        List<DepartmentDTO> allDepartments = enrollInCourseService.get_all_departments();
+        model.addAttribute("allDepartments", allDepartments);
+
         // Create maps for college and department names
         Map<Integer, String> collegeMap = colleges.stream()
                 .collect(Collectors.toMap(CollegeDTO::getId, CollegeDTO::getName));
-        Map<Integer, String> departmentMap = departments.stream()
+        Map<Integer, String> allDepartmentMap = allDepartments.stream()
                 .collect(Collectors.toMap(DepartmentDTO::getId, DepartmentDTO::getName));
 
         // Add maps to the model
         model.addAttribute("collegeMap", collegeMap);
-        model.addAttribute("departmentMap", departmentMap);
+        model.addAttribute("allDepartmentMap", allDepartmentMap);
     }
 
     // 수강신청기간 설정 페이지
@@ -130,5 +134,14 @@ public class ManagerController {
         List<StdDTO> tuitionDTOS = managerService.get_all_std_tuitions();
         model.addAttribute("stdTuitions", tuitionDTOS);
     }
+
+    /******************** 휴/복학신청 관리  *******************/
+    @GetMapping("leave_management")
+    public void get_leave_management(
+            Model model
+    ){
+        
+    }
+
 
 }

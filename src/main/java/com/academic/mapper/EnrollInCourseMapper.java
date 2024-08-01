@@ -19,6 +19,9 @@ public interface EnrollInCourseMapper {
     // 단과대학에 따른 학과 조회
     List<DepartmentDTO> select_dept(Integer collegeId);
 
+    // 모든 학과 조회
+    List<DepartmentDTO> select_all_dept();
+
     // 강의 조회
     List<LectureDTO> select_all_lecture(String type, Integer grade, Integer semester, String name);
 

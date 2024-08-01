@@ -55,6 +55,10 @@ public class EnrollInCourseService {
     public List<DepartmentDTO> get_departments(Integer collegeId) {
         return enrollInCourseMapper.select_dept(collegeId);
     }
+    //    모든 학과 조회
+    public List<DepartmentDTO> get_all_departments() {
+        return enrollInCourseMapper.select_all_dept();
+    }
 
     public List<LectureDTO> get_all_lecture(String type, Integer grade, Integer semester, String name)
     {

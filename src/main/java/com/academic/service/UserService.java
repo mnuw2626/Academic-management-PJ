@@ -1,5 +1,6 @@
 package com.academic.service;
 
+import com.academic.dto.LeaveDTO;
 import com.academic.dto.StdDTO;
 import com.academic.dto.TuitionDTO;
 import com.academic.dto.UserDTO;
@@ -53,4 +54,13 @@ public class UserService {
         userMapper.update_std_scholarship(no);
     }
 
+
+    /**************휴학***************/
+    public void insert_leave_std(LeaveDTO leaveDTO){
+        userMapper.insert_leave_std(leaveDTO);
+    }
+
+    public LeaveDTO select_user_stat(Integer no){
+        return userMapper.select_stat(no);
+    }
 }

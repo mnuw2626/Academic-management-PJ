@@ -24,11 +24,13 @@ h1{
     flex-direction: column;
 }
 
-.state-a{
+.state-std{
+    background-color: transparent;
     color: var(--dark-green-1);
+    border: none;
     border-bottom: 1px solid var(--dark-green-1);
+    cursor: pointer;
 }
-
 
 
 /************테이블 관련**************/

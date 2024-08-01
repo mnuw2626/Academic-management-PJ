@@ -1,5 +1,6 @@
 package com.academic.mapper;
 
+import com.academic.dto.LeaveDTO;
 import com.academic.dto.StdDTO;
 import com.academic.dto.UserDTO;
 import org.apache.ibatis.annotations.Mapper;
@@ -17,4 +18,8 @@ public interface UserMapper {
     StdDTO select_scholarship(Integer no);
 
     void update_std_scholarship(Integer no);
+
+    void insert_leave_std(LeaveDTO leaveDTO);
+
+    LeaveDTO select_stat(Integer no);
 }

@@ -32,11 +32,11 @@
                     </tr>
                     <tr >
                         <th class="info-menu-th">단과대학</th>
-                        <td th:text="${userInfo.collegeId}">공대</td>
+                        <td th:text="${collegeMap[userInfo.collegeId]}">공대</td>
                     </tr>
                     <tr >
                         <th class="info-menu-th">학과</th>
-                        <td th:text="${userInfo.deptId}">컴퓨터공학과</td>
+                        <td th:text="${allDepartmentMap[userInfo.deptId]}">컴퓨터공학과</td>
                     </tr>
                     <tr >
                         <th class="info-menu-th">학년</th>
@@ -48,15 +48,15 @@
                     </tr>
                     <tr>
                         <th class="info-menu-th">아이디</th>
-                        <td th:text="${userInfo.id}">wnstlr@naver.com</td>
+                        <td th:text="${userInfo.id}"></td>
                     </tr>
                     <tr>
                         <th class="info-menu-th">비밀번호</th>
-                        <td th:text="${userInfo.password}">01026478541</td>
+                        <td th:text="${userInfo.password}"></td>
                     </tr>
                     <tr>
                         <th th class="info-menu-th">전화번호</th>
-                        <td th:text="${userInfo.tel}">01026786242</td>
+                        <td th:text="${userInfo.tel}"></td>
                     </tr>
                 </tbody>
         </table>

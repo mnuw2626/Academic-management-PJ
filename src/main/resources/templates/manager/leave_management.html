@@ -1,12 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layout/manager-main-layout}"
+>
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../../static/css/manager/leave-management.css">
+    <link rel="stylesheet" href="../../static/css/manager/leave-management.css" th:src="@{/css/manager/leave-management.css}">
     <title>leave_management</title>
 </head>
 <body>
-    <section class="leave-management-section">
+    <section class="leave-management-section" layout:fragment="main-section">
         <h1>휴학 신청 관리</h1>
         <div class="leave-student-list-div">
             <table>
@@ -26,7 +31,7 @@
                     <td>군대</td>
                     <td>2025년1학기</td>
                     <td>2026년2학기</td>
-                    <td><a class="state-a" href="#">보류</a></td>
+                    <td><button type="button" class="state-std">보류</button></td>
                 </tr>
             </table>
         </div>

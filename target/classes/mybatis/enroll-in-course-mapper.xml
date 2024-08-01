@@ -29,6 +29,7 @@
         SELECT * FROM `college`
     </select>
 
+
     <!-- 단과대학 id에 해당하는 학과 조회   -->
     <select id="select_dept" resultType="com.academic.dto.DepartmentDTO">
         SELECT * FROM `department`
@@ -40,6 +41,11 @@
     <select id="select_department" resultType="com.academic.dto.DepartmentDTO">
         SELECT * FROM `department`
         WHERE id = #{deptID}
+    </select>
+
+    <!--모든 학과 조회-->
+    <select id="select_all_dept" resultType="com.academic.dto.DepartmentDTO">
+        SELECT * FROM `department`
     </select>
 
 </mapper>
