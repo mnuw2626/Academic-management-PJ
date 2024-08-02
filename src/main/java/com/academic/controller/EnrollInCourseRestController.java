@@ -47,33 +47,25 @@ public class EnrollInCourseRestController {
     // 수강 신청 버튼 클릭 시
     @PostMapping("/enroll/regist/{code}")
     public void post_course_details(
-            @AuthenticationPrincipal UserDTO userDTO,
+            @AuthenticationPrincipal StdDTO student,
             @PathVariable("code") Integer code
     ){
         System.out.println(code);
-        // 로그인된 사용자의 학생 정보를 조회
-        StdDTO student = userService.select_user_info_service(userDTO.getId());
+
 //        System.out.println(student);
         if (student == null) {
             // 오류 처리: 학생 정보가 없음
             return;
         }
-        // 로그인된 학생의 학번을 가져옴
-        int stdNo = student.getStdNo();
-        boolean result = enrollInCourseService.set_course_details(stdNo, code);
+
+        // 수강신청 버튼 누를 시 수강정보 DB 삽입
+        boolean result = enrollInCourseService.set_course_details(student.getStdNo(), code);
         if(!result){
             System.out.println("등록실패");
         }
         System.out.println("수강 신청 내역 등록 성공");
     }
 
-    // 과목코드로 과목명 조회하기 위함
-    @GetMapping("/course/lecture")
-    public ResponseEntity<List<LectureDTO>> get_code_name_lecture(
-            @RequestParam(required = false) Integer code
-    ) {
-        List<LectureDTO> lectures = enrollInCourseService.get_code_lecture(code);
-        return ResponseEntity.ok(lectures);
-    }
+
 
 }

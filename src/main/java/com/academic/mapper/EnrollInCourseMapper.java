@@ -29,6 +29,6 @@ public interface EnrollInCourseMapper {
 
     void insert_course_details(Integer stdNo, Integer code);
 
-    List<StdEnrollCourseDTO> select_enroll_in_course(Integer stdNo, String name);
+    List<StdEnrollCourseDTO> select_enroll_in_course(Integer stdNo);
 
 }

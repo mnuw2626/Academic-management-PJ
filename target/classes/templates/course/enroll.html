@@ -20,7 +20,7 @@
                 <!--    개설과목 조회       -->
                 <div class="div-course">
                     <h2>개설 강의 조회</h2>
-                    <form class="div-course-form" th:action="@{/course/lectures}">
+                    <form class="div-course-form" th:action="@{/course/lectures}" method="get">
                         <label class="div-form-inputlabel">
                             <input type="text" name="code" id="course-code-tag" placeholder="교과목코드"/>
                         </label>
@@ -94,15 +94,6 @@
                             <span>재수강 : </span>
                             <span>1</span>
                         </div>
-                        <form class="list-find-form" th:action="@{/course/enrollStd}">
-                            <label>
-                                <input id="list-find-input" type="text" name="listname" placeholder="교과목명"/>
-                            </label>
-                            <button id="list-find-btn">
-                                <i class="fa-solid fa-magnifying-glass"></i>
-                                <span>조회</span>
-                            </button>
-                        </form>
                     </section>
                     <section class="section-list">
                         <table>
@@ -122,19 +113,19 @@
                             </tr>
                             </thead>
                             <tbody id="enrolled-list-tbody">
-                            <tr th:each="list, stat:${list}">
-                                <td>[[${stat.count}]]</td>
-                                <td>[[${list.type}]]</td>
-                                <td>[[${list.year}]]</td>
-                                <td>[[${list.credit}]]</td>
-                                <td>[[${list.code}]]</td>
-                                <td>[[${list.lectureName}]]</td>
-                                <td>[[${list.professor}]]</td>
-                                <td>[[${list.starTime}]] ~ [[${list.endTime}]]</td>
-                                <td>[[${list.week}]]</td>
-                                <td>[[${list.room}]]</td>
-                                <td><span class="class-sign-new">신규</span></td>
-                            </tr>
+<!--                            <tr th:each="list, stat:${list}">-->
+<!--                                <td>[[${stat.count}]]</td>-->
+<!--                                <td>[[${list.type}]]</td>-->
+<!--                                <td>[[${list.year}]]</td>-->
+<!--                                <td>[[${list.credit}]]</td>-->
+<!--                                <td>[[${list.code}]]</td>-->
+<!--                                <td>[[${list.lectureName}]]</td>-->
+<!--                                <td>[[${list.professor}]]</td>-->
+<!--                                <td>[[${list.starTime}]] ~ [[${list.endTime}]]</td>-->
+<!--                                <td>[[${list.week}]]</td>-->
+<!--                                <td>[[${list.room}]]</td>-->
+<!--                                <td><span class="class-sign-new">신규</span></td>-->
+<!--                            </tr>-->
 <!--                                <tr>-->
 <!--                                    <td>1</td>-->
 <!--                                    <td>전공</td>-->

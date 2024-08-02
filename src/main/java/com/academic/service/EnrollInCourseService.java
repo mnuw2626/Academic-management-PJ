@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class EnrollInCourseService {
@@ -75,7 +76,12 @@ public class EnrollInCourseService {
         return true;
     }
 
-    public List<StdEnrollCourseDTO> get_std_course_details(Integer stdNo, String name){
-        return enrollInCourseMapper.select_enroll_in_course(stdNo, name);
+    public List<StdEnrollCourseDTO> get_std_course_details(Integer stdNo){
+//        Map<lecture>;
+//        Map<enrollcourse>
+        
+        List<StdEnrollCourseDTO> enrollCourseDTOS = enrollInCourseMapper.select_enroll_in_course(stdNo);
+        System.out.println(enrollCourseDTOS);
+        return enrollCourseDTOS;
     }
 }
