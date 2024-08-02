@@ -45,6 +45,12 @@
         ON ct.code = l.code and s.std_no = #{stdNo};
     </select>
 
+    <!--  수강 신청 시 강의의 수강 인원 +1  -->
+    <update id="update_lecture_num_of_student">
+        update `lecture` set num_of_student = num_of_student + 1
+        where lecture.code = #{code};
+    </update>
+
     <!-- 타입, 학년, 과목명으로 강의 조회  -->
     <select id="select_all_lecture" resultType="com.academic.dto.LectureDTO">
         SELECT * FROM `lecture`

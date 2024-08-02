@@ -20,7 +20,7 @@
                 <!--    개설과목 조회       -->
                 <div class="div-course">
                     <h2>개설 강의 조회</h2>
-                    <form class="div-course-form" th:action="@{/course/lectures}" method="get">
+                    <form class="div-course-form" th:action="@{/course/enroll}" method="get">
                         <label class="div-form-inputlabel">
                             <input type="text" name="code" id="course-code-tag" placeholder="교과목코드"/>
                         </label>
@@ -61,8 +61,8 @@
                                 <td>[[${lecture.year}]]</td>
                                 <td>[[${lecture.credit}]]</td>
                                 <td>
-                                    <button class="class-btn" th:if="${lecture.stdNo == null}" th:onclick="|class_registration(${lecture.code}, this)|">수강</button>
-                                    <button class="class-btn" th:if="${lecture.stdNo != null}">수강신청완료</button>
+                                    <button class="class-btn" th:if="${lecture.stdNo == null && !lecture.status}" th:onclick="|class_registration(${lecture.code}, this)|">수강</button>
+                                    <button class="class-btn" th:if="${lecture.stdNo != null && lecture.status}" disabled>수강신청완료</button>
                                 </td>
                                 <td>[[${lecture.code}]]</td>
                                 <td>[[${lecture.lectureName}]]</td>

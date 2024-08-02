@@ -31,4 +31,6 @@ public interface EnrollInCourseMapper {
 
     List<StdEnrollCourseDTO> select_enroll_in_course(Integer stdNo);
 
+    void update_lecture_num_of_student(Integer code);
+
 }

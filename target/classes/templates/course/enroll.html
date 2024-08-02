@@ -20,7 +20,7 @@
                 <!--    개설과목 조회       -->
                 <div class="div-course">
                     <h2>개설 강의 조회</h2>
-                    <form class="div-course-form" th:action="@{/course/lectures}" method="get">
+                    <form class="div-course-form" th:action="@{/course/enroll}" method="get">
                         <label class="div-form-inputlabel">
                             <input type="text" name="code" id="course-code-tag" placeholder="교과목코드"/>
                         </label>
@@ -55,19 +55,22 @@
                             </tr>
                         </thead>
                         <tbody id="course-table-tbody">
-                            <tr th:each="lecture, stat:${lectures}">
+                            <tr th:each="lecture, stat:${enroll.get('allEnrollCourse')}">
                                 <td>[[${stat.count}]]</td>
                                 <td>[[${lecture.type}]]</td>
-                                <td>[[${lecture.grade}]]</td>
+                                <td>[[${lecture.year}]]</td>
                                 <td>[[${lecture.credit}]]</td>
-                                <td><button class="class-btn" th:onclick="|class_registration(${lecture.code}, this)|">수강</button></td>
+                                <td>
+                                    <button class="class-btn" th:if="${lecture.stdNo == null && !lecture.status}" th:onclick="|class_registration(${lecture.code}, this)|">수강</button>
+                                    <button class="class-btn" th:if="${lecture.stdNo != null && lecture.status}" disabled>수강신청완료</button>
+                                </td>
                                 <td>[[${lecture.code}]]</td>
-                                <td>[[${lecture.name}]]</td>
+                                <td>[[${lecture.lectureName}]]</td>
                                 <td>[[${lecture.professor}]]</td>
                                 <td>[[${lecture.starTime}]] ~ [[${lecture.endTime}]]</td>
                                 <td>[[${lecture.week}]]</td>
                                 <td>[[${lecture.room}]]</td>
-                                <td> 12 / [[${lecture.capacity}]] </td>
+                                <td> [[${lecture.numOfStudent}]] / [[${lecture.capacity}]] </td>
                                 <td><span class="class-sign-new">신규</span></td>
                             </tr>
                         </tbody>
@@ -113,19 +116,19 @@
                             </tr>
                             </thead>
                             <tbody id="enrolled-list-tbody">
-<!--                            <tr th:each="list, stat:${list}">-->
-<!--                                <td>[[${stat.count}]]</td>-->
-<!--                                <td>[[${list.type}]]</td>-->
-<!--                                <td>[[${list.year}]]</td>-->
-<!--                                <td>[[${list.credit}]]</td>-->
-<!--                                <td>[[${list.code}]]</td>-->
-<!--                                <td>[[${list.lectureName}]]</td>-->
-<!--                                <td>[[${list.professor}]]</td>-->
-<!--                                <td>[[${list.starTime}]] ~ [[${list.endTime}]]</td>-->
-<!--                                <td>[[${list.week}]]</td>-->
-<!--                                <td>[[${list.room}]]</td>-->
-<!--                                <td><span class="class-sign-new">신규</span></td>-->
-<!--                            </tr>-->
+                                <tr th:each="list, stat:${enroll.get('stdEnrollCourse')}">
+                                    <td>[[${stat.count}]]</td>
+                                    <td>[[${list.type}]]</td>
+                                    <td>[[${list.year}]]</td>
+                                    <td>[[${list.credit}]]</td>
+                                    <td>[[${list.code}]]</td>
+                                    <td>[[${list.lectureName}]]</td>
+                                    <td>[[${list.professor}]]</td>
+                                    <td>[[${list.starTime}]] ~ [[${list.endTime}]]</td>
+                                    <td>[[${list.week}]]</td>
+                                    <td>[[${list.room}]]</td>
+                                    <td><span class="class-sign-new">신규</span></td>
+                                </tr>
 <!--                                <tr>-->
 <!--                                    <td>1</td>-->
 <!--                                    <td>전공</td>-->

@@ -110,7 +110,7 @@ function class_registration(code, btn){
 
 // 모달창의 확인 버튼 클릭 시 모달창 비활성화
 closeButton.onclick = () => {
-    modalView.style.display = 'none';
+    location.reload();
 }
 
 

@@ -77,14 +77,15 @@ public class EnrollInCourseController {
     // 수강기간일 시 수강신청페이지로 이동
     @GetMapping("/course/enroll")
     public String get_enroll(
-            @AuthenticationPrincipal StdDTO std,
-            @RequestParam(required = false) Integer code,
+            @AuthenticationPrincipal UserDTO user,
+            @RequestParam(value = "code", defaultValue = "-1") Integer code,
             @RequestParam(required = false) String lectureName,
             Model model
     ){
         // 수강 신청 기간 비교
         LocalDate today = LocalDate.now();
         boolean result = enrollInCourseService.compare_enrollDate_now(today);
+        StdDTO std = userService.select_user_info_service(user.getId());
         if(result){
             Map<String, List<StdEnrollCourseDTO>> enroll = enrollInCourseService.get_std_course_details(std.getStdNo(), code, lectureName);
             model.addAttribute("enroll", enroll);
@@ -95,6 +96,8 @@ public class EnrollInCourseController {
             return "redirect:/main";//신청기간이 아니면 메인으로
         }
     }
+
+
 
 //    // 과목코드로 강의 조회 및 전체 강의 조회
 //    @GetMapping("/course/lectures")

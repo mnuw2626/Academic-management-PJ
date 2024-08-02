@@ -47,23 +47,24 @@ public class EnrollInCourseRestController {
     // 수강 신청 버튼 클릭 시
     @PostMapping("/enroll/regist/{code}")
     public void post_course_details(
-            @AuthenticationPrincipal StdDTO student,
+            @AuthenticationPrincipal UserDTO user,
             @PathVariable("code") Integer code
     ){
         System.out.println(code);
-
-//        System.out.println(student);
-        if (student == null) {
+        StdDTO std = userService.select_user_info_service(user.getId());
+        System.out.println(std);
+        if (std == null) {
             // 오류 처리: 학생 정보가 없음
             return;
         }
 
         // 수강신청 버튼 누를 시 수강정보 DB 삽입
-        boolean result = enrollInCourseService.set_course_details(student.getStdNo(), code);
+        boolean result = enrollInCourseService.set_course_details(std.getStdNo(), code);
         if(!result){
             System.out.println("등록실패");
         }
         System.out.println("수강 신청 내역 등록 성공");
+        enrollInCourseService.num_of_student(code);
     }
 
 

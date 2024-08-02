@@ -18,7 +18,7 @@ public class EnrollInCourseService {
     EnrollInCourseMapper enrollInCourseMapper;
 
     // 날짜를 담을 객체 생성
-    private EnrollmentDateDTO currentPeriod = new EnrollmentDateDTO();
+    private EnrollmentDateDTO currentPeriod = new EnrollmentDateDTO(LocalDate.now(), LocalDate.now());
 
     // 날짜 설정하는 기능
     public void set_enrollDate(LocalDate startDate, LocalDate endDate) {
@@ -78,23 +78,37 @@ public class EnrollInCourseService {
     }
 
     public Map<String, List<StdEnrollCourseDTO>> get_std_course_details(Integer stdNo, Integer code, String lectureName){
-//        Map<lecture>;
-//        Map<enrollcourse>
+        System.out.println("code: " + code);
+        // Map 으로 수강된것와 수강되지않은 강의 검색
         List<StdEnrollCourseDTO> enrollCourseDTOS = enrollInCourseMapper.select_enroll_in_course(stdNo);
         // 학생의 현재 수강신청 내역만 따로 모으기
         List<StdEnrollCourseDTO> stdEnrollCourse =
             enrollCourseDTOS.parallelStream()
                     .filter(stdEnrollCourseDTO -> stdEnrollCourseDTO.getStdNo() != null)
                     .toList();
+
         // 학생 관계없이 조건 필터링 된 강의내역 전부 모으기
         List<StdEnrollCourseDTO> allEnrollCourse =
                 enrollCourseDTOS.parallelStream()
-                        .filter(stdEnrollCourseDTO -> stdEnrollCourseDTO.getCode().equals(code) || stdEnrollCourseDTO.getLectureName().contains(lectureName))
+                        .filter(stdEnrollCourseDTO -> {
+                            if(code == -1 || stdEnrollCourseDTO.getCode().equals(code)){
+                                return true;
+                            }
+                            else if(lectureName != null && (lectureName.isEmpty() || stdEnrollCourseDTO.getLectureName().contains(lectureName))){
+                                return true;
+                            }
+                            return false;
+                        })
                         .toList();
-        System.out.println(enrollCourseDTOS);
+//        System.out.println(allEnrollCourse);
         return Map.of("stdEnrollCourse", stdEnrollCourse, "allEnrollCourse", allEnrollCourse);
 //        return enrollCourseDTOS;
     }
+
+    //강의 인원 수 +1
+    public void num_of_student(Integer code){
+        enrollInCourseMapper.update_lecture_num_of_student(code);
+    };
 }
 
 
