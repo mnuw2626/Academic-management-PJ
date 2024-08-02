@@ -1,12 +1,8 @@
 package com.academic.controller;
 
-import com.academic.dto.CollegeDTO;
-import com.academic.dto.DepartmentDTO;
-import com.academic.dto.EnrollmentDateDTO;
+import com.academic.dto.*;
 import com.academic.service.EnrollInCourseService;
-import com.academic.dto.TuitionDTO;
 import org.springframework.ui.Model;
-import com.academic.dto.StdDTO;
 import com.academic.service.ManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -140,7 +136,8 @@ public class ManagerController {
     public void get_leave_management(
             Model model
     ){
-        
+        List<LeaveDTO> leaveDTOS = managerService.get_all_leaves_info();
+        model.addAttribute("leaves", leaveDTOS);
     }
 
 

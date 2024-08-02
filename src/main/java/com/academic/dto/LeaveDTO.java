@@ -11,10 +11,12 @@ import java.time.LocalDate;
 @ToString
 public class LeaveDTO {
     private int stdNo;
+    private String name;
     private String status;
     private LocalDate startDate;
     private LocalDate endDate;
     private LocalDate applicationDate;
     private String reason;
+    private StdDTO stdDTO;
 
 }

@@ -57,10 +57,18 @@ public class UserService {
 
     /**************휴학***************/
     public void insert_leave_std(LeaveDTO leaveDTO){
+        if (leaveDTO != null){
+            leaveDTO.setStatus("처리중");
+        }
         userMapper.insert_leave_std(leaveDTO);
     }
 
     public LeaveDTO select_user_stat(Integer no){
-        return userMapper.select_stat(no);
+        LeaveDTO leaveDTO = userMapper.select_stat(no);
+        if (leaveDTO == null){
+            leaveDTO = new LeaveDTO();
+            leaveDTO.setStdNo(0);
+        }
+        return leaveDTO;
     }
 }

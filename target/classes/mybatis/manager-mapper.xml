@@ -13,6 +13,27 @@
         </association>
     </resultMap>
 
+    <resultMap id="all_leave_with_std_map" type="com.academic.dto.LeaveDTO" autoMapping="true">
+        <result property="stdNo" column="std_no" />
+        <result property="status" column="status" />
+        <result property="startDate" column="start_date" />
+        <result property="endDate" column="end_date" />
+        <result property="applicationDate" column="application_date" />
+        <result property="reason" column="reason" />
+        <association property="stdDTO" javaType="com.academic.dto.StdDTO">
+            <result property="stdNo" column="std_no" />
+            <result property="name" column="name" />
+            <result property="grade" column="grade" />
+            <result property="semester" column="semester" />
+        </association>
+    </resultMap>
+
+    <!--    전체 학생 조회-->
+    <select id="select_all_std" resultType="com.academic.dto.StdDTO">
+        SELECT * FROM `student`
+    </select>
+
+<!--    개개인 학생 조회-->
     <select id="select_std" resultType="com.academic.dto.StdDTO">
         SELECT `college_id`, `std_no`, `name`, `dept_id`, `grade`, `semester` FROM `student`
         <where>
@@ -59,6 +80,7 @@
         FROM `student` AS S
                  INNER JOIN `college_tuit` AS C
                  ON S.college_id = C.college_id
+                 
     </select>
 
     <insert id="insert_scholarship">
@@ -78,5 +100,20 @@
                  INNER JOIN `tuition` AS T
                  ON S.std_no = T.std_no
     </select>
+
+<!--    휴학신청관련-->
+    <select id="select_all_std_leaves" resultMap="all_leave_with_std_map">
+        SELECT ST.*, S.std_no, S.name, S.grade, S.semester
+        FROM `stat` AS ST
+                 INNER JOIN `student` AS S
+                 ON ST.std_no = S.std_no
+    </select>
+
+    <update id="update_leave_std_status">
+        UPDATE `stat` SET status = '휴학'
+        WHERE std_no = #{stdNo}
+    </update>
+
+
 
 </mapper>

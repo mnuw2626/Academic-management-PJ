@@ -15,13 +15,13 @@
     background-color: white;
 }
 
-h1{
+.leave-h1{
     font-size: var(--font-size-extrabold);
     margin-bottom: 40px;
     border-bottom: 2px solid var(--dark-green-2);
 }
 
-h3{
+.leave-h3{
     font-size: var(--font-size-medium);
     margin-bottom: 20px;
     border-bottom: 1px solid var(--dark-green-2);

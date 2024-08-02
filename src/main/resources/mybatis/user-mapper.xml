@@ -66,8 +66,8 @@
     <!--휴학신청-->
 
     <insert id="insert_leave_std">
-        INSERT INTO `stat` (std_no, start_date, end_date, application_date, reason)
-        VALUES (#{stdNo}, #{startDate}, #{endDate}, #{applicationDate}, #{reason})
+        INSERT INTO `stat` (std_no, name ,status, start_date, end_date, application_date, reason)
+        VALUES (#{stdNo}, #{name}, #{status}, #{startDate}, #{endDate}, #{applicationDate}, #{reason})
     </insert>
 
     <!--내 휴학신청 근황 가져오기-->

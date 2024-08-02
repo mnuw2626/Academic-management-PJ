@@ -1,9 +1,6 @@
 package com.academic.service;
 
-import com.academic.dto.CollegeDTO;
-import com.academic.dto.DepartmentDTO;
-import com.academic.dto.StdDTO;
-import com.academic.dto.TuitionDTO;
+import com.academic.dto.*;
 import com.academic.mapper.ManagerMapper;
 import com.fasterxml.jackson.databind.BeanProperty;
 import lombok.extern.log4j.Log4j2;
@@ -21,6 +18,10 @@ public class ManagerService {
     public boolean manager_add_std(StdDTO stdDTO) {
         managerMapper.insert_std(stdDTO);
         return true;
+    }
+    //학생 전체 명단 조회
+    public List<StdDTO> std_all_list(){
+        return managerMapper.select_all_std();
     }
 
     //학생 개개인 명단 조회
@@ -60,6 +61,17 @@ public class ManagerService {
     // 모든 학생 등록금 제출 내역 조회
     public List<StdDTO> get_all_std_tuitions(){
         return managerMapper.select_all_std_tuition();
+    }
+
+    // 휴/복학생 정보 가져오기
+    public List<LeaveDTO> get_all_leaves_info(){
+        return managerMapper.select_all_std_leaves();
+    }
+
+    public boolean update_leave_status(Integer stdNo) {
+        // stdNo를 사용하여 '휴학' 상태로 업데이트
+        int updatedRows = managerMapper.update_leave_std_status(stdNo);
+        return updatedRows > 0; // 업데이트된 행이 있으면 true 반환, 없으면 false 반환
     }
 
 }

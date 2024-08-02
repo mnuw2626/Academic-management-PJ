@@ -1,9 +1,6 @@
 package com.academic.mapper;
 
-import com.academic.dto.CollegeDTO;
-import com.academic.dto.DepartmentDTO;
-import com.academic.dto.StdDTO;
-import com.academic.dto.TuitionDTO;
+import com.academic.dto.*;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -12,6 +9,8 @@ import java.util.List;
 @Mapper
 public interface ManagerMapper {
     void insert_std(StdDTO stdDTO);
+
+    List<StdDTO> select_all_std();
 
     List<StdDTO> select_std(
             //param => 여러개니까 써줘야함
@@ -32,4 +31,8 @@ public interface ManagerMapper {
     List<TuitionDTO> select_std_scholarship();
 
     void insert_scholarship(List<TuitionDTO> tuitionDTOS);
+
+    List<LeaveDTO> select_all_std_leaves();
+
+    int update_leave_std_status(Integer stdNo);
 }
