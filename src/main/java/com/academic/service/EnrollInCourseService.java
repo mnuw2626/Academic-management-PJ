@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -76,12 +77,32 @@ public class EnrollInCourseService {
         return true;
     }
 
-    public List<StdEnrollCourseDTO> get_std_course_details(Integer stdNo){
+    public Map<String, List<StdEnrollCourseDTO>> get_std_course_details(Integer stdNo, Integer code, String lectureName){
 //        Map<lecture>;
 //        Map<enrollcourse>
-        
         List<StdEnrollCourseDTO> enrollCourseDTOS = enrollInCourseMapper.select_enroll_in_course(stdNo);
+        // 학생의 현재 수강신청 내역만 따로 모으기
+        List<StdEnrollCourseDTO> stdEnrollCourse =
+            enrollCourseDTOS.parallelStream()
+                    .filter(stdEnrollCourseDTO -> stdEnrollCourseDTO.getStdNo() != null)
+                    .toList();
+        // 학생 관계없이 조건 필터링 된 강의내역 전부 모으기
+        List<StdEnrollCourseDTO> allEnrollCourse =
+                enrollCourseDTOS.parallelStream()
+                        .filter(stdEnrollCourseDTO -> stdEnrollCourseDTO.getCode().equals(code) || stdEnrollCourseDTO.getLectureName().contains(lectureName))
+                        .toList();
         System.out.println(enrollCourseDTOS);
-        return enrollCourseDTOS;
+        return Map.of("stdEnrollCourse", stdEnrollCourse, "allEnrollCourse", allEnrollCourse);
+//        return enrollCourseDTOS;
     }
 }
+
+
+
+
+
+
+
+
+
+

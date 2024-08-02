@@ -2,6 +2,8 @@ package com.academic.dto;
 
 import lombok.*;
 
+import java.util.Set;
+
 @Getter
 @Setter
 @ToString

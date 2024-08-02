@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
 
 
 @Controller
@@ -78,13 +79,15 @@ public class EnrollInCourseController {
     public String get_enroll(
             @AuthenticationPrincipal StdDTO std,
             @RequestParam(required = false) Integer code,
-            @RequestParam(required = false) String lectureName
+            @RequestParam(required = false) String lectureName,
+            Model model
     ){
         // 수강 신청 기간 비교
         LocalDate today = LocalDate.now();
         boolean result = enrollInCourseService.compare_enrollDate_now(today);
         if(result){
-            List<StdEnrollCourseDTO> list = enrollInCourseService.get_std_course_details(std.getStdNo());
+            Map<String, List<StdEnrollCourseDTO>> enroll = enrollInCourseService.get_std_course_details(std.getStdNo(), code, lectureName);
+            model.addAttribute("enroll", enroll);
             return "course/enroll"; //신청기간이면
         }
         else
