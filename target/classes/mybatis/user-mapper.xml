@@ -28,9 +28,22 @@
         WHERE U.id = #{id}
     </select>
 
+    <!--  학번으로 학생 정보 가져옴  -->
+    <select id="select_std_info" resultType="com.academic.dto.StdDTO">
+        SELECT * FROM `student`
+        WHERE std_no = #{stdNo}
+    </select>
+
+    <update id="update_std_id">
+        update `student` set id = #{id}
+        where std_no = #{stdNo}
+    </update>
+
+
     <insert id="insert_user">
         insert into `user` (`id`, `password`, `tel`, `no`)
         values(#{id}, #{password}, #{tel}, #{no})
     </insert>
+
 
 </mapper>

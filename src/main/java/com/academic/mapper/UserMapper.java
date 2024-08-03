@@ -17,4 +17,8 @@ public interface UserMapper {
      * @return
      */
     StdDTO select_all_userInfo(String id);
+
+    StdDTO select_std_info(Integer stdNo);
+
+    void update_std_id(String id, Integer stdNo);
 }

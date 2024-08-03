@@ -1,5 +1,9 @@
 @import "../public/public.css";
 
+canvas{
+    border: 1px solid var(--dark-green-2);
+}
+
 .schedule-main{
     display: flex;
     flex-direction: column;

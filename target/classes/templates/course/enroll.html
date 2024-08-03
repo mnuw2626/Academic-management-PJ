@@ -22,11 +22,10 @@
                     <h2>개설 강의 조회</h2>
                     <form class="div-course-form" th:action="@{/course/enroll}" method="get">
                         <label class="div-form-inputlabel">
-                            <input type="text" name="code" id="course-code-tag" placeholder="교과목코드"/>
+                            <input type="text" name="code" id="course-code-tag" placeholder="교과목코드" oninput="updateCourseName()"/>
                         </label>
                         <label class="div-form-inputlabel">
-                            <!--    교과목명은 교과목코드를 선택 시 DB로 불러오기      -->
-                            <input type="text" id="course-name-tag" placeholder="교과목명" disabled/>
+                            <input type="text" name="lectureName" id="course-name-tag" placeholder="교과목명" disabled />
                         </label>
                         <button id="course-find-btn">
                         <i class="fa-solid fa-magnifying-glass"></i>
@@ -51,14 +50,13 @@
                                 <th>강의요일</th>
                                 <th>강의실</th>
                                 <th>잔여</th>
-                                <th>재수강</th>
                             </tr>
                         </thead>
                         <tbody id="course-table-tbody">
                             <tr th:each="lecture, stat:${enroll.get('allEnrollCourse')}">
                                 <td>[[${stat.count}]]</td>
                                 <td>[[${lecture.type}]]</td>
-                                <td>[[${lecture.year}]]</td>
+                                <td>[[${lecture.courseYear}]]</td>
                                 <td>[[${lecture.credit}]]</td>
                                 <td>
                                     <button class="class-btn" th:if="${lecture.stdNo == null && !lecture.status}" th:onclick="|class_registration(${lecture.code}, this)|">수강</button>
@@ -71,7 +69,6 @@
                                 <td>[[${lecture.week}]]</td>
                                 <td>[[${lecture.room}]]</td>
                                 <td> [[${lecture.numOfStudent}]] / [[${lecture.capacity}]] </td>
-                                <td><span class="class-sign-new">신규</span></td>
                             </tr>
                         </tbody>
                     </table>
@@ -83,19 +80,19 @@
                         <h2>수강확정내역</h2>
                         <div>
                             <span>잔여 학점 : </span>
-                            <span>3</span>
+                            <span>
+                                [[${remainingCredits}]]
+                            </span>
                         </div>
                         <div>
                             <span>신청 학점 : </span>
-                            <span>3</span>
+                            <span>
+                                [[${totalCredits}]]
+                            </span>
                         </div>
                         <div>
                             <span>수강최대학점 : </span>
-                            <span>97</span>
-                        </div>
-                        <div>
-                            <span>재수강 : </span>
-                            <span>1</span>
+                            <span>[[${T(com.academic.dto.StdEnrollCourseDTO).ALLCREDIT}]]</span>
                         </div>
                     </section>
                     <section class="section-list">
@@ -112,7 +109,6 @@
                                 <th>강의시간</th>
                                 <th>강의요일</th>
                                 <th>강의실</th>
-                                <th>재수강</th>
                             </tr>
                             </thead>
                             <tbody id="enrolled-list-tbody">
@@ -127,7 +123,6 @@
                                     <td>[[${list.starTime}]] ~ [[${list.endTime}]]</td>
                                     <td>[[${list.week}]]</td>
                                     <td>[[${list.room}]]</td>
-                                    <td><span class="class-sign-new">신규</span></td>
                                 </tr>
 <!--                                <tr>-->
 <!--                                    <td>1</td>-->
@@ -151,7 +146,7 @@
         <!-- 수강 신청 버튼 클릭 시 나오는 안내창 -->
         <section id="user-info-modal" class="user-info-modal">
             <div>
-                <span>수강 신청 되었습니다.</span>
+                <span id="modal-message">수강 신청 되었습니다.</span>
                 <button type="button" id="modal-close-btn">확인</button>
             </div>
         </section>

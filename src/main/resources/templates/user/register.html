@@ -9,7 +9,7 @@
 <body>
     <main>
         <h1>회원가입</h1>
-        <form th:action="@{/user/register}" method="post">
+        <form th:action="@{/user/setregister}" method="post">
             <section class="id-section form-section">
                 <label>
                     <i class="fa-solid fa-lock"></i>
@@ -42,14 +42,14 @@
             <section class="num-section form-section">
                 <label>
                     <span>학번</span>
-                    <input type="number" value="1234" readonly>
+                    <input type="number" id="studentNo" name="studentNo" th:value="${studentNo}" readonly>
                 </label>
             </section>
 
             <section class="name-section form-section">
                 <label>
                     <span>이름</span>
-                    <input type="text">
+                    <input type="text" name="name" th:value="${studentName}" readonly>
                 </label>
             </section>
 

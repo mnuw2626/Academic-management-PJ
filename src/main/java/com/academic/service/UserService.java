@@ -30,4 +30,11 @@ public class UserService {
     public StdDTO select_user_info_service(String id){
         return userMapper.select_all_userInfo(id); // 단일 사용자 반환;
     }
+    public StdDTO get_std_info(Integer stdNo){
+        return userMapper.select_std_info(stdNo);
+    }
+
+    public void set_std_id(String id, Integer stdNo){
+        userMapper.update_std_id(id, stdNo);
+    }
 }
