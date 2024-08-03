@@ -17,9 +17,9 @@
         <section layout:fragment="main-section" class="main-section">
             <div class="individual-div">
                 <div class="individual-privacy">
-                    <div class="individual-name" th:text="${#authentication.principal.id}">이름</div> <br>
-                    <div class="individual-studentId" >학번</div> <br>
-                    <div class="individual-department">자연과학대학 | 물리학과</div>
+                    <div class="individual-name" th:text="${student.name}">이름</div> <br>
+                    <div class="individual-studentId" th:text="${student.stdNo}">학번</div> <br>
+                    <div class="individual-department">[[${student.collegeId}]] | [[${student.deptId}]]</div>
                 </div>
                 <div class="individual-input">
                     <input type="button" value="비밀번호 변경">

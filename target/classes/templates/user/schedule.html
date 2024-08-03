@@ -9,8 +9,8 @@
     <meta charset="UTF-8">
     <title>학사관리 | 수업</title>
     <link rel="stylesheet" href="../../static/css/user/schedule.css" th:href="@{/css/user/schedule.css}">
-
     <script src="https://kit.fontawesome.com/61293ff96f.js" crossorigin="anonymous"></script>
+    <script src="../../static/js/user/schedule.js" th:src="@{/js/user/schedule.js}" defer></script>
 </head>
 <body>
         <section class="schedule-main" layout:fragment="main-section">
@@ -38,12 +38,6 @@
                         <option value="semester2">
                             2학기
                         </option>
-                        <option value="semester3">
-                            3학기
-                        </option>
-                        <option value="semester4">
-                            4학기
-                        </option>
                     </select>
                     <button id="course-find-btn">
                         <i class="fa-solid fa-magnifying-glass"></i>
@@ -51,7 +45,7 @@
                     </button>
                 </div>
             </section>
-            <!-- 시간표 -->
+            <!--  시간표 -->
             <section class="section-table">
                 <div class="div-schedule">
                     <table class="schedule-table">
@@ -74,156 +68,110 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <th rowspan="2">9시</th>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <th rowspan="2">10시</th>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <th rowspan="2">11시</th>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <th rowspan="2">12시</th>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <th rowspan="2">13시</th>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <th rowspan="2">14시</th>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <th rowspan="2">15시</th>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <th rowspan="2">16시</th>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <th rowspan="2">17시</th>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <th rowspan="2">18시</th>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>3</td>
-                            <td>4</td>
-                            <td>5</td>
-                        </tr>
+                            <!-- 09:00 시간대 -->
+                            <tr>
+                                <th>09:00</th>
+                                <td th:each="course, iterStat : ${stdEnrollCourses}"
+                                    th:if="${course.starTime.hour == 9 && course.starTime.minute == 0}">
+                                    <div th:text="${course.lectureName}"></div>
+                                    <input type="hidden" th:if="${iterStat.index < stdEnrollCourses.size() - 1}"
+                                           th:value="${stdEnrollCourses[iterStat.index + 1].lectureName}"/>
+                                </td>
+                                <td th:each="course : ${stdEnrollCourses}"
+                                    th:if="${(course.starTime.hour == 9 && course.starTime.minute == 0) && course.week == '월요일'}">
+                                    <div th:text="${course.lectureName}"></div>
+                                </td>
+                                <td th:each="course : ${stdEnrollCourses}"
+                                    th:if="${(course.starTime.hour == 9 && course.starTime.minute == 0) && course.week == '화요일'}">
+                                    <div th:text="${course.lectureName}"></div>
+                                </td>
+                                <td th:each="course : ${stdEnrollCourses}"
+                                    th:if="${(course.starTime.hour == 9 && course.starTime.minute == 0) && course.week == '수요일'}">
+                                    <div th:text="${course.lectureName}"></div>
+                                </td>
+                                <td th:each="course : ${stdEnrollCourses}"
+                                    th:if="${(course.starTime.hour == 9 && course.starTime.minute == 0) && course.week == '목요일'}">
+                                    <div th:text="${course.lectureName}"></div>
+                                </td>
+                                <td th:each="course : ${stdEnrollCourses}"
+                                    th:if="${(course.starTime.hour == 9 && course.starTime.minute == 0) && course.week == '금요일'}">
+                                    <div th:text="${course.lectureName}"></div>
+                                </td>
+                            </tr>
+
+                            <!-- 09:30 시간대 -->
+                            <tr>
+                                <th>09:30</th>
+                                <td th:each="course : ${stdEnrollCourses}"
+                                    th:if="${(course.starTime.hour == 9 && course.starTime.minute == 30) && course.week == '월요일'}">
+                                    <div th:text="${course.lectureName}"></div>
+                                </td>
+                                <td th:each="course : ${stdEnrollCourses}"
+                                    th:if="${(course.starTime.hour == 9 && course.starTime.minute == 30) && course.week == '화요일'}">
+                                    <div th:text="${course.lectureName}"></div>
+                                </td>
+                                <td th:each="course : ${stdEnrollCourses}"
+                                    th:if="${(course.starTime.hour == 9 && course.starTime.minute == 30) && course.week == '수요일'}">
+                                    <div th:text="${course.lectureName}"></div>
+                                </td>
+                                <td th:each="course : ${stdEnrollCourses}"
+                                    th:if="${(course.starTime.hour == 9 && course.starTime.minute == 30) && course.week == '목요일'}">
+                                    <div th:text="${course.lectureName}"></div>
+                                </td>
+                                <td th:each="course : ${stdEnrollCourses}"
+                                    th:if="${(course.starTime.hour == 9 && course.starTime.minute == 30) && course.week == '금요일'}">
+                                    <div th:text="${course.lectureName}"></div>
+                                </td>
+                            </tr>
+                            <!-- 10:00 시간대 -->
+                            <tr>
+                                <th>10:00</th>
+                                <td th:each="course : ${stdEnrollCourses}"
+                                    th:if="${(course.starTime.hour == 10 && course.starTime.minute == 0) && course.week == '월요일'}">
+                                    <div th:text="${course.lectureName}"></div>
+                                </td>
+                                <td th:each="course : ${stdEnrollCourses}"
+                                    th:if="${(course.starTime.hour == 10 && course.starTime.minute == 0) && course.week == '화요일'}">
+                                    <div th:text="${course.lectureName}"></div>
+                                </td>
+                                <td th:each="course : ${stdEnrollCourses}"
+                                    th:if="${(course.starTime.hour == 10 && course.starTime.minute == 0) && course.week == '수요일'}">
+                                    <div th:text="${course.lectureName}"></div>
+                                </td>
+                                <td th:each="course : ${stdEnrollCourses}"
+                                    th:if="${(course.starTime.hour == 10 && course.starTime.minute == 0) && course.week == '목요일'}">
+                                    <div th:text="${course.lectureName}"></div>
+                                </td>
+                                <td th:each="course : ${stdEnrollCourses}"
+                                    th:if="${(course.starTime.hour == 10 && course.starTime.minute == 0) && course.week == '금요일'}">
+                                    <div th:text="${course.lectureName}"></div>
+                                </td>
+                            </tr>
+
+                            <!-- 10:30 시간대 -->
+                            <tr>
+                                <th>10:30</th>
+                                <td th:each="course : ${stdEnrollCourses}"
+                                    th:if="${(course.starTime.hour == 10 && course.starTime.minute == 30) && course.week == '월요일'}">
+                                    <div th:text="${course.lectureName}"></div>
+                                </td>
+                                <td th:each="course : ${stdEnrollCourses}"
+                                    th:if="${(course.starTime.hour == 10 && course.starTime.minute == 30) && course.week == '화요일'}">
+                                    <div th:text="${course.lectureName}"></div>
+                                </td>
+                                <td th:each="course : ${stdEnrollCourses}"
+                                    th:if="${(course.starTime.hour == 10 && course.starTime.minute == 30) && course.week == '수요일'}">
+                                    <div th:text="${course.lectureName}"></div>
+                                </td>
+                                <td th:each="course : ${stdEnrollCourses}"
+                                    th:if="${(course.starTime.hour == 10 && course.starTime.minute == 30) && course.week == '목요일'}">
+                                    <div th:text="${course.lectureName}"></div>
+                                </td>
+                                <td th:each="course : ${stdEnrollCourses}"
+                                    th:if="${(course.starTime.hour == 10 && course.starTime.minute == 30) && course.week == '금요일'}">
+                                    <div th:text="${course.lectureName}"></div>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>

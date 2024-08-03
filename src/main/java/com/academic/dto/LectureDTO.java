@@ -22,5 +22,6 @@ public class LectureDTO {
     private LocalTime endTime; //강의 끝나는 시간
     private String room; //강의실
     private int capacity; //정원
+    private Integer numOfStudent; //지원자 수
     private String report; //강의계획서
 }

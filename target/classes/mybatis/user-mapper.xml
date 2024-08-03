@@ -41,13 +41,25 @@
         WHERE U.id = #{id}
     </select>
 
+    <!--  학번으로 학생 정보 가져옴  -->
+    <select id="select_std_info" resultType="com.academic.dto.StdDTO">
+        SELECT * FROM `student`
+        WHERE std_no = #{stdNo}
+    </select>
+
+    <update id="update_std_id">
+        update `student` set id = #{id}
+        where std_no = #{stdNo}
+    </update>
+
+
     <insert id="insert_user">
         insert into `user` (`id`, `password`, `tel`, `no`)
         values(#{id}, #{password}, #{tel}, #{no})
     </insert>
 
-    <!--유저 등록금 조회-->
 
+    <!--유저 등록금 조회-->
     <select id="select_scholarship" resultMap="student_with_tuition_map">
         SELECT T.*, S.*
         FROM `student` AS S
@@ -57,9 +69,9 @@
     </select>
 
     <!--등록금 납부-->
-
     <update id="update_std_scholarship">
         UPDATE tuition SET status = 1
         WHERE std_no = #{stdNo}
     </update>
+
 </mapper>

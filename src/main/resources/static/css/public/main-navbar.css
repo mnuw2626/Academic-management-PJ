@@ -5,6 +5,7 @@
     margin-left: 20px;
     width: 300px;
     align-self: start;
+    z-index: 99;
 }
 .nav-bar > h1{
     background-color: var(--dark-green-2);
