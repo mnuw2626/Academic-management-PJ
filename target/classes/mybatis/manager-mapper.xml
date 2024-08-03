@@ -46,7 +46,6 @@
         SELECT * FROM `college`
     </select>
 
-
     <select id="select_dept" resultType="com.academic.dto.DepartmentDTO">
         SELECT * FROM `department`
         WHERE college_id = #{collegeId}
@@ -54,6 +53,7 @@
     </select>
 
 <!--    장학금 관련 -->
+
     <select id="select_std_scholarship" resultType="com.academic.dto.TuitionDTO">
         SELECT S.std_no, C.amount
         FROM `student` AS S

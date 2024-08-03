@@ -18,78 +18,78 @@
     <section class="stuscore-main" layout:fragment="main-section">
             <div class="student-info-title">
                 <section class="student-info-section">
-                    <!--   학생 정보 테이블      -->
-                    <span class="student-info-grade">
-                        <!-- 학년 -->
-                        <label>
-                            <select name="grade">
-                                <option value="1">
-                                    1학년
-                                </option>
-                                <option value="2">
-                                    2학년
-                                </option>
-                                <option value="3">
-                                    3학년
-                                </option>
-                                <option value="4">
-                                    4학년
-                                </option>
-                            </select>
-                        </label>
-                    </span>
-                    <span class="student-info-semester">
-                        <!-- 학기 -->
-                        <label>
-                            <select name="semester">
-                                <option value="1">
-                                    1학기
-                                </option>
-                                <option value="2">
-                                    2학기
-                                </option>
-                            </select>
-                        </label>
-                    </span>
-                    <span class="student-info-college">
-                        단과대학:
-                        <label>
-                            <!-- 단과대학 선택하게 -->
-                            <select id="collegeId">
-                                <option th:value="${college.id}" th:each="college : ${colleges}" th:text="${college.name}" >
-<!--                                    공과대학-->
-                                </option>
-<!--                                <option value="2">-->
-<!--                                    인문대학-->
-<!--                                </option>-->
-<!--                                <option value="3">-->
-<!--                                    사회과학대학-->
-<!--                                </option>-->
-                            </select>
-                        </label>
-                    </span>
-                    <span class="student-info-department">
-                        학과:
-                        <label>
-                            <!-- 학과 DB로 불러옴 -->
-                            <select id="deptId">
-                                <option th:value="${depart.id}" th:each="depart : ${departments}" th:text="${depart.name}">
-<!--                                    컴퓨터공학과-->
-                                </option>
-                            </select>
-                        </label>
-                    </span>
-                    <span class="student-info-no">
-                        학번 : <input type="text" />
-                    </span>
-                    <span class="student-info-name">
-                        이름 : <input type="text" />
-                    </span>
+                    <form action="/manager/stuscore_regist" method="get">
+                        <!--   학생 정보 테이블      -->
+                        <span class="student-info-grade">
+                            <!-- 학년 -->
+                            <label>
+                                <select name="year">
+                                    <option value="" selected disabled hidden>선택</option>
+                                    <option value="1">
+                                        1학년
+                                    </option>
+                                    <option value="2">
+                                        2학년
+                                    </option>
+                                    <option value="3">
+                                        3학년
+                                    </option>
+                                    <option value="4">
+                                        4학년
+                                    </option>
+                                </select>
+                            </label>
+                        </span>
+                        <span class="student-info-semester">
+                            <!-- 학기 -->
+                            <label>
+                                <select name="semester">
+                                    <option value="" selected disabled hidden>선택</option>
+                                    <option value="1">
+                                        1학기
+                                    </option>
+                                    <option value="2">
+                                        2학기
+                                    </option>
+                                </select>
+                            </label>
+                        </span>
+                        <span class="student-info-college">
+                            단과대학:
+                            <label>
+                                <!-- 단과대학 선택하게 -->
+                                <select id="collegeId" name="collegeId">
+                                    <option value="" selected disabled hidden>선택</option>
+                                    <option th:value="${college.id}" th:each="college : ${colleges}" th:text="${college.name}" >
+    <!--                                    공과대학-->
+                                    </option>
+                                </select>
+                            </label>
+                        </span>
+                        <span class="student-info-department">
+                            학과:
+                            <label>
+                                <!-- 학과 DB로 불러옴 -->
+                                <select id="deptId" name="deptId">
+                                    <option value="" selected disabled hidden>선택</option>
+                                    <option th:value="${depart.id}" th:each="depart : ${departments}" th:text="${depart.name}">
+    <!--                                    컴퓨터공학과-->
+                                    </option>
+                                </select>
+                            </label>
+                        </span>
+                        <span class="student-info-no">
+                            학번 : <input type="text" name="stdNo"/>
+                        </span>
+                        <span class="student-info-name">
+                            이름 : <input type="text" name="stdName"/>
+                        </span>
+                        <button id="std-find-btn">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            <span>조회</span>
+                        </button>
+                    </form>
                 </section>
-                <button id="std-find-btn">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <span>조회</span>
-                </button>
             </div>
             <form class="stuscore-info-form" action="" method="post">
             <!--     단과대학, 학과, 학번, 이름에 맞춰서 수강된 과목들 DB에서 불러오기 - 성적 등록 테이블    -->
@@ -110,6 +110,7 @@
                                     <label>
                                         <!--  grade  -->
                                         <select name="grade">
+                                            <option value="" selected disabled hidden>선택</option>
                                             <option th:value="${grade.gradeValue}" th:each="grade : ${gradeList}" th:text="${grade.grade}">
 <!--                                                A+-->
                                             </option>

@@ -13,8 +13,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -71,11 +73,73 @@ public class ManagerController {
     // 성적 등록 페이지 이동
     @GetMapping("/stuscore_regist")
     public void get_stuscore_regist(
-                Model model
+            @RequestParam(required = false) Integer year,
+            @RequestParam(required = false) Integer semester,
+            @RequestParam(required = false) Integer collegeId,
+            @RequestParam(required = false) Integer deptId,
+            @RequestParam(required = false) Integer stdNo,
+            @RequestParam(required = false) String stdName,
+            Model model
     ){
+
+        // 단과대학에 따른 학과 검색
         get_db_college_depart_info(model);
 
+        System.out.println("학년 : " + year + " 학기 : " + semester);
+        System.out.println("단과대id : " + collegeId + " 학과id : " + deptId);
+        System.out.println("학번 : " + stdNo);
+        System.out.println("이름 : " + stdName);
+
+        // 등급 목록 조회
+        List<GradeDTO> gradeList = courseScoreService.get_all_grade();
+        model.addAttribute("gradeList", gradeList);
+
+
+        // 수강 내역 조회
         List<CourseDetailsDTO> courseDetails = courseScoreService.get_all_grade_score();
+
+
+        // 학년, 학기, 단과대, 학과, 학번, 이름으로 필터링
+        if (year != null) {
+            courseDetails = Optional.ofNullable(courseDetails)
+                    .orElse(Collections.emptyList())
+                    .stream()
+                    .filter(course -> course.getLecture().getGrade() == year)
+                    .collect(Collectors.toList());
+        }
+        if (semester != null) {
+            courseDetails = Optional.ofNullable(courseDetails)
+                    .orElse(Collections.emptyList())
+                    .stream()
+                    .filter(course -> course.getLecture().getSemester() == semester)
+                    .collect(Collectors.toList());
+        }
+        if (collegeId != null) {
+            courseDetails = Optional.ofNullable(courseDetails)
+                    .orElse(Collections.emptyList())
+                    .stream()
+                    .filter(course -> course.getCollege().getId() == collegeId)
+                    .collect(Collectors.toList());
+        }
+        if (deptId != null) {
+            courseDetails = courseDetails.stream()
+                    .filter(course -> course.getDepartment().getId() == deptId)
+                    .collect(Collectors.toList());
+        }
+        if (stdNo != null) {
+            courseDetails = Optional.ofNullable(courseDetails)
+                    .orElse(Collections.emptyList())
+                    .stream()
+                    .filter(course -> course.getStd().getStdNo() == stdNo)
+                    .collect(Collectors.toList());
+        }
+        if (stdName != null) {
+            courseDetails = Optional.ofNullable(courseDetails)
+                    .orElse(Collections.emptyList())
+                    .stream()
+                    .filter(course -> course.getStd().getName().contains(stdName))
+                    .collect(Collectors.toList());
+        }
         System.out.println(courseDetails);
         model.addAttribute("courseDetails", courseDetails);
     }
@@ -86,10 +150,9 @@ public class ManagerController {
         List<CollegeDTO> colleges = enrollInCourseService.get_colleges();
         model.addAttribute("colleges", colleges);
 
-        // 처음으로 페이지 들어갔을 시 첫번째 단과대학의 학과를 조회
-        // -> 그 후 단과대학 선택 시 그에 따른 학과 조회는 ManagerRestController 참고
-        Integer college1_id = colleges.get(0).getId();
-        List<DepartmentDTO> departments = enrollInCourseService.get_departments(college1_id);
+
+        // 단과대학의 학과를 조회
+        List<DepartmentDTO> departments = enrollInCourseService.get_departments(colleges.get(0).getId());
         model.addAttribute("departments", departments);
 
         // Create maps for college and department names

@@ -48,10 +48,10 @@ public class MainController {
     public void get_manager_main() {}
 
     public void get_college_depart_name(StdDTO std, Model model){
+
         List<CollegeDTO> colleges = managerService.get_colleges();
 
-
-        // 단과대학 ID가 desiredCollegeId와 일치하는 단과대학을 찾음
+        // 단과대학 ID가 findCollege와 일치하는 단과대학을 찾음
         CollegeDTO college = null;
         for (CollegeDTO findCollege : colleges) {
             if (findCollege.getId() == std.getCollegeId()) {
