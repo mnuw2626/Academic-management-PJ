@@ -1,11 +1,9 @@
 package com.academic.controller;
 
-import com.academic.dto.CollegeDTO;
-import com.academic.dto.DepartmentDTO;
-import com.academic.dto.EnrollmentDateDTO;
+import com.academic.dto.*;
+import com.academic.service.CourseScoreService;
 import com.academic.service.EnrollInCourseService;
 import org.springframework.ui.Model;
-import com.academic.dto.StdDTO;
 import com.academic.service.ManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,26 +11,31 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 
 @Controller
 @RequestMapping("/manager")
 public class ManagerController {
     @Autowired
-    ManagerService managerService;
+    private ManagerService managerService;
 
     @Autowired
-    EnrollInCourseService enrollInCourseService;
+    private EnrollInCourseService enrollInCourseService;
+
+    @Autowired
+    private CourseScoreService courseScoreService;
 
     @GetMapping("/add_std")
     public void get_add_std(
             Model model
-    ) {
+    ){
         get_db_college_depart_info(model);
     }
 
     @PostMapping("/add_std")
-    public String post_add_std(StdDTO stdDTO) {
+    public String post_add_std(StdDTO stdDTO){
         System.out.println("학생등록시도");
 //        System.out.println("학생 정보 : " + stdDTO);
         managerService.manager_add_std(stdDTO);
@@ -51,27 +54,30 @@ public class ManagerController {
             @RequestParam(required = false) String name,
             @RequestParam(required = false) String stdNo,
             Model model
-    ) {
+    ){
         System.out.println("학생명단조회시작");
-        List<StdDTO> stds = managerService.manager_std_list_check(collegeId, deptId, grade, semester, name, stdNo);
+        List<StdDTO> stds = managerService.manager_std_list_check(collegeId, deptId, grade, semester ,name, stdNo);
         model.addAttribute("stds", stds);
         //단과대 조회
         get_db_college_depart_info(model);
     }
 
 
-    /******************** 성적 등록  *******************/
+   /******************** 성적 등록  *******************/
     // 성적 등록 페이지 이동
     @GetMapping("/stuscore_regist")
     public void get_stuscore_regist(
-            Model model
-    ) {
+                Model model
+    ){
         get_db_college_depart_info(model);
+
+        List<CourseDetailsDTO> courseDetails = courseScoreService.get_all_grade_score();
+        System.out.println(courseDetails);
+        model.addAttribute("courseDetails", courseDetails);
     }
 
-
     /*  단과대학과 해당된 단과대학의 학과를 DB에서 조회하는 함수  */
-    private void get_db_college_depart_info(Model model) {
+    private void get_db_college_depart_info(Model model){
         // 페이지 접속 시 단과대학을 DB에서 조회
         List<CollegeDTO> colleges = enrollInCourseService.get_colleges();
         model.addAttribute("colleges", colleges);
@@ -81,8 +87,19 @@ public class ManagerController {
         Integer college1_id = colleges.get(0).getId();
         List<DepartmentDTO> departments = enrollInCourseService.get_departments(college1_id);
         model.addAttribute("departments", departments);
+
+        // Create maps for college and department names
+        Map<Integer, String> collegeMap = colleges.stream()
+                .collect(Collectors.toMap(CollegeDTO::getId, CollegeDTO::getName));
+        Map<Integer, String> departmentMap = departments.stream()
+                .collect(Collectors.toMap(DepartmentDTO::getId, DepartmentDTO::getName));
+
+        // Add maps to the model
+        model.addAttribute("collegeMap", collegeMap);
+        model.addAttribute("departmentMap", departmentMap);
     }
 
+    /**************  수강 신청 기간 설정 페이지   *************/
     // 수강신청기간 설정 페이지
     @GetMapping("/enrolment")
     public void get_enrollment() {
@@ -98,6 +115,24 @@ public class ManagerController {
         System.out.println(peroid);
         model.addAttribute("peroid", peroid);
         System.out.println("수강신청중");
+    }
+
+
+    /******************** 등록금 발송  *******************/
+    //등록금 발송 페이지 이동
+    @GetMapping("/send")
+    public void send(){
+        List<TuitionDTO> tuitionDTOS = managerService.get_tuitions();
+        managerService.send_scholarship(tuitionDTOS);
+    }
+
+    /******************** 등록금 제출 내역 조회  *******************/
+    @GetMapping("/bill_check")
+    public void get_bill_check(
+            Model model
+    ){
+        List<StdDTO> tuitionDTOS = managerService.get_all_std_tuitions();
+        model.addAttribute("stdTuitions", tuitionDTOS);
     }
 
 }

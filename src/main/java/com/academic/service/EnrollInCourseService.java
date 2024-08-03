@@ -148,7 +148,7 @@ public class EnrollInCourseService {
 
         // 현재 수강 중인 강의 목록 조회
         List<StdEnrollCourseDTO> currentCourses = enrollCourseDTOS.parallelStream()
-                .filter(stdEnrollCourseDTO -> stdEnrollCourseDTO.getStdNo() != null)
+                .filter(stdEnrollCourseDTO -> stdEnrollCourseDTO.getStdNo() != null) //학번으로 검색
                 .toList();
 
         // 학생의 현재 수강신청 내역만 따로 모으기

@@ -19,7 +19,7 @@
                 <div class="individual-privacy">
                     <div class="individual-name" th:text="${student.name}">이름</div> <br>
                     <div class="individual-studentId" th:text="${student.stdNo}">학번</div> <br>
-                    <div class="individual-department">[[${student.collegeId}]] | [[${student.deptId}]]</div>
+                    <div class="individual-department">[[${college.name}]] | [[${department.name}]]</div>
                 </div>
                 <div class="individual-input">
                     <input type="button" value="비밀번호 변경">

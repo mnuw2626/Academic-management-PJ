@@ -103,48 +103,15 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>1001</td>
-                                <td>데이터통신</td>
+                            <tr th:each="course : ${courseDetails}">
+                                <td>[[${course.lecture.code}]]</td>
+                                <td>[[${course.lecture.name}]]</td>
                                 <td>
                                     <label>
                                         <!--  grade  -->
                                         <select name="grade">
-                                            <option>
-                                                A+
-                                            </option>
-                                            <option>
-                                                A0
-                                            </option>
-                                            <option>
-                                                A-
-                                            </option>
-                                            <option>
-                                                B+
-                                            </option>
-                                            <option>
-                                                B0
-                                            </option>
-                                            <option>
-                                                B-
-                                            </option>
-                                            <option>
-                                                C+
-                                            </option>
-                                            <option>
-                                                C0
-                                            </option>
-                                            <option>
-                                                C-
-                                            </option>
-                                            <option>
-                                                D+
-                                            </option>
-                                            <option>
-                                                D0
-                                            </option>
-                                            <option>
-                                                D-
+                                            <option th:value="${grade.gradeValue}" th:each="grade : ${gradeList}" th:text="${grade.grade}">
+<!--                                                A+-->
                                             </option>
                                         </select>
                                     </label>

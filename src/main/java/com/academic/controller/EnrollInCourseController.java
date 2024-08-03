@@ -100,7 +100,7 @@ public class EnrollInCourseController {
             System.out.println(enroll);
             model.addAttribute("enroll", enroll);
 
-            // 현재 수강 중인 학점 합산
+            // 현재 수강 중인 학점
             int totalCredits = enroll.get("stdEnrollCourse").stream()
                     .findFirst()
                     .map(StdEnrollCourseDTO::getStdCredit) // stdCredit을 가져옴
@@ -139,5 +139,6 @@ public class EnrollInCourseController {
         model.addAttribute("stdEnrollCourses", stdEnrollCourses);
         return "user/schedule"; // 다시 일정으로
     }
+
 
 }
