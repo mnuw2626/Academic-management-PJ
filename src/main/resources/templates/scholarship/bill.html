@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layout/main-layout}"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>bill</title>
+    <link rel="stylesheet" href="../../static/css/scholarship/bill.css" th:href="@{/css/scholarship/bill.css}">
+</head>
+<body>
+    <form th:action="@{/scholarship/bill}" class="bill-main-section" layout:fragment="main-section" method="post">
+        <!-- CSRF 토큰을 숨겨진 필드로 추가 -->
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
+        <h1>등록금 납부 고지서</h1>
+        <section class="bill-section">
+            <h2>등록금 납부고지서</h2>
+            <h3>2023년 <b>1학기</b></h3>
+            <section class="bill-section-cont" th:if="${message != null}">
+                <p th:text="${message}"></p>
+            </section>
+            <section class="bill-section-cont" th:if="${message == null}">
+                <table>
+                    <tr>
+                        <td>단과대학</td>
+                        <td th:text="${stdDTO.collegeId}">공대</td>
+                        <td>학과</td>
+                        <td th:text="${stdDTO.deptId}">컴퓨터 공학과</td>
+                    </tr>
+                    <tr>
+                        <td>학번</td>
+                        <td th:text="${stdDTO.stdNo}">2021115896</td>
+                        <td>이름</td>
+                        <td th:text="${stdDTO.name}">양준식</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">등록금</td>
+                        <td colspan="2" th:text="${stdDTO.tuitionDTO.amount}">10</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">장학금</td>
+                        <td colspan="2">10</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">납부금</td>
+                        <td colspan="2" th:text="${stdDTO.tuitionDTO.amount}">10</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">납부기간</td>
+                        <td colspan="2"></td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">납부계좌</td>
+                        <td colspan="2">10</td>
+                    </tr>
+                </table>
+                <button class="bill-btn">납부하기</button>
+            </section>
+        </section>
+    </form>
+</body>
+</html>

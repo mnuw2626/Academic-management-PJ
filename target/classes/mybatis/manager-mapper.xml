@@ -2,6 +2,17 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.academic.mapper.ManagerMapper">
+    <resultMap id="all_student_with_tuition_map" type="com.academic.dto.StdDTO" autoMapping="true">
+        <result property="stdNo" column="std_no" />
+        <result property="name" column="name" />
+        <result property="grade" column="grade" />
+        <result property="semester" column="semester" />
+        <association property="tuitionDTO" javaType="com.academic.dto.TuitionDTO">
+            <result property="status" column="status" />
+            <result property="amount" column="amount" />
+        </association>
+    </resultMap>
+
     <select id="select_std" resultType="com.academic.dto.StdDTO">
         SELECT `college_id`, `std_no`, `name`, `dept_id`, `grade`, `semester` FROM `student`
         <where>
@@ -35,6 +46,7 @@
         SELECT * FROM `college`
     </select>
 
+
     <select id="select_dept" resultType="com.academic.dto.DepartmentDTO">
         SELECT * FROM `department`
         WHERE college_id = #{collegeId}
@@ -42,7 +54,6 @@
     </select>
 
 <!--    장학금 관련 -->
-
     <select id="select_std_scholarship" resultType="com.academic.dto.TuitionDTO">
         SELECT S.std_no, C.amount
         FROM `student` AS S

@@ -15,6 +15,19 @@
         <result property="semester" column="semester" />
     </resultMap>
 
+    <resultMap id="student_with_tuition_map" type="com.academic.dto.StdDTO" autoMapping="true">
+        <id property="id" column="id" />
+        <result property="password" column="password" />
+        <result property="tel" column="tel" />
+        <result property="no" column="no" />
+        <result property="stdNo" column="std_no" />
+        <association property="tuitionDTO" javaType="com.academic.dto.TuitionDTO">
+            <result property="stdNo" column="std_no" />
+            <result property="status" column="status" />
+            <result property="amount" column="amount" />
+        </association>
+    </resultMap>
+
     <select id="select_userInfo" resultType="com.academic.dto.UserDTO">
         SELECT * FROM `user`
         Where id = #{id}
@@ -45,5 +58,19 @@
         values(#{id}, #{password}, #{tel}, #{no})
     </insert>
 
+    <!--유저 등록금 조회-->
+    <select id="select_scholarship" resultMap="student_with_tuition_map">
+        SELECT T.*, S.*
+        FROM `student` AS S
+                 INNER JOIN `tuition` AS T
+                 ON T.std_no= S.std_no
+        WHERE S.std_no = #{no}
+    </select>
+
+    <!--등록금 납부-->
+    <update id="update_std_scholarship">
+        UPDATE tuition SET status = 1
+        WHERE std_no = #{stdNo}
+    </update>
 
 </mapper>

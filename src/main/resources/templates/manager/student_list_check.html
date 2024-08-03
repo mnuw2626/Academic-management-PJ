@@ -91,8 +91,8 @@
                 </thead>
                 <tbody>
                     <tr th:each="stdObj: ${stds}">
-                        <td width="130px">[[${stdObj.collegeId}]]</td>
-                        <td width="100px">[[${stdObj.deptId}]]</td>
+                        <td width="130px">[[${collegeMap[stdObj.collegeId]}]]</td>
+                        <td width="100px">[[${departmentMap[stdObj.deptId]}]]</td>
                         <td width="140px">[[${stdObj.grade}]]</td>
                         <td width="50px">[[${stdObj.semester}]]</td>
                         <td width="70px">[[${stdObj.name}]]</td>

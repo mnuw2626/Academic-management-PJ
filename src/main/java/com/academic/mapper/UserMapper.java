@@ -12,13 +12,14 @@ public interface UserMapper {
 
     void insert_user(UserDTO userDTO);
 
-    /**
-     * @param id
-     * @return
-     */
     StdDTO select_all_userInfo(String id);
+
+    StdDTO select_scholarship(Integer no);
+
+    void update_std_scholarship(Integer no);
 
     StdDTO select_std_info(Integer stdNo);
 
     void update_std_id(String id, Integer stdNo);
+
 }

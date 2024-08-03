@@ -3,11 +3,14 @@ package com.academic.controller;
 import com.academic.dto.*;
 import com.academic.service.CourseScoreService;
 import com.academic.service.EnrollInCourseService;
+import com.academic.dto.TuitionDTO;
 import org.springframework.ui.Model;
 import com.academic.service.ManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -26,6 +29,7 @@ public class ManagerController {
 
     @Autowired
     private CourseScoreService courseScoreService;
+
 
     @GetMapping("/add_std")
     public void get_add_std(
@@ -116,7 +120,6 @@ public class ManagerController {
         model.addAttribute("peroid", peroid);
         System.out.println("수강신청중");
     }
-
 
     /******************** 등록금 발송  *******************/
     //등록금 발송 페이지 이동
