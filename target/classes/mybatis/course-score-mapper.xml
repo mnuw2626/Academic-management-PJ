@@ -41,10 +41,9 @@
             <result column="grade" property="grade" />
         </association>
         <association property="score" javaType="com.academic.dto.GradeDTO">
-            <id column="grade_type" property="grade" />
-            <result column="grade_score" property="score" />
+            <id column="grade_type" property="gradeType" />
+            <result column="grade_value" property="gradeValue" />
         </association>
-
     </resultMap>
 
     <!--  수강 내역 조회(성적 포함)  -->
@@ -75,15 +74,15 @@
             e.grade AS grade,
             e.code AS course_code,
 
-            g.grade AS grade_type,
-            g.grade_value AS grade_score
+            g.grade_type,
+            g.grade_value
         FROM `course_details` e
             INNER JOIN `student` s
                 ON e.std_no = s.std_no
             INNER JOIN `lecture` l
                 ON e.code = l.code
             LEFT JOIN `grade` g
-                ON e.grade = g.grade
+                ON e.grade = g.grade_type
             INNER JOIN `college` c
                 ON s.college_id = c.id
             INNER JOIN `department` d
@@ -96,7 +95,7 @@
     </select>
 
     <!-- 성적 등급 업데이트  -->
-    <update id="update_course_std_grade">
+    <update id="update_course_score" parameterType="map">
         UPDATE `course_details` SET grade = #{grade}
         WHERE std_no = #{stdNo} and code = #{code};
     </update>

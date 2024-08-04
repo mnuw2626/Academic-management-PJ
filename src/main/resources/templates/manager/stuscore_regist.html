@@ -115,7 +115,7 @@
                                         <!--  grade  -->
                                         <select th:name="|grades[${iter.index}].grade|">
                                             <option value="" selected disabled hidden>선택</option>
-                                            <option th:value="${grade.grade}" th:each="grade : ${gradeList}" th:text="${grade.grade}">
+                                            <option th:value="${grade.gradeType}" th:each="grade : ${gradeList}" th:text="${grade.gradeType}">
 <!--                                                A+-->
                                             </option>
                                             <!-- 학번과 과목코드를 숨겨서 컨트롤러에 넘겨줌 -->

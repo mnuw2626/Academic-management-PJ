@@ -140,8 +140,40 @@ public class ManagerController {
                     .filter(course -> course.getStd().getName().contains(stdName))
                     .collect(Collectors.toList());
         }
+
+        courseDetails = Optional.ofNullable(courseDetails)
+                .orElse(Collections.emptyList())
+                .stream()
+                .filter(course -> course.getEnroll().getGrade() == null)
+                .collect(Collectors.toList());
+
         System.out.println(courseDetails);
         model.addAttribute("courseDetails", courseDetails);
+    }
+
+    // 성적 등록
+    @PostMapping("/stuscore_regist")
+    public String post_stuscore_regist(
+            @ModelAttribute GradeRequest gradeRequest
+    ){
+//        System.out.println(gradeRequest);
+//        System.out.println(gradeRequest.getGrades());
+
+        List<EnrollDTO> grades = gradeRequest.getGrades();
+
+        for (EnrollDTO gradeForm : grades) {
+            String grade = gradeForm.getGrade();
+            int code = gradeForm.getCode();
+            int stdNo = gradeForm.getStdNo();
+
+            System.out.println("grade: " + grade + ", code: " + code + ", stdNo: " + stdNo);
+            if(grade != null && !grade.isEmpty()){
+                courseScoreService.set_std_enroll_coures_score(stdNo, code, grade);
+            }
+
+        }
+
+        return "redirect:/manager/stuscore_regist";
     }
 
     /*  단과대학과 해당된 단과대학의 학과를 DB에서 조회하는 함수  */
