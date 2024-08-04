@@ -23,4 +23,8 @@ public class CourseScoreService {
         return courseScoreMapper.select_grade_type();
     }
 
+    public void update_std_enroll_coures(Integer stdNo, Integer code, String grade){
+        courseScoreMapper.update_course_std_grade(stdNo, code, grade);
+    }
+
 }

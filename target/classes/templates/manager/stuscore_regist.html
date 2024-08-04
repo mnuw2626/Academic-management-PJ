@@ -91,29 +91,36 @@
                     </form>
                 </section>
             </div>
-            <form class="stuscore-info-form" action="" method="post">
+            <form class="stuscore-info-form" th:action="@{/manager/stuscore_regist}" method="post">
             <!--     단과대학, 학과, 학번, 이름에 맞춰서 수강된 과목들 DB에서 불러오기 - 성적 등록 테이블    -->
                 <div class="stuscore-div-table">
                     <table class="stuscore-table">
                         <thead>
                             <tr>
+                                <th>학번</th>
+                                <th>이름</th>
                                 <th>과목코드</th>
                                 <th>과목이름</th>
                                 <th>성적(등급)</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr th:each="course : ${courseDetails}">
+                            <tr th:each="course, iter : ${courseDetails}">
+                                <td>[[${course.std.stdNo}]]</td>
+                                <td>[[${course.std.name}]]</td>
                                 <td>[[${course.lecture.code}]]</td>
                                 <td>[[${course.lecture.name}]]</td>
                                 <td>
                                     <label>
                                         <!--  grade  -->
-                                        <select name="grade">
+                                        <select th:name="|grades[${iter.index}].grade|">
                                             <option value="" selected disabled hidden>선택</option>
-                                            <option th:value="${grade.gradeValue}" th:each="grade : ${gradeList}" th:text="${grade.grade}">
+                                            <option th:value="${grade.grade}" th:each="grade : ${gradeList}" th:text="${grade.grade}">
 <!--                                                A+-->
                                             </option>
+                                            <!-- 학번과 과목코드를 숨겨서 컨트롤러에 넘겨줌 -->
+                                            <input type="hidden" th:name="|grades[${iter.index}].code|"  th:value="${course.lecture.code}" />
+                                            <input type="hidden" th:name="|grades[${iter.index}].stdNo|" th:value="${course.std.stdNo}" />
                                         </select>
                                     </label>
                                 </td>

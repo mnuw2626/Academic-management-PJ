@@ -15,4 +15,7 @@ public interface CourseScoreMapper {
     // 평점(등급) 목록 조회
     List<GradeDTO> select_grade_type();
 
+    // 성적 업데이트(학번과 과목코드에 해당)
+    void update_course_std_grade(Integer stdNo, Integer code, String grade);
+
 }

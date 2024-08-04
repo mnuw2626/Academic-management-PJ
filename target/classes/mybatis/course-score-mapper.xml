@@ -94,4 +94,11 @@
     <select id="select_grade_type">
         SELECT * FROM `grade`
     </select>
+
+    <!-- 성적 등급 업데이트  -->
+    <update id="update_course_std_grade">
+        UPDATE `course_details` SET grade = #{grade}
+        WHERE std_no = #{stdNo} and code = #{code};
+    </update>
+
 </mapper>
