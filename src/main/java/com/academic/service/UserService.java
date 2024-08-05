@@ -32,6 +32,11 @@ public class UserService {
         return userMapper.select_all_userInfo(id); // 단일 사용자 반환;
     }
 
+    // 학생 id 업데이트
+    public void set_std_id(String id, Integer stdNo){
+        userMapper.update_std_id(id, stdNo);
+    }
+
     /**************등록금 정보 가져오기***************/
     public StdDTO select_user_scholarship(Integer no){
         return userMapper.select_scholarship(no);
@@ -56,9 +61,4 @@ public class UserService {
     public StdDTO get_std_info(Integer stdNo){
         return userMapper.select_std_info(stdNo);
     }
-
-    public void set_std_id(String id, Integer stdNo){
-        userMapper.update_std_id(id, stdNo);
-    }
-
 }
