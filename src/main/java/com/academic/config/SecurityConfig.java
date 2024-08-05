@@ -40,7 +40,7 @@ public class SecurityConfig {
         http.authorizeHttpRequests(registry -> {
             registry.requestMatchers("/manager/**", "/manager_main").hasAuthority("MANAGER")
                     .requestMatchers("/main").hasAuthority("STUDENT")
-                    .requestMatchers("/user/login","/user/register").permitAll()
+                    .requestMatchers("/user/login","/user/register", "/user/student-number", "/user/setregister").permitAll()
                     .anyRequest().authenticated();
 //            registry.anyRequest().permitAll();
         });

@@ -183,7 +183,7 @@ public class ManagerController {
         model.addAttribute("colleges", colleges);
 
 
-        // 단과대학의 학과를 조회
+        // 첫번째 단과대학의 학과를 조회
         List<DepartmentDTO> departments = enrollInCourseService.get_departments(colleges.get(0).getId());
         model.addAttribute("departments", departments);
 

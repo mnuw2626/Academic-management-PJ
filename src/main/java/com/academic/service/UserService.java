@@ -19,13 +19,12 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public boolean user_register(UserDTO userDTO){
+    public void user_register(UserDTO userDTO){
         userDTO.setPassword(
                 passwordEncoder.encode(userDTO.getPassword())
         );
         userMapper.insert_user(userDTO);
         log.info(userDTO.toString());
-        return true;
     }
 
     public StdDTO select_user_info_service(String id){
