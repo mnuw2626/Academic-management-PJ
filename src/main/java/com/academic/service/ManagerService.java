@@ -63,14 +63,25 @@ public class ManagerService {
         return managerMapper.select_all_std_tuition();
     }
 
-    // 휴/복학생 정보 가져오기
-    public List<LeaveDTO> get_all_leaves_info(){
+    // 모든 휴학 신청 정보를 가져오기
+    public List<LeaveDTO> get_all_leaves_info() {
         return managerMapper.select_all_std_leaves();
     }
 
+    // 모든 복학 신청 정보를 가져오기
+    public List<LeaveDTO> get_all_returns_info() {
+        return managerMapper.select_all_std_returns();
+    }
+
+    // 휴학 상태 업데이트
     public boolean update_leave_status(Integer stdNo) {
-        // stdNo를 사용하여 '휴학' 상태로 업데이트
         int updatedRows = managerMapper.update_leave_std_status(stdNo);
+        return updatedRows > 0; // 업데이트된 행이 있으면 true 반환, 없으면 false 반환
+    }
+
+    // 복학 상태 업데이트
+    public boolean update_return_status(Integer stdNo) {
+        int updatedRows = managerMapper.update_return_std_status(stdNo);
         return updatedRows > 0; // 업데이트된 행이 있으면 true 반환, 없으면 false 반환
     }
 

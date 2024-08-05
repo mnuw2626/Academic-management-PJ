@@ -63,18 +63,24 @@
         WHERE std_no = #{stdNo}
     </update>
 
-    <!--휴학신청-->
-
-    <insert id="insert_leave_std">
-        INSERT INTO `stat` (std_no, name ,status, start_date, end_date, application_date, reason)
+    <!-- 휴학 신청 -->
+    <insert id="insertLeaveApplication">
+        INSERT INTO `stat` (std_no, name, status, start_date, end_date, application_date, reason)
         VALUES (#{stdNo}, #{name}, #{status}, #{startDate}, #{endDate}, #{applicationDate}, #{reason})
     </insert>
 
-    <!--내 휴학신청 근황 가져오기-->
+    <!-- 복학 신청 -->
+    <update id="updateReturnApplication">
+        UPDATE `stat`
+        SET status = #{status}, start_date = #{startDate}, end_date = #{endDate},
+            application_date = #{applicationDate}, reason = #{reason}
+        WHERE std_no = #{stdNo} AND status = '휴학'
+    </update>
 
+    <!-- 유저의 휴학/복학 상태 조회 -->
     <select id="select_stat" resultType="com.academic.dto.LeaveDTO">
-        SELECT * FROM `stat`
-        WHERE std_no = #{stdNo}
+        SELECT * FROM `stat` WHERE std_no = #{stdNo}
     </select>
+
 
 </mapper>

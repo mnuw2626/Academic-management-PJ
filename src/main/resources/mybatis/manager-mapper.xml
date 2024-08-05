@@ -100,19 +100,29 @@
                  ON S.std_no = T.std_no
     </select>
 
-<!--    휴학신청관련-->
-    <select id="select_all_std_leaves" resultMap="all_leave_with_std_map">
-        SELECT ST.*, S.std_no, S.name, S.grade, S.semester
-        FROM `stat` AS ST
-                 INNER JOIN `student` AS S
-                 ON ST.std_no = S.std_no
+    <!-- 모든 휴학 신청 정보를 가져오기 -->
+    <select id="select_all_std_leaves" resultType="com.academic.dto.LeaveDTO">
+        SELECT * FROM `stat`
+        WHERE status = '처리중' AND reason != '복학신청'
     </select>
 
+    <!-- 모든 복학 신청 정보를 가져오기 -->
+    <select id="select_all_std_returns" resultType="com.academic.dto.LeaveDTO">
+        SELECT * FROM `stat`
+        WHERE status = '처리중' AND reason = '복학신청'
+    </select>
+
+    <!-- 휴학 상태 업데이트 -->
     <update id="update_leave_std_status">
-        UPDATE `stat` SET status = '휴학'
+        UPDATE `stat`
+        SET status = '휴학'
         WHERE std_no = #{stdNo}
     </update>
 
-
-
+    <!-- 복학 상태 업데이트 -->
+    <update id="update_return_std_status">
+        UPDATE `stat`
+        SET status = '복학'
+        WHERE std_no = #{stdNo}
+    </update>
 </mapper>

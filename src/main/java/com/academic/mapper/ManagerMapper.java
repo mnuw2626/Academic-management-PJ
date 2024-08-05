@@ -34,5 +34,9 @@ public interface ManagerMapper {
 
     List<LeaveDTO> select_all_std_leaves();
 
+    List<LeaveDTO> select_all_std_returns();
+
     int update_leave_std_status(Integer stdNo);
+
+    int update_return_std_status(Integer stdNo);
 }

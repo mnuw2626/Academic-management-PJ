@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Log4j2
@@ -56,19 +57,45 @@ public class UserService {
 
 
     /**************휴학***************/
-    public void insert_leave_std(LeaveDTO leaveDTO){
-        if (leaveDTO != null){
-            leaveDTO.setStatus("처리중");
-        }
-        userMapper.insert_leave_std(leaveDTO);
+    // 현재 날짜가 휴학 신청 기간인지 체크
+    public boolean isLeaveApplicationPeriod(LocalDate currentDate) {
+        int month = currentDate.getMonthValue();
+        return (month == 7 || month == 8 || month == 1 || month == 2);
     }
 
-    public LeaveDTO select_user_stat(Integer no){
+    public void insertLeaveApplication(LeaveDTO leaveDTO) {
+        if (leaveDTO != null) {
+            leaveDTO.setStatus("처리중");
+            userMapper.insertLeaveApplication(leaveDTO);
+        }
+    }
+
+    // 유저의 휴학/복학 상태 조회
+    public LeaveDTO select_user_stat(Integer no) {
         LeaveDTO leaveDTO = userMapper.select_stat(no);
-        if (leaveDTO == null){
+        if (leaveDTO == null) {
             leaveDTO = new LeaveDTO();
             leaveDTO.setStdNo(0);
         }
         return leaveDTO;
+    }
+
+    /**************복학***************/
+    // 현재 날짜가 복학 신청 기간인지 체크
+    public boolean isReturnApplicationPeriod(LocalDate currentDate) {
+        int month = currentDate.getMonthValue();
+        return (month == 7 || month == 8 || month == 1 || month == 2);
+    }
+
+    public void insertReturnApplication(LeaveDTO leaveDTO) {
+        LeaveDTO currentStatus = select_user_stat(leaveDTO.getStdNo());
+
+        if (leaveDTO != null && "휴학".equals(currentStatus.getStatus())) {
+            leaveDTO.setStatus("복학 처리중");
+            leaveDTO.setStartDate(LocalDate.now());
+            leaveDTO.setEndDate(null); // 복학 신청의 끝나는 날짜 예시
+            leaveDTO.setReason("복학신청");
+            userMapper.updateReturnApplication(leaveDTO);
+        }
     }
 }

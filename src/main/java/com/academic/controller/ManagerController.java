@@ -2,6 +2,7 @@ package com.academic.controller;
 
 import com.academic.dto.*;
 import com.academic.service.EnrollInCourseService;
+import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
 import com.academic.service.ManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -132,12 +134,33 @@ public class ManagerController {
     }
 
     /******************** 휴/복학신청 관리  *******************/
-    @GetMapping("leave_management")
-    public void get_leave_management(
-            Model model
-    ){
+    // 휴/복학 신청 관리 페이지
+    @GetMapping("/leave_management")
+    public void get_leave_management(Model model) {
         List<LeaveDTO> leaveDTOS = managerService.get_all_leaves_info();
+        List<LeaveDTO> returnDTOS = managerService.get_all_returns_info();
         model.addAttribute("leaves", leaveDTOS);
+        model.addAttribute("returns", returnDTOS);
+    }
+
+    // 휴학 상태 업데이트
+    @PostMapping("/leave/update")
+    @ResponseBody
+    public Map<String, Object> update_leave_status(@RequestParam("stdNo") Integer stdNo) {
+        boolean success = managerService.update_leave_status(stdNo);
+        Map<String, Object> response = new HashMap<>();
+        response.put("success", success);
+        return response;
+    }
+
+    // 복학 상태 업데이트
+    @PostMapping("/return/update")
+    @ResponseBody
+    public Map<String, Object> update_return_status(@RequestParam("stdNo") Integer stdNo) {
+        boolean success = managerService.update_return_status(stdNo);
+        Map<String, Object> response = new HashMap<>();
+        response.put("success", success);
+        return response;
     }
 
 

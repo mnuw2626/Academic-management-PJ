@@ -13,91 +13,94 @@
 <body>
     <section class="leave-main-section" layout:fragment="main-section">
         <h1 class="leave-h1">휴학신청</h1>
-        <form th:action="@{/school/leave}" method="post">
-            <section class="leave-info-section">
-                <h3 class="leave-h3">휴학신청 상세정보</h3>
-                <table border="1">
-                    <tr th:if="${leaveInfo.stdNo != 0}">
-                        <td colspan="7">이미 휴학신청을 했습니다.</td>
-                    </tr>
-                    <tbody th:if="${leaveInfo.stdNo == 0}">
-                        <tr>
-                            <td>학번</td>
-                            <td class="stdNo-td">
-                                <label class="leave-label">
-                                    <input type="text" th:value="${std.stdNo}" class="leave-input" name="stdNo" readonly>
-                                </label>
-                            </td>
-                            <td>시작날짜</td>
-                            <td>
-                                <label class="leave-label">
-                                    <input type="date" class="leave-input" name="startDate">
-                                </label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>이름</td>
-                            <td>
-                                <label class="leave-label">
-                                    <input type="text" class="leave-input" name="name">
-                                </label>
-                            </td>
-                            <td>종료날짜</td>
-                            <td>
-                                <label class="leave-label">
-                                    <input type="date" class="leave-input" name="endDate">
-                                </label>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>휴학사유</td>
-                            <td>
-                                <label class="leave-label">
-                                    <input type="text" class="leave-input" name="reason">
-                                </label>
-                            </td>
-                            <td>신청일자</td>
-                            <td>
-                                <label class="leave-label">
-                                    <input type="date" class="leave-input" name="applicationDate">
-                                </label>
-                            </td>
-                        </tr>
-                    </tbody>
-
-                </table>
-                <button class="leave-btn" th:if="${leaveInfo.stdNo == 0}">휴학신청</button>
-            </section>
-        </form>
-
+        <div th:if="${canApplyLeave}">
+            <form th:action="@{/school/leave}" method="post">
+        <section class="leave-info-section">
+            <h3 class="leave-h3">휴학신청 상세정보</h3>
+            <table border="1">
+                <tr th:if="${leaveInfo.stdNo != 0}">
+                    <td colspan="7">이미 휴학신청을 했습니다.</td>
+                </tr>
+                <tbody th:if="${leaveInfo.stdNo == 0}">
+                <tr>
+                    <td>학번</td>
+                    <td class="stdNo-td">
+                        <label class="return-label">
+                            <input type="text" th:value="${std.stdNo}" class="leave-input" name="stdNo" readonly>
+                        </label>
+                    </td>
+                    <td>시작날짜</td>
+                    <td>
+                        <label class="leave-label">
+                            <input type="date" class="leave-input" name="startDate">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>이름</td>
+                    <td>
+                        <label class="leave-label">
+                            <input type="text" class="leave-input" name="name">
+                        </label>
+                    </td>
+                    <td>종료날짜</td>
+                    <td>
+                        <label class="leave-label">
+                            <input type="date" class="leave-input" name="endDate">
+                        </label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>휴학사유</td>
+                    <td>
+                        <label class="leave-label">
+                            <input type="text" class="leave-input" name="reason">
+                        </label>
+                    </td>
+                    <td>신청일자</td>
+                    <td>
+                        <label class="leave-label">
+                            <input type="date" class="leave-input" name="applicationDate">
+                        </label>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <button class="leave-btn" th:if="${leaveInfo.stdNo == 0}" th:disabled="${!canApplyLeave}" onclick="status_function(this)">휴학신청</button>
+        </section>
+    </form>
+        </div>
+        <div th:if="${!canApplyLeave}">
+            <p>현재 휴학 신청 기간이 아닙니다.</p>
+        </div>
         <section>
-            <h3 class="leave-h3">휴학신청근황</h3>
+            <h3 class="leave-h3">나의 휴/복학상태</h3>
             <table border="1">
                 <thead>
-                    <tr>
-                        <td>학번</td>
-                        <td>이름</td>
-                        <td>신청일자</td>
-                        <td>시작날짜</td>
-                        <td>종료날짜</td>
-                        <td>처리상태</td>
-                    </tr>
+                <tr>
+                    <td>학번</td>
+                    <td>이름</td>
+                    <td>신청일자</td>
+                    <td>시작날짜</td>
+                    <td>종료날짜</td>
+                    <td>처리상태</td>
+                </tr>
                 </thead>
                 <tbody>
-                    <tr th:if="${leaveInfo.stdNo == 0}">
-                        <td colspan="7">신청된 휴학 정보가 없습니다.</td>
-                    </tr>
-                    <tr th:if="${leaveInfo.stdNo != 0}">
-                        <td th:text="${leaveInfo.stdNo}">20211234542</td>
-                        <td th:text="${leaveInfo.name}">양준식</td>
-                        <td th:text="${leaveInfo.applicationDate}">2024/07/15</td>
-                        <td th:text="${leaveInfo.startDate}">2024/09/01</td>
-                        <td th:text="${leaveInfo.endDate}">2026/6/20</td>
-                        <td th:text="${leaveInfo.status}">처리중</td>
-                    </tr>
+                <tr th:if="${leaveInfo.stdNo == 0}">
+                    <td colspan="7">신청된 휴학 정보가 없습니다.</td>
+                </tr>
+                <tr th:if="${leaveInfo.stdNo != 0}">
+                    <td th:text="${leaveInfo.stdNo}">20211234542</td>
+                    <td th:text="${leaveInfo.name}">양준식</td>
+                    <td th:text="${leaveInfo.applicationDate}">2024/07/15</td>
+                    <td th:text="${leaveInfo.startDate}">2024/09/01</td>
+                    <td th:text="${leaveInfo.endDate}">2026/6/20</td>
+                    <td th:text="${leaveInfo.status}">처리중</td>
+                </tr>
                 </tbody>
             </table>
         </section>
-    </section>
+</section>
 </body>
 </html>

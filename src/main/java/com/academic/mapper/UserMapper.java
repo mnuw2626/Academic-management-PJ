@@ -19,7 +19,11 @@ public interface UserMapper {
 
     void update_std_scholarship(Integer no);
 
-    void insert_leave_std(LeaveDTO leaveDTO);
+    void insertLeaveApplication(LeaveDTO leaveDTO);
 
     LeaveDTO select_stat(Integer no);
+
+    void updateReturnApplication(LeaveDTO leaveDTO);
+
+
 }
