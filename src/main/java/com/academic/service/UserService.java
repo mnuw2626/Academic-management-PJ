@@ -1,5 +1,6 @@
 package com.academic.service;
 
+import com.academic.dto.NoticeDTO;
 import com.academic.dto.StdDTO;
 import com.academic.dto.TuitionDTO;
 import com.academic.dto.UserDTO;
@@ -61,4 +62,12 @@ public class UserService {
         userMapper.update_std_id(id, stdNo);
     }
 
+
+    public List<NoticeDTO> get_notices(){
+        return userMapper.select_notices();
+    }
+
+    public NoticeDTO get_notice(String noticeNo){
+        return userMapper.select_notice(noticeNo);
+    }
 }

@@ -58,19 +58,10 @@
         values(#{id}, #{password}, #{tel}, #{no})
     </insert>
 
-    <!--유저 등록금 조회-->
-    <select id="select_scholarship" resultMap="student_with_tuition_map">
-        SELECT T.*, S.*
-        FROM `student` AS S
-                 INNER JOIN `tuition` AS T
-                 ON T.std_no= S.std_no
-        WHERE S.std_no = #{no}
+    <select id="select_notice" resultType="com.academic.dto.NoticeDTO">
+        SELECT * FROM notice WHERE no = #{noticeNo}
     </select>
-
-    <!--등록금 납부-->
-    <update id="update_std_scholarship">
-        UPDATE tuition SET status = 1
-        WHERE std_no = #{stdNo}
-    </update>
-
+    <select id="select_notices" resultType="com.academic.dto.NoticeDTO">
+        SELECT * FROM notice
+    </select>
 </mapper>

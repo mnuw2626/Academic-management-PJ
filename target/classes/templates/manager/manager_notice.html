@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layout/manager-main-layout}"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../static/css/manager/manager_notice.css" th:href="@{/css/manager/manager_notice.css}">
+</head>
+<body>
+<section class="mg-notice-section" layout:fragment="main-section">
+    <div class="notice-title">
+        공지사항
+    </div>
+    <div class="notice-search">
+        <select>
+            <option>제목</option>
+            <option>제목+내용</option>
+        </select>
+        <input class="search-input" type="text" placeholder="검색어를 입력하세요">
+        <button class="write-btn" onclick="location.href='/manager/notice_write';">작성</button>
+        <button class="search-btn">검색</button>
+    </div>
+    <div class="notice-table">
+        <table>
+            <tr>
+                <th width="50px" height="40px">번호</th>
+                <th width="400px" height="40px">제목</th>
+                <th width="150px" height="40px">작성일</th>
+                <th width="70px" height="40px">조회수</th>
+            </tr>
+            <tr th:each="notice: ${notices}">
+                <td width="50px" height="40px">
+                    <a th:href="@{|/manager/manager_view_notice/${notice.no}|}" th:text="${notice.no}">1</a>
+                </td>
+                <td width="400px" height="40px">
+                    <a th:href="@{|/manager/manager_view_notice/${notice.no}|}" th:text="${notice.title}">2024학년도 교외장학재단 신규장학생 선발 결과 안내</a>
+                </td>
+                <td width="150px" height="40px" th:text="${notice.createdDate}">2024-07-16</td>
+                <td width="70px" height="40px" th:text="${notice.views}">5</td>
+            </tr>
+        </table>
+<!--        <div class="board-page">-->
+<!--            <a href="#"><</a>-->
+<!--            <a href="#">1</a>-->
+<!--            <a href="#">2</a>-->
+<!--            <a href="#">3</a>-->
+<!--            <a href="#">4</a>-->
+<!--            <a href="#">5</a>-->
+<!--            <a href="#">></a>-->
+<!--        </div>-->
+    </div>
+</section>
+</body>
+</html>

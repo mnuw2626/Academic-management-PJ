@@ -1,0 +1,86 @@
+@import "../public/public.css";
+
+*{
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+main{
+    margin-top: 50px;
+    width: 1000px;
+}
+
+/*************************************/
+.notice-title{
+    font-family: SemiBold;
+    font-size: 55px;
+    border-bottom: 1px solid var(--dark-green-2);
+    padding: 25px 0 20px 30px;
+}
+.contents_title{
+    padding: 22px 0 22px 10px;
+    background-color: var(--light-green-3);
+    font-size: var(--font-size-semibold);
+    border-bottom: 1px solid var(--dark-green-2);
+}
+.contents_under{
+    padding: 15px 0 15px 10px;
+    border-bottom: 1px solid var(--dark-green-2);
+}
+.contents_date{
+    color: dimgrey;
+    display: inline-block;
+    margin: 0 180px 0 20px;
+}
+.contents_view{
+    color: dimgrey;
+    display: inline-block;
+    margin: 0 435px 0 20px;
+}
+.contents_under button{
+    padding: 6px 10px;
+    background-color: var(--light-green-2);
+    border: 1px solid black;
+    border-radius: 7px;
+}
+.contents_under button:hover{
+    color: white;
+    cursor: pointer;
+    background-color: var(--dark-green-3);
+}
+.contents_text{
+    height: 800px;
+    margin: 40px 20px 30px 20px;
+    outline: none;
+    overflow: scroll;
+}
+body{
+    -ms-overflow-style: none;
+}
+::-webkit-scrollbar{
+    display: none;
+}
+.contents_text{
+    -ms-overflow-style: none;
+}
+.contents_text::-webkit-scrollbar{
+    display: none;
+}
+
+/*************************************/
+.contents-btn{
+    border-top: 1px solid var(--dark-green-2);
+    margin-bottom: 50px;
+}
+.contents-btn button{
+    margin-top: 15px;
+    padding: 8px 13px;
+    background-color: var(--light-green-2);
+    border: 1px solid black;
+    border-radius: 7px;
+}
+.contents-btn button:hover{
+    color: white;
+    cursor: pointer;
+    background-color: var(--dark-green-3);
+}
+
