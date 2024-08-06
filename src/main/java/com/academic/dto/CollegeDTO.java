@@ -10,4 +10,5 @@ import lombok.ToString;
 public class CollegeDTO {
     private int id; //단과대학 코드(번호)
     private String name; //단과대학 명
+
 }

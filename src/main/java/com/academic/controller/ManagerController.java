@@ -1,6 +1,8 @@
 package com.academic.controller;
 
 import com.academic.dto.*;
+import com.academic.dto.*;
+import com.academic.service.CourseScoreService;
 import com.academic.service.EnrollInCourseService;
 import org.springframework.http.HttpStatus;
 import org.springframework.ui.Model;
@@ -13,8 +15,10 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 
 import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -26,6 +30,10 @@ public class ManagerController {
 
     @Autowired
     private EnrollInCourseService enrollInCourseService;
+
+    @Autowired
+    private CourseScoreService courseScoreService;
+
 
     @GetMapping("/add_std")
     public void get_add_std(
@@ -67,9 +75,107 @@ public class ManagerController {
     // 성적 등록 페이지 이동
     @GetMapping("/stuscore_regist")
     public void get_stuscore_regist(
-                Model model
+            @RequestParam(required = false) Integer year,
+            @RequestParam(required = false) Integer semester,
+            @RequestParam(required = false) Integer collegeId,
+            @RequestParam(required = false) Integer deptId,
+            @RequestParam(required = false) Integer stdNo,
+            @RequestParam(required = false) String stdName,
+            Model model
     ){
+
+        // 단과대학에 따른 학과 검색
         get_db_college_depart_info(model);
+
+        System.out.println("학년 : " + year + " 학기 : " + semester);
+        System.out.println("단과대id : " + collegeId + " 학과id : " + deptId);
+        System.out.println("학번 : " + stdNo);
+        System.out.println("이름 : " + stdName);
+
+        // 등급 목록 조회
+        List<GradeDTO> gradeList = courseScoreService.get_all_grade();
+        model.addAttribute("gradeList", gradeList);
+
+
+        // 수강 내역 조회
+        List<CourseDetailsDTO> courseDetails = courseScoreService.get_all_grade_score();
+
+
+        // 학년, 학기, 단과대, 학과, 학번, 이름으로 필터링
+        if (year != null) {
+            courseDetails = Optional.ofNullable(courseDetails)
+                    .orElse(Collections.emptyList())
+                    .stream()
+                    .filter(course -> course.getLecture().getGrade() == year)
+                    .collect(Collectors.toList());
+        }
+        if (semester != null) {
+            courseDetails = Optional.ofNullable(courseDetails)
+                    .orElse(Collections.emptyList())
+                    .stream()
+                    .filter(course -> course.getLecture().getSemester() == semester)
+                    .collect(Collectors.toList());
+        }
+        if (collegeId != null) {
+            courseDetails = Optional.ofNullable(courseDetails)
+                    .orElse(Collections.emptyList())
+                    .stream()
+                    .filter(course -> course.getCollege().getId() == collegeId)
+                    .collect(Collectors.toList());
+        }
+        if (deptId != null) {
+            courseDetails = courseDetails.stream()
+                    .filter(course -> course.getDepartment().getId() == deptId)
+                    .collect(Collectors.toList());
+        }
+        if (stdNo != null) {
+            courseDetails = Optional.ofNullable(courseDetails)
+                    .orElse(Collections.emptyList())
+                    .stream()
+                    .filter(course -> course.getStd().getStdNo() == stdNo)
+                    .collect(Collectors.toList());
+        }
+        if (stdName != null) {
+            courseDetails = Optional.ofNullable(courseDetails)
+                    .orElse(Collections.emptyList())
+                    .stream()
+                    .filter(course -> course.getStd().getName().contains(stdName))
+                    .collect(Collectors.toList());
+        }
+
+        courseDetails = Optional.ofNullable(courseDetails)
+                .orElse(Collections.emptyList())
+                .stream()
+                .filter(course -> course.getEnroll().getGrade() == null)
+                .collect(Collectors.toList());
+
+        System.out.println(courseDetails);
+        model.addAttribute("courseDetails", courseDetails);
+    }
+
+    // 성적 등록
+    @PostMapping("/stuscore_regist")
+    public String post_stuscore_regist(
+            @ModelAttribute GradeRequest gradeRequest
+    ){
+//        System.out.println(gradeRequest);
+//        System.out.println(gradeRequest.getGrades());
+
+        List<EnrollDTO> grades = gradeRequest.getGrades();
+
+        for (EnrollDTO gradeForm : grades) {
+            String grade = gradeForm.getGrade();
+            int code = gradeForm.getCode();
+            int stdNo = gradeForm.getStdNo();
+
+            System.out.println("grade: " + grade + ", code: " + code + ", stdNo: " + stdNo);
+            if(grade != null && !grade.isEmpty()){
+                courseScoreService.set_std_enroll_coures_score(stdNo, code, grade);
+            }
+
+        }
+
+        return "redirect:/manager/stuscore_regist";
     }
 
     /*  단과대학과 해당된 단과대학의 학과를 DB에서 조회하는 함수  */
@@ -78,10 +184,9 @@ public class ManagerController {
         List<CollegeDTO> colleges = enrollInCourseService.get_colleges();
         model.addAttribute("colleges", colleges);
 
-        // 처음으로 페이지 들어갔을 시 첫번째 단과대학의 학과를 조회
-        // -> 그 후 단과대학 선택 시 그에 따른 학과 조회는 ManagerRestController 참고
-        Integer college1_id = colleges.get(0).getId();
-        List<DepartmentDTO> departments = enrollInCourseService.get_departments(college1_id);
+
+        // 단과대학의 학과를 조회
+        List<DepartmentDTO> departments = enrollInCourseService.get_departments(colleges.get(0).getId());
         model.addAttribute("departments", departments);
 
         //모든 단과대학 조회
@@ -99,10 +204,10 @@ public class ManagerController {
         model.addAttribute("allDepartmentMap", allDepartmentMap);
     }
 
+    /**************  수강 신청 기간 설정 페이지   *************/
     // 수강신청기간 설정 페이지
     @GetMapping("/enrolment")
     public void get_enrollment() {
-        enrollInCourseService.set_enrollDate(null, null);//예전에 설정된 시작,종료 날짜 초기화
         System.out.println("수강신청페이지");
     }
 
@@ -116,6 +221,7 @@ public class ManagerController {
         model.addAttribute("peroid", peroid);
         System.out.println("수강신청중");
     }
+
     /******************** 등록금 발송  *******************/
     //등록금 발송 페이지 이동
     @GetMapping("/send")

@@ -2,13 +2,44 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.academic.mapper.EnrollInCourseMapper">
+    <resultMap id="enroll_std_lecture" type="com.academic.dto.StdEnrollCourseDTO" autoMapping="true">
+        <result property="stdNo" column="std_no"/>
+        <result property="stdName" column="std_name"/>
+        <result property="year" column="year"/>
+        <result property="grade" column="grade"/>
+        <result property="lectureName" column="lecture_name"/>
+        <result property="courseYear" column="course_year"/>
+    </resultMap>
+
+
+    <!--  핵생의 학번, 과목코드를 course_details에 삽입 -->
+    <insert id="insert_course_details">
+        insert into `course_details` (std_no, code)
+        values (#{stdNo}, #{code});
+    </insert>
 
     <!--  전체 강의 조회  -->
     <select id="select_all_lectures" resultType="com.academic.dto.LectureDTO">
         SELECT * FROM `lecture`
     </select>
 
-    <!--  강의 조회  -->
+    <!--  과목 코드로 강의 조회  -->
+    <select id="select_code_lecture" resultType="com.academic.dto.LectureDTO">
+        SELECT * FROM `lecture`
+        <where>
+            <if test="code != null and code != ''">
+                code = #{code}
+            </if>
+        </where>
+    </select>
+
+    <!-- 과목코드로 강의 이름 조회  -->
+    <select id="select_lecture_name_by_code" resultType="String">
+        SELECT name FROM `lecture`
+        WHERE code = #{code}
+    </select>
+
+    <!-- 타입, 학년, 과목명으로 강의 조회  -->
     <select id="select_all_lecture" resultType="com.academic.dto.LectureDTO">
         SELECT * FROM `lecture`
         <where>
@@ -23,6 +54,32 @@
             </if>
         </where>
     </select>
+
+    <!--  강의들 조회 -->
+    <select id="select_enroll_in_course" resultMap="enroll_std_lecture">
+        SELECT s.std_no, s.name AS std_name, s.grade AS year, s.semester AS semester, s.std_credit, l.credit, ct.grade, l.code, l.name AS lecture_name, l.type,
+        l.professor, l.grade AS course_year, l.week, l.star_time, l.end_time, l.room, l.capacity, l.num_of_student AS num_of_student,
+            CASE WHEN l.capacity <![CDATA[<=]]> l.num_of_student THEN true ELSE false END AS status
+        FROM `student` AS s
+        RIGHT OUTER JOIN `course_details` AS ct
+        ON s.std_no = ct.std_no
+        RIGHT OUTER JOIN `lecture` AS l
+        ON ct.code = l.code and s.std_no = #{stdNo};
+    </select>
+
+    <!--  수강 신청 시 강의의 수강 인원 +1  -->
+    <update id="update_lecture_num_of_student">
+        update `lecture` set num_of_student = num_of_student + 1
+        where lecture.code = #{code};
+    </update>
+
+    <!--  학생의 수강 가능 학점을 갱신  -->
+    <update id="update_student_credit">
+        update `student` set std_credit = #{updatedCredits}
+        where std_no = #{stdNo}
+    </update>
+
+
 
     <!--  단과대학 조회  -->
     <select id="select_colleges" resultType="com.academic.dto.CollegeDTO">

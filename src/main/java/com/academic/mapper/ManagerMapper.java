@@ -39,4 +39,5 @@ public interface ManagerMapper {
     int update_leave_std_status(Integer stdNo);
 
     int update_return_std_status(Integer stdNo);
+
 }

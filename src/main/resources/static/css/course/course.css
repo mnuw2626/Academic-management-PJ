@@ -6,6 +6,7 @@
     width: 1100px;
     height: 600px;
     background-color: white;
+    position: relative; /* 부모 요소에 상대 위치 지정 */
 }
 .course-section{
     min-width: 1000px;
@@ -99,6 +100,7 @@
 }
 
 /* 수강, 재수강 스타일 */
+/* 클래스 이름이 class-sign-new 일때 적용*/
 .class-sign-new{
     margin: 1.5px auto;
     padding: 5px;
@@ -108,6 +110,7 @@
     font-size: var(--font-size-thin);
 }
 
+/* 클래스 이름이 class-sign-re 일때 적용*/
 .class-sign-re{
     margin: 1.5px auto;
     padding: 5px;
@@ -133,10 +136,11 @@
 /* 강의 계획서 조회 버튼 누를 시 나올 모달창 */
 .user-info-modal{
     display: none;
-    position: fixed;
-    top: 0;
-    width: 100vw;
-    height: 100vh;
+    position: absolute; /* 부모 요소를 기준으로 위치 설정 */
+    top: 50%; /* 부모 요소의 수직 중앙에 위치 */
+    left: 50%; /* 부모 요소의 수평 중앙에 위치 */
+    transform: translate(-50%, -50%); /* 중앙 정렬을 위한 변환 */
+    width: 300px;
     background-color: rgba(0,0,0,0.4);
     z-index: 99;
 }
@@ -144,22 +148,22 @@
     display: block;
 }
 .user-info-modal > div{
-    width: 300px;
-    margin: 250px auto;
-    padding: 10px 20px;
-    border-radius: 5px;
-    background-color: white;
+    width: 100%;
+    padding: 10px 10px;
+    border: 1.5px var(--dark-green-2) solid;
+    background-color: var(--light-green-2);
 }
 .user-info-modal span{
+    /*margin: 10px 0;*/
+    /*padding: 5px 10px;*/
     font-size: var(--font-size-regular);
-    margin: 10px 0;
 }
 .user-info-modal button{
     width: 100%;
     padding: 10px 0;
     font-size: var(--font-size-regular);
     font-family: Bold;
-    margin: 5px 0;
+    margin: 10px auto;
     cursor: pointer;
     border: none;
     border-radius: 5px;

@@ -5,16 +5,16 @@ import com.academic.service.EnrollInCourseService;
 import com.academic.service.UserService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 
 
 @Controller
@@ -31,7 +31,6 @@ public class EnrollInCourseController {
             @AuthenticationPrincipal UserDTO userDTO,
             @RequestParam(required = false) String type,
             @RequestParam(required = false) Integer grade,
-            @RequestParam(required = false) Integer semester,
             @RequestParam(required = false) String name,
             Model model
     ) {
@@ -51,7 +50,7 @@ public class EnrollInCourseController {
         model.addAttribute("depart", department);
 
         System.out.println("강의 조희");
-        List<LectureDTO> lectures = enrollInCourseService.get_all_lecture(type, grade, semester, name);
+        List<LectureDTO> lectures = enrollInCourseService.get_all_lecture(type, grade, name);
         model.addAttribute("lectures", lectures);
     }
 
@@ -72,7 +71,73 @@ public class EnrollInCourseController {
     // GetMapping은 ManagerController에 구현함
     @PostMapping("/manager/end-period")
     public String endPeriod() {
+        enrollInCourseService.set_enrollDate(null, null);//설정된 시작,종료 날짜 초기화
         return "redirect:/manager/enrolment";
+    }
+
+    // 수강기간일 시 수강신청페이지로 이동
+    @GetMapping("/course/enroll")
+    public String get_enroll(
+            @AuthenticationPrincipal UserDTO user,
+            @RequestParam(value = "code", defaultValue = "-1") Integer code,
+            Model model
+    ){
+        // 수강 신청 기간 비교
+        LocalDate today = LocalDate.now();
+        boolean result = enrollInCourseService.compare_enrollDate_now(today);
+        StdDTO std = userService.select_user_info_service(user.getId());
+
+        // 코드를 통해 교과목명을 조회
+        String lectureName = null;
+        if (code != -1) {
+            lectureName = enrollInCourseService.get_lecture_name_by_code(code); // 강의 코드로 강의 이름 검색
+            model.addAttribute("lectureName", lectureName);
+        }
+
+        if(result){
+            // 수강된 과목 및 강의 과목들 조회
+            Map<String, List<StdEnrollCourseDTO>> enroll = enrollInCourseService.get_std_course_details(std.getStdNo(), code, lectureName);
+            System.out.println(enroll);
+            model.addAttribute("enroll", enroll);
+
+            // 현재 수강 중인 학점
+            int totalCredits = enroll.get("stdEnrollCourse").stream()
+                    .findFirst()
+                    .map(StdEnrollCourseDTO::getStdCredit) // stdCredit을 가져옴
+                    .orElse(0); // 값이 없을 경우 0 반환
+
+            // 잔여 학점 계산
+            int remainingCredits = StdEnrollCourseDTO.ALLCREDIT - totalCredits;
+            model.addAttribute("totalCredits", totalCredits);
+            model.addAttribute("remainingCredits", remainingCredits);
+
+            return "course/enroll"; //신청기간이면
+        }
+        else
+        {
+            return "redirect:/main";//신청기간이 아니면 메인으로
+        }
+    }
+
+    // 수강된 과목 시간표 조회 및 출력
+    @GetMapping("/user/schedule")
+    public String get_schedule(
+            @AuthenticationPrincipal UserDTO user,
+            Model model
+    ){
+        StdDTO std = userService.select_user_info_service(user.getId());
+
+        if (std == null) {
+            return "redirect:/user/login"; // 학생정보가 없음 로그인 페이지로
+        }
+        Map<String, List<StdEnrollCourseDTO>> courseDetails = enrollInCourseService.get_course_details(std.getStdNo(), -1, null);
+        List<StdEnrollCourseDTO> stdEnrollCourses = courseDetails.get("stdEnrollCourse");
+
+
+//        System.out.println(stdEnrollCourses);
+
+        model.addAttribute("stdEnrollCourses", stdEnrollCourses);
+        return "user/schedule"; // 다시 일정으로
     }
 
 

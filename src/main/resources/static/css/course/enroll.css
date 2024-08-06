@@ -18,6 +18,7 @@ table{
     border-collapse: collapse;
     border-radius: 5px;
     text-align: center;
+    position: relative; /* 부모 요소에 상대 위치 지정 */
 }
 thead{
     font-weight: bold;
@@ -44,14 +45,23 @@ td, th{
     flex-basis: 200px;
     color: var(--dark-green-2);
 }
-.div-course > label{
+.div-course-form{
+    display: flex;
     flex: 1;
+}
+.div-course-form label{
+    display: flex; /* Flex 레이아웃을 적용 */
+    align-items: center; /* 수직 중앙 정렬 */
+    flex: 1;
+    width: 100%;
     margin-right: 10px;
 }
-.div-course input{
+.div-form-inputlabel > input{
+    flex: 1;
     width: 100%;
-    padding: 5px 10px;
+    padding: 5px 10px;;
 }
+
 #course-find-btn{
     display: inline-block;
     flex-basis: 150px;
@@ -65,6 +75,7 @@ td, th{
     color: var(--light-green-5);
     background-color: var(--dark-green-2);
 }
+
 /********* 개설 교과목 목록 *********/
 .div-class{
     max-height: 500px;
@@ -91,6 +102,17 @@ td, th{
     color: var(--light-green-5);
     cursor: pointer;
 }
+/* Disabled 상태 */
+.class-btn:disabled{
+    cursor: not-allowed; /* 비활성화 상태일 때 커서 변경 */
+    opacity: 0.6; /* 비활성화 상태를 강조하기 위한 불투명도 조절 */
+    border: 1.5px var(--dark-green-2) solid;
+    background-color: var(--dark-green-2);
+    color: gray;
+}
+
+
+
 /* 수강, 재수강 스타일 */
 .class-sign-new{
     margin: 1.5px auto;
@@ -130,14 +152,15 @@ td, th{
     padding: 5px 10px;
     flex: 1;
 }
+
 #list-find-input{
-    flex-basis: 80px;
+    width: 200px;
     padding: 5px 10px;
     margin-right: 10px;
 }
 #list-find-btn{
     display: inline-block;
-    flex-basis: 150px;
+    width: 150px;
     padding: 4px 0;
     text-align: center;
     cursor: pointer;
@@ -157,3 +180,38 @@ td, th{
     margin-bottom: 10px;
 }
 
+/* 수강 신청 버튼 누를 시 나올 모달창 */
+.user-info-modal{
+    display: none;
+    position: absolute; /* 부모 요소를 기준으로 위치 설정 */
+    top: 50%; /* 부모 요소의 수직 중앙에 위치 */
+    left: 50%; /* 부모 요소의 수평 중앙에 위치 */
+    transform: translate(-50%, -50%); /* 중앙 정렬을 위한 변환 */
+    width: 300px;
+    background-color: rgba(0,0,0,0.4);
+    z-index: 99;
+}
+.user-info-modal[active]{
+    display: block;
+}
+.user-info-modal > div{
+    width: 100%;
+    padding: 10px 10px;
+    border: 1.5px var(--dark-green-2) solid;
+    background-color: var(--light-green-2);
+}
+.user-info-modal span{
+    /*margin: 10px 0;*/
+    /*padding: 5px 10px;*/
+    font-size: var(--font-size-regular);
+}
+.user-info-modal button{
+    width: 100%;
+    padding: 10px 0;
+    font-size: var(--font-size-regular);
+    font-family: Bold;
+    margin: 10px auto;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+}

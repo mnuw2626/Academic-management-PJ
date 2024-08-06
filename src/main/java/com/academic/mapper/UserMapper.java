@@ -26,4 +26,9 @@ public interface UserMapper {
     void updateReturnApplication(LeaveDTO leaveDTO);
 
 
+
+    StdDTO select_std_info(Integer stdNo);
+
+    void update_std_id(String id, Integer stdNo);
+
 }

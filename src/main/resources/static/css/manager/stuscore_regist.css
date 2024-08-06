@@ -13,13 +13,23 @@
     padding: 10px 10px;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center; /* 중앙 배치 */
+    align-items: center; /* 수직 중앙 정렬 */
     border: 1px var(--dark-green-2) solid;
     border-radius: 5px;
 }
 .student-info-section{
-    padding: 10px 0;
+    flex: 1;
 }
+.student-info-section > form{
+    margin: 5px auto;
+}
+
+/* 일정한 간격 부여 */
+.student-info-title > span {
+    margin: 0 10px; /* 좌우 간격을 동일하게 부여 */
+}
+
 /* 학년 */
 .student-info-grade{
     margin-right: 3px;
@@ -44,10 +54,11 @@
     margin-left: 10px;
 }
 .student-info-name > input{
-    width: 150px;
+    width: 100px;
 }
 /* 조회 버튼 */
 #std-find-btn{
+    margin-left: 20px;
     width: 80px;
     padding: 5px 5px;
     text-align: center;
