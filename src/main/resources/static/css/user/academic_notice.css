@@ -3,12 +3,14 @@
     margin: 0 auto;
     box-sizing: border-box;
 }
-main{
+.notice-section{
     margin-top: 50px;
     width: 1000px;
+    background-color: white;
 }
 /*************************************/
 .notice-title{
+    width: 950px;
     font-family: SemiBold;
     font-size: 55px;
     border-bottom: 1px solid var(--dark-green-2);
@@ -20,6 +22,7 @@ main{
     margin: 40px 0 0 446px;
 }
 .notice-search > select{
+    outline: none;
     margin-right: 10px;
 }
 .search-input{

@@ -1,5 +1,6 @@
 package com.academic.service;
 
+import com.academic.dto.NoticeDTO;
 import com.academic.dto.StdDTO;
 import com.academic.dto.UserDTO;
 import com.academic.mapper.UserMapper;
@@ -29,5 +30,13 @@ public class UserService {
 
     public StdDTO select_user_info_service(String id){
         return userMapper.select_all_userInfo(id); // 단일 사용자 반환;
+    }
+
+    public List<NoticeDTO> get_notices(){
+        return userMapper.select_notices();
+    }
+
+    public NoticeDTO get_notice(String noticeNo){
+        return userMapper.select_notice(noticeNo);
     }
 }

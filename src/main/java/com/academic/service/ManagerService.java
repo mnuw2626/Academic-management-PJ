@@ -2,13 +2,14 @@ package com.academic.service;
 
 import com.academic.dto.CollegeDTO;
 import com.academic.dto.DepartmentDTO;
+import com.academic.dto.NoticeDTO;
 import com.academic.dto.StdDTO;
 import com.academic.mapper.ManagerMapper;
-import com.fasterxml.jackson.databind.BeanProperty;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Log4j2
@@ -43,4 +44,15 @@ public class ManagerService {
     public List<DepartmentDTO> get_departments(Integer collegeId) {
         return managerMapper.select_dept(collegeId);
     }
+
+
+
+    public List<NoticeDTO> get_notices() {
+        return managerMapper.select_notices();
+    }
+
+    public NoticeDTO get_notice(String noticeNo) {
+        return managerMapper.select_notice(noticeNo);
+    }
+
 }

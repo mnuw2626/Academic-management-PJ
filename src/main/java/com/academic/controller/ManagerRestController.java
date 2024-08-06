@@ -2,6 +2,7 @@ package com.academic.controller;
 
 import com.academic.dto.CollegeDTO;
 import com.academic.dto.DepartmentDTO;
+import com.academic.dto.NoticeDTO;
 import com.academic.service.ManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,4 +29,6 @@ public class ManagerRestController {
     ){
         return managerService.get_departments(collegeId);
     }
+
+
 }

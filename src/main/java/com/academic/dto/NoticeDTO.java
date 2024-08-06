@@ -2,6 +2,7 @@ package com.academic.dto;
 
 import lombok.*;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -14,6 +15,6 @@ public class NoticeDTO {
     private int no;
     private String title;
     private String content;
-    private LocalDateTime createdDate;
+    private LocalDate createdDate;
     private int views;
 }

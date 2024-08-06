@@ -1,9 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+>
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="../../static/css/manager/notice_write.css">
+    <link rel="stylesheet" href="../../static/css/manager/notice_write.css" th:href="@{/css/manager/notice_write.css}">
 </head>
 <body>
     <main>
@@ -19,7 +21,7 @@
             </div>
         </div>
         <div class="btn_div">
-            <button type="button">목록</button>
+            <button type="button" onclick="location.href='/manager/manager_notice'">목록</button>
             <button type="submit">작성</button>
         </div>
     </main>

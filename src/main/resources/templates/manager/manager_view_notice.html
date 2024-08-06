@@ -1,27 +1,29 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+>
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="../../static/css/manager/manager_view_notice.css">
+    <link rel="stylesheet" href="../../static/css/manager/manager_view_notice.css" th:href="@{/css/manager/manager_view_notice.css}">
 </head>
 <body>
     <main>
         <div class="notice-title">공지사항</div>
         <div class="contents">
-            <div class="contents_title">2024학년도 교외장학재단 신규장학생 선발 결과 안내</div>
+            <div class="contents_title" th:text="${notice.title}">2024학년도 교외장학재단 신규장학생 선발 결과 안내</div>
             <div class="contents_under">
-                <strong>등록일</strong><div class="contents_date">24-07-23</div>
-                <strong>조회수</strong><div class="contents_view">5</div>
-                <button class="contents_change">수정</button>
+                <strong>등록일</strong><div class="contents_date" th:text="${notice.createdDate}">24-07-23</div>
+                <strong>조회수</strong><div class="contents_view" th:text="${notice.views}">5</div>
+                <button class="contents_change" onclick="location.href='/manager/manager_write_change'">수정</button>
                 <button class="contents_remove">삭제</button>
             </div>
-            <div class="contents_text">
+            <div class="contents_text" th:text="${notice.content}">
                 ㅎㅇ
             </div>
         </div>
         <div class="contents-btn">
-            <button>목록</button>
+            <button onclick="location.href='/manager/manager_notice'">목록</button>
         </div>
     </main>
 </body>
