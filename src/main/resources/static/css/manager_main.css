@@ -9,20 +9,15 @@
 main{
     display: flex;
     position: relative;
-    width: 100%;
+    padding: 50px 100px;
     height: 100%;
-    padding: 50px 0;
     background-color: var(--light-green-3);
 }
-
 .main-section {
-    width: calc(100% - 500px);
-    height: 100vh;
+    flex: 1;
 }
-
 .individual-privacy{
     display: inline-block;
-    width: 230px;
 }
 .individual-div{
     display: flex;
@@ -37,6 +32,14 @@ main{
     margin: 40px 20px 0 40px;
     font-size: var(--font-size-black);
 }
+.individual-studentId{
+    margin: 0 20px 0 40px;
+    color: gray;
+    font-size: var(--font-size-medium);
+}
+.individual-department{
+    margin: 10px 20px 0 40px;
+}
 .individual-input{
     margin: 30px;
     flex: 1;
@@ -46,7 +49,6 @@ main{
     background-color: var(--light-green-2);
     padding: 20px 30px;
     border: 1px solid black;
-    cursor: pointer;
 }
 .individual-input > input:hover{
     color: white;
@@ -73,7 +75,7 @@ main{
     margin-top: 20px;
     background-color: white;
     width: 800px;
-    height: 420px;
+    height: 470px;
 }
 .content-div > table{
     text-align: center;
@@ -90,4 +92,64 @@ main{
 }
 .business-notice td{
     padding: 12px 0 12px;
+}
+
+/**********************************/
+.main-service{
+    margin-top: 20px;
+    width: 800px;
+    height: 200px;
+    background-color: var(--dark-green-4);
+}
+.service-div{
+    padding: 20px 20px;
+    color: white;
+    font-size: var(--font-size-extrabold);
+}
+.enrolment{
+    margin: 40px 20px 0 20px;
+    display: inline-block;
+}
+.enrolment > a{
+    padding: 40px;
+    margin-right: 10px;
+    color: white;
+    background-color: var(--dark-green-3);
+    border: 1px solid black;
+    border-radius: 50%;
+}
+.enrolment > a:hover{
+    background-color: var(--dark-green-1);
+}
+.enrolment > a > i{
+    font-size: var(--font-size-bold);
+}
+.enrolment > span{
+    font-family: Bold;
+    font-size: var(--font-size-medium);
+    color: white;
+}
+
+.campus-map{
+    margin: 40px 20px 0 20px;
+    display: inline-block;
+}
+.campus-map > a{
+    padding: 40px;
+    margin-right: 10px;
+    color: white;
+    background-color: var(--dark-green-3);
+    border: 1px solid black;
+    border-radius: 50%;
+}
+.campus-map > a:hover{
+    background-color: var(--dark-green-1);
+}
+.campus-map > a > i{
+    font-size: var(--font-size-bold);
+}
+.campus-map > span{
+    font-family: Bold;
+    font-size: var(--font-size-medium);
+    color: white;
 }

@@ -79,4 +79,11 @@
                  ON S.std_no = T.std_no
     </select>
 
+
+    <select id="select_notices" resultType="com.academic.dto.NoticeDTO">
+        SELECT * FROM notice
+    </select>
+    <select id="select_notice" resultType="com.academic.dto.NoticeDTO">
+        SELECT * FROM notice WHERE no = #{noticeNo}
+    </select>
 </mapper>

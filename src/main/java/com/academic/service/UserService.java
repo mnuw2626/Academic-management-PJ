@@ -60,4 +60,12 @@ public class UserService {
     public StdDTO get_std_info(Integer stdNo){
         return userMapper.select_std_info(stdNo);
     }
+
+    public List<NoticeDTO> get_notices(){
+        return userMapper.select_notices();
+    }
+
+    public NoticeDTO get_notice(String noticeNo){
+        return userMapper.select_notice(noticeNo);
+    }
 }

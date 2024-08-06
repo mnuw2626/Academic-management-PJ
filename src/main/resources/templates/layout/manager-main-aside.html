@@ -12,7 +12,7 @@
     <main>
         <aside th:fragment="aside" class="nav-bar">
             <h1>학사행정</h1>
-            <div class="academic-nav">
+            <nav class="academic-nav">
                 <ul class="main-category">
                     <li>
                         <a href="#">학적</a>
@@ -32,7 +32,7 @@
                     <li>
                         <a href="#">복학/휴학</a>
                         <ul class="sub-category">
-                            <li><a href="#">휴학처리</a></li>
+                            <li><a href="/manager/leave_management">휴학처리</a></li>
                         </ul>
                     </li>
                     <li>
@@ -44,12 +44,12 @@
                     <li>
                         <a href="#">학사정보</a>
                         <ul class="sub-category">
-                            <li><a href="#">공지사항</a></li>
-                            <li><a href="#">학사일정</a></li>
+                            <li><a href="/manager/manager_notice">공지사항</a></li>
+                            <li><a href="/manager/manager_calendar">학사일정</a></li>
                         </ul>
                     </li>
                 </ul>
-            </div>
+            </nav>
         </aside>
     </main>
 </body>

@@ -4,7 +4,11 @@ import com.academic.dto.*;
 import com.academic.service.CourseScoreService;
 import com.academic.service.EnrollInCourseService;
 import com.academic.dto.TuitionDTO;
+import com.academic.dto.CollegeDTO;
+import com.academic.dto.DepartmentDTO;
+import com.academic.dto.NoticeDTO;
 import org.springframework.ui.Model;
+import com.academic.dto.StdDTO;
 import com.academic.service.ManagerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -233,4 +237,30 @@ public class ManagerController {
         model.addAttribute("stdTuitions", tuitionDTOS);
     }
 
+
+
+    // 학사일정
+    @GetMapping("/manager_calendar")
+    public void get_manager_calendar(){}
+
+
+    @GetMapping("/manager_notice")
+    public void get_manager_notice(Model model){
+        List<NoticeDTO> notices = managerService.get_notices();
+        model.addAttribute("notices", notices);
+    }
+
+    @GetMapping("/manager_view_notice/{noticeNo}")
+    public String get_manager_view_notice(
+            @PathVariable String noticeNo,
+            Model model
+    ){
+        NoticeDTO notice = managerService.get_notice(noticeNo);
+        model.addAttribute("notice", notice);
+        return "manager/manager_view_notice";
+    }
+
+    @GetMapping("/notice_write")
+    public void get_notice_write(){
+    }
 }
