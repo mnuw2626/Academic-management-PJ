@@ -1,5 +1,6 @@
 package com.academic.service;
 
+import com.academic.dto.NoticeDTO;
 import com.academic.dto.StdDTO;
 import com.academic.dto.TuitionDTO;
 import com.academic.dto.UserDTO;

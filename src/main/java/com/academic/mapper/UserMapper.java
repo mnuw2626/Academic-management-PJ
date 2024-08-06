@@ -1,5 +1,6 @@
 package com.academic.mapper;
 
+import com.academic.dto.NoticeDTO;
 import com.academic.dto.StdDTO;
 import com.academic.dto.UserDTO;
 import org.apache.ibatis.annotations.Mapper;
