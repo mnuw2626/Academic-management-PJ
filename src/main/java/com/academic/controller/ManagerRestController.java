@@ -25,14 +25,13 @@ public class ManagerRestController {
     @Autowired
     CourseScoreService courseScoreService;
 
-    // 단과대학에 해당하는 학과 정보 조회
-    @GetMapping("/college/{collegeId}/depart")
-    public List<DepartmentDTO> get_find_department(
-            @PathVariable Integer collegeId
-    ){
-        return managerService.get_departments(collegeId);
-    }
-
+//    // 단과대학에 해당하는 학과 정보 조회
+//    @GetMapping("/college/{collegeId}/depart")
+//    public List<DepartmentDTO> get_find_department(
+//            @PathVariable Integer collegeId
+//    ){
+//        return managerService.get_departments(collegeId);
+//    }
 
 
     @PostMapping("/leave/check")

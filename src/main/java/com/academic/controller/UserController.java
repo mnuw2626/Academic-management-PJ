@@ -106,6 +106,8 @@ public class UserController {
         } else {
             System.out.println("User Info is null");
         }
+        get_db_college_depart_info(model);
+        
         return "user/info_management";
     }
 
@@ -126,16 +128,15 @@ public class UserController {
         model.addAttribute("allDepartments", allDepartments);
 
         // Create maps for college and department names
-        Map<Integer, String> collegeMap = colleges.stream()
+        Map<Integer, String> allcollegeMap = colleges.stream()
                 .collect(Collectors.toMap(CollegeDTO::getId, CollegeDTO::getName));
         Map<Integer, String> allDepartmentMap = allDepartments.stream()
                 .collect(Collectors.toMap(DepartmentDTO::getId, DepartmentDTO::getName));
 
         // Add maps to the model
-        model.addAttribute("collegeMap", collegeMap);
+        model.addAttribute("allcollegeMap", allcollegeMap);
         model.addAttribute("allDepartmentMap", allDepartmentMap);
     }
-
 
     @GetMapping("/academic_calendar")
     public void get_academic_calendar(){}

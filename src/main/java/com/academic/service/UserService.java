@@ -39,6 +39,10 @@ public class UserService {
         userMapper.update_std_id(id, stdNo);
     }
 
+    public StdDTO get_std_info(int studentNo) {
+        return userMapper.select_std_info(studentNo);
+    }
+
     /**************등록금 정보 가져오기***************/
     public StdDTO select_user_scholarship(Integer no){
         return userMapper.select_scholarship(no);
@@ -85,8 +89,10 @@ public class UserService {
         return leaveDTO;
     }
 
-    public List<NoticeDTO> get_notices(){
+    public List<NoticeDTO> get_notices() {
         return userMapper.select_notices();
+    }
+
     /**************복학***************/
     // 현재 날짜가 복학 신청 기간인지 체크
     public boolean isReturnApplicationPeriod(LocalDate currentDate) {
@@ -94,9 +100,6 @@ public class UserService {
         return (month == 7 || month == 8 || month == 1 || month == 2);
     }
 
-    public NoticeDTO get_notice(String noticeNo){
-        return userMapper.select_notice(noticeNo);
-    }
     public void insertReturnApplication(LeaveDTO leaveDTO) {
         LeaveDTO currentStatus = select_user_stat(leaveDTO.getStdNo());
 
@@ -108,4 +111,10 @@ public class UserService {
             userMapper.updateReturnApplication(leaveDTO);
         }
     }
+
+    public NoticeDTO get_notice(String noticeNo){
+        return userMapper.select_notice(noticeNo);
+    }
+
 }
+

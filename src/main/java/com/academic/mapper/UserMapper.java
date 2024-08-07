@@ -1,5 +1,7 @@
 package com.academic.mapper;
 
+import com.academic.dto.LeaveDTO;
+import com.academic.dto.NoticeDTO;
 import com.academic.dto.StdDTO;
 import com.academic.dto.UserDTO;
 import org.apache.ibatis.annotations.Mapper;
@@ -23,8 +25,6 @@ public interface UserMapper {
     LeaveDTO select_stat(Integer no);
 
     void updateReturnApplication(LeaveDTO leaveDTO);
-
-
 
     StdDTO select_std_info(Integer stdNo);
 

@@ -28,7 +28,7 @@
         </association>
     </resultMap>
 
-    <!--    전체 학생 조회-->
+<!--    전체 학생 조회-->
     <select id="select_all_std" resultType="com.academic.dto.StdDTO">
         SELECT * FROM `student`
     </select>
@@ -73,11 +73,31 @@
         ORDER BY `name`
     </select>
 
-    <select id="select_notices" resultType="com.academic.dto.NoticeDTO">
-        SELECT * FROM notice
+<!--    장학금 관련 -->
+
+    <select id="select_std_scholarship" resultType="com.academic.dto.TuitionDTO">
+        SELECT S.std_no, C.amount
+        FROM `student` AS S
+                 INNER JOIN `college_tuit` AS C
+                 ON S.college_id = C.college_id
     </select>
-    <select id="select_notice" resultType="com.academic.dto.NoticeDTO">
-        SELECT * FROM notice WHERE no = #{noticeNo}
+
+    <insert id="insert_scholarship">
+        INSERT INTO `tuition` (`std_no`, `status`, `amount`)
+        VALUES
+        <foreach collection="tuitionDTOS" item="item" separator=",">
+            (#{item.stdNo}, #{item.status}, #{item.amount})
+        </foreach>
+        ON DUPLICATE KEY UPDATE
+        `status` = VALUES(`status`),
+        `amount` = VALUES(`amount`)
+    </insert>
+
+    <select id="select_all_std_tuition" resultMap="all_student_with_tuition_map">
+        SELECT S.std_no, S.name, S.grade, S.semester, T.amount, T.status
+        FROM `student` AS S
+                 INNER JOIN `tuition` AS T
+                 ON S.std_no = T.std_no
     </select>
 
     <!-- 모든 휴학 신청 정보를 가져오기 -->
@@ -105,4 +125,12 @@
         SET status = '복학'
         WHERE std_no = #{stdNo}
     </update>
+
+    <select id="select_notices" resultType="com.academic.dto.NoticeDTO">
+        SELECT * FROM `notice`
+    </select>
+
+    <select id="select_notice" resultType="com.academic.dto.NoticeDTO">
+        SELECT * FROM `notice` WHERE no = #{noticeNo}
+    </select>
 </mapper>

@@ -70,7 +70,7 @@
 
     <!--등록금 납부-->
     <update id="update_std_scholarship">
-        UPDATE tuition SET status = 1
+        UPDATE `tuition` SET status = 1
         WHERE std_no = #{stdNo}
     </update>
 
@@ -96,9 +96,11 @@
 
 
     <select id="select_notice" resultType="com.academic.dto.NoticeDTO">
-        SELECT * FROM notice WHERE no = #{noticeNo}
+        SELECT * FROM `notice` WHERE no = #{noticeNo}
     </select>
+
     <select id="select_notices" resultType="com.academic.dto.NoticeDTO">
-        SELECT * FROM notice
+        SELECT * FROM `notice`
     </select>
+
 </mapper>
