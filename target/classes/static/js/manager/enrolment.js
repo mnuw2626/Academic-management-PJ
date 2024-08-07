@@ -5,7 +5,7 @@ const endDateInput = document.getElementById('end-date');
 const nowDate = new Date();
 const year = nowDate.getFullYear();
 const month = (nowDate.getMonth()+1).toString().padStart(2, '0');
-const date = nowDate.getDate();
+const date = nowDate.getDate().toString().padStart(2, '0');
 startDateInput.value = `${year}-${month}-${date}`;
 endDateInput.value = `${year}-${month}-${date}`;
 startDateInput.setAttribute('min', `${year}-${month}-${date}`);
