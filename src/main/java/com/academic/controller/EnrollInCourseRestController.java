@@ -90,4 +90,16 @@ public class EnrollInCourseRestController {
         return enrollInCourseService.get_lecture_name_by_code(code); //강의 이름만 반환함
     }
 
+    // 과목코드로 강의 조회 및 전체 강의 조회
+    @GetMapping("/course/lectures")
+    public List<LectureDTO> get_code_lecture(
+            @RequestParam(required = false) Integer code
+    ) {
+        if (code != null) { //코드 입력 시
+            return enrollInCourseService.get_code_lecture(code);
+        } else { //코드 미 입력시
+            return enrollInCourseService.get_all_lectures();
+        }
+    }
+
 }
