@@ -47,6 +47,7 @@
         WHERE std_no = #{stdNo}
     </select>
 
+    <!--  학생 테이블에 id 업데이트  -->
     <update id="update_std_id">
         update `student` set id = #{id}
         where std_no = #{stdNo}
@@ -94,4 +95,10 @@
 
 
 
+    <select id="select_notice" resultType="com.academic.dto.NoticeDTO">
+        SELECT * FROM notice WHERE no = #{noticeNo}
+    </select>
+    <select id="select_notices" resultType="com.academic.dto.NoticeDTO">
+        SELECT * FROM notice
+    </select>
 </mapper>

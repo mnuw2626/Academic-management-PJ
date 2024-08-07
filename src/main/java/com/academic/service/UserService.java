@@ -1,6 +1,7 @@
 package com.academic.service;
 
 import com.academic.dto.LeaveDTO;
+import com.academic.dto.NoticeDTO;
 import com.academic.dto.StdDTO;
 import com.academic.dto.TuitionDTO;
 import com.academic.dto.UserDTO;
@@ -21,17 +22,21 @@ public class UserService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    public boolean user_register(UserDTO userDTO){
+    public void user_register(UserDTO userDTO){
         userDTO.setPassword(
                 passwordEncoder.encode(userDTO.getPassword())
         );
         userMapper.insert_user(userDTO);
         log.info(userDTO.toString());
-        return true;
     }
 
     public StdDTO select_user_info_service(String id){
         return userMapper.select_all_userInfo(id); // 단일 사용자 반환;
+    }
+
+    // 학생 id 업데이트
+    public void set_std_id(String id, Integer stdNo){
+        userMapper.update_std_id(id, stdNo);
     }
 
     /**************등록금 정보 가져오기***************/
@@ -80,6 +85,8 @@ public class UserService {
         return leaveDTO;
     }
 
+    public List<NoticeDTO> get_notices(){
+        return userMapper.select_notices();
     /**************복학***************/
     // 현재 날짜가 복학 신청 기간인지 체크
     public boolean isReturnApplicationPeriod(LocalDate currentDate) {
@@ -87,6 +94,9 @@ public class UserService {
         return (month == 7 || month == 8 || month == 1 || month == 2);
     }
 
+    public NoticeDTO get_notice(String noticeNo){
+        return userMapper.select_notice(noticeNo);
+    }
     public void insertReturnApplication(LeaveDTO leaveDTO) {
         LeaveDTO currentStatus = select_user_stat(leaveDTO.getStdNo());
 

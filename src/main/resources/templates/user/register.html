@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="../../static/css/user/register.css" th:href="@{/css/user/register.css}">
@@ -15,7 +15,7 @@
                     <i class="fa-solid fa-lock"></i>
                     <input type="text" id="id" name="id" placeholder="아이디 (6-12글자)">
                 </label>
-                <button class="id-duplication-btn">중복확인</button>
+                <button class="id-duplication-btn" type="button">중복확인</button>
             </section>
             <div class="valid-check-id">
                 아이디는 6-12 글자 내여야 합니다
@@ -58,18 +58,16 @@
                     <span>휴대폰번호</span>
                     <input type="text" name="tel">
                 </label>
-                <button class="call-button">인증번호</button>
+                <button class="call-button" type="button">인증번호</button>
                 <label class="call-accept-label">
                     <input type="text" placeholder="인증번호를 입력하세요">
                 </label>
             </section>
 
             <section class="register-section form-section">
-                <button id="register-btn">회원가입</button>
+                <button id="register-btn" type="submit">회원가입</button>
                 <button id="cancel-btn">취소</button>
             </section>
-
-
         </form>
     </main>
 </body>

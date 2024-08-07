@@ -1,15 +1,18 @@
 package com.academic.service;
 
-import com.academic.dto.*;
 
 import com.academic.dto.*;
 
+import com.academic.dto.CollegeDTO;
+import com.academic.dto.DepartmentDTO;
+import com.academic.dto.NoticeDTO;
+import com.academic.dto.StdDTO;
 import com.academic.mapper.ManagerMapper;
-import com.fasterxml.jackson.databind.BeanProperty;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Log4j2
@@ -64,6 +67,17 @@ public class ManagerService {
     // 모든 학생 등록금 제출 내역 조회
     public List<StdDTO> get_all_std_tuitions(){
         return managerMapper.select_all_std_tuition();
+    }
+
+
+
+
+    public List<NoticeDTO> get_notices() {
+        return managerMapper.select_notices();
+    }
+
+    public NoticeDTO get_notice(String noticeNo) {
+        return managerMapper.select_notice(noticeNo);
     }
 
     // 모든 휴학 신청 정보를 가져오기

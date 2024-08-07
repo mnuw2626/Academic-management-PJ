@@ -25,6 +25,15 @@ public class ManagerRestController {
     @Autowired
     CourseScoreService courseScoreService;
 
+    // 단과대학에 해당하는 학과 정보 조회
+    @GetMapping("/college/{collegeId}/depart")
+    public List<DepartmentDTO> get_find_department(
+            @PathVariable Integer collegeId
+    ){
+        return managerService.get_departments(collegeId);
+    }
+
+
 
     @PostMapping("/leave/check")
     public ResponseEntity<Map<String, Object>> update_leave_status(@RequestParam("stdNo") Integer stdNo) {

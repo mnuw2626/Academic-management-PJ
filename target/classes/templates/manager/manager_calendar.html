@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layout/manager-main-layout}"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../static/css/manager/manager_calendar.css" th:href="@{/css/manager/manager_calendar.css}">
+</head>
+<body>
+<section class="calendar_section" layout:fragment="main-section">
+    <div class="academic-calendar">학사일정</div>
+    <div class="calendar-table">
+        <table>
+            <tr>
+                <td class="month january" >1월</td>
+                <td class="line january">01-27~02-01</td>
+                <td class="line january">2024-1학기 예비수강신청</td>
+            </tr>
+            <tr>
+                <td class="month" rowspan="5">2월</td>
+                <td class="line">02-13~02-17</td>
+                <td class="line">2024-1학기 수강신청</td>
+            </tr>
+            <tr>
+                <td class="line">02-17~02-23</td>
+                <td class="line">2024-1학기 등록</td>
+            </tr>
+            <tr>
+                <td class="line">02-22~02-22</td>
+                <td class="line">복학 접수 마감</td>
+            </tr>
+            <tr>
+                <td class="line">02-26~02-26</td>
+                <td class="line">졸업예배</td>
+            </tr>
+            <tr>
+                <td class="line">02-27~02-27</td>
+                <td class="line">학위 수여식</td>
+            </tr>
+            <tr>
+                <td class="month" rowspan="6">3월</td>
+                <td class="line">03-01~03-01</td>
+                <td class="line">삼일절</td>
+            </tr>
+            <tr>
+                <td class="line">03-02~03-02</td>
+                <td class="line">개강/교무의원회</td>
+            </tr>
+            <tr>
+                <td class="line">03-06~03-08</td>
+                <td class="line">수강신청 확인 및 변경</td>
+            </tr>
+            <tr>
+                <td class="line">03-10~03-13</td>
+                <td class="line">2023-1학기 추가등록</td>
+            </tr>
+            <tr>
+                <td class="line">03-13~03-17</td>
+                <td class="line">조기졸업 신청</td>
+            </tr>
+            <tr>
+                <td class="line">03-15~03-15</td>
+                <td class="line">미등록자 일반 휴학 접수 마감/등록금 전액반환 마감</td>
+            </tr>
+        </table>
+    </div>
+</section>
+</body>
+</html>

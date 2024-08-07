@@ -1,9 +1,15 @@
 package com.academic.mapper;
 
+
 import com.academic.dto.*;
+import com.academic.dto.CollegeDTO;
+import com.academic.dto.DepartmentDTO;
+import com.academic.dto.NoticeDTO;
+import com.academic.dto.StdDTO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Mapper
@@ -32,6 +38,12 @@ public interface ManagerMapper {
 
     void insert_scholarship(List<TuitionDTO> tuitionDTOS);
 
+
+
+
+    List<NoticeDTO> select_notices();
+
+    NoticeDTO select_notice(String noticeNo);
     List<LeaveDTO> select_all_std_leaves();
 
     List<LeaveDTO> select_all_std_returns();

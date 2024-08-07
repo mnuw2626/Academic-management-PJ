@@ -39,8 +39,8 @@ public class SecurityConfig {
 
         http.authorizeHttpRequests(registry -> {
             registry.requestMatchers("/manager/**", "/manager_main").hasAuthority("MANAGER")
-                    .requestMatchers("/scholarship/**","/school/**","/main").hasAuthority("STUDENT")
-                    .requestMatchers("/user/login","/user/register").permitAll()
+                    .requestMatchers("/main", "/scholarship/**","/school/**").hasAuthority("STUDENT")
+                    .requestMatchers("/user/login","/user/register", "/user/student-number", "/user/setregister").permitAll()
                     .anyRequest().authenticated();
 //            registry.anyRequest().permitAll();
         });
