@@ -77,7 +77,6 @@
                             <th>강의시간</th>
                             <th>강의실</th>
                             <th>잔여</th>
-                            <th>재수강</th>
                             <th>강의계획서</th>
                         </tr>
                         </thead>
@@ -92,8 +91,7 @@
                                 <td>[[${lecture.professor}]]</td>
                                 <td>[[${lecture.starTime}]] ~ [[${lecture.endTime}]] ([[${lecture.week}]])</td>
                                 <td>[[${lecture.room}]]</td>
-                                <td> 12 / [[${lecture.capacity}]] </td>
-                                <td><span class="class-sign class-sign-re">재수강</span></td>
+                                <td> [[${lecture.numOfStudent}]] / [[${lecture.capacity}]] </td>
                                 <td>
                                     <button class="lecture-find-btn" th:onclick="|modal_report_view(${lecture.code})|">
                                         <i class="fa-solid fa-magnifying-glass"></i>
