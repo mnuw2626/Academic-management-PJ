@@ -19,11 +19,11 @@ public interface UserMapper {
     StdDTO select_scholarship(Integer no);
 
     void update_std_scholarship(Integer no);
-
+    //휴학
     void insertLeaveApplication(LeaveDTO leaveDTO);
-
+    
     LeaveDTO select_stat(Integer no);
-
+    //복학
     void updateReturnApplication(LeaveDTO leaveDTO);
 
     StdDTO select_std_info(Integer stdNo);

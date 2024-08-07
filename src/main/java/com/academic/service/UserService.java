@@ -89,10 +89,6 @@ public class UserService {
         return leaveDTO;
     }
 
-    public List<NoticeDTO> get_notices() {
-        return userMapper.select_notices();
-    }
-
     /**************복학***************/
     // 현재 날짜가 복학 신청 기간인지 체크
     public boolean isReturnApplicationPeriod(LocalDate currentDate) {
@@ -105,8 +101,8 @@ public class UserService {
 
         if (leaveDTO != null && "휴학".equals(currentStatus.getStatus())) {
             leaveDTO.setStatus("복학 처리중");
-            leaveDTO.setStartDate(LocalDate.now());
-            leaveDTO.setEndDate(null); // 복학 신청의 끝나는 날짜 예시
+            leaveDTO.setStartDate(null);
+            leaveDTO.setEndDate(null);
             leaveDTO.setReason("복학신청");
             userMapper.updateReturnApplication(leaveDTO);
         }
@@ -114,6 +110,11 @@ public class UserService {
 
     public NoticeDTO get_notice(String noticeNo){
         return userMapper.select_notice(noticeNo);
+    }
+
+    /*****************공지사항*****************/
+    public List<NoticeDTO> get_notices() {
+        return userMapper.select_notices();
     }
 
 }
