@@ -21,7 +21,7 @@ public interface UserMapper {
     void update_std_scholarship(Integer no);
     //휴학
     void insertLeaveApplication(LeaveDTO leaveDTO);
-    
+
     LeaveDTO select_stat(Integer no);
     //복학
     void updateReturnApplication(LeaveDTO leaveDTO);

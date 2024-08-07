@@ -104,15 +104,16 @@ public class UserService {
             leaveDTO.setStartDate(null);
             leaveDTO.setEndDate(null);
             leaveDTO.setReason("복학신청");
+            leaveDTO.setApplicationDate(LocalDate.now());
             userMapper.updateReturnApplication(leaveDTO);
         }
     }
 
+    /*****************공지사항*****************/
     public NoticeDTO get_notice(String noticeNo){
         return userMapper.select_notice(noticeNo);
     }
 
-    /*****************공지사항*****************/
     public List<NoticeDTO> get_notices() {
         return userMapper.select_notices();
     }
