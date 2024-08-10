@@ -33,7 +33,7 @@
                             </td>
                         </tr>
                     </table>
-                    <button class="return-btn" th:disabled="${!canApplyReturn}" onclick="status_function(this)">복학신청</button>
+                    <button class="return-btn" th:disabled="${!canApplyReturn}">복학신청</button>
                 </section>
             </form>
         </div>
@@ -60,7 +60,7 @@
                 <td th:text="${returnInfo.stdNo}">20211234542</td>
                 <td th:text="${returnInfo.name}">양준식</td>
                 <td th:text="${returnInfo.applicationDate}">신청날짜</td>
-                <td th:text="${returnInfo.status}">처리중</td>
+                <td th:text="${returnInfo.status}"></td>
             </tr>
             </tbody>
         </table>

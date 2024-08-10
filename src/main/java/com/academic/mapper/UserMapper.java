@@ -30,7 +30,6 @@ public interface UserMapper {
 
     void update_std_id(String id, Integer stdNo);
 
-
     List<NoticeDTO> select_notices();
 
     NoticeDTO select_notice(String noticeNo);

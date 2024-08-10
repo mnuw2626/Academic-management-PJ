@@ -85,14 +85,13 @@
         UPDATE `stat`
         SET status = #{status}, start_date = #{startDate}, end_date = #{endDate},
             application_date = #{applicationDate}, reason = #{reason}
-        WHERE std_no = #{stdNo} AND status = '휴학'
+        WHERE std_no = #{stdNo}
     </update>
 
     <!-- 유저의 휴학/복학 상태 조회 -->
     <select id="select_stat" resultType="com.academic.dto.LeaveDTO">
         SELECT * FROM `stat` WHERE std_no = #{stdNo}
     </select>
-
 
 
     <select id="select_notice" resultType="com.academic.dto.NoticeDTO">

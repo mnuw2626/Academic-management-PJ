@@ -103,13 +103,13 @@
     <!-- 모든 휴학 신청 정보를 가져오기 -->
     <select id="select_all_std_leaves" resultType="com.academic.dto.LeaveDTO">
         SELECT * FROM `stat`
-        WHERE status = '처리중' AND reason != '복학신청'
+        WHERE status = '처리중' OR status = '휴학'
     </select>
 
     <!-- 모든 복학 신청 정보를 가져오기 -->
     <select id="select_all_std_returns" resultType="com.academic.dto.LeaveDTO">
         SELECT * FROM `stat`
-        WHERE status = '처리중' AND reason = '복학신청'
+        WHERE status = '복학 처리중' OR status = '복학'
     </select>
 
     <!-- 휴학 상태 업데이트 -->
@@ -126,11 +126,9 @@
         WHERE std_no = #{stdNo}
     </update>
 
-    <select id="select_notices" resultType="com.academic.dto.NoticeDTO">
-        SELECT * FROM `notice`
-    </select>
-
-    <select id="select_notice" resultType="com.academic.dto.NoticeDTO">
-        SELECT * FROM `notice` WHERE no = #{noticeNo}
-    </select>
+    <!-- 휴학 신청 정보 삭제 -->
+    <delete id="delete_leave_application">
+        DELETE FROM `stat`
+        WHERE std_no = #{stdNo} AND reason != '복학신청'
+    </delete>
 </mapper>

@@ -102,4 +102,8 @@ public class ManagerService {
         return updatedRows > 0; // 업데이트된 행이 있으면 true 반환, 없으면 false 반환
     }
 
+    // 휴학 신청 정보 삭제
+    public void delete_leave_application(Integer stdNo) {
+        managerMapper.delete_leave_application(stdNo);
+    }
 }

@@ -40,7 +40,8 @@
                     <td>
                         <form class="leave-form" th:action="@{/manager/leave/update}" method="post">
                             <input type="hidden" name="stdNo" th:value="${leave.stdNo}">
-                            <button type="button" th:text="${leave.status}" onclick="status_function(this)" class="state-std">처리중</button>
+                            <input type="hidden" name="status" th:value="${leave.status}">
+                            <button type="button" th:text="${leave.status}" onclick="status_function(this)" class="state-std"></button>
                         </form>
                     </td>
                 </tr>
@@ -67,12 +68,10 @@
                     <td th:text="${return.applicationDate}"></td>
                     <td th:text="${return.name}"></td>
                     <td th:text="${return.stdNo}"></td>
-                    <td th:text="${return.returnYear}"></td>
-                    <td th:text="${return.returnGrade}"></td>
-                    <td th:text="${return.returnSemester}"></td>
                     <td>
                         <form class="return-form" th:action="@{/manager/return/update}" method="post">
                             <input type="hidden" name="stdNo" th:value="${return.stdNo}">
+                            <input type="hidden" name="status" th:value="${return.status}">
                             <button type="button" th:text="${return.status}" onclick="status_function(this)" class="state-std">처리중</button>
                         </form>
                     </td>
@@ -80,6 +79,6 @@
                 </tbody>
             </table>
         </div>
-    </section>
+</section>
 </body>
 </html>

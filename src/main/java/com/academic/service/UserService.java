@@ -97,9 +97,11 @@ public class UserService {
     }
 
     public void insertReturnApplication(LeaveDTO leaveDTO) {
-        LeaveDTO currentStatus = select_user_stat(leaveDTO.getStdNo());
+        LeaveDTO return_std = userMapper.select_stat(leaveDTO.getStdNo());
 
-        if (leaveDTO != null && "휴학".equals(currentStatus.getStatus())) {
+        System.out.println(return_std);
+
+        if (leaveDTO != null && "휴학".equals(return_std.getStatus())) {
             leaveDTO.setStatus("복학 처리중");
             leaveDTO.setStartDate(null);
             leaveDTO.setEndDate(null);

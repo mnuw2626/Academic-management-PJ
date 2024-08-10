@@ -244,7 +244,7 @@ public class ManagerController {
         model.addAttribute("stdTuitions", tuitionDTOS);
     }
 
-    /******************** 휴/복학신청 관리  *******************/
+    /******************** 휴/복학 조회  *******************/
     // 휴/복학 신청 관리 페이지
     @GetMapping("/leave_management")
     public void get_leave_management(Model model) {
@@ -269,10 +269,15 @@ public class ManagerController {
     @ResponseBody
     public Map<String, Object> update_return_status(@RequestParam("stdNo") Integer stdNo) {
         boolean success = managerService.update_return_status(stdNo);
+        if (success) {
+            // 복학이 성공적으로 업데이트되면 해당 학생의 휴학 신청 정보를 삭제
+            managerService.delete_leave_application(stdNo);
+        }
         Map<String, Object> response = new HashMap<>();
         response.put("success", success);
         return response;
     }
+
 
 
 
