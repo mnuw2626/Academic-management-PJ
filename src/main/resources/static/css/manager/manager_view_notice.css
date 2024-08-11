@@ -4,9 +4,12 @@
     margin: 0 auto;
     box-sizing: border-box;
 }
-main{
+
+.view_main{
     margin-top: 50px;
+    padding: 40px;
     width: 1000px;
+    background-color: white;
 }
 
 /*************************************/

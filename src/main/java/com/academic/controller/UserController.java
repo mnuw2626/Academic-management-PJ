@@ -141,12 +141,14 @@ public class UserController {
     @GetMapping("/academic_calendar")
     public void get_academic_calendar(){}
 
+    //공지사항 페이지로 이동 - 수정필요
     @GetMapping("/academic_notice")
     public void get_academic_notice(Model model){
         List<NoticeDTO> notices = userService.get_notices();
         model.addAttribute("notices", notices);
     }
 
+    //각각 공지사항들
     @GetMapping("/view_notice/{noticeNo}")
     public String get_view_notice(
             @PathVariable String noticeNo,

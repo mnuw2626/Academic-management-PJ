@@ -12,6 +12,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -20,6 +21,8 @@ import java.util.List;
 public class ManagerService {
     @Autowired
     ManagerMapper managerMapper;
+
+    /****************학생조회****************/
 
     public boolean manager_add_std(StdDTO stdDTO) {
         managerMapper.insert_std(stdDTO);
@@ -52,6 +55,8 @@ public class ManagerService {
         return managerMapper.select_dept(collegeId);
     }
 
+    /****************등록금****************/
+
     // 단과대별 등록금 가져오기
     public List<TuitionDTO> get_tuitions() {
         return managerMapper.select_std_scholarship();
@@ -69,16 +74,7 @@ public class ManagerService {
         return managerMapper.select_all_std_tuition();
     }
 
-
-
-
-    public List<NoticeDTO> get_notices() {
-        return managerMapper.select_notices();
-    }
-
-    public NoticeDTO get_notice(String noticeNo) {
-        return managerMapper.select_notice(noticeNo);
-    }
+    /****************휴/복학****************/
 
     // 모든 휴학 신청 정보를 가져오기
     public List<LeaveDTO> get_all_leaves_info() {
@@ -105,5 +101,26 @@ public class ManagerService {
     // 휴학 신청 정보 삭제
     public void delete_leave_application(Integer stdNo) {
         managerMapper.delete_leave_application(stdNo);
+    }
+
+    /****************학사일정****************/
+
+    public List<NoticeDTO> get_notices() {
+        return managerMapper.select_notices();
+    }
+
+    public NoticeDTO get_notice(String noticeNo) {
+        return managerMapper.select_notice(noticeNo);
+    }
+
+    public Integer getBoardCount() {
+        return (managerMapper.count() + 1);
+    }
+
+    public void insert_notice(NoticeDTO noticeDTO){
+        noticeDTO.setNo(getBoardCount());
+        noticeDTO.setCreatedDate(LocalDate.now());
+        noticeDTO.setViews(0);
+        managerMapper.insert_notice(noticeDTO);
     }
 }

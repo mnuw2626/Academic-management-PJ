@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="ko"
       xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layout/manager-main-layout}"
 >
 <head>
     <meta charset="UTF-8">
@@ -8,22 +11,22 @@
     <link rel="stylesheet" href="../../static/css/manager/notice_write.css" th:href="@{/css/manager/notice_write.css}">
 </head>
 <body>
-    <main>
+    <form th:action="@{/manager/manager_notice}" method="post" class="write_main" layout:fragment="main-section">
         <div class="notice_write">공지사항 작성</div>
         <div class="content_div">
             <div class="content_title">
                 <div>제목</div>
-                <input type="text" maxlength="30">
+                <input type="text" name="title" maxlength="30">
             </div>
             <div class="contents">
                 <div>내용</div>
-                <textarea class="content-textarea" rows="20" cols="60" maxlength="2000"></textarea>
+                <textarea class="content-textarea" name="content" rows="20" cols="60" maxlength="2000"></textarea>
             </div>
         </div>
         <div class="btn_div">
-            <button type="button" onclick="location.href='/manager/manager_notice'">목록</button>
-            <button type="submit">작성</button>
+            <a href="/manager/manager_notice">목록</a>
+            <button>작성</button>
         </div>
-    </main>
+    </form>
 </body>
 </html>

@@ -15,15 +15,15 @@
     <div class="notice-title">
         공지사항
     </div>
-    <div class="notice-search">
+    <form th:action="@{/manager/notice_write}" class="notice-search">
         <select>
             <option>제목</option>
             <option>제목+내용</option>
         </select>
         <input class="search-input" type="text" placeholder="검색어를 입력하세요">
-        <button class="write-btn" onclick="location.href='/manager/notice_write';">작성</button>
+        <button class="write-btn">작성</button>
         <button class="search-btn">검색</button>
-    </div>
+    </form>
     <div class="notice-table">
         <table>
             <tr>
@@ -34,10 +34,10 @@
             </tr>
             <tr th:each="notice: ${notices}">
                 <td width="50px" height="40px">
-                    <a th:href="@{|/manager/manager_view_notice/${notice.no}|}" th:text="${notice.no}">1</a>
+                    <a th:href="@{|/manager/manager_view_notice/${notice.no}|}" th:text="${notice.no}"></a>
                 </td>
                 <td width="400px" height="40px">
-                    <a th:href="@{|/manager/manager_view_notice/${notice.no}|}" th:text="${notice.title}">2024학년도 교외장학재단 신규장학생 선발 결과 안내</a>
+                    <a th:href="@{|/manager/manager_view_notice/${notice.no}|}" th:text="${notice.title}"></a>
                 </td>
                 <td width="150px" height="40px" th:text="${notice.createdDate}">2024-07-16</td>
                 <td width="70px" height="40px" th:text="${notice.views}">5</td>

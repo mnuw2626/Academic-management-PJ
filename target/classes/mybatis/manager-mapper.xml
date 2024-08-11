@@ -28,12 +28,12 @@
         </association>
     </resultMap>
 
-<!--    전체 학생 조회-->
+    <!--    전체 학생 조회-->
     <select id="select_all_std" resultType="com.academic.dto.StdDTO">
         SELECT * FROM `student`
     </select>
 
-<!--    개개인 학생 조회-->
+    <!--    개개인 학생 조회-->
     <select id="select_std" resultType="com.academic.dto.StdDTO">
         SELECT `college_id`, `std_no`, `name`, `dept_id`, `grade`, `semester` FROM `student`
         <where>
@@ -73,7 +73,7 @@
         ORDER BY `name`
     </select>
 
-<!--    장학금 관련 -->
+    <!--    장학금 관련 -->
     <select id="select_std_scholarship" resultType="com.academic.dto.TuitionDTO">
         SELECT S.std_no, C.amount
         FROM `student` AS S
@@ -130,4 +130,20 @@
         DELETE FROM `stat`
         WHERE std_no = #{stdNo} AND reason != '복학신청'
     </delete>
+
+    <!-- 공지사항 모두 가져오기 -->
+    <select id="select_notices" resultType="com.academic.dto.NoticeDTO">
+        SELECT * FROM `notice`
+    </select>
+
+    <!-- 모든 공지사항 갯수 가져오기  -->
+    <select id="count" resultType="java.lang.Integer">
+        SELECT COUNT(*) FROM `notice`;
+    </select>
+
+    <!-- 공지사항 삽입 -->
+    <insert id="insert_notice">
+        INSERT INTO `notice` (no, title, content, created_date, views)
+        VALUES(#{no}, #{title}, #{content}, #{createdDate}, #{views})
+    </insert>
 </mapper>

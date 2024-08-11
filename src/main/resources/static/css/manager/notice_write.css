@@ -4,9 +4,11 @@
     margin: 0 auto;
     box-sizing: border-box;
 }
-main{
+.write_main{
     margin-top: 50px;
     width: 1000px;
+    background-color: white;
+    padding: 40px;
 }
 
 /*************************************/

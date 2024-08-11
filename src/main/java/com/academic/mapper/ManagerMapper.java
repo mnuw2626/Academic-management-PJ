@@ -39,17 +39,27 @@ public interface ManagerMapper {
 
     void insert_scholarship(List<TuitionDTO> tuitionDTOS);
 
+    /***************휴/복학****************/
+
+    List<LeaveDTO> select_all_std_leaves();
+
+    List<LeaveDTO> select_all_std_returns();
+
+    int update_leave_std_status(@Param("stdNo") Integer stdNo);
+
+    int update_return_std_status(@Param("stdNo") Integer stdNo);
+
+    void delete_leave_application(@Param("stdNo") Integer stdNo);
 
 
+    /***************공지사항****************/
 
     List<NoticeDTO> select_notices();
 
     NoticeDTO select_notice(String noticeNo);
 
-    List<LeaveDTO> select_all_std_leaves();
-    List<LeaveDTO> select_all_std_returns();
-    int update_leave_std_status(@Param("stdNo") Integer stdNo);
-    int update_return_std_status(@Param("stdNo") Integer stdNo);
-    void delete_leave_application(@Param("stdNo") Integer stdNo);
+    Integer count();  // 게시글 수를 반환하는 메서드
+
+    void insert_notice(NoticeDTO noticeDTO);
 
 }

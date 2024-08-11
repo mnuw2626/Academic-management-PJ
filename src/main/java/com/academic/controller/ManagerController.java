@@ -278,10 +278,7 @@ public class ManagerController {
         return response;
     }
 
-
-
-
-
+    /******************** 학사일정 *******************/
     // 학사일정
     @GetMapping("/manager_calendar")
     public void get_manager_calendar(){}
@@ -293,14 +290,20 @@ public class ManagerController {
         model.addAttribute("notices", notices);
     }
 
+    @PostMapping("/manager_notice")
+    public String post_manager_notice(NoticeDTO noticeDTO){
+        System.out.println(noticeDTO);
+        managerService.insert_notice(noticeDTO);
+        System.out.println(noticeDTO);
+        return "redirect:/manager/manager_notice";
+    }
+
     @GetMapping("/manager_view_notice/{noticeNo}")
     public String get_manager_view_notice(
-            @PathVariable String noticeNo,
-            Model model
+            @PathVariable("noticeNo") int noticeNo
     ){
-        NoticeDTO notice = managerService.get_notice(noticeNo);
-        model.addAttribute("notice", notice);
-        return "manager/manager_view_notice";
+
+        return "manager/manager_view_notice";  // 템플릿 파일의 경로 반환
     }
 
     @GetMapping("/notice_write")
