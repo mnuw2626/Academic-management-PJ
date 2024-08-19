@@ -18,5 +18,5 @@ public class LeaveDTO {
     private LocalDate applicationDate;
     private String reason;
     private StdDTO stdDTO;
-
+    private int leaveCount;
 }

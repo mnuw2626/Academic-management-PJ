@@ -26,14 +26,14 @@ public interface ManagerMapper {
             @Param("grade") Integer grade,
             @Param("semester") Integer semester,
             @Param("name") String name,
-            @Param("stdNo") String stdNo
+            @Param("stdNo") Integer stdNo
     );
-
-    List<StdDTO> select_all_std_tuition();
 
     List<CollegeDTO> select_colleges();
 
     List<DepartmentDTO> select_dept(Integer collegeId);
+    /***************등록금****************/
+    List<StdDTO> select_all_std_tuition();
 
     List<TuitionDTO> select_std_scholarship();
 
@@ -45,21 +45,36 @@ public interface ManagerMapper {
 
     List<LeaveDTO> select_all_std_returns();
 
-    int update_leave_std_status(@Param("stdNo") Integer stdNo);
+    int update_leave_std_status(
+            @Param("stdNo") Integer stdNo,
+            @Param("leaveCount") int leaveCount
+    );
 
-    int update_return_std_status(@Param("stdNo") Integer stdNo);
+    int update_return_std_status(
+            @Param("stdNo") Integer stdNo
+    );
 
     void delete_leave_application(@Param("stdNo") Integer stdNo);
 
 
     /***************공지사항****************/
 
-    List<NoticeDTO> select_notices();
+    List<NoticeDTO> select_notices(
+            @Param("title") String title,
+            @Param("searchType") String searchType
+    );
 
-    NoticeDTO select_notice(String noticeNo);
+    NoticeDTO select_notice(Integer noticeNo);
 
     Integer count();  // 게시글 수를 반환하는 메서드
 
     void insert_notice(NoticeDTO noticeDTO);
+
+    void update_view(Integer noticeNo);
+
+    void update_notice(NoticeDTO noticeDTO);
+
+    public void delete_notice(Integer noticeNo);
+
 
 }

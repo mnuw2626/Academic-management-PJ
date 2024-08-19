@@ -1,19 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layout/main-layout}"
+>
 <head>
     <meta charset="UTF-8">
     <title>score</title>
-    <link rel="stylesheet" href="../../static/css/user/score.css">
+    <link rel="stylesheet" href="../../static/css/user/score.css" th:href="@{/css/user/score.css}">
 </head>
 <body>
-    <main>
-        <h1>성적 조회</h1>
-        <section class="score-section">
+    <section class="notification-main-section" layout:fragment="main-section">
+        <h1 class="score-h1">성적 조회</h1>
+        <form th:action="@{/user/score}" class="score-form">
+            <section class="label-section">
+                <label>
+                    <span>년도:</span>
+                    <select name="year">
+                        <option value="" selected disabled hidden>선택</option>
+                        <option th:each="year : ${availableYears}"
+                                th:value="${year}"
+                                th:text="${year}"></option>
+                    </select>
+                </label>
+                <label>
+                    <span>학기:</span>
+                    <select name="semester">
+                        <option value="" selected disabled hidden>선택</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                    </select>
+                </label>
+                <button class="search-btn">검색</button>
+            </section>
             <table border="1">
                 <thead>
                     <tr>
                         <td>NO</td>
-                        <td>년도</td>
+                        <td>개설년도</td>
                         <td>학기</td>
                         <td>교과목코드</td>
                         <td>교과목명</td>
@@ -23,46 +48,26 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>2021</td>
-                        <td>1</td>
-                        <td>CHAR1234</td>
-                        <td>수학1</td>
-                        <td>3</td>
-                        <td>A0</td>
-                        <td>4.0</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>2021</td>
-                        <td>1</td>
-                        <td>CHAR3456</td>
-                        <td>물리1</td>
-                        <td>3</td>
-                        <td>A0</td>
-                        <td>4.0</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>2021</td>
-                        <td>1</td>
-                        <td>CHAR6789</td>
-                        <td>화학1</td>
-                        <td>3</td>
-                        <td>A0</td>
-                        <td>4.0</td>
+                    <tr th:each="courseDetail, iterStat : ${courseDetails}">
+                        <td th:text="${iterStat.index + 1}"></td>
+                        <td th:text="${courseDetail.lecture.year}"></td>
+                        <td th:text="${courseDetail.lecture.semester}"></td>
+                        <td th:text="${courseDetail.lecture.code}"></td>
+                        <td th:text="${courseDetail.lecture.name}"></td>
+                        <td th:text="${courseDetail.lecture.credit}"></td>
+                        <td th:text="${courseDetail.enroll.grade}"></td>
+                        <td th:text="${courseDetail.score.gradeValue}"></td>
                     </tr>
                 </tbody>
             </table>
-        </section>
+        </form>
 
         <section class="notification-section">
             <span>*전공은 <b>65학점</b> 교양은 <b>24-32학점</b> 필수로 이수하셔야 합니다<br></span>
             <span>*복수전공시 본전공의 전공과목은 <b>51학점</b>, 복수전공의 전공과목은은 각 학과 페이지를 방문하여 이수학점을 확인하시기 바랍니다</span>
         </section>
 
-        <h1>전체 학점 조회</h1>
+        <h1 class="score-h1">전체 학점 상세 정보 조회</h1>
         <section class="total-score-section">
             <table border="1">
                 <thead>
@@ -91,6 +96,6 @@
                 </tbody>
             </table>
         </section>
-    </main>
+    </section>
 </body>
 </html>

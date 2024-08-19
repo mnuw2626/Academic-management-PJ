@@ -6,22 +6,48 @@
     padding: 0;
 }
 
-main{
+.notification-main-section{
     display: flex;
     flex-direction: column;
     width: 1000px;
     margin: 70px auto;
+    padding: 40px;
+    background-color: white;
 }
 
-h1{
+.score-h1{
     font-size: var(--font-size-extrabold);
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     border-bottom: 2px solid var(--dark-green-2);
 }
 
-.score-section{
+.score-form{
+    display: flex;
+    flex-direction: column;
     margin-bottom: 40px;
 }
+
+.label-section{
+    border: 1px solid var(--dark-green-2);
+    border-radius: 5px;
+    margin: 20px 0;
+    padding: 15px;
+}
+
+.label-section > button{
+    background-color: var(--light-green-2);
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 5px;
+    margin-left: 10px;
+}
+
+.label-section > button:hover{
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+
 
 b{
     color: red;

@@ -30,7 +30,7 @@
                     <td th:text="${std.grade}">1</td>
                     <td th:text="${std.semester}">1</td>
                     <td th:text="${std.tuitionDTO != null ? std.tuitionDTO.amount : 'N/A'}">2000000</td>
-                    <td th:text="${std.tuitionDTO != null ? (std.tuitionDTO.status == 1 ? '납부' : '미납') : '정보 없음'}">미납</td>
+                    <td th:text="${std.tuitionDTO != null ? (std.tuitionDTO.check == 1 ? '납부' : '미납') : '정보 없음'}">미납</td>
                 </tr>
             </table>
         </section>

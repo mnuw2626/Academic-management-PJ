@@ -57,27 +57,25 @@ public class ManagerController {
     }
 
     /**********학생명단조회**********/
-    //학생 명단 조회 페이지 이동
+    //학생 명단 조회 페이지 이동 및 조회
     @GetMapping("/student_list_check")
-    public void student_list_check(
-            @RequestParam(required = false) Integer collegeId,
-            @RequestParam(required = false) Integer deptId,
+    public void get_student_list_check(
             @RequestParam(required = false) Integer grade,
             @RequestParam(required = false) Integer semester,
+            @RequestParam(required = false) Integer collegeId,
+            @RequestParam(required = false) Integer deptId,
+            @RequestParam(required = false) Integer stdNo,
             @RequestParam(required = false) String name,
-            @RequestParam(required = false) String stdNo,
             Model model
     ){
-        System.out.println("학생명단조회시작");
-        List<StdDTO> stds = managerService.manager_std_list_check(collegeId, deptId, grade, semester ,name, stdNo);
-        model.addAttribute("stds", stds);
-        //단과대 조회
+        List<StdDTO> stdDTOS = managerService.manager_std_list_check(collegeId, deptId, grade, semester, name, stdNo);
+        model.addAttribute("stds", stdDTOS);
+        // 단과대학에 따른 학과 검색
         get_db_college_depart_info(model);
     }
 
-
-   /******************** 성적 등록  *******************/
-    // 성적 등록 페이지 이동
+    /**********학생 성적 등록**********/
+    //학생 성적 등록 페이지로 이동
     @GetMapping("/stuscore_regist")
     public void get_stuscore_regist(
             @RequestParam(required = false) Integer year,
@@ -87,127 +85,57 @@ public class ManagerController {
             @RequestParam(required = false) Integer stdNo,
             @RequestParam(required = false) String stdName,
             Model model
-    ){
-
+    ) {
         // 단과대학에 따른 학과 검색
         get_db_college_depart_info(model);
-
-        System.out.println("학년 : " + year + " 학기 : " + semester);
-        System.out.println("단과대id : " + collegeId + " 학과id : " + deptId);
-        System.out.println("학번 : " + stdNo);
-        System.out.println("이름 : " + stdName);
 
         // 등급 목록 조회
         List<GradeDTO> gradeList = courseScoreService.get_all_grade();
         model.addAttribute("gradeList", gradeList);
 
-
-        // 수강 내역 조회
+        // 수강 내역 조회 및 필터링
         List<CourseDetailsDTO> courseDetails = courseScoreService.get_all_grade_score();
+        courseDetails = filterCourseDetails(courseDetails, year, semester, collegeId, deptId, stdNo, stdName);
 
-
-        // 학년, 학기, 단과대, 학과, 학번, 이름으로 필터링
-        if (year != null) {
-            courseDetails = Optional.ofNullable(courseDetails)
-                    .orElse(Collections.emptyList())
-                    .stream()
-                    .filter(course -> course.getLecture().getGrade() == year)
-                    .collect(Collectors.toList());
-        }
-        if (semester != null) {
-            courseDetails = Optional.ofNullable(courseDetails)
-                    .orElse(Collections.emptyList())
-                    .stream()
-                    .filter(course -> course.getLecture().getSemester() == semester)
-                    .collect(Collectors.toList());
-        }
-        if (collegeId != null) {
-            courseDetails = Optional.ofNullable(courseDetails)
-                    .orElse(Collections.emptyList())
-                    .stream()
-                    .filter(course -> course.getCollege().getId() == collegeId)
-                    .collect(Collectors.toList());
-        }
-        if (deptId != null) {
-            courseDetails = courseDetails.stream()
-                    .filter(course -> course.getDepartment().getId() == deptId)
-                    .collect(Collectors.toList());
-        }
-        if (stdNo != null) {
-            courseDetails = Optional.ofNullable(courseDetails)
-                    .orElse(Collections.emptyList())
-                    .stream()
-                    .filter(course -> course.getStd().getStdNo() == stdNo)
-                    .collect(Collectors.toList());
-        }
-        if (stdName != null) {
-            courseDetails = Optional.ofNullable(courseDetails)
-                    .orElse(Collections.emptyList())
-                    .stream()
-                    .filter(course -> course.getStd().getName().contains(stdName))
-                    .collect(Collectors.toList());
-        }
-
-        courseDetails = Optional.ofNullable(courseDetails)
-                .orElse(Collections.emptyList())
-                .stream()
+        // 아직 성적이 등록되지 않은 항목만 필터링
+        courseDetails = courseDetails.stream()
                 .filter(course -> course.getEnroll().getGrade() == null)
                 .collect(Collectors.toList());
 
-        System.out.println(courseDetails);
         model.addAttribute("courseDetails", courseDetails);
     }
 
-    // 성적 등록
-    @PostMapping("/stuscore_regist")
-    public String post_stuscore_regist(
-            @ModelAttribute GradeRequest gradeRequest
-    ){
-//        System.out.println(gradeRequest);
-//        System.out.println(gradeRequest.getGrades());
+    private List<CourseDetailsDTO> filterCourseDetails(List<CourseDetailsDTO> courseDetails,
+                                                       Integer year, Integer semester,
+                                                       Integer collegeId, Integer deptId,
+                                                       Integer stdNo, String stdName) {
+        return courseDetails.stream()
+                .filter(course -> year == null || course.getLecture().getGrade() == year)
+                .filter(course -> semester == null || course.getLecture().getSemester() == semester)
+                .filter(course -> collegeId == null || course.getCollege().getId() == collegeId)
+                .filter(course -> deptId == null || course.getDepartment().getId() == deptId)
+                .filter(course -> stdNo == null || course.getStd().getStdNo() == stdNo)
+                .filter(course -> stdName == null || course.getStd().getName().contains(stdName))
+                .collect(Collectors.toList());
+    }
 
+
+    @PostMapping("/stuscore_regist")
+    public String post_stuscore_regist(@ModelAttribute GradeRequest gradeRequest) {
         List<EnrollDTO> grades = gradeRequest.getGrades();
 
-        for (EnrollDTO gradeForm : grades) {
-            String grade = gradeForm.getGrade();
-            int code = gradeForm.getCode();
-            int stdNo = gradeForm.getStdNo();
-
-            System.out.println("grade: " + grade + ", code: " + code + ", stdNo: " + stdNo);
-            if(grade != null && !grade.isEmpty()){
-                courseScoreService.set_std_enroll_coures_score(stdNo, code, grade);
+        grades.forEach(grade -> {
+            if (grade.getGrade() != null && !grade.getGrade().isEmpty()) {
+                courseScoreService.set_std_enroll_coures_score(
+                        grade.getStdNo(),
+                        grade.getCode(),
+                        grade.getGrade()
+                );
             }
-
-        }
-
+        });
         return "redirect:/manager/stuscore_regist";
     }
 
-    /*  단과대학과 해당된 단과대학의 학과를 DB에서 조회하는 함수  */
-    private void get_db_college_depart_info(Model model){
-        // 페이지 접속 시 단과대학을 DB에서 조회
-        List<CollegeDTO> colleges = enrollInCourseService.get_colleges();
-        model.addAttribute("colleges", colleges);
-
-
-        // 첫번째 단과대학의 학과를 조회
-        List<DepartmentDTO> departments = enrollInCourseService.get_departments(colleges.get(0).getId());
-        model.addAttribute("departments", departments);
-
-        //모든 단과대학 조회
-        List<DepartmentDTO> allDepartments = enrollInCourseService.get_all_departments();
-        model.addAttribute("allDepartments", allDepartments);
-
-        // Create maps for college and department names
-        Map<Integer, String> collegeMap = colleges.stream()
-                .collect(Collectors.toMap(CollegeDTO::getId, CollegeDTO::getName));
-        Map<Integer, String> allDepartmentMap = allDepartments.stream()
-                .collect(Collectors.toMap(DepartmentDTO::getId, DepartmentDTO::getName));
-
-        // Add maps to the model
-        model.addAttribute("collegeMap", collegeMap);
-        model.addAttribute("allDepartmentMap", allDepartmentMap);
-    }
 
     /**************  수강 신청 기간 설정 페이지   *************/
     // 수강신청기간 설정 페이지
@@ -257,8 +185,11 @@ public class ManagerController {
     // 휴학 상태 업데이트
     @PostMapping("/leave/update")
     @ResponseBody
-    public Map<String, Object> update_leave_status(@RequestParam("stdNo") Integer stdNo) {
-        boolean success = managerService.update_leave_status(stdNo);
+    public Map<String, Object> update_leave_status(
+            @RequestParam("stdNo") Integer stdNo,
+            @RequestParam("leaveCount") int leaveCount
+    ) {
+        boolean success = managerService.update_leave_status(stdNo, leaveCount);
         Map<String, Object> response = new HashMap<>();
         response.put("success", success);
         return response;
@@ -267,7 +198,9 @@ public class ManagerController {
     // 복학 상태 업데이트
     @PostMapping("/return/update")
     @ResponseBody
-    public Map<String, Object> update_return_status(@RequestParam("stdNo") Integer stdNo) {
+    public Map<String, Object> update_return_status(
+            @RequestParam("stdNo") Integer stdNo
+    ) {
         boolean success = managerService.update_return_status(stdNo);
         if (success) {
             // 복학이 성공적으로 업데이트되면 해당 학생의 휴학 신청 정보를 삭제
@@ -283,30 +216,96 @@ public class ManagerController {
     @GetMapping("/manager_calendar")
     public void get_manager_calendar(){}
 
-
+    // 공지사항 페이지 이동
     @GetMapping("/manager_notice")
-    public void get_manager_notice(Model model){
-        List<NoticeDTO> notices = managerService.get_notices();
+    public void get_manager_notice(
+            @RequestParam(required = false) String title,
+            @RequestParam(required = false) String searchType,
+            Model model
+    ){
+        List<NoticeDTO> notices = managerService.get_notices(title, searchType);
         model.addAttribute("notices", notices);
     }
 
-    @PostMapping("/manager_notice")
-    public String post_manager_notice(NoticeDTO noticeDTO){
+    // 공지사항 추가 페이지
+    @GetMapping("/notice_write")
+    public void get_notice_write(){
+    }
+
+    // 공지사항 추가
+    @PostMapping("/notice_write")
+    public String post_notice_write(NoticeDTO noticeDTO){
         System.out.println(noticeDTO);
         managerService.insert_notice(noticeDTO);
         System.out.println(noticeDTO);
         return "redirect:/manager/manager_notice";
     }
 
+    // 각각 공지사항으로 이동
     @GetMapping("/manager_view_notice/{noticeNo}")
     public String get_manager_view_notice(
-            @PathVariable("noticeNo") int noticeNo
+            @PathVariable("noticeNo") Integer noticeNo,
+            Model model
     ){
-
+        NoticeDTO noticeDTO = managerService.get_notice(noticeNo);
+        managerService.update_view(noticeNo);
+        model.addAttribute("notice", noticeDTO);
         return "manager/manager_view_notice";  // 템플릿 파일의 경로 반환
     }
 
-    @GetMapping("/notice_write")
-    public void get_notice_write(){
+    // 각각 공지사항 수정
+    @GetMapping("/notice_edit/{noticeNo}")
+    public String get_notice_change(
+            @PathVariable("noticeNo") Integer noticeNo,
+            Model model
+    ){
+        NoticeDTO noticeDTO = managerService.get_notice(noticeNo);
+        model.addAttribute("notice", noticeDTO);
+        return "manager/notice_edit";  // 수정 페이지 템플릿 파일의 경로
     }
+
+    @PostMapping("/notice_edit/{noticeNo}")
+    public String post_notice_change(
+            @PathVariable("noticeNo") Integer noticeNo,
+            @ModelAttribute NoticeDTO noticeDTO
+    ){
+        noticeDTO.setNo(noticeNo); // noticeNo를 noticeDTO에 설정
+        managerService.update_notice(noticeDTO);
+        return "redirect:/manager/manager_view_notice/" + noticeNo;
+    }
+
+    // 공지사항 삭제
+    @PostMapping("/notice_delete/{noticeNo}")
+    public ResponseEntity<Void> delete_notice(
+            @PathVariable("noticeNo") Integer noticeNo
+    ){
+        managerService.delete_notice(noticeNo);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    /*  단과대학과 해당된 단과대학의 학과를 DB에서 조회하는 함수  */
+    private void get_db_college_depart_info(Model model){
+        // 페이지 접속 시 단과대학을 DB에서 조회
+        List<CollegeDTO> colleges = enrollInCourseService.get_colleges();
+        model.addAttribute("colleges", colleges);
+
+        // 첫번째 단과대학의 학과를 조회
+        List<DepartmentDTO> departments = enrollInCourseService.get_departments(colleges.get(0).getId());
+        model.addAttribute("departments", departments);
+
+        //모든 단과대학 조회
+        List<DepartmentDTO> allDepartments = enrollInCourseService.get_all_departments();
+        model.addAttribute("allDepartments", allDepartments);
+
+        //단과대와 부서에 따른 맵생성
+        Map<Integer, String> collegeMap = colleges.stream()
+                .collect(Collectors.toMap(CollegeDTO::getId, CollegeDTO::getName));
+        Map<Integer, String> allDepartmentMap = allDepartments.stream()
+                .collect(Collectors.toMap(DepartmentDTO::getId, DepartmentDTO::getName));
+
+        //맵을 모델에 추가
+        model.addAttribute("collegeMap", collegeMap);
+        model.addAttribute("allDepartmentMap", allDepartmentMap);
+    }
+
 }

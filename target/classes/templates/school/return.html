@@ -18,27 +18,35 @@
                 <section class="return-info-section">
                     <h3 class="return-h3">복학신청 상세정보</h3>
                     <table border="1">
-                        <tr>
-                            <td>학번</td>
-                            <td class="stdNo-td">
-                                <label class="return-label">
-                                    <input type="text" th:value="${std.stdNo}" class="return-input" name="stdNo" readonly>
-                                </label>
-                            </td>
-                            <td>신청날짜</td>
-                            <td>
-                                <label class="return-label">
-                                    <input type="date" class="return-input" name="applicationDate">
-                                </label>
-                            </td>
+                        <tr th:if="${returnInfo.stdNo == 0 || returnInfo.status.equals('복학') || returnInfo.status.equals('처리중')}">
+                            <td colspan="7">현재 재학중입니다.</td>
                         </tr>
+                        <tr th:if="${returnInfo.status.equals('복학 처리중')}">
+                            <td colspan="7">복학 처리중입니다</td>
+                        </tr>
+                        <tbody th:if="${returnInfo.stdNo != 0 && returnInfo.status == '휴학'}">
+                            <tr>
+                                <td>학번</td>
+                                <td class="stdNo-td">
+                                    <label class="return-label">
+                                        <input type="text" th:value="${std.stdNo}" class="return-input" name="stdNo" readonly>
+                                    </label>
+                                </td>
+                                <td>신청날짜</td>
+                                <td>
+                                    <label class="return-label">
+                                        <input type="date" class="return-input" name="applicationDate">
+                                    </label>
+                                </td>
+                            </tr>
+                        </tbody>
                     </table>
-                    <button class="return-btn" th:disabled="${!canApplyReturn}">복학신청</button>
+                    <button class="return-btn" th:if="${returnInfo.stdNo != 0 && returnInfo.status == '휴학'}" th:disabled="${!canApplyReturn}">복학신청</button>
                 </section>
             </form>
         </div>
         <div th:if="${!canApplyReturn}">
-            <p>현재 휴학 신청 기간이 아닙니다.</p>
+            <p>현재 복학 신청 기간이 아닙니다.</p>
         </div>
 
     <section>

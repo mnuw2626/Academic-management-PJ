@@ -41,6 +41,7 @@
                         <form class="leave-form" th:action="@{/manager/leave/update}" method="post">
                             <input type="hidden" name="stdNo" th:value="${leave.stdNo}">
                             <input type="hidden" name="status" th:value="${leave.status}">
+                            <input type="hidden" name="leaveCount" th:value="${leave.leaveCount}">
                             <button type="button" th:text="${leave.status}" onclick="status_function(this)" class="state-std"></button>
                         </form>
                     </td>
@@ -68,10 +69,14 @@
                     <td th:text="${return.applicationDate}"></td>
                     <td th:text="${return.name}"></td>
                     <td th:text="${return.stdNo}"></td>
+                    <td th:text="${return.startDate}"></td>
+                    <td th:text="${return.endDate}"></td>
+                    <td th:text="${return.applicationDate}"></td>
                     <td>
                         <form class="return-form" th:action="@{/manager/return/update}" method="post">
                             <input type="hidden" name="stdNo" th:value="${return.stdNo}">
                             <input type="hidden" name="status" th:value="${return.status}">
+                            <input type="hidden" name="leaveCount" th:value="${return.leaveCount}">
                             <button type="button" th:text="${return.status}" onclick="status_function(this)" class="state-std">처리중</button>
                         </form>
                     </td>

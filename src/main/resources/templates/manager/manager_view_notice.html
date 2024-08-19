@@ -7,26 +7,31 @@
 >
 <head>
     <meta charset="UTF-8">
+    <meta name="_csrf" th:content="${_csrf.token}">
+    <meta name="_csrf_header" th:content="${_csrf.headerName}">
     <title>Title</title>
     <link rel="stylesheet" href="../../static/css/manager/manager_view_notice.css" th:href="@{/css/manager/manager_view_notice.css}">
+    <script src="../../static/js/manager/view_notice.js" th:src="@{/js/manager/view_notice.js}" defer></script>
 </head>
 <body>
     <section class="view_main" layout:fragment="main-section">
         <div class="notice-title">공지사항</div>
         <div class="contents">
-            <div class="contents_title">2024학년도 교외장학재단 신규장학생 선발 결과 안내</div>
-            <div class="contents_under">
-                <strong>등록일</strong><div class="contents_date">24-07-23</div>
-                <strong>조회수</strong><div class="contents_view">5</div>
-                <button class="contents_change">수정</button>
-                <button class="contents_remove">삭제</button>
+            <div class="contents_title">
+                <span th:text="${notice.title}"></span>
             </div>
-            <div class="contents_text">
-                ㅎㅇ
+            <div class="contents_under">
+                <strong>등록일</strong><span class="contents_date" th:text="${notice.createdDate}"></span>
+                <strong>조회수</strong><span class="contents_view" th:text="${notice.views}"></span>
+                <a th:href="@{/manager/notice_edit/{noticeNo}(noticeNo=${notice.no})}" class="contents_change">수정</a>
+                <a href="javascript:void(0)" class="contents_remove" th:onclick="'confirmDelete(' + ${notice.no} + ')'">삭제</a>
+            </div>
+            <div class="contents_text" th:text="${notice.content}">
+                안녕하세요
             </div>
         </div>
         <div class="contents-btn">
-            <button>목록</button>
+            <a th:href="@{/manager/manager_notice}">목록</a>
         </div>
     </section>
 </body>

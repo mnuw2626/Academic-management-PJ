@@ -15,7 +15,7 @@
 <body>
 <section class="std_list_main_section" layout:fragment="main-section">
     <h1 class="student_list_title">학생 명단 조회</h1>
-    <form class="list_search_section">
+    <form th:action="@{/manager/student_list_check}" class="list_search_section">
         <label class="list_search_input">
             <span>단과대학</span>
             <select id="collegeId" name="collegeId">

@@ -4,41 +4,58 @@
     margin: 0 auto;
     box-sizing: border-box;
 }
-main{
+.view_main{
     margin-top: 50px;
+    padding: 40px;
     width: 1000px;
+    background-color: white;
 }
 
 /*************************************/
 .notice-title{
-    font-family: SemiBold;
-    font-size: 55px;
+    font-size: 30px;
+    font-weight: bold;
     border-bottom: 1px solid var(--dark-green-2);
-    padding: 25px 0 20px 30px;
+    padding: 25px 0 20px 13px;
+}
+.contents{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-bottom: 1px solid var(--dark-green-2);
+    margin-bottom: 20px;
 }
 .contents_title{
-    padding: 22px 0 22px 10px;
+    width: 100%;
+    padding: 20px 0 20px 10px;
     background-color: var(--light-green-3);
-    font-size: var(--font-size-semibold);
+    font-size: var(--font-size-bold);
     border-bottom: 1px solid var(--dark-green-2);
 }
+.contents_title span{
+    margin-left: 5px;
+    font-size: var(--font-size-bold);
+}
 .contents_under{
-    padding: 22px 0 22px 10px;
+    display: block;
+    align-items: center;
+    width: 100%;
+    padding: 15px 0 15px 12px;
     border-bottom: 1px solid var(--dark-green-2);
 }
 .contents_date{
     color: dimgrey;
     display: inline-block;
-    margin: 0 190px 0 20px;
+    margin: 0 50px 0 15px;
+
 }
 .contents_view{
     color: dimgrey;
     display: inline-block;
-    margin-left:20px;
+    margin: 0 0 0 15px;
 }
 
 .contents_text{
-    height: 800px;
     margin: 40px 20px 30px 20px;
     outline: none;
     overflow: scroll;
@@ -50,7 +67,9 @@ body{
     display: none;
 }
 .contents_text{
-    -ms-overflow-style: none;
+    margin: 40px 20px 30px 10px;
+    outline: none;
+    overflow: scroll;
 }
 .contents_text::-webkit-scrollbar{
     display: none;
@@ -58,11 +77,9 @@ body{
 
 /*************************************/
 .contents-btn{
-    border-top: 1px solid var(--dark-green-2);
     margin-bottom: 50px;
 }
 .contents-btn button{
-    margin-top: 15px;
     padding: 8px 13px;
     background-color: var(--light-green-2);
     border: 1px solid black;

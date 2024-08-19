@@ -12,24 +12,24 @@
 </head>
 <body>
     <form th:action="@{/scholarship/bill}" class="bill-main-section" layout:fragment="main-section" method="post">
-        <!-- CSRF 토큰을 숨겨진 필드로 추가 -->
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-
         <h1>등록금 납부 고지서</h1>
 
         <section class="bill-section">
             <h2>등록금 납부고지서</h2>
             <h3>2023년 <b>1학기</b></h3>
-            <section class="bill-section-cont" th:if="${message != null}">
-                <p th:text="${message}"></p>
+            <section class="bill-section-cont" th:if="${message == 0}">
+                <p>휴학생입니다</p>
             </section>
-            <section class="bill-section-cont" th:if="${message == null}">
+            <section class="bill-section-cont" th:if="${message == 1}">
+                <p>이미 제출하였습니다.</p>
+            </section>
+            <section class="bill-section-cont" th:if="${message == 2}">
                 <table>
                     <tr>
                         <td>단과대학</td>
-                        <td th:text="${stdDTO.collegeId}">공대</td>
+                        <td th:text="${collegeMap[stdDTO.collegeId]}">공대</td>
                         <td>학과</td>
-                        <td th:text="${stdDTO.deptId}">컴퓨터 공학과</td>
+                        <td th:text="${allDepartmentMap[stdDTO.deptId]}">컴퓨터 공학과</td>
                     </tr>
                     <tr>
                         <td>학번</td>
@@ -40,10 +40,6 @@
                     <tr>
                         <td colspan="2">등록금</td>
                         <td colspan="2" th:text="${stdDTO.tuitionDTO.amount}">10</td>
-                    </tr>
-                    <tr>
-                        <td colspan="2">장학금</td>
-                        <td colspan="2">10</td>
                     </tr>
                     <tr>
                         <td colspan="2">납부금</td>

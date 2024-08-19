@@ -12,6 +12,7 @@ public class LectureDTO {
     private int no; //순번
     private int code; //과목코드
     private String name; //과목명
+    private int year; //개설년도
     private int grade; //학년
     private int semester; //학기
     private int credit; //학점

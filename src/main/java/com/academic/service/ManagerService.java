@@ -40,7 +40,7 @@ public class ManagerService {
             Integer grade,
             Integer semester,
             String name,
-            String stdNo
+            Integer stdNo
     ) {
         return managerMapper.select_std(collegeId, deptId, grade, semester, name, stdNo);
     }
@@ -87,8 +87,8 @@ public class ManagerService {
     }
 
     // 휴학 상태 업데이트
-    public boolean update_leave_status(Integer stdNo) {
-        int updatedRows = managerMapper.update_leave_std_status(stdNo);
+    public boolean update_leave_status(Integer stdNo, int leaveCount) {
+        int updatedRows = managerMapper.update_leave_std_status(stdNo, leaveCount);
         return updatedRows > 0; // 업데이트된 행이 있으면 true 반환, 없으면 false 반환
     }
 
@@ -105,11 +105,11 @@ public class ManagerService {
 
     /****************학사일정****************/
 
-    public List<NoticeDTO> get_notices() {
-        return managerMapper.select_notices();
+    public List<NoticeDTO> get_notices(String title, String searchType) {
+        return managerMapper.select_notices(title, searchType);
     }
 
-    public NoticeDTO get_notice(String noticeNo) {
+    public NoticeDTO get_notice(Integer noticeNo) {
         return managerMapper.select_notice(noticeNo);
     }
 
@@ -123,4 +123,17 @@ public class ManagerService {
         noticeDTO.setViews(0);
         managerMapper.insert_notice(noticeDTO);
     }
+
+    public void update_view(Integer noticeNo){
+        managerMapper.update_view(noticeNo);
+    }
+
+    public void update_notice(NoticeDTO noticeDTO){
+        managerMapper.update_notice(noticeDTO);
+    }
+
+    public void delete_notice(Integer noticeNo){
+        managerMapper.delete_notice(noticeNo);
+    }
+
 }

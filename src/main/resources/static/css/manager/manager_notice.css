@@ -11,10 +11,10 @@
 /*************************************/
 .notice-title{
     width: 950px;
-    font-family: SemiBold;
-    font-size: 55px;
+    font-size: 30px;
+    font-weight: bold;
     border-bottom: 1px solid var(--dark-green-2);
-    padding: 25px 0 20px 30px;
+    padding: 25px 0 5px 0px;
 }
 
 .notice-search{
@@ -32,14 +32,14 @@
     border-radius: 7px;
     outline: none;
 }
-.write-btn{
+.write-a{
     background-color: var(--light-green-2);
     border: 1px solid black;
     border-radius: 8px;
     padding: 5px;
     margin-right: 5px;
 }
-.write-btn:hover{
+.write-a:hover{
     color: white;
     cursor: pointer;
     background-color: var(--dark-green-3);

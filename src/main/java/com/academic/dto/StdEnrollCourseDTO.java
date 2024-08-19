@@ -11,7 +11,7 @@ import java.time.LocalTime;
 @AllArgsConstructor
 @NoArgsConstructor
 public class StdEnrollCourseDTO {
-    public static Integer ALLCREDIT = 32; //전체 신청 가능한 학점
+    public static Integer ALLCREDIT = 21; //전체 신청 가능한 학점
     private Boolean status; // 수강 가능한지 여부 -> SQL 쿼리로 0 혹은 1이 되게 함, 1일경우 수강인원이 가득차서 불가능
 
     // 수강 내역 정보(학생 한명)

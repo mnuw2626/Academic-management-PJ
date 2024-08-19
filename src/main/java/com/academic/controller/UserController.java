@@ -1,10 +1,6 @@
 package com.academic.controller;
 
-import com.academic.dto.NoticeDTO;
-import com.academic.dto.CollegeDTO;
-import com.academic.dto.DepartmentDTO;
-import com.academic.dto.StdDTO;
-import com.academic.dto.UserDTO;
+import com.academic.dto.*;
 import com.academic.service.EnrollInCourseService;
 import com.academic.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +15,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.nio.charset.StandardCharsets;
+import java.time.Year;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.Optional;
+import java.util.stream.IntStream;
 
 @Controller
 @RequestMapping("/user")
@@ -111,6 +109,61 @@ public class UserController {
         return "user/info_management";
     }
 
+    @GetMapping("/academic_calendar")
+    public void get_academic_calendar(){}
+
+    //공지사항 페이지로 이동
+    @GetMapping("/academic_notice")
+    public void get_academic_notice(
+            @RequestParam(required = false) String title,
+            @RequestParam(required = false) String searchType,
+            Model model
+    ){
+        List<NoticeDTO> notices = userService.get_notices(title, searchType);
+        model.addAttribute("notices", notices);
+    }
+
+    //각각 공지사항들
+    @GetMapping("/view_notice/{noticeNo}")
+    public String get_view_notice(
+            @PathVariable Integer noticeNo,
+            Model model
+    ){
+        NoticeDTO notice = userService.get_notice(noticeNo);
+        userService.update_view(noticeNo);
+        model.addAttribute("notice", notice);
+        return "user/view_notice";
+    }
+
+    //성적조회
+    @GetMapping("/score")
+    public String get_score(
+            @RequestParam(required = false) Integer year,
+            @RequestParam(required = false) Integer semester,
+            @AuthenticationPrincipal UserDTO userDTO,
+            Model model
+    ){
+        StdDTO userInfo = userService.select_user_info_service(userDTO.getId());
+
+        // 현재 연도
+        int currentYear = Year.now().getValue();
+
+        List<Integer> availableYears = IntStream.range(0, userInfo.getGrade())
+                                       .mapToObj(i -> currentYear - i)
+                                       .collect(Collectors.toList());
+
+        model.addAttribute("availableYears", availableYears);
+
+        // 성적 조회
+
+        List<CourseDetailsDTO> courseDetails = userService.get_score(userDTO.getNo(), year, semester);
+        System.out.println(courseDetails);
+        model.addAttribute("courseDetails", courseDetails);
+
+
+        return "user/score";
+    }
+
     /*  단과대학과 해당된 단과대학의 학과를 DB에서 조회하는 함수  */
     private void get_db_college_depart_info(Model model){
         // 페이지 접속 시 단과대학을 DB에서 조회
@@ -136,26 +189,5 @@ public class UserController {
         // Add maps to the model
         model.addAttribute("allcollegeMap", allcollegeMap);
         model.addAttribute("allDepartmentMap", allDepartmentMap);
-    }
-
-    @GetMapping("/academic_calendar")
-    public void get_academic_calendar(){}
-
-    //공지사항 페이지로 이동 - 수정필요
-    @GetMapping("/academic_notice")
-    public void get_academic_notice(Model model){
-        List<NoticeDTO> notices = userService.get_notices();
-        model.addAttribute("notices", notices);
-    }
-
-    //각각 공지사항들
-    @GetMapping("/view_notice/{noticeNo}")
-    public String get_view_notice(
-            @PathVariable String noticeNo,
-            Model model
-    ){
-        NoticeDTO notice = userService.get_notice(noticeNo);
-        model.addAttribute("notice", notice);
-        return "user/view_notice";
     }
 }

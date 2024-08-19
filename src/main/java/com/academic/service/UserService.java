@@ -1,10 +1,6 @@
 package com.academic.service;
 
-import com.academic.dto.LeaveDTO;
-import com.academic.dto.NoticeDTO;
-import com.academic.dto.StdDTO;
-import com.academic.dto.TuitionDTO;
-import com.academic.dto.UserDTO;
+import com.academic.dto.*;
 import com.academic.mapper.UserMapper;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,14 +44,16 @@ public class UserService {
         return userMapper.select_scholarship(no);
     }
 
-    public boolean std_status(Integer no){
+    public int std_status(Integer no){
         StdDTO student = userMapper.select_scholarship(no);
-        int scholarship_ok = student.getTuitionDTO().getStatus();
-        if (scholarship_ok == 0)
+        if (student == null){
+            return 0;
+        }
+        else if (student.getTuitionDTO().getCheck() != 0)
         {
-            return false;
+            return 1;
         }else {
-            return true;
+            return 2;
         }
     }
 
@@ -73,9 +71,12 @@ public class UserService {
     }
 
     public void insertLeaveApplication(LeaveDTO leaveDTO) {
-        if (leaveDTO != null) {
+        if (leaveDTO.getLeaveCount() == 0) {
             leaveDTO.setStatus("처리중");
             userMapper.insertLeaveApplication(leaveDTO);
+        }else if (leaveDTO.getLeaveCount() != 0){
+            leaveDTO.setStatus("처리중");
+            userMapper.updateLeaveApplication(leaveDTO);
         }
     }
 
@@ -112,12 +113,22 @@ public class UserService {
     }
 
     /*****************공지사항*****************/
-    public NoticeDTO get_notice(String noticeNo){
+    public NoticeDTO get_notice(Integer noticeNo){
         return userMapper.select_notice(noticeNo);
     }
 
-    public List<NoticeDTO> get_notices() {
-        return userMapper.select_notices();
+    public List<NoticeDTO> get_notices(String title, String searchType) {
+
+        return userMapper.select_notices(title, searchType);
+    }
+
+    public void update_view(Integer noticeNo){
+        userMapper.update_view(noticeNo);
+    }
+
+    /*****************성적조회*****************/
+    public List<CourseDetailsDTO> get_score(Integer stdNo, Integer  year, Integer semester){
+        return userMapper.get_score(stdNo, year, semester);
     }
 
 }

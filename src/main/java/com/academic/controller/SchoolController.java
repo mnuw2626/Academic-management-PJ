@@ -40,8 +40,11 @@ public class SchoolController {
 
     @PostMapping("/leave")
     public String post_leave(
+            @AuthenticationPrincipal UserDTO userDTO,
             LeaveDTO leaveDTO
     ){
+        LeaveDTO std = userService.select_user_stat(userDTO.getNo());
+        leaveDTO.setLeaveCount(std.getLeaveCount());
         userService.insertLeaveApplication(leaveDTO);
         return "redirect:/school/leave";
     }

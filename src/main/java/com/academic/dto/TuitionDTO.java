@@ -9,6 +9,6 @@ import lombok.ToString;
 @ToString
 public class TuitionDTO {
     private int stdNo;
-    private int status;
+    private int check;
     private int amount;
 }

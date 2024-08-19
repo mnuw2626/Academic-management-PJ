@@ -18,10 +18,10 @@
                 <section class="leave-info-section">
                     <h3 class="leave-h3">휴학신청 상세정보</h3>
                     <table border="1">
-                        <tr th:if="${leaveInfo.stdNo != 0}">
+                        <tr th:if="${leaveInfo.stdNo != 0 && leaveInfo.status != '복학'}">
                             <td colspan="7">이미 휴학신청을 했습니다.</td>
                         </tr>
-                        <tbody th:if="${leaveInfo.stdNo == 0}">
+                        <tbody th:if="${leaveInfo.stdNo == 0 || leaveInfo.status == '복학'}">
                             <tr>
                                 <td>학번</td>
                                 <td class="stdNo-td">
@@ -66,13 +66,14 @@
                             </tr>
                         </tbody>
                     </table>
-                    <button class="leave-btn" th:if="${leaveInfo.stdNo == 0}" th:disabled="${!canApplyLeave}">휴학신청</button>
+                    <button class="leave-btn" th:if="${leaveInfo.stdNo == 0 || leaveInfo.status == '복학'}" th:disabled="${!canApplyLeave}">휴학신청</button>
                 </section>
             </form>
         </div>
         <div th:if="${!canApplyLeave}">
             <p>현재 휴학 신청 기간이 아닙니다.</p>
         </div>
+
         <section>
             <h3 class="leave-h3">나의 휴/복학상태</h3>
             <table border="1">
@@ -84,6 +85,7 @@
                     <td>시작날짜</td>
                     <td>종료날짜</td>
                     <td>처리상태</td>
+                    <td>휴학횟수</td>
                 </tr>
                 </thead>
                 <tbody>
@@ -97,6 +99,7 @@
                     <td th:text="${leaveInfo.startDate}">2024/09/01</td>
                     <td th:text="${leaveInfo.endDate}">2026/6/20</td>
                     <td th:text="${leaveInfo.status}">처리중</td>
+                    <td th:text="${leaveInfo.leaveCount}"></td>
                 </tr>
                 </tbody>
             </table>

@@ -35,10 +35,13 @@ public class ManagerRestController {
 
 
     @PostMapping("/leave/check")
-    public ResponseEntity<Map<String, Object>> update_leave_status(@RequestParam("stdNo") Integer stdNo) {
+    public ResponseEntity<Map<String, Object>> update_leave_status(
+            @RequestParam("stdNo") Integer stdNo,
+            @RequestParam("leaveCount") int leaveCount
+    ) {
         System.out.println(stdNo);
         // LeaveDTO 객체를 업데이트하는 메서드 호출
-        boolean success = managerService.update_leave_status(stdNo);
+        boolean success = managerService.update_leave_status(stdNo, leaveCount);
 
         // 성공 여부를 포함한 응답 데이터 생성
         Map<String, Object> response = new HashMap<>();

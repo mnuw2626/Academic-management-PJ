@@ -1,10 +1,8 @@
 package com.academic.mapper;
 
-import com.academic.dto.LeaveDTO;
-import com.academic.dto.NoticeDTO;
-import com.academic.dto.StdDTO;
-import com.academic.dto.UserDTO;
+import com.academic.dto.*;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -22,6 +20,8 @@ public interface UserMapper {
     //휴학
     void insertLeaveApplication(LeaveDTO leaveDTO);
 
+    void updateLeaveApplication(LeaveDTO leaveDTO);
+
     LeaveDTO select_stat(Integer no);
     //복학
     void updateReturnApplication(LeaveDTO leaveDTO);
@@ -30,7 +30,17 @@ public interface UserMapper {
 
     void update_std_id(String id, Integer stdNo);
 
-    List<NoticeDTO> select_notices();
+    //공지사항
+    List<NoticeDTO> select_notices(String title, String searchType);
 
-    NoticeDTO select_notice(String noticeNo);
+    NoticeDTO select_notice(Integer noticeNo);
+
+    void update_view(Integer noticeNo);
+
+    //성적조회
+    List<CourseDetailsDTO> get_score(
+            @Param("stdNo") Integer stdNo,
+            @Param("year") Integer year,
+            @Param("semester") Integer semester
+    );
 }

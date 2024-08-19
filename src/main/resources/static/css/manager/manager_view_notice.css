@@ -14,45 +14,76 @@
 
 /*************************************/
 .notice-title{
-    font-family: SemiBold;
-    font-size: 55px;
+    font-size: 30px;
+    font-weight: bold;
     border-bottom: 1px solid var(--dark-green-2);
-    padding: 25px 0 20px 30px;
+    padding: 25px 0 20px 13px;
+}
+.contents{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border-bottom: 1px solid var(--dark-green-2);
+    margin-bottom: 20px;
 }
 .contents_title{
-    padding: 22px 0 22px 10px;
+    width: 100%;
+    padding: 20px 0 20px 10px;
     background-color: var(--light-green-3);
-    font-size: var(--font-size-semibold);
+    font-size: var(--font-size-bold);
     border-bottom: 1px solid var(--dark-green-2);
 }
+
+.contents_title span{
+    margin-left: 5px;
+    font-size: var(--font-size-bold);
+}
+
 .contents_under{
-    padding: 15px 0 15px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 15px 0 15px 5px;
     border-bottom: 1px solid var(--dark-green-2);
 }
 .contents_date{
     color: dimgrey;
     display: inline-block;
-    margin: 0 180px 0 20px;
+    margin: 0 70px 0 20px;
 }
 .contents_view{
     color: dimgrey;
     display: inline-block;
-    margin: 0 435px 0 20px;
+    margin: 0 420px 0 20px;
 }
+.contents_under a{
+    padding: 6px 10px;
+    background-color: var(--light-green-2);
+    border: 1px solid black;
+    border-radius: 7px;
+}
+.contents_under a:hover{
+    color: white;
+    cursor: pointer;
+    background-color: var(--dark-green-3);
+}
+
 .contents_under button{
     padding: 6px 10px;
     background-color: var(--light-green-2);
     border: 1px solid black;
     border-radius: 7px;
 }
+
 .contents_under button:hover{
     color: white;
     cursor: pointer;
     background-color: var(--dark-green-3);
 }
+
 .contents_text{
-    height: 800px;
-    margin: 40px 20px 30px 20px;
+    margin: 40px 20px 30px 10px;
     outline: none;
     overflow: scroll;
 }
@@ -71,17 +102,15 @@ body{
 
 /*************************************/
 .contents-btn{
-    border-top: 1px solid var(--dark-green-2);
     margin-bottom: 50px;
 }
-.contents-btn button{
-    margin-top: 15px;
+.contents-btn a{
     padding: 8px 13px;
     background-color: var(--light-green-2);
     border: 1px solid black;
     border-radius: 7px;
 }
-.contents-btn button:hover{
+.contents-btn a:hover{
     color: white;
     cursor: pointer;
     background-color: var(--dark-green-3);

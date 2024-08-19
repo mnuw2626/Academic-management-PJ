@@ -1,0 +1,79 @@
+@import "../public/public.css";
+
+*{
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+.write_main{
+    margin-top: 50px;
+    width: 1000px;
+    background-color: white;
+    padding: 40px;
+}
+
+/*************************************/
+.notice_write{
+    font-size: 35px;
+    border-bottom: 3px solid var(--dark-green-2);
+    padding: 25px 0 20px 30px;
+}
+.content_title{
+    margin: 30px 0 15px 0;
+}
+.content_title > div{
+    display: inline-block;
+    font-size: var(--font-size-semibold);
+    margin: 0 5px 10px 20px;
+}
+.content_title > input{
+    border: 1px solid black;
+    border-radius: 7px;
+    padding: 5px 10px;
+    outline-style: none;
+}
+
+/*************************************/
+.contents{
+    width: 1000px;
+    margin-left: 20px;
+}
+.contents > div{
+    font-size: var(--font-size-semibold);
+    margin-bottom: 10px;
+}
+.contents > textarea{
+    outline: none;
+    resize: none;
+}
+
+/*************************************/
+.btn_div{
+    text-align: center;
+    border-top: 3px solid var(--dark-green-2);
+    margin-top: 30px;
+}
+.btn_div > button{
+    background-color: var(--light-green-2);
+    border: 1px solid black;
+    border-radius: 7px;
+    margin-top: 30px;
+    padding: 10px 20px;
+}
+.btn_div > button:hover{
+    color: white;
+    cursor: pointer;
+    background-color: var(--dark-green-3);
+}
+
+.btn_div > a{
+    background-color: var(--light-green-2);
+    border: 1px solid black;
+    border-radius: 7px;
+    margin-top: 30px;
+    padding: 10px 20px;
+}
+.btn_div > a:hover{
+    color: white;
+    cursor: pointer;
+    background-color: var(--dark-green-3);
+}
