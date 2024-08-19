@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="../../static/css/manager/send.css" th:href="@{/css/manager/send.css}">
 </head>
 <body>
-    <form action="/manager/send" class="send-section" layout:fragment="main-section">
+    <form th:action="@{/manager/send}" class="send-section" layout:fragment="main-section" method="post">
         <h2 class="send-h2">등록금 고지서 발송</h2>
         <button class="send-btn">발송하기</button>
     </form>

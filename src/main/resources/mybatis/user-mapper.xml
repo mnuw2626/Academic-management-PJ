@@ -79,7 +79,7 @@
     </select>
 
     <select id="select_all_userInfo" parameterType="String" resultMap="user_with_students_map">
-        SELECT U.*, S.*
+        SELECT U.id, tel, no, S.*
         FROM `student` AS S
                  INNER JOIN `user` AS U
                             ON U.no= S.std_no

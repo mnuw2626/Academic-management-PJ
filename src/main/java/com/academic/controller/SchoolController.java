@@ -57,6 +57,7 @@ public class SchoolController {
         StdDTO stdDTO = userService.select_user_info_service(userDTO.getId());
         model.addAttribute("std", stdDTO);
         LeaveDTO returnDTO = userService.select_user_stat(userDTO.getNo());
+        System.out.println("Return Info: " + returnDTO);
         model.addAttribute("returnInfo", returnDTO);
 
         // 현재 날짜를 확인하여 신청 가능한 기간인지 체크

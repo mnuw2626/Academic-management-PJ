@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -33,6 +34,14 @@ public class ScholarshipController {
             @AuthenticationPrincipal UserDTO userDTO,
             Model model
     ){
+        // 현재 날짜 기반으로 연도와 학기 계산
+        LocalDate currentDate = LocalDate.now();
+        int currentYear = currentDate.getYear();
+        int semester = (currentDate.getMonthValue() >= 7) ? 2 : 1;  // 7월 이상이면 2학기, 그 외에는 1학기
+
+        model.addAttribute("currentYear", currentYear);
+        model.addAttribute("semester", semester);
+
         int moneyOk = userService.std_status(userDTO.getNo());
         if(moneyOk == 0){
             model.addAttribute("message", moneyOk);

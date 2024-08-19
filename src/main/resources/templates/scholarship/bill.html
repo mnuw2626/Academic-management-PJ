@@ -16,9 +16,9 @@
 
         <section class="bill-section">
             <h2>등록금 납부고지서</h2>
-            <h3>2023년 <b>1학기</b></h3>
+            <h3><b th:text="${currentYear} + '년 ' + ${semester} + '학기'">2024년 1학기</b></h3>
             <section class="bill-section-cont" th:if="${message == 0}">
-                <p>휴학생입니다</p>
+                <p>정보없음</p>
             </section>
             <section class="bill-section-cont" th:if="${message == 1}">
                 <p>이미 제출하였습니다.</p>

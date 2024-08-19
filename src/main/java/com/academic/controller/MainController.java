@@ -31,6 +31,8 @@ public class MainController {
 
     @GetMapping("/main")
     public void get_main(
+            @RequestParam(required = false) String title,
+            @RequestParam(required = false) String searchType,
             @AuthenticationPrincipal UserDTO userDTO,
             Model model
     ) {
@@ -41,6 +43,10 @@ public class MainController {
 
         // 해당 학생의 단과대학정보와 학과정보
         get_college_depart_name(student, model);
+
+        //학사공지
+        List<NoticeDTO> notices = userService.get_notices(title, searchType);
+        model.addAttribute("notices", notices);
 
     }
 

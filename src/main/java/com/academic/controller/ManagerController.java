@@ -158,9 +158,13 @@ public class ManagerController {
     /******************** 등록금 발송  *******************/
     //등록금 발송 페이지 이동
     @GetMapping("/send")
-    public void send(){
+    public void get_send(){}
+
+    @PostMapping("/send")
+    public String post_send(){
         List<TuitionDTO> tuitionDTOS = managerService.get_tuitions();
         managerService.send_scholarship(tuitionDTOS);
+        return "redirect:/manager/send";
     }
 
     /******************** 등록금 제출 내역 조회  *******************/

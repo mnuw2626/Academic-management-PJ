@@ -40,35 +40,14 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td width="70">1</td>
-                            <td width="500"><a href="#">2024학년도 여름계절~</a></td>
-                            <td width="100">2024-07-11</td>
-                        </tr>
-                        <tr>
-                            <td width="70">2</td>
-                            <td width="500"><a href="#">2024년 8월 졸업예정자~</a></td>
-                            <td width="100">2024-07-11</td>
-                        </tr>
-                        <tr>
-                            <td width="70">3</td>
-                            <td width="500"><a href="#">2024년 8월(2023학년도 후기)~</a></td>
-                            <td width="100">2024-07-11</td>
-                        </tr>
-                        <tr>
-                            <td width="70">4</td>
-                            <td width="500"><a href="#">2024학년도 2학기 수꾸~</a></td>
-                            <td width="100">2024-07-11</td>
-                        </tr>
-                        <tr>
-                            <td width="70">5</td>
-                            <td width="500"><a href="#">2024학년도 2학기~</a></td>
-                            <td width="100">2024-07-11</td>
-                        </tr>
-                        <tr>
-                            <td width="70">6</td>
-                            <td width="500"><a href="#">[창업휴학]~</a></td>
-                            <td width="100">2024-07-11</td>
+                        <tr th:each="notice, iterStat : ${notices}">
+                            <td width="70">
+                                <a th:href="@{|/user/view_notice/${notice.no}|}" th:text="${iterStat.index + 1}"></a>
+                            </td>
+                            <td width="500">
+                                <a th:href="@{|/user/view_notice/${notice.no}|}" th:text="${notice.title}"></a>
+                            </td>
+                            <td width="100" th:text="${notice.createdDate}">2024-07-11</td>
                         </tr>
                     </tbody>
                 </table>

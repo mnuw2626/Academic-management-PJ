@@ -98,12 +98,8 @@ public class UserController {
             Model model
     ) {
         StdDTO userInfo = userService.select_user_info_service(userDTO.getId());
-        if (userInfo != null) {
-            System.out.println("User Info: " + userInfo);
-            model.addAttribute("userInfo", userInfo);
-        } else {
-            System.out.println("User Info is null");
-        }
+        model.addAttribute("userInfo", userInfo);
+
         get_db_college_depart_info(model);
         
         return "user/info_management";

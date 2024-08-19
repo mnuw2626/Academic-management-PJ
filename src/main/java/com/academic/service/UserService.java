@@ -86,6 +86,9 @@ public class UserService {
         if (leaveDTO == null) {
             leaveDTO = new LeaveDTO();
             leaveDTO.setStdNo(0);
+            System.out.println("LeaveDTO is null, setting stdNo to 0");
+        } else {
+            System.out.println("LeaveDTO found: " + leaveDTO.getStdNo());
         }
         return leaveDTO;
     }
